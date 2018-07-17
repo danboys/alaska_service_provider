@@ -5,7 +5,11 @@ module.exports = {
     "postcss-import": {},
     "postcss-url": {},
     "postcss-nesting": {},
-    // to edit target browsers: use "browserslist" field in package.json
+    "postcss-nested": {},
+    "postcss-custom-properties": {},
+    "postcss-custom-selectors": {},
+    "postcss-apply": {},
+    "postcss-custom-media": {},
     "autoprefixer": {},
     "lost": {}
   }
