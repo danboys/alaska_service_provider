@@ -1,3 +1,7 @@
+a{
+  color:#212529;
+}
+
 .table td, .table th{
   border-bottom: 1px solid #dee2e6;
   border-top: none;
@@ -8,6 +12,13 @@
 
 .navbar-dark .navbar-brand {
   color: #69ccdf;
+}
+
+.sidebar.navbar-nav button{
+  width: 150px;
+  position: relative;
+  left: 37.5px;
+  top: 20px;
 }
 
 .card{
@@ -38,4 +49,24 @@
 
 .container-fluid h3.title{
   padding-left: 15px;
+}
+
+.row .add_button{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.row .add_button button:last-child{
+  margin-left: 10px;
+}
+
+.so_manage div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+  justify-content: center;
+}
+.col-md-12.button_center{
+  margin: 50px 0;
+  text-align: center;
+}
+.col-md-12.button_center button{
+  width: 100px;
 }

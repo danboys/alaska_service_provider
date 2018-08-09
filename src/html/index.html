@@ -71,12 +71,12 @@
             </div>
           </li>
 
-          <button type="button" class="so_admin_btn btn_info">SO관리 +</button>
+          <button type="button" class="btn btn-info">SO관리 +</button>
 
         </ul><!--//#wrapper 좌측카테고리-->
 
         <!--관리툴 컨텐츠영역-->
-        <div id="content-wrapper" class="content_wrapper"><!--//#content-wrapper 관리툴 컨텐츠 영역-->
+        <div id="content-wrapper" class="content_wrapper so_manage"><!--//#content-wrapper 관리툴 컨텐츠 영역-->
           <div class="container-fluid">
 
             <!-- Breadcrumbs-->
@@ -87,7 +87,26 @@
 
               <div class="card-body">
                 <div class="table-responsive">
-                  <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length"><label>Show <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                  <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row">
+                      <div class="col-sm-12 col-md-6">
+                        <div class="dataTables_length" id="dataTable_length">
+                          <label>Show
+                            <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                          </select>
+                            entries</label>
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-6">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                     <thead>
                     <tr role="row">
                       <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">so</th>
@@ -169,7 +188,16 @@
                   </div>
                   </div>
                     <div class="row">
-                      <div class="col-sm-12 col-md-7">
+
+                      <div class="col-sm-12 col-md-12 add_button">
+                        <button type="button" class="btn btn-light"><a href="add_sp.html">sp추가</a></button>
+                        <button type="button" class="btn btn-light">so관리</button>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <!--<div class="col-sm-12 col-md-5">-->
+
+                      <div class="col-sm-12 col-md-12">
                         <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
                           <ul class="pagination">
                             <li class="paginate_button page-item previous disabled" id="dataTable_previous">
@@ -183,6 +211,7 @@
                           </ul>
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
