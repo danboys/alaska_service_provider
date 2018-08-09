@@ -17,6 +17,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  background-color: #e9ecef;
 }
 
 #wrapper #content-wrapper {
@@ -24,6 +25,8 @@ body {
   width: 100%;
   padding-top: 1rem;
   padding-bottom: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 body.fixed-nav #content-wrapper {

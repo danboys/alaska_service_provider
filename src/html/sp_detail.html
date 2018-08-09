@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>DOMFAM Admin Page</title>
+  <!-- Bootstrap core CSS-->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <!-- Page level plugin CSS-->
+  <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="../css/sb-admin.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+<!--상단 네비-->
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+  <a class="navbar-brand mr-1" href="index.html">DOMFAM Admin</a>
+</nav>
+
+<!--좌측 카테고리 -->
+<div id="wrapper">
+  <ul class="sidebar navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="index.html">
+        <i class="fas fa-table"></i>
+        <span>SO 관리 목록</span>
+      </a>
+    </li>
+
+    <!--hcn-->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-fw fa-folder"></i>
+        <span>HCN</span>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+        <a class="dropdown-item" href="#">hcn</a>
+      </div>
+    </li>
+
+    <!--sk-->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-fw fa-folder"></i>
+        <span>SK</span>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+        <a class="dropdown-item" href="#">sk IOT tv</a>
+        <a class="dropdown-item" href="#">sk magic</a>
+        <a class="dropdown-item" href="#">sk school app</a>
+      </div>
+    </li>
+
+    <!--cj-->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-fw fa-folder"></i>
+        <span>CJ</span>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+        <!--<h6 class="dropdown-header">Login Screens:</h6>-->
+        <a class="dropdown-item" href="#">cj</a>
+      </div>
+    </li>
+
+    <div class="so_admin_btn">SO관리 +</div>
+
+  </ul><!--//#wrapper 좌측카테고리-->
+
+  <!--관리툴 컨텐츠영역-->
+  <div id="content-wrapper">
+    <!--파일경로-->
+    <div class="page-breadcrumb">
+      <div class="row">
+        <div class="col-5 align-self-center">
+          <h4 class="page-title">[so_name] sp_name
+          </h4>
+        </div>
+        <div class="col-7 align-self-center">
+          <div class="d-flex align-items-center justify-content-end">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="#">so_name</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">sp_name
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--컨텐츠 설명 부분-->
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover">
+
+                <tbody>
+                <tr>
+
+                  <td class="txt-oflo">파일경로 </td>
+                  <td><span class="label label-success label-rounded">default</span> </td>
+
+                </tr>
+                <tr>
+
+                  <td class="txt-oflo">등록자 </td>
+                  <td><span class="label label-info label-rounded">default</span></td>
+
+                </tr>
+                <tr>
+
+                  <td class="txt-oflo">생성일자 </td>
+                  <td><span class="label label-purple label-rounded">default</span></td>
+
+                </tr>
+                <tr>
+
+                  <td class="txt-oflo">최종 업데이트 </td>
+                  <td><span class="label label-success label-rounded">default</span></td>
+                </tr>
+                <tr>
+
+                  <td class="txt-oflo" style="width: 160px;">설명 </td>
+                  <td><span class="label label-success label-rounded">default</span></td>
+                </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--탭영역-->
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+
+
+
+
+
+            <div id="exTab3" >
+              <ul  class="nav nav-tabs">
+                <li class="active">
+                  <a  href="#1b" data-toggle="tab">SO</a>
+                </li>
+                <li><a href="#2b" data-toggle="tab">Image</a>
+                </li>
+                <li><a href="#3b" data-toggle="tab">Service</a>
+                </li>
+              </ul>
+
+              <div class="tab-content clearfix">
+                <!--so 탭-->
+                <div class="tab-pane active" id="1b">
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th scope="col">so</th>
+                      <th scope="col">sp</th>
+                      <th scope="col">입력 값</th>
+                      <th scope="col">수정 일</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--프로바이더 명-->
+                    <tr>
+                      <td scope="row">Privider</td>
+                      <td>companyName</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td>sp</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+
+                      <!--biz-->
+                      <td scope="row">biz</td>
+                      <td>serverIpLiveBiz</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td>X-Client-App-Key</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td>flagBiz</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+
+                      <!--ui-->
+                      <td scope="row">Ui</td>
+                      <td>serverIpLiveUi</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td>flagUi</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+
+                    <!--data-->
+                    <tr>
+                      <td scope="row">Data</td>
+                      <td>serverIpLiveData</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td>flagData</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+
+                    <!--search-->
+                    <tr>
+                      <td scope="row">search</td>
+                      <td>serverIpLiveSearch</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td>flagData</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <!-- mgw -->
+                    <tr>
+                      <td scope="row">MGW</td>
+                      <td>serverIpMGW</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td>flagMgw</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <!-- token -->
+                    <tr>
+                      <td scope="row">token</td>
+                      <td>token</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <!-- path -->
+                    <tr>
+                      <td scope="row">path</td>
+                      <td>srcPath</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <!-- TEXT -->
+                    <tr>
+                      <td scope="row">TEXT</td>
+                      <td>sBiTxt</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+
+                    </tbody>
+                  </table>
+
+
+                <!--이미지관리-->
+                </div>
+                <div class="tab-pane" id="2b">
+                   <table class="table">
+                     <thead>
+                     <tr>
+                       <th scope="col">분류</th>
+                       <th scope="col">목록</th>
+                       <th scope="col">경로</th>
+                       <th scope="col">미리보기</th>
+                     </tr>
+                     </thead>
+
+                     <tbody>
+                     <!--image-->
+                     <tr>
+                       <td scope="row">IMAGE</td>
+                       <td>serverImg</td>
+                       <td></td>
+                       <td></td>
+                     </tr>
+                     <tr>
+                       <td scope="row"></td>
+                       <td>serverLogo</td>
+                       <td></td>
+                       <td></td>
+                     </tr>
+                     <tr>
+                       <td scope="row"></td>
+                       <td>serverThumbnail</td>
+                       <td></td>
+                       <td></td>
+                     </tr>
+
+                     <!--defaultimage-->
+                     <tr>
+                       <td scope="row">default image</td>
+                       <td>defaultPoster</td>
+                       <td></td>
+                       <td></td>
+                     </tr>
+                     <tr>
+                       <td scope="row"></td>
+                       <td>defaultPosterSquare</td>
+                       <td></td>
+                       <td></td>
+                     </tr>
+                     <tr>
+                       <td scope="row"></td>
+                       <td>defaultPromotSOn</td>
+                       <td></td>
+                       <td></td>
+                     </tr>
+                     <tr>
+                       <td scope="row"></td>
+                       <td>defaultThumbnail</td>
+                       <td></td>
+                       <td></td>
+                     </tr>
+                     <tr>
+                       <td scope="row"></td>
+                       <td>defaultThumbnailPromotSOn</td>
+                       <td></td>
+                       <td></td>
+                     </tr>
+                     </tbody>
+                 </table>
+                </div>
+
+                <!--서비스 관리-->
+                <div class="tab-pane" id="3b">
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th scope="col">서비스명</th>
+                      <th scope="col">관련메뉴</th>
+                      <th scope="col">관리메뉴</th>
+                      <th scope="col">사용여부</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--사업자 push-->
+                    <tr>
+                      <td scope="row">사업자 push </td>
+                      <td>3.1 서비스 알림</td>
+                      <td>쿠폰</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"> </td>
+                      <td></td>
+                      <td>이벤트</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"> </td>
+                      <td></td>
+                      <td>선물하기</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"> </td>
+                      <td></td>
+                      <td>공지</td>
+                      <td>사용</td>
+                    </tr>
+                    <!--nvod 채널-->
+                    <tr>
+                      <td scope="row">NVOD채널
+                      </td>
+                      <td>3.2 채널 시청</td>
+                      <td>채널 vod</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"> </td>
+                      <td></td>
+                      <td>채널pip</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"> </td>
+                      <td></td>
+                      <td>번호로 채널</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"> </td>
+                      <td></td>
+                      <td>번호로 VOD</td>
+                      <td>사용</td>
+                    </tr>
+                    <!--4방향트리거-->
+                    <tr>
+                      <td scope="row">4방향트리거</td>
+                      <td>3.3 4방향</td>
+                      <td>상키 vod</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"> </td>
+                      <td></td>
+                      <td>하키</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"> </td>
+                      <td></td>
+                      <td>좌키</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"> </td>
+                      <td></td>
+                      <td>우키</td>
+                      <td>사용</td>
+                    </tr>
+                    <!--vod간편결제-->
+                    <tr>
+                      <td scope="row">vod간편결제</td>
+                      <td>3.4구매</td>
+                      <td>리모컨 핫키</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"> </td>
+                      <td></td>
+                      <td>안내설정</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"> </td>
+                      <td></td>
+                      <td>탐색</td>
+                      <td>사용</td>
+                    </tr>
+                    <!--복합결제-->
+                    <tr>
+                      <td scope="row">복합결제</td>
+                      <td>3.4 구매</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+                    <!--tv코인 충전-->
+                    <tr>
+                      <td scope="row">tv코인 충전</td>
+                      <td>3.4 구매</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+                    <!--cj one point-->
+                    <tr>
+                      <td scope="row">CJ ONE POINT</td>
+                      <td>3.4 구매</td>
+                      <td>나의 tv</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td></td>
+                      <td>구매</td>
+                      <td>사용</td>
+                    </tr>
+                    <!--h point-->
+                    <tr>
+                      <td scope="row">H. point</td>
+                      <td>3.4 구매</td>
+                      <td>나의 tv</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td></td>
+                      <td>구매</td>
+                      <td>사용</td>
+                    </tr>
+                    <!--넷플릭스-->
+                    <tr>
+                      <td scope="row">넷플릭스</td>
+                      <td>3.5 홈</td>
+                      <td>채널가이드</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td></td>
+                      <td>홈</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td></td>
+                      <td>앱&게임</td>
+                      <td>사용</td>
+                    </tr>
+
+                    <!--삼성 앱스-->
+                    <tr>
+                      <td scope="row">삼성 앱스</td>
+                      <td>3.5 홈</td>
+                      <td>채널가이드</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td></td>
+                      <td>홈</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td></td>
+                      <td>앱&게임</td>
+                      <td>사용</td>
+                    </tr>
+
+                    <!--본편미리보기-->
+                    <tr>
+                      <td scope="row">본편미리보기</td>
+                      <td>3.7 vod 상세화면</td>
+                      <td>탐색</td>
+                      <td>사용</td>
+                    </tr>
+
+                    <!--시리즈 연속보기-->
+                    <tr>
+                      <td scope="row">시리즈 연속보기</td>
+                      <td>3.8 vod 시청</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+
+                    <!--개인미디어-->
+                    <tr>
+                      <td scope="row">개인미디어</td>
+                      <td>3.11 나의 TV</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+
+                    <!--즐겨찾기-->
+                    <tr>
+                      <td scope="row">즐겨찾기</td>
+                      <td>3.11 서비스 알림</td>
+                      <td>리모컨 핫키</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td></td>
+                      <td>나의tv</td>
+                      <td>사용</td>
+                    </tr>
+
+                    <!--스마트 추천-->
+                    <tr>
+                      <td scope="row">스마트 추천</td>
+                      <td>3.11 서비스 알림</td>
+                      <td>ch.890</td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td></td>
+                      <td>나의tv</td>
+                      <td>사용</td>
+                    </tr>
+
+                    <!--tv앱-->
+                    <tr>
+                      <td scope="row">tv앱</td>
+                      <td>3.13 TV앱</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+
+                    <!--tts-->
+                    <tr>
+                      <td scope="row">tts</td>
+                      <td>3.14 안내설정</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+
+                    <!--cj hello smart app-->
+                    <tr>
+                      <td scope="row">cj hello smart app</td>
+                      <td>3.14 안내설정</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td>3.8 vod 시청</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+
+                    <!--현대 hcn smart app-->
+                    <tr>
+                      <td scope="row">현대 hcn smary app</td>
+                      <td>3.14 안내설정</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td>3.8 vod 시청</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+
+                    <!--키즈모드-->
+                    <tr>
+                      <td scope="row">키즈모드</td>
+                      <td>3.15 키즈모드</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+
+                    <!--쉬운 사용 모드-->
+                    <tr>
+                      <td scope="row">쉬운 사용 모드</td>
+                      <td>3.27 쉬운 사용모드</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td>3.14 안내설정</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+
+                    <!--녹화 pvr-->
+                    <tr>
+                      <td scope="row">녹화(pvr)</td>
+                      <td>3.16 녹화</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td>3.17 녹화 메뉴</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+
+                    <!--cug-->
+                    <tr>
+                      <td scope="row">cug</td>
+                      <td>3.22 [Biz]HOME</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td>3.23 [Biz]Watching TV</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+
+                    <!--tv청구서-->
+                    <tr>
+                      <td scope="row">tv청구서</td>
+                      <td>3.11 나의 TV</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+
+                    <!--천지인 검색-->
+                    <tr>
+                      <td scope="row">천지인 검색</td>
+                      <td>3.10 검색</td>
+                      <td></td>
+                      <td>사용</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- //#wrapper -->
+
+<!-- Bootstrap core JavaScript-->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Page level plugin JavaScript-->
+<script src="../vendor/chart.js/Chart.min.js"></script>
+<script src="../vendor/datatables/jquery.dataTables.js"></script>
+<script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="../js/sb-admin.min.js"></script>
+<!-- Demo scripts for this page-->
+<script src="../js/demo/datatables-demo.js"></script>
+<script src="../js/demo/chart-area-demo.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

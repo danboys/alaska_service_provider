@@ -1,0 +1,41 @@
+.table td, .table th{
+  border-bottom: 1px solid #dee2e6;
+  border-top: none;
+}
+.page-breadcrumb{
+  padding-left: 15px;
+}
+
+.navbar-dark .navbar-brand {
+  color: #69ccdf;
+}
+
+.card{
+  margin-bottom: 20px;
+}
+
+.nav.nav-tabs li.active{
+  border:1px solid transparent;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom: none;
+  background-color: #3e3e3e;
+}
+
+.nav.nav-tabs li.active a{
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.nav.nav-tabs li{
+  padding:  10px 30px;
+  color: gray;
+}
+
+.nav.nav-tabs li a{
+  color: #000000;
+}
+
+.container-fluid h3.title{
+  padding-left: 15px;
+}

@@ -7,10 +7,10 @@ Vue.use(BootstrapVue);
 Vue.use(Router);
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'home',
+      routes: [
+        {
+          path: '/',
+          name: 'home',
       component: home
     }
   ]
