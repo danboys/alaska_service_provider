@@ -70,3 +70,11 @@ a{
 .col-md-12.button_center button{
   width: 100px;
 }
+
+.far.fa-eye, .fas.fa-share-square, .fas.fa-trash-alt{
+  cursor: pointer;
+}
+
+.modal-footer button a{
+  color: #ffffff;
+}

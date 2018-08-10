@@ -143,8 +143,30 @@
 
             <!--버튼영억-->
             <div class="col-sm-12 col-md-12 button_center">
-              <button type="button" class="btn btn-light">생성</button>
-              <button type="button" class="btn btn-light"><a href="index.html">취소</a></button>
+              <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">생성</button>
+              <button type="button" class="btn btn-light" data-toggle="modal" data-target="#delete_btn">취소</button>
+              <!-- 삭제 Modal -->
+              <div class="modal fade" id="delete_btn" tabindex="-1" role="dialog" aria-labelledby="delete_btnLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="delete_btnLabel">취소</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                    입력한 내용이 저장되지 않습니다. <br>계속 진행하시겠습니까?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                      <button type="button" class="btn btn-primary"><a href="index.html">확인</a></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- △삭제 Modal -->
             </div>
           </div>
         </div>
@@ -173,10 +195,10 @@
   <script src="../js/demo/datatables-demo.js"></script>
   <script src="../js/demo/chart-area-demo.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-
+</div>
 </div>
 </body>
 
