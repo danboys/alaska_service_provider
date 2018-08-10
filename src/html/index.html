@@ -106,22 +106,22 @@
                     </div>
                     <div class="row">
                       <div class="col-sm-12">
-                        <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                        <table class="table  table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                     <thead>
                     <tr role="row">
                       <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">so</th>
                       <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">sp</th>
                       <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">작성자</th>
                       <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">수정일</th>
-                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">파일 미리보기</th>
-                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">내보내기</th>
-                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">삭제</th>
+                      <th class="sorting preview" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">미리보기</th>
+                      <th class="sorting export" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">내보내기</th>
+                      <th class="sorting delete" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">삭제</th>
                     </tr>
                     </thead>
                     <tbody>
                       <!--sk _iot-->
                     <tr role="row" class="odd">
-                      <td class="sorting_1">sk</td>
+                      <td class="sorting_1" rowspan="3">sk</td>
                       <td><a href="sp_detail.html">sk_iot_tv</a></td>
                       <td>admin01</td>
                       <td>2018/08/09 00:00:00</td>
@@ -130,7 +130,7 @@
                       <td><i class="fas fa-trash-alt " data-toggle="modal" data-target="#delete_btn"></i></td>
                       <!--sk _magic-->
                     </tr><tr role="row" class="odd">
-                      <td class="sorting_1"></td>
+
                       <td><a href="sp_detail.html">sk_magic</a></td>
                       <td>admin01</td>
                       <td>2018/08/09 00:00:00</td>
@@ -139,7 +139,7 @@
                         <td><i class="fas fa-trash-alt " data-toggle="modal" data-target="#delete_btn"></i></td>
                         <!--sk _school_app-->
                     </tr><tr role="row" class="odd">
-                      <td class="sorting_1"></td>
+
                       <td><a href="sp_detail.html">sk_school_app</a></td>
                       <td>admin01</td>
                       <td>2018/08/09 00:00:00</td>
@@ -166,7 +166,7 @@
                         <td><i class="fas fa-trash-alt " data-toggle="modal" data-target="#delete_btn"></i></td>
                         <!--seoul_univ-->
                     </tr><tr role="row" class="odd">
-                      <td class="sorting_1"><a href="sp_detail.html">대학</a></td>
+                      <td class="sorting_1" rowspan="2"><a href="sp_detail.html">대학</a></td>
                       <td><a href="sp_detail.html">seoul_univ</a></td>
                       <td>admin01</td>
                       <td>2018/08/09 00:00:00</td>
@@ -175,7 +175,7 @@
                         <td><i class="fas fa-trash-alt " data-toggle="modal" data-target="#delete_btn"></i></td>
                         <!--jeju_univ-->
                     </tr><tr role="row" class="odd">
-                      <td class="sorting_1"></td>
+
                       <td><a href="sp_detail.html">jeju_univ</a></td>
                       <td>admin01</td>
                       <td>2018/08/09 00:00:00</td>
@@ -194,7 +194,7 @@
                       <div class="modal-dialog  modal-lg" role="document">
                         <div class="modal-content  modal-lg">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="preview_btnLabel">삭제</h5>
+                            <h5 class="modal-title" id="preview_btnLabel">미리보기</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
@@ -237,7 +237,7 @@
                                             <tbody>
                                             <!--프로바이더 명-->
                                             <tr>
-                                              <td scope="row">Privider</td>
+                                              <td scope="row" rowspan="2">Provider</td>
                                               <td>companyName</td>
                                               <td> <input class="form-control-plaintext" id="inputEmail4" placeholder="default"></td>
                                               <!--클릭시 inputbox-->
@@ -245,7 +245,7 @@
                                               <td></td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
+
                                               <td>sp</td>
                                               <td> <input class="form-control-plaintext" id="inputEmail4" placeholder="default"></td>
                                               <!--클릭시 inputbox-->
@@ -254,7 +254,7 @@
                                             <tr>
 
                                               <!--biz-->
-                                              <td scope="row">biz</td>
+                                              <td scope="row" rowspan="3">biz</td>
                                               <td>serverIpLiveBiz</td>
                                               <td> <input class="form-control-plaintext" id="inputEmail4" placeholder="default"></td>
                                               <!--클릭시 inputbox-->
@@ -262,14 +262,14 @@
                                               <td></td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
+
                                               <td>X-Client-App-Key</td>
                                               <td> <input class="form-control-plaintext" id="inputEmail4" placeholder="default"></td>
                                               <!--클릭시 inputbox-->
                                               <!--<td> <input type="email"  class="form-control-plaintext" id="inputEmail4" placeholder="Email"></td>-->                      <td></td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
+
                                               <td>flagBiz</td>
                                               <td> <input class="form-control-plaintext" id="inputEmail4" placeholder="default"></td>
                                               <!--클릭시 inputbox-->
@@ -278,14 +278,14 @@
                                             <tr>
 
                                               <!--ui-->
-                                              <td scope="row">Ui</td>
+                                              <td scope="row" rowspan="2">Ui</td>
                                               <td>serverIpLiveUi</td>
                                               <td> <input class="form-control-plaintext" id="inputEmail4" placeholder="default"></td>
                                               <!--클릭시 inputbox-->
                                               <!--<td> <input type="email"  class="form-control-plaintext" id="inputEmail4" placeholder="Email"></td>-->                      <td></td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
+
                                               <td>flagUi</td>
                                               <td> <input class="form-control-plaintext" id="inputEmail4" placeholder="default"></td>
                                               <!--클릭시 inputbox-->
@@ -294,14 +294,14 @@
 
                                             <!--data-->
                                             <tr>
-                                              <td scope="row">Data</td>
+                                              <td scope="row" rowspan="2">Data</td>
                                               <td>serverIpLiveData</td>
                                               <td> <input class="form-control-plaintext" id="inputEmail4" placeholder="default"></td>
                                               <!--클릭시 inputbox-->
                                               <!--<td> <input type="email"  class="form-control-plaintext" id="inputEmail4" placeholder="Email"></td>-->                      <td></td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
+
                                               <td>flagData</td>
                                               <td> <input class="form-control-plaintext" id="inputEmail4" placeholder="default"></td>
                                               <!--클릭시 inputbox-->
@@ -310,14 +310,14 @@
 
                                             <!--search-->
                                             <tr>
-                                              <td scope="row">search</td>
+                                              <td scope="row" rowspan="2">search</td>
                                               <td>serverIpLiveSearch</td>
                                               <td> <input class="form-control-plaintext" id="inputEmail4" placeholder="default"></td>
                                               <!--클릭시 inputbox-->
                                               <!--<td> <input type="email"  class="form-control-plaintext" id="inputEmail4" placeholder="Email"></td>-->                      <td></td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
+
                                               <td>flagData</td>
                                               <td> <input class="form-control-plaintext" id="inputEmail4" placeholder="default"></td>
                                               <!--클릭시 inputbox-->
@@ -325,14 +325,14 @@
                                             </tr>
                                             <!-- mgw -->
                                             <tr>
-                                              <td scope="row">MGW</td>
+                                              <td scope="row" rowspan="2">MGW</td>
                                               <td>serverIpMGW</td>
                                               <td> <input class="form-control-plaintext" id="inputEmail4" placeholder="default"></td>
                                               <!--클릭시 inputbox-->
                                               <!--<td> <input type="email"  class="form-control-plaintext" id="inputEmail4" placeholder="Email"></td>-->                      <td></td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
+
                                               <td>flagMgw</td>
                                               <td> <input class="form-control-plaintext" id="inputEmail4" placeholder="default"></td>
                                               <!--클릭시 inputbox-->
@@ -383,19 +383,17 @@
                                             <tbody>
                                             <!--image-->
                                             <tr>
-                                              <td scope="row">IMAGE</td>
+                                              <td scope="row" rowspan="3">IMAGE</td>
                                               <td>serverImg</td>
                                               <td><input type="file" class="form-control"></td>
                                               <td></td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
                                               <td>serverLogo</td>
                                               <td><input type="file" class="form-control"></td>
                                               <td></td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
                                               <td>serverThumbnail</td>
                                               <td><input type="file" class="form-control"></td>
                                               <td></td>
@@ -403,31 +401,27 @@
 
                                             <!--defaultimage-->
                                             <tr>
-                                              <td scope="row">default image</td>
+                                              <td scope="row" rowspan="5">default image</td>
                                               <td>defaultPoster</td>
                                               <td><input type="file" class="form-control"></td>
                                               <td></td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
                                               <td>defaultPosterSquare</td>
                                               <td><input type="file" class="form-control"></td>
                                               <td></td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
                                               <td>defaultPromotSOn</td>
                                               <td><input type="file" class="form-control"></td>
                                               <td></td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
                                               <td>defaultThumbnail</td>
                                               <td><input type="file" class="form-control"></td>
                                               <td></td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
                                               <td>defaultThumbnailPromotSOn</td>
                                               <td><input type="file" class="form-control"></td>
                                               <td></td>
@@ -450,95 +444,83 @@
                                             <tbody>
                                             <!--사업자 push-->
                                             <tr>
-                                              <td scope="row">사업자 push </td>
+                                              <td scope="row" rowspan="4">사업자 push </td>
                                               <td>3.1 서비스 알림</td>
                                               <td>쿠폰</td>
                                               <td>사용</td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"> </td>
                                               <td></td>
                                               <td>이벤트</td>
                                               <td>사용</td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"> </td>
                                               <td></td>
                                               <td>선물하기</td>
                                               <td>사용</td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"> </td>
                                               <td></td>
                                               <td>공지</td>
                                               <td>사용</td>
                                             </tr>
                                             <!--nvod 채널-->
                                             <tr>
-                                              <td scope="row">NVOD채널
-                                              </td>
+                                              <td scope="row" rowspan="4">NVOD채널</td>
                                               <td>3.2 채널 시청</td>
                                               <td>채널 vod</td>
                                               <td>사용</td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"> </td>
                                               <td></td>
                                               <td>채널pip</td>
                                               <td>사용</td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"> </td>
                                               <td></td>
                                               <td>번호로 채널</td>
                                               <td>사용</td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"> </td>
                                               <td></td>
                                               <td>번호로 VOD</td>
                                               <td>사용</td>
                                             </tr>
                                             <!--4방향트리거-->
                                             <tr>
-                                              <td scope="row">4방향트리거</td>
+                                              <td scope="row" rowspan="4">4방향트리거</td>
                                               <td>3.3 4방향</td>
                                               <td>상키 vod</td>
                                               <td>사용</td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"> </td>
                                               <td></td>
                                               <td>하키</td>
                                               <td>사용</td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"> </td>
                                               <td></td>
                                               <td>좌키</td>
                                               <td>사용</td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"> </td>
                                               <td></td>
                                               <td>우키</td>
                                               <td>사용</td>
                                             </tr>
                                             <!--vod간편결제-->
                                             <tr>
-                                              <td scope="row">vod간편결제</td>
+                                              <td scope="row" rowspan="3">vod간편결제</td>
                                               <td>3.4구매</td>
                                               <td>리모컨 핫키</td>
                                               <td>사용</td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"> </td>
                                               <td></td>
                                               <td>안내설정</td>
                                               <td>사용</td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"> </td>
                                               <td></td>
                                               <td>탐색</td>
                                               <td>사용</td>
@@ -559,45 +541,41 @@
                                             </tr>
                                             <!--cj one point-->
                                             <tr>
-                                              <td scope="row">CJ ONE POINT</td>
+                                              <td scope="row" rowspan="2">CJ ONE POINT</td>
                                               <td>3.4 구매</td>
                                               <td>나의 tv</td>
                                               <td>사용</td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
                                               <td></td>
                                               <td>구매</td>
                                               <td>사용</td>
                                             </tr>
                                             <!--h point-->
                                             <tr>
-                                              <td scope="row">H. point</td>
+                                              <td scope="row" rowspan="2">H. point</td>
                                               <td>3.4 구매</td>
                                               <td>나의 tv</td>
                                               <td>사용</td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
                                               <td></td>
                                               <td>구매</td>
                                               <td>사용</td>
                                             </tr>
                                             <!--넷플릭스-->
                                             <tr>
-                                              <td scope="row">넷플릭스</td>
+                                              <td scope="row" rowspan="3">넷플릭스</td>
                                               <td>3.5 홈</td>
                                               <td>채널가이드</td>
                                               <td>사용</td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
                                               <td></td>
                                               <td>홈</td>
                                               <td>사용</td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
                                               <td></td>
                                               <td>앱&게임</td>
                                               <td>사용</td>
@@ -605,19 +583,17 @@
 
                                             <!--삼성 앱스-->
                                             <tr>
-                                              <td scope="row">삼성 앱스</td>
+                                              <td scope="row" rowspan="3">삼성 앱스</td>
                                               <td>3.5 홈</td>
                                               <td>채널가이드</td>
                                               <td>사용</td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
                                               <td></td>
                                               <td>홈</td>
                                               <td>사용</td>
                                             </tr>
                                             <tr>
-                                              <td scope="row"></td>
                                               <td></td>
                                               <td>앱&게임</td>
                                               <td>사용</td>
@@ -799,13 +775,13 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-                            <button type="button" class="btn btn-primary">삭제</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#export_btn">내보내기</button>
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <!-- △삭제 Modal -->
+                    <!-- △ Modal -->
 
                     <!-- 삭제 Modal -->
                     <div class="modal fade" id="delete_btn" tabindex="-1" role="dialog" aria-labelledby="delete_btnLabel" aria-hidden="true">
@@ -830,7 +806,7 @@
 
                       <!-- △삭제 Modal -->
 
-                      <!-- 내보내기 Modal -->
+                      <!-- ▽내보내기 Modal -->
                       <div class="modal fade" id="export_btn" tabindex="-1" role="dialog" aria-labelledby="export_btnLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
@@ -850,20 +826,72 @@
                           </div>
                         </div>
                       </div>
-
+                    <!-- △내보내기 Modal -->
 
                       <!--추가 버튼-->
                     <div class="row">
                       <div class="col-sm-12 col-md-12 add_button">
-                        <button type="button" class="btn btn-light"><a href="add_sp.html">sp추가</a></button>
+                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#add_sp">sp추가</a></button>
                         <button type="button" class="btn btn-light" data-toggle="modal" data-target="#add_so" >so관리</button>
+                      </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="add_sp" tabindex="-1" role="dialog" aria-labelledby="add_splLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="add_splLabel">SP추가</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form>
+                              <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">파일구분</label>
+                                <div class="col-sm-3">
+                                  <input type="text" class="form-control" id="staticEmail" placeholder="">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">제목</label>
+                                <div class="col-sm-3">
+                                  <input type="password" class="form-control" id="inputPassword" placeholder="">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">파일경로</label>
+                                <div class="col-sm-6">
+                                  <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">작성자</label>
+                                <div class="col-sm-3">
+                                  <input type="password" class="form-control" id="inputPassword" placeholder="">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">설명</label>
+                                <div class="col-sm-10">
+                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                            <button type="button" class="btn btn-primary">저장</button>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
                     <!--so추가 Modal -->
                     <div class="modal fade" id="add_so" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content modal-lg">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content ">
                           <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">so관리</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -872,18 +900,22 @@
                           </div>
                           <div class="modal-body">
                             <div class="container">
-                              <!-- ▽ modal > 상위 텍스트-->
+
+                              <!-- ▽ so관리 modal>상위 텍스트-->
                             <div class="row">
                             <div class=" col-sm-6">
                               <i class="fas fa-file"></i> 위치선택
                             </div>
                             <div class="col-sm-6 text-right">
-                            새so추가
-                            </div>
-                            </div>
-                              <!-- △ modal > 상위 텍스트-->
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                +so추가
+                              </button>
 
-                              <!-- ▽ modal > so 목록-->
+                            </div>
+                            </div>
+                              <!-- △ so관리 modal>상위 텍스트-->
+
+                              <!-- ▽ so관리 modal>so 목록-->
                             <div class="row" >
                               <ul>
                                 <li>so_1</li>
@@ -893,15 +925,47 @@
                             </div>
                             </div>
                           </div>
-                          <!-- △ modal > so 목록-->
+                          <!-- △ so관리 modal>so 목록-->
 
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                            <button type="button" class="btn btn-primary">저장</button>
                           </div>
                         </div>
                       </div>
                     </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">SO추가</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form>
+
+                              <div class="form-group row">
+                                <div class="col-sm-12">
+                                  <input type="text" class="form-control" id="input_soname" placeholder=" 추가될 SO 명을 입력해주세요.">
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                            <button type="button" class="btn btn-primary">추가</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- △ so관리> so추가 modal -->
+                    <!-- △ so관리 modal-->
+
+
+
 
                       <!--<div class="col-sm-12 col-md-5">-->
                         <!--페이지번호영억-->

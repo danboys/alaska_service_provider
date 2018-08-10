@@ -2,9 +2,15 @@ a{
   color:#212529;
 }
 
+a:hover{
+  color: #212529;
+  text-decoration: none;
+}
+
 .table td, .table th{
   border-bottom: 1px solid #dee2e6;
   border-top: none;
+  vertical-align: middle;
 }
 .page-breadcrumb{
   padding-left: 15px;
@@ -47,8 +53,9 @@ a{
   color: #000000;
 }
 
-.container-fluid h3.title{
+h3.title {
   padding-left: 15px;
+  margin-bottom: 18px;
 }
 
 .row .add_button{
@@ -77,4 +84,15 @@ a{
 
 .modal-footer button a{
   color: #ffffff;
+}
+
+table.dataTable thead > tr > th.sorting.preview, table.dataTable thead > tr > th.sorting.export,table.dataTable thead > tr > th.sorting.delete{
+  width: 100px;
+}
+
+ .modal-header{
+   border-bottom: none;
+ }
+.modal-footer{
+  border-top: none;
 }
