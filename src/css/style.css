@@ -7,6 +7,19 @@ a:hover{
   text-decoration: none;
 }
 
+/*기본버튼 색 수정*/
+.btn-primary {
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #138496;
+  border-color: #117a8b;
+}
+
 .table td, .table th{
   border-bottom: 1px solid #dee2e6;
   border-top: none;
@@ -16,10 +29,43 @@ a:hover{
   padding-left: 15px;
 }
 
-.navbar-dark .navbar-brand {
+.logo {
   color: #69ccdf;
+  font-size: 30px;
+  margin-bottom: 0;
 }
 
+table.dataTable thead > tr > th.sorting_asc, table.dataTable thead > tr > th.sorting_desc, table.dataTable thead > tr > th.sorting, table.dataTable thead > tr > td.sorting_asc, table.dataTable thead > tr > td.sorting_desc, table.dataTable thead > tr > td.sorting {
+  text-align: center;
+}
+
+table.dataTable thead > tr > th.sorting_asc, table.dataTable thead > tr > th.sorting_desc, table.dataTable thead > tr > th.sorting, table.dataTable thead > tr > td.sorting_asc, table.dataTable thead > tr > td.sorting_desc, table.dataTable thead > tr > td.sorting{
+  padding-right: 0;
+}
+
+table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td{
+  text-align: center;
+}
+tbody,thead{
+  border-left: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
+}
+.header {
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: .5rem 1rem;
+}
 .sidebar.navbar-nav button{
   width: 150px;
   position: relative;
@@ -95,4 +141,90 @@ table.dataTable thead > tr > th.sorting.preview, table.dataTable thead > tr > th
  }
 .modal-footer{
   border-top: none;
+}
+
+.btn-light:hover {
+  color: #ffffff;
+  background-color: #17a2b8;
+  border-color: #dae0e5;
+}
+
+.btn-light {
+  color: #212529;
+  background-color:#dafaff;
+  border-color: #dafaff;
+}
+
+.modal-body {
+  text-align: center;
+}
+.modal-body.textalign_left {
+  text-align: left;
+}
+/*미리보기>so탭 width값*/
+table.so_manage .so_thead.first_th{
+   width: 120px;
+ }
+
+table.so_manage .so_thead.second_th{
+  width: 210px;
+}
+
+table.so_manage .so_thead.third_th{
+  width: 540px;
+}
+
+table.so_manage .so_thead.fourth_th{
+  width: 180px;
+}
+/*미리보기>image탭 width값*/
+table.img_manage .image_thead.first_th{
+  width: 120px;
+}
+
+table.img_manage .image_thead.second_th{
+  width: 210px;
+}
+
+table.img_manage .image_thead.third_th{
+  width: 540px;
+}
+
+table.img_manage .image_thead.fourth_th{
+  width: 180px;
+}
+
+/*미리보기>서비스탭  width값*/
+table.service_manage .service_thead.first_th{
+  width: 120px;
+}
+
+table.service_manage .service_thead.second_th{
+  width: 210px;
+}
+
+table.service_manage .service_thead.third_th{
+  width: 540px;
+}
+
+table.service_manage .service_thead.fourth_th{
+  width: 180px;
+}
+
+table.so_manage tr td p{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+
+/*반응형 */
+@media (min-width: 780px) {
+  .modal-dialog.add_sp {
+    max-width: 580px;
+    margin: 1.75rem auto;
+  }
+  .modal-dialog.modal-lg {
+    max-width: 1130px;
+  }
 }

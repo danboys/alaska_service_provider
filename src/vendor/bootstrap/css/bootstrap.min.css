@@ -2585,7 +2585,7 @@ a.btn.disabled, fieldset:disabled a.btn {
 }
 
 .btn-light:hover {
-  color: #212529;
+  color: #ffffff;
   background-color: #e2e6ea;
   border-color: #dae0e5
 }
@@ -5292,9 +5292,9 @@ button.close {
   -webkit-appearance: none
 }
 
-.modal-open {
-  overflow: hidden
-}
+/*.modal-open {*/
+  /*overflow: hidden*/
+/*}*/
 
 .modal-open .modal {
   overflow-x: hidden;
