@@ -1,3 +1,7 @@
+li{
+  list-style: none;
+}
+
 a{
   color:#212529;
 }
@@ -20,11 +24,17 @@ a:hover{
   border-color: #117a8b;
 }
 
-.table td, .table th{
+.table td, .table th {
   border-bottom: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
   border-top: none;
   vertical-align: middle;
 }
+
+.so_list li i {
+  margin: 0 10px;
+}
+
 .page-breadcrumb{
   padding-left: 15px;
 }
@@ -35,6 +45,22 @@ a:hover{
   margin-bottom: 0;
 }
 
+.custom {
+  cursor: url(../image/pencil_small.png), auto;
+}
+
+.so_list ul li span{
+
+}
+
+.so_list .form-control-plaintext{
+  width: 30%;
+  display: inline-block;
+}
+
+.so_list .far.fa-trash-alt{
+  font-size: 12px;
+}
 table.dataTable thead > tr > th.sorting_asc, table.dataTable thead > tr > th.sorting_desc, table.dataTable thead > tr > th.sorting, table.dataTable thead > tr > td.sorting_asc, table.dataTable thead > tr > td.sorting_desc, table.dataTable thead > tr > td.sorting {
   text-align: center;
 }
@@ -211,13 +237,34 @@ table.service_manage .service_thead.fourth_th{
   width: 180px;
 }
 
+table.service_manage .mb-3{
+  margin-bottom: 0 !important;
+}
+
 table.so_manage tr td p{
   margin-top: 0;
   margin-bottom: 0;
 }
 
+.form_desc .col-sm-10 p {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 6px 0;
+}
 
+.tab_area .tab-content td p{
+  margin-bottom: 0;
+  padding: 6px 0;
+}
 
+.tab_area .tab-content th,
+.tab_area .tab-content td{
+  text-align: center;
+}
+
+.tab-content .tab-pane.img_manage .form-control{
+  height: 44px;
+}
 /*반응형 */
 @media (min-width: 780px) {
   .modal-dialog.add_sp {
@@ -226,5 +273,16 @@ table.so_manage tr td p{
   }
   .modal-dialog.modal-lg {
     max-width: 1130px;
+  }
+  .add_sp .col-sm-3{
+  -ms-flex: 0 0 80%;
+  flex: 0 0 80%;
+  max-width: 70%;
+  text-align: left;
+  }
+  .col-sm-3.row_addso .input-group{
+    width: 70%;
+    display: inline-flex;
+    vertical-align: top;
   }
 }

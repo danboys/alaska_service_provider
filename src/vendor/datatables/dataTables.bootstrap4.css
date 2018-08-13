@@ -145,7 +145,7 @@ div.dataTables_scrollFoot > .dataTables_scrollFootInner > table {
   div.dataTables_wrapper div.dataTables_filter,
   div.dataTables_wrapper div.dataTables_info,
   div.dataTables_wrapper div.dataTables_paginate {
-    text-align: center;
+    text-align: left;
   }
 }
 table.dataTable.table-sm > thead > tr > th {
@@ -174,7 +174,7 @@ table.table-bordered.dataTable td:last-child {
 }
 table.table-bordered.dataTable tbody th,
 table.table-bordered.dataTable tbody td {
-  border-bottom-width: 1;
+  border-bottom-width: thin;
   vertical-align: middle;
 }
 
