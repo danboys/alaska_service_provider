@@ -11,6 +11,10 @@ a:hover{
   text-decoration: none;
 }
 
+.text-left {
+  text-align: left;
+}
+
 /*기본버튼 색 수정*/
 .btn-primary {
   color: #fff;
@@ -45,13 +49,16 @@ a:hover{
   margin-bottom: 0;
 }
 
-.custom {
-  cursor: url(../image/pencil_small.png), auto;
+.editable_box{
+  transition: background-color 0.5s;
+  max-width: 400px;
 }
 
-.so_list ul li span{
-
+.editable_box:hover {
+background-color: #f1f1f1;
 }
+
+
 
 .so_list .form-control-plaintext{
   width: 30%;
@@ -66,7 +73,7 @@ table.dataTable thead > tr > th.sorting_asc, table.dataTable thead > tr > th.sor
 }
 
 table.dataTable thead > tr > th.sorting_asc, table.dataTable thead > tr > th.sorting_desc, table.dataTable thead > tr > th.sorting, table.dataTable thead > tr > td.sorting_asc, table.dataTable thead > tr > td.sorting_desc, table.dataTable thead > tr > td.sorting{
-  padding-right: 0;
+  padding: 12px;
 }
 
 table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td{
@@ -128,6 +135,8 @@ tbody,thead{
 h3.title {
   padding-left: 15px;
   margin-bottom: 18px;
+  line-height: 30px;
+  font-size: 21px;
 }
 
 .row .add_button{
