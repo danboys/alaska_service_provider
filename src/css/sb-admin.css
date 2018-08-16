@@ -359,6 +359,15 @@ body.sidebar-toggled footer.sticky-footer {
   .sidebar.toggled .nav-item.dropdown .dropdown-toggle::after {
     display: none;
   }
+
+    .modal-dialog.add_sp {
+      max-width: 580px;
+      margin: 1.75rem auto;
+    }
+    .modal-dialog.modal-lg {
+      width: 900px;
+
+
 }
 
 @media (min-width: 768px) {
@@ -385,5 +394,9 @@ body.sidebar-toggled footer.sticky-footer {
   .card-columns {
     -webkit-column-count: 1;
     column-count: 1;
+  }
+  .modal-dialog {
+    max-width: 900px;
+    margin: 1.75rem auto;
   }
 }

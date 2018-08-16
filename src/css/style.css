@@ -11,78 +11,17 @@ a:hover{
   text-decoration: none;
 }
 
-.text-left {
-  text-align: left;
-}
-
-/*기본버튼 색 수정*/
-.btn-primary {
-  color: #fff;
-  background-color: #17a2b8;
-  border-color: #17a2b8;
-}
-
-.btn-primary:hover {
-  color: #fff;
-  background-color: #138496;
-  border-color: #117a8b;
-}
-
-.table td, .table th {
-  border-bottom: 1px solid #dee2e6;
-  border-right: 1px solid #dee2e6;
-  border-top: none;
-  vertical-align: middle;
-}
-
-.so_list li i {
-  margin: 0 10px;
-}
-
-.page-breadcrumb{
-  padding-left: 15px;
-}
-
-.logo {
+.logo a{
   color: #69ccdf;
   font-size: 30px;
   margin-bottom: 0;
 }
 
-.editable_box{
-  transition: background-color 0.5s;
-  max-width: 400px;
-}
-
-.editable_box:hover {
-background-color: #f1f1f1;
-}
-
-
-
-.so_list .form-control-plaintext{
-  width: 30%;
-  display: inline-block;
-}
-
-.so_list .far.fa-trash-alt{
-  font-size: 12px;
-}
-table.dataTable thead > tr > th.sorting_asc, table.dataTable thead > tr > th.sorting_desc, table.dataTable thead > tr > th.sorting, table.dataTable thead > tr > td.sorting_asc, table.dataTable thead > tr > td.sorting_desc, table.dataTable thead > tr > td.sorting {
-  text-align: center;
-}
-
-table.dataTable thead > tr > th.sorting_asc, table.dataTable thead > tr > th.sorting_desc, table.dataTable thead > tr > th.sorting, table.dataTable thead > tr > td.sorting_asc, table.dataTable thead > tr > td.sorting_desc, table.dataTable thead > tr > td.sorting{
-  padding: 12px;
-}
-
-table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td{
-  text-align: center;
-}
 tbody,thead{
   border-left: 1px solid #dee2e6;
   border-right: 1px solid #dee2e6;
 }
+
 .header {
   -ms-flex-flow: row nowrap;
   flex-flow: row nowrap;
@@ -99,6 +38,71 @@ tbody,thead{
   justify-content: space-between;
   padding: .5rem 1rem;
 }
+
+/*기본버튼 색 수정*/
+.btn-primary {
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #138496;
+  border-color: #117a8b;
+}
+
+.card{
+  margin-bottom: 20px;
+}
+
+.so_list li i {
+  margin: 0 10px;
+}
+
+i[class*="fa-trash-alt"]{
+  cursor: pointer;
+}
+
+.so_list .form-control-plaintext{
+  max-width: 40%;
+  display: inline-block;
+}
+
+.so_list .far.fa-trash-alt{
+  font-size: 12px;
+}
+
+.so_list .far.fa-trash-alt{
+  font-size: 12px;
+}
+.page-breadcrumb{
+  padding-left: 15px;
+}
+
+.table td, .table th {
+  border-bottom: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
+  border-top: none;
+  vertical-align: middle;
+}
+
+table.dataTable thead > tr > th.sorting_asc, table.dataTable thead > tr > th.sorting_desc, table.dataTable thead > tr > th.sorting, table.dataTable thead > tr > td.sorting_asc, table.dataTable thead > tr > td.sorting_desc, table.dataTable thead > tr > td.sorting {
+  text-align: center;
+}
+
+table.dataTable thead > tr > th.sorting_asc, table.dataTable thead > tr > th.sorting_desc, table.dataTable thead > tr > th.sorting, table.dataTable thead > tr > td.sorting_asc, table.dataTable thead > tr > td.sorting_desc, table.dataTable thead > tr > td.sorting{
+  padding: 12px;
+}
+
+table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td{
+  text-align: center;
+}
+
+.tab-content .tab-pane table.img_manage tr td p{
+  margin-bottom: 0;
+}
+
 .sidebar.navbar-nav button{
   width: 150px;
   position: relative;
@@ -106,9 +110,6 @@ tbody,thead{
   top: 20px;
 }
 
-.card{
-  margin-bottom: 20px;
-}
 
 .nav.nav-tabs li.active{
   border:1px solid transparent;
@@ -178,24 +179,36 @@ table.dataTable thead > tr > th.sorting.preview, table.dataTable thead > tr > th
   border-top: none;
 }
 
-.btn-light:hover {
-  color: #ffffff;
+.btn-light {
+  color: #fff;
   background-color: #17a2b8;
-  border-color: #dae0e5;
+  border-color: #17a2b8;
 }
 
-.btn-light {
-  color: #212529;
-  background-color:#dafaff;
-  border-color: #dafaff;
+.btn-light:hover {
+  color: #fff;
+  background-color: #138496;
+  border-color: #117a8b;
 }
 
 .modal-body {
   text-align: center;
 }
+
+/*textalign_left*/
+
 .modal-body.textalign_left {
   text-align: left;
 }
+
+.modal-body .textalign_left {
+  text-align: left;
+}
+
+.tab_area .tab-content th, .tab_area .tab-content td.textalign_left{
+  text-align: left;
+}
+
 /*미리보기>so탭 width값*/
 table.so_manage .so_thead.first_th{
    width: 120px;
@@ -255,11 +268,62 @@ table.so_manage tr td p{
   margin-bottom: 0;
 }
 
-.form_desc .col-sm-10 p {
+.form_desc .col-10 p {
   margin-top: 0;
   margin-bottom: 0;
   padding: 6px 0;
+  /*display: block;*/
 }
+
+/*editable_box*/
+
+.editable_box{
+  transition: background-color 0.3s;
+  position: relative;
+  display: inline;
+}
+
+.editable_box:hover {
+  background-color: #f1f1f1;
+}
+
+.editable_box:hover::after{
+  content: '';
+  display: inline;
+  width: 14px;
+  height: 14px;
+  right: 8px;
+  top: 10px;
+  position: absolute;
+  background: url("../image/pencil_small.png" );
+}
+
+.editable_box.img_editable_box:hover::after{
+  background: url("../image/reading_glasses.png" );
+}
+
+
+.modal-body .row .so_list .editable_box{
+  padding-right: 30px;
+}
+
+.modal-body .row .so_list .editable_box:hover::after{
+  top: 5px;
+}
+
+.form_desc .col-10 p.editable_box {
+  padding-right: 30px;
+  vertical-align: -webkit-baseline-middle;
+}
+
+.tab_area .tab-content td p.editable_box{
+  padding-right: 30px;
+}
+
+.tab_area .tab-content td p.editable_box[class*="boolean"]{
+ padding-left: 30px;
+}
+/*탭영역*/
 
 .tab_area .tab-content td p{
   margin-bottom: 0;
@@ -274,23 +338,18 @@ table.so_manage tr td p{
 .tab-content .tab-pane.img_manage .form-control{
   height: 44px;
 }
+
+
+
 /*반응형 */
-@media (min-width: 780px) {
-  .modal-dialog.add_sp {
-    max-width: 580px;
-    margin: 1.75rem auto;
-  }
-  .modal-dialog.modal-lg {
-    max-width: 1130px;
-  }
+
   .add_sp .col-sm-3{
   -ms-flex: 0 0 80%;
   flex: 0 0 80%;
   max-width: 70%;
   text-align: left;
   }
-  .col-sm-3.row_addso .input-group{
-    width: 70%;
+  .row_addso .input-group{
     display: inline-flex;
     vertical-align: top;
   }

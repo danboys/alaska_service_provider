@@ -20,7 +20,7 @@
 <body id="page-top">
 <!--상단 네비-->
 <div class="header bg-dark static-top">
-  <h1 class=" mr-1 logo" href="index.html">SPM</h1>
+  <h1 class="logo" ><a href="index.html">SPM</a></h1>
 </div>
 
 <!--좌측 카테고리 -->
@@ -93,11 +93,11 @@
         <div class="card">
           <div class="card-body">
             <div class="form-group row">
-              <label for="file_route" class="col-sm-2 col-form-label file_route">파일경로</label>
-              <div class="col-sm-10">
-                <p class="_box">default</p>
+              <label for="file_route" class="col-2 col-form-label file_route">파일경로</label>
+              <div class="col-10">
+                <p class="_box editable_box">default (p_tag)</p>
               <!--input창-->
-             <input class="form-control-plaintext" id="file_route" value="default(input_tag display:none)">
+             <input class="form-control-plaintext" id="file_route" value="default (input_tag)">
               <!-- 최초 p태그 안의 텍스트가 노출 되며, input태그는 display:none 된 상태입니다.
              p태그 클릭시 display:none이 되며 input태그는 display:block으로 바뀌며
              p태그 안의 택스트는 input태그의 value값으로 노출됩니다.
@@ -108,27 +108,29 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="form_author" class="col-sm-2 col-form-label">작성자</label>
-              <div class="col-sm-10">
-                <input class="form-control-plaintext form_author" id="form_author" value="default">
+              <label for="form_author" class="col-2 col-form-label">작성자</label>
+              <div class="col-10">
+                <p class="_box editable_box">default (p_tag)</p>
+                <input class="form-control-plaintext form_author" id="form_author" value="default (input_tag)">
               </div>
             </div>
             <div class="form-group row">
-              <label for="form_createdtime" class="col-sm-2 col-form-label">생성일자</label>
-              <div class="col-sm-10">
+              <label for="form_createdtime" class="col-2 col-form-label">생성일자</label>
+              <div class="col-10">
                 <p class="form_createdtime" id="form_createdtime">생성시간</p>
               </div>
             </div>
             <div class="form-group row">
-              <label for="form_lastupdate" class="col-sm-2 col-form-label">최종업데이트</label>
-              <div class="col-sm-10">
+              <label for="form_lastupdate" class="col-2 col-form-label">최종업데이트</label>
+              <div class="col-10">
                 <p class="form_lastupdate" id="form_lastupdate">최종수정시간</p>
               </div>
             </div>
             <div class="form-group row">
-              <label for="explain_form" class="col-sm-2 col-form-label">설명</label>
-              <div class="col-sm-10">
-                <input class="form-control-plaintext explain_form" id="explain_form" value="default">
+              <label for="explain_form" class="col-2 col-form-label">설명</label>
+              <div class="col-10">
+                <p class="_box editable_box">default (p_tag)</p>
+                <input class="form-control-plaintext explain_form" id="explain_form" value="default (input_tag)">
               </div>
             </div>
 
@@ -178,9 +180,9 @@
                     <tr>
                       <td scope="row" rowspan="2">Provider</td>
                       <td>companyName</td>
-                      <td>
-                      <p class="admin_value editable_box text-left">default</p>
-                        <input class="form-control-plaintext value_companyname" id="value_companyname" value="default">
+                      <td class="textalign_left">
+                      <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_companyname" id="value_companyname" value="default (input_tag)">
                       </td>
                       <!-- 최초 p태그 안의 텍스트가 노출 되며, input태그는 display:none 된 상태입니다.
                        p태그 클릭시 display:none이 되며 input태그는 display:block으로 바뀌며
@@ -189,109 +191,142 @@
                        input창에 입력된 값은 다시 p태그의 텍스트로 저장되며,
                        다시 p태그는 노출되고 input태그는 사리지게 됩니다.
                          -->
-                      <td class="fixed_time"><p>2018/08/09 00:00:00.</p></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
                     <tr>
 
                       <td>sp</td>
-                      <td> <input class="form-control-plaintext value_sp" id="value_sp" value="default"></td>
-                      <td ><p class="fixed_time"></p></td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_sp" id="value_sp" value="default (input_tag)">
+                      </td>
+                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
-                    <tr>
 
                       <!--biz-->
+                    <tr>
                       <td scope="row" rowspan="3">biz</td>
                       <td>serverIpLiveBiz</td>
-                      <td> <input class="form-control-plaintext value_serveriplivebiz" id="value_serveriplivebiz" value="default"></td>
-                      <td ><p class="fixed_time"></p></td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_serveriplivebiz" id="value_serveriplivebiz" value="default (input_tag)">
+                      </td>
+                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
                     <tr>
 
                       <td>X-Client-App-Key</td>
-                      <td> <input class="form-control-plaintext value_xclientappkey" id="value_xclientappkey" value="default"></td>
-                      <td ><p class="fixed_time"></p></td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_xclientappkey" id="value_xclientappkey" value="default (input_tag)"></td>
+                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
                     <tr>
 
                       <td>flagBiz</td>
-                      <td> <input class="form-control-plaintext value_flagbiz" id="value_flagbiz" value="default"></td>
-                      <td ><p class="fixed_time"></p></td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_flagbiz" id="value_flagbiz" value="default (input_tag)"></td>
+                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
                     <tr>
 
                       <!--ui-->
                       <td scope="row" rowspan="2">Ui</td>
                       <td>serverIpLiveUi</td>
-                      <td> <input class="form-control-plaintext value_serveripliveui" id="value_serveripliveui" value="default"></td>
-                      <td ><p class="fixed_time"></p></td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_serveripliveui" id="value_serveripliveui" value="default (input_tag)"></td>
+                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
                     <tr>
 
                       <td>flagUi</td>
-                      <td> <input class="form-control-plaintext value_flagui" id="value_flagui" value="default"></td>
-                      <td ><p class="fixed_time"></p></td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_flagui" id="value_flagui" value="default (input_tag)"></td>
+                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
 
                     <!--data-->
                     <tr>
                       <td scope="row" rowspan="2">Data</td>
                       <td>serverIpLiveData</td>
-                      <td> <input class="form-control-plaintext value_serveriplivedata" id="value_serveriplivedata" value="default"></td>
-                      <td ><p class="fixed_time"></p></td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_serveriplivedata" id="value_serveriplivedata" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
                     <tr>
 
                       <td>flagData</td>
-                      <td> <input class="form-control-plaintext value_flagdata" id="value_flagdata" value="default"></td>
-                      <td ><p class="fixed_time"></p></td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_flagdata" id="value_flagdata" value="default (input_tag)">
+                      </td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
 
                     <!--search-->
                     <tr>
                       <td scope="row" rowspan="2">search</td>
                       <td>serverIpLiveSearch</td>
-                      <td> <input class="form-control-plaintext value_serveriplivesearch" id="value_serveriplivesearch" value="default"></td>
-                      <td ><p class="fixed_time"></p></td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_serveriplivesearch" id="value_serveriplivesearch" value="default (input_tag)"></td>
+                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
                     <tr>
 
                       <td>flagData</td>
-                      <td> <input class="form-control-plaintext value_search_flagdata" id="value_search_flagdata" value="default"></td>
-                      <td ><p class="fixed_time"></p></td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_search_flagdata" id="value_search_flagdata" value="default (input_tag)"></td>
+                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
                     <!-- mgw -->
                     <tr>
                       <td scope="row" rowspan="2">MGW</td>
                       <td>serverIpMGW</td>
-                      <td> <input class="form-control-plaintext value_serverIpmgw" id="value_serverIpmgw" value="default"></td>
-                      <td ><p class="fixed_time"></p></td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_serverIpmgw" id="value_serverIpmgw" value="default (input_tag)"></td>
+                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
                     <tr>
 
                       <td>flagMgw</td>
-                      <td> <input class="form-control-plaintext value_flagmgw" id="value_flagmgw" value="default"></td>
-                      <td ><p class="fixed_time"></p></td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_flagmgw" id="value_flagmgw" value="default (input_tag)"></td>
+                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
                     <!-- token -->
                     <tr>
                       <td scope="row">token</td>
                       <td>token</td>
-                      <td> <input class="form-control-plaintext value_token" id="value_token" value="default"></td>
-                      <td ><p class="fixed_time"></p></td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_token" id="value_token" value="default (input_tag)"></td>
+                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
                     <!-- path -->
                     <tr>
                       <td scope="row">path</td>
                       <td>srcPath</td>
-                      <td> <input class="form-control-plaintext value_srcpath" id="value_srcpath" value="default"></td>
-                      <td ><p class="fixed_time"></p></td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_srcpath" id="value_srcpath" value="default (input_tag)"></td>
+                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
                     <!-- TEXT -->
                     <tr>
                       <td scope="row">TEXT</td>
                       <td>sBiTxt</td>
-                      <td> <input class="form-control-plaintext value_sbitxt" id="value_sbitxt" value="default"></td>
-                      <td ><p class="fixed_time"></p></td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_sbitxt" id="value_sbitxt" value="default (input_tag)"></td>
+                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
 
                     </tbody>
@@ -316,9 +351,10 @@
                      <tr>
                        <td scope="row" rowspan="3">IMAGE</td>
                        <td>serverImg</td>
-                       <td>
-                         <p class="route_serverimg custom">최초 노출값 "이미지 경로를 지정해주세요."</p>
-                         <input type="file" class="form-control">
+                       <td class="textalign_left">
+                         <p class="route_serverimg editable_box img_editable_box">
+                           이미지 경로 지정</p>
+                         <input type="file" id="img_src" class="form-control">
                          <!--최초p태그가 노출 되고 클릭시 input태그로 전환됩니다.-->
                          <!--input태그에서 경로 지정 input영역 이외에 브라우저 영역 클릭시 -->
                          <!--지정된 경로가 p태그에 text형태로 저장되며 다시 p태그가 노출되고 input태그-->
@@ -326,45 +362,74 @@
                        </td>
                           <!--위에서 지정된 경로는 아래 img태그 안의 src에도 저장되어  -->
                           <!--이미지를 미리 볼 수 있게 해줍니다.-->
-                       <td><img class="preview_serverimg" src="#" alt="이미경로를 지정해주세요"></td>
+                       <td><img class="preview_serverimg" src="#"
+                                onerror="this.src='../image/preview.png'" /></td>
                      </tr>
                      <tr>
                        <td>serverLogo</td>
-                       <td><input type="file" class="form-control"></td>
-                       <td><img class="preview_serverlogo" src="#" alt="이미경로를 지정해주세요"></td>
+                       <td class="textalign_left">
+                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
+                         <input type="file" class="form-control">
+                       </td>
+                       <td><img class="preview_serverlogo" src="#"
+                                onerror="this.src='../image/preview.png'" /></td>
                      </tr>
                      <tr>
                        <td>serverThumbnail</td>
-                       <td><input type="file" class="form-control"></td>
-                       <td><img class="preview_serverthumbnail" src="#" alt="이미경로를 지정해주세요"></td>
+                       <td class="textalign_left">
+                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
+                         <input type="file" class="form-control">
+                       </td>
+                       <td><img class="preview_serverthumbnail" src="#"
+                                onerror="this.src='../image/preview.png'" /></td>
                      </tr>
 
                      <!--defaultimage-->
                      <tr>
                        <td scope="row" rowspan="5">default image</td>
                        <td>defaultPoster</td>
-                       <td><input type="file" class="form-control"></td>
-                       <td><img class="preview_defaultposter" src="#" alt="이미경로를 지정해주세요"></td>
+                       <td class="textalign_left">
+                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
+                         <input type="file" class="form-control">
+                       </td>
+                       <td><img class="preview_defaultposter" src="#"
+                                onerror="this.src='../image/preview.png'" /></td>
                      </tr>
                      <tr>
                        <td>defaultPosterSquare</td>
-                       <td><input type="file" class="form-control"></td>
-                       <td><img class="preview_defaultpostersquareg" src="#" alt="이미경로를 지정해주세요"></td>
+                       <td class="textalign_left">
+                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
+                         <input type="file" class="form-control">
+                       </td>
+                       <td><img class="preview_defaultpostersquareg" src="#"
+                                onerror="this.src='../image/preview.png'" /></td>
                      </tr>
                      <tr>
                        <td>defaultPromotSOn</td>
-                       <td><input type="file" class="form-control"></td>
-                       <td><img class="preview_defaultpromotson" src="#" alt="이미경로를 지정해주세요"></td>
+                       <td class="textalign_left">
+                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
+                         <input type="file" class="form-control">
+                       </td>
+                       <td><img class="preview_defaultpromotson" src="#"
+                                onerror="this.src='../image/preview.png'" /></td>
                      </tr>
                      <tr>
                        <td>defaultThumbnail</td>
-                       <td><input type="file" class="form-control"></td>
-                       <td><img class="preview_defaultthumbnail" src="#" alt="이미경로를 지정해주세요"></td>
+                       <td class="textalign_left">
+                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
+                         <input type="file" class="form-control">
+                       </td>
+                       <td><img class="preview_defaultthumbnail" src="#"
+                                onerror="this.src='../image/preview.png'" /></td>
                      </tr>
                      <tr>
                        <td>defaultThumbnailPromotSOn</td>
-                       <td><input type="file" class="form-control"></td>
-                       <td><img class="preview_defaultthumbnailpromotson" src="#" alt="이미경로를 지정해주세요"></td>
+                       <td class="textalign_left">
+                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
+                         <input type="file" class="form-control">
+                       </td>
+                       <td><img class="preview_defaultthumbnailpromotson" src="#"
+                                onerror="this.src='../image/preview.png'" /></td>
                      </tr>
                      </tbody>
                  </table>
@@ -386,12 +451,12 @@
                     <tr>
                       <td scope="row" rowspan="4">사업자 push </td>
                       <td rowspan="4">3.1 서비스 알림</td>
-                      <td>쿠폰</td>
-                      <td>
-                        <p class="boolean_coupon custom">사용</p>
+                      <td class="textalign_left">쿠폰</td>
+                      <td >
+                        <p class="boolean_coupon editable_box">사용</p>
                         <!--bollean-->
-                        <div class="input-group mb-3">
-                          <select class="custom-select" id="inputGroupSelect01">
+                        <div class="input-group">
+                          <select class="custom-select" >
                             <option selected>Choose...</option>
                             <option value="1">사용</option>
                             <option value="2">미사용</option>
@@ -400,274 +465,724 @@
                       </td>
                     </tr>
                     <tr>
-                      <td>이벤트</td>
-                      <td class="boolean_event">사용</td>
+                      <td class="textalign_left">이벤트</td>
+                      <td >
+                        <p class="boolean_event editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group ">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
-                      <td>선물하기</td>
-                      <td class="boolean_present">사용</td>
+                      <td class="textalign_left">선물하기</td>
+                      <td>
+                        <p class="boolean_present editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
-                      <td>공지</td>
-                      <td class="boolean_notice">사용</td>
+                      <td class="textalign_left">공지</td>
+                      <td>
+                        <p class="boolean_notice editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <!--nvod 채널-->
                     <tr>
                       <td scope="row" rowspan="4">NVOD채널</td>
                       <td rowspan="4">3.2 채널 시청</td>
-                      <td>채널 vod</td>
-                      <td class="boolean_channelvod">사용</td>
+                      <td class="textalign_left">채널 vod</td>
+                      <td>
+                        <p class="boolean_channelvod editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
-                      <td>채널pip</td>
-                      <td class="boolean_channelpip">사용</td>
+                      <td class="textalign_left">채널pip</td>
+                      <td>
+                        <p class="boolean_channelpip editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
-                      <td>번호로 채널</td>
-                      <td class="boolean_channelnumber">사용</td>
+                      <td class="textalign_left">번호로 채널</td>
+                      <td>
+                        <p class="boolean_channelnumber editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
-                      <td>번호로 VOD</td>
-                      <td class="boolean_numbervod">사용</td>
+                      <td class="textalign_left">번호로 VOD</td>
+                      <td>
+                        <p class="boolean_numbervod editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <!--4방향트리거-->
                     <tr>
                       <td scope="row" rowspan="4">4방향트리거</td>
                       <td rowspan="4">3.3 4방향</td>
-                      <td>상키 vod</td>
-                      <td class="boolean_upkey">사용</td>
+                      <td class="textalign_left">상키 vod</td>
+                      <td>
+                        <p class="boolean_upkey editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
-                      <td>하키</td>
-                      <td class="boolean_downkey">사용</td>
+                      <td class="textalign_left">하키</td>
+                      <td>
+                        <p class="boolean_downkey editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
-                      <td>좌키</td>
-                      <td class="boolean_leftkey">사용</td>
+                      <td class="textalign_left">좌키</td>
+                      <td>
+                        <p class="boolean_leftkey editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
-                      <td>우키</td>
-                      <td class="boolean_rightkey">사용</td>
+                      <td class="textalign_left">우키</td>
+                      <td>
+                        <p class="boolean_rightkey editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <!--vod간편결제-->
                     <tr>
                       <td scope="row" rowspan="3">vod간편결제</td>
                       <td rowspan="3">3.4구매</td>
-                      <td>리모컨 핫키</td>
-                      <td class="boolean_hotkey">사용</td>
+                      <td class="textalign_left">리모컨 핫키</td>
+                      <td>
+                        <p class="boolean_hotkey editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
-                      <td>안내설정</td>
-                      <td class="boolean_setup">사용</td>
+                      <td class="textalign_left">안내설정</td>
+                      <td>
+                        <p class="boolean_setup editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
-                      <td>탐색</td>
-                      <td class="boolean_search">사용</td>
+                      <td class="textalign_left">탐색</td>
+                      <td>
+                        <p class="boolean_search editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <!--복합결제-->
                     <tr>
                       <td scope="row">복합결제</td>
                       <td>3.4 구매</td>
-                      <td></td>
-                      <td class="boolean_complexbuying">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_complexbuying editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <!--tv코인 충전-->
                     <tr>
                       <td scope="row">tv코인 충전</td>
                       <td>3.4 구매</td>
-                      <td></td>
-                      <td class="boolean_tvcoincharge">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_tvcoincharge editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <!--cj one point-->
                     <tr>
                       <td scope="row" rowspan="2">CJ ONE POINT</td>
                       <td rowspan="2">3.4 구매</td>
-                      <td>나의 tv</td>
-                      <td class="boolean_buyingcj_mytv">사용</td>
+                      <td class="textalign_left">나의 tv</td>
+                      <td>
+                        <p class="boolean_buyingcj_mytv editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
-                      <td>구매</td>
-                      <td class="boolean_buyingcj">사용</td>
+                      <td class="textalign_left">구매</td>
+                      <td>
+                        <p class="boolean_buyingcj editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <!--h point-->
                     <tr>
                       <td scope="row" rowspan="2">H. point</td>
                       <td rowspan="2">3.4 구매</td>
-                      <td>나의 tv</td>
-                      <td class="boolean_buyinghpoint_mytv">사용</td>
+                      <td class="textalign_left">나의 tv</td>
+                      <td>
+                        <p class="boolean_buyinghpoint_mytv editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
 
                     </tr>
                     <tr>
-                      <td>구매</td>
-                      <td class="boolean_buyinghpoint">사용</td>
+                      <td class="textalign_left">구매</td>
+                      <td>
+                        <p class="boolean_buyinghpoint editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <!--넷플릭스-->
                     <tr>
                       <td scope="row" rowspan="3">넷플릭스</td>
                       <td rowspan="3">3.5 홈</td>
-                      <td>채널가이드</td>
-                      <td class="boolean_netflex_channelguide">사용</td>
+                      <td class="textalign_left">채널가이드</td>
+                      <td>
+                        <p class="boolean_netflex_channelguide editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
-                      <td>홈</td>
-                      <td class="boolean_netflex_home">사용</td>
+                      <td class="textalign_left">홈</td>
+                      <td>
+                        <p class="boolean_netflex_home editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
-                      <td>앱&amp;게임</td>
-                      <td class="boolean_netflex_app">사용</td>
+                      <td class="textalign_left">앱&amp;게임</td>
+                      <td>
+                        <p class="boolean_netflex_app editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
 
                     <!--삼성 앱스-->
                     <tr>
                       <td scope="row" rowspan="3">삼성 앱스</td>
                       <td rowspan="3">3.5 홈</td>
-                      <td>채널가이드</td>
-                      <td class="boolean_samsungapps_channelguide">사용</td>
+                      <td class="textalign_left">채널가이드</td>
+                      <td>
+                        <p class="boolean_samsungapps_channelguide editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
-                      <td>홈</td>
+                      <td class="textalign_left">홈</td>
                       <td class="boolean_samsungapps_home">사용</td>
                     </tr>
                     <tr>
-                      <td>앱&amp;게임</td>
-                      <td class="boolean_samsungapps_app">사용</td>
+                      <td class="textalign_left">앱&amp;게임</td>
+                      <td>
+                        <p class="boolean_samsungapps_app editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
 
                     <!--본편미리보기-->
                     <tr>
                       <td scope="row">본편미리보기</td>
                       <td>3.7 vod 상세화면</td>
-                      <td>탐색</td>
-                      <td class="boolean_preview">사용</td>
+                      <td class="textalign_left">탐색</td>
+                      <td>
+                        <p class="boolean_preview editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
 
                     <!--시리즈 연속보기-->
                     <tr>
                       <td scope="row">시리즈 연속보기</td>
                       <td>3.8 vod 시청</td>
-                      <td></td>
-                      <td class="boolean_series">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_series editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
 
                     <!--개인미디어-->
                     <tr>
                       <td scope="row">개인미디어</td>
                       <td>3.11 나의 TV</td>
-                      <td></td>
-                      <td class="boolean_personalmedia">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_personalmedia editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
 
                     <!--즐겨찾기-->
                     <tr>
                       <td scope="row" rowspan="2">즐겨찾기</td>
                       <td rowspan="2">3.11 서비스 알림</td>
-                      <td>리모컨 핫키</td>
-                      <td class="boolean_bookmark_hotkey">사용</td>
+                      <td class="textalign_left">리모컨 핫키</td>
+                      <td>
+                        <p class="boolean_bookmark_hotkey editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
-                      <td>나의tv</td>
-                      <td class="boolean_bookmark_mytv">사용</td>
+                      <td class="textalign_left">나의tv</td>
+                      <td>
+                        <p class="boolean_bookmark_mytv editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
 
                     <!--스마트 추천-->
                     <tr>
                       <td scope="row" rowspan="2">스마트 추천</td>
                       <td rowspan="2">3.11 서비스 알림</td>
-                      <td>ch.890</td>
-                      <td class="boolean_smart_ch890">사용</td>
+                      <td class="textalign_left">ch.890</td>
+                      <td>
+                        <p class="boolean_smart_ch890 editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
-                      <td>나의tv</td>
-                      <td class="boolean_smart_mytv">사용</td>
+                      <td class="textalign_left">나의tv</td>
+                      <td>
+                        <p class="boolean_smart_mytv editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
 
                     <!--tv앱-->
                     <tr>
                       <td scope="row">tv앱</td>
                       <td>3.13 TV앱</td>
-                      <td></td>
-                      <td class="boolean_tvapp">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_tvapp editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
 
                     <!--tts-->
                     <tr>
                       <td scope="row">tts</td>
                       <td>3.14 안내설정</td>
-                      <td></td>
-                      <td class="boolean_tts">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_tts editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
 
                     <!--cj hello smart app-->
                     <tr>
                       <td scope="row" rowspan="2">cj hello smart app</td>
                       <td>3.14 안내설정</td>
-                      <td></td>
-                      <td class="boolean_cjsmart_setup">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_cjsmart_setup editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>3.8 vod 시청</td>
-                      <td></td>
-                      <td class="boolean_cjsmart_vod">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_cjsmart_vod editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
 
                     <!--현대 hcn smart app-->
                     <tr>
                       <td scope="row" rowspan="2">현대 hcn smary app</td>
                       <td>3.14 안내설정</td>
-                      <td></td>
-                      <td class="boolean_hcn_setup">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_hcn_setup editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>3.8 vod 시청</td>
-                      <td></td>
-                      <td class="boolean_hcn_vod">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_hcn_vod editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
 
                     <!--키즈모드-->
                     <tr>
                       <td scope="row">키즈모드</td>
                       <td>3.15 키즈모드</td>
-                      <td></td>
-                      <td class="boolean_kidsmode">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_kidsmode editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
 
                     <!--쉬운 사용 모드-->
                     <tr>
                       <td scope="row" rowspan="2">쉬운 사용 모드</td>
                       <td>3.27 쉬운 사용모드</td>
-                      <td></td>
-                      <td class="boolean_easymode">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_easymode editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>3.14 안내설정</td>
-                      <td></td>
-                      <td class="boolean_easymode_setup">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_easymode_setup editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
 
                     <!--녹화 pvr-->
                     <tr>
                       <td scope="row" rowspan="2">녹화(pvr)</td>
                       <td>3.16 녹화</td>
-                      <td></td>
-                      <td class="boolean_pvr">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_pvr editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>3.17 녹화 메뉴</td>
-                      <td></td>
-                      <td class="boolean_pvr_menu">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_pvr_menu editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
 
                     <!--cug-->
                     <tr>
                       <td scope="row" rowspan="2">cug</td>
                       <td>3.22 [Biz]HOME</td>
-                      <td></td>
-                      <td class="boolean_cug_home">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_cug_home editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>3.23 [Biz]Watching TV</td>
-                      <td></td>
-                      <td class="boolean_cug_watchingtv">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_cug_watchingtv editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
 
 
@@ -675,16 +1190,36 @@
                     <tr>
                       <td scope="row">tv청구서</td>
                       <td>3.11 나의 TV</td>
-                      <td></td>
-                      <td class="boolean_tvbill">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_tvbill editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
 
                     <!--천지인 검색-->
                     <tr>
                       <td scope="row">천지인 검색</td>
                       <td>3.10 검색</td>
-                      <td></td>
-                      <td class="boolean_chunjiin_search">사용</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_chunjiin_search editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     </tbody>
                   </table>
