@@ -289,13 +289,26 @@ table.so_manage tr td p{
 
 .editable_box:hover::after{
   content: '';
-  display: inline;
-  width: 14px;
-  height: 14px;
-  right: 8px;
-  top: 10px;
+  display: inline-block;
+  width: 36px;
+  height: 16px;
+  right: -10px;
+  top: 4px;
+  padding: 0 10px;
+  position: relative;
+  background: url("../image/pencil_small.png" ) no-repeat;
+  cursor: pointer;
+}
+
+.array_box_last:before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  right: -33px;
+  top: 7px;
   position: absolute;
-  background: url("../image/pencil_small.png" );
+  background: url("../image/addicon.png");
 }
 
 .editable_box.img_editable_box:hover::after{
@@ -317,7 +330,8 @@ table.so_manage tr td p{
 }
 
 .tab_area .tab-content td p.editable_box{
-  padding-right: 30px;
+  /*padding-right: 30px;*/
+  line-height: 34px;
 }
 
 .tab_area .tab-content td p.editable_box[class*="boolean"]{
@@ -338,7 +352,10 @@ table.so_manage tr td p{
 .tab-content .tab-pane.img_manage .form-control{
   height: 44px;
 }
-
+.nav.nav-tabs li {
+  padding: 10px 20px;
+  color: gray;
+}
 
 
 /*반응형 */

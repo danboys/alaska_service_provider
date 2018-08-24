@@ -155,11 +155,23 @@
             <div id="exTab3" >
               <ul  class="nav nav-tabs">
                 <li class="active">
-                  <a  href="#1b" data-toggle="tab">SO</a>
+                  <a  href="#1b" data-toggle="tab">SO관리</a>
                 </li>
-                <li><a href="#2b" data-toggle="tab">Image</a>
+                <li><a href="#2b" data-toggle="tab">서비스 관리</a>
                 </li>
-                <li><a href="#3b" data-toggle="tab">Service</a>
+                <li><a href="#3b" data-toggle="tab">IP관리</a>
+                </li>
+                <li><a href="#4b" data-toggle="tab">STB 관리</a>
+                </li>
+                <li><a href="#5b" data-toggle="tab">채널 관리</a>
+                </li>
+                <li><a href="#6b" data-toggle="tab">상품 관리</a>
+                </li>
+                <li><a href="#7b" data-toggle="tab">카테고리 관리</a>
+                </li>
+                <li><a href="#8b" data-toggle="tab">Text 관리</a>
+                </li>
+                <li><a href="#9b" data-toggle="tab">Image 관리</a>
                 </li>
               </ul>
 
@@ -169,17 +181,18 @@
                   <table class="table so_manage">
                     <thead>
                     <tr>
-                      <th scope="col" class="so_thead first_th">SO</th>
-                      <th scope="col" class="so_thead second_th">SP</th>
-                      <th scope="col" class="so_thead third_th">입력 값</th>
+                      <th scope="col" class="so_thead first_th">분류</th>
+                      <th scope="col" class="so_thead second_th">목록</th>
+                      <th scope="col" class="so_thead third_th">관리 값</th>
                       <th scope="col" class="so_thead fourth_th">수정시간</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <!--프로바이더 명-->
+                    <!--so관리table-->
+                    <!--socode-->
                     <tr>
-                      <td scope="row" rowspan="2">Provider</td>
-                      <td>companyName</td>
+                      <td scope="row" rowspan="6">SO</td>
+                      <td>soCode</td>
                       <td class="textalign_left">
                       <p class="admin_value editable_box">default (p_tag)</p>
                         <input class="form-control-plaintext value_companyname" id="value_companyname" value="default (input_tag)">
@@ -193,250 +206,61 @@
                          -->
                       <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
+                    <!--//socode-->
+                    <!--soname-->
                     <tr>
-
-                      <td>sp</td>
+                      <td>soName</td>
                       <td class="textalign_left">
                         <p class="admin_value editable_box">default (p_tag)</p>
                         <input class="form-control-plaintext value_sp" id="value_sp" value="default (input_tag)">
                       </td>
                     <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
-
-                      <!--biz-->
+                    <!--//soname-->
+                    <!--//flag-->
                     <tr>
-                      <td scope="row" rowspan="3">biz</td>
-                      <td>serverIpLiveBiz</td>
+                      <td>flag</td>
                       <td class="textalign_left">
                         <p class="admin_value editable_box">default (p_tag)</p>
-                        <input class="form-control-plaintext value_serveriplivebiz" id="value_serveriplivebiz" value="default (input_tag)">
-                      </td>
-                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                    </tr>
-                    <tr>
-
-                      <td>X-Client-App-Key</td>
-                      <td class="textalign_left">
-                        <p class="admin_value editable_box">default (p_tag)</p>
-                        <input class="form-control-plaintext value_xclientappkey" id="value_xclientappkey" value="default (input_tag)"></td>
-                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                    </tr>
-                    <tr>
-
-                      <td>flagBiz</td>
-                      <td class="textalign_left">
-                        <p class="admin_value editable_box">default (p_tag)</p>
-                        <input class="form-control-plaintext value_flagbiz" id="value_flagbiz" value="default (input_tag)"></td>
-                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                    </tr>
-                    <tr>
-
-                      <!--ui-->
-                      <td scope="row" rowspan="2">Ui</td>
-                      <td>serverIpLiveUi</td>
-                      <td class="textalign_left">
-                        <p class="admin_value editable_box">default (p_tag)</p>
-                        <input class="form-control-plaintext value_serveripliveui" id="value_serveripliveui" value="default (input_tag)"></td>
-                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                    </tr>
-                    <tr>
-
-                      <td>flagUi</td>
-                      <td class="textalign_left">
-                        <p class="admin_value editable_box">default (p_tag)</p>
-                        <input class="form-control-plaintext value_flagui" id="value_flagui" value="default (input_tag)"></td>
-                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                    </tr>
-
-                    <!--data-->
-                    <tr>
-                      <td scope="row" rowspan="2">Data</td>
-                      <td>serverIpLiveData</td>
-                      <td class="textalign_left">
-                        <p class="admin_value editable_box">default (p_tag)</p>
-                        <input class="form-control-plaintext value_serveriplivedata" id="value_serveriplivedata" value="default (input_tag)"></td>
-                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                    </tr>
-                    <tr>
-
-                      <td>flagData</td>
-                      <td class="textalign_left">
-                        <p class="admin_value editable_box">default (p_tag)</p>
-                        <input class="form-control-plaintext value_flagdata" id="value_flagdata" value="default (input_tag)">
+                        <input class="form-control-plaintext value_sp" id="value_sp" value="default (input_tag)">
                       </td>
                       <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
-
-                    <!--search-->
+                    <!--//flag-->
+                    <!--//spCode-->
                     <tr>
-                      <td scope="row" rowspan="2">search</td>
-                      <td>serverIpLiveSearch</td>
+                      <td>spCode</td>
                       <td class="textalign_left">
                         <p class="admin_value editable_box">default (p_tag)</p>
-                        <input class="form-control-plaintext value_serveriplivesearch" id="value_serveriplivesearch" value="default (input_tag)"></td>
-                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                        <input class="form-control-plaintext value_sp" id="value_sp" value="default (input_tag)">
+                      </td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
+                    <!--//spCode-->
+                    <!--//spName-->
                     <tr>
-
-                      <td>flagData</td>
+                      <td>spName</td>
                       <td class="textalign_left">
                         <p class="admin_value editable_box">default (p_tag)</p>
-                        <input class="form-control-plaintext value_search_flagdata" id="value_search_flagdata" value="default (input_tag)"></td>
-                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                        <input class="form-control-plaintext value_sp" id="value_sp" value="default (input_tag)">
+                      </td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
-                    <!-- mgw -->
+                    <!--//spName-->
+                    <!--//key-->
                     <tr>
-                      <td scope="row" rowspan="2">MGW</td>
-                      <td>serverIpMGW</td>
+                      <td>key</td>
                       <td class="textalign_left">
                         <p class="admin_value editable_box">default (p_tag)</p>
-                        <input class="form-control-plaintext value_serverIpmgw" id="value_serverIpmgw" value="default (input_tag)"></td>
-                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                        <input class="form-control-plaintext value_sp" id="value_sp" value="default (input_tag)">
+                      </td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                     </tr>
-                    <tr>
-
-                      <td>flagMgw</td>
-                      <td class="textalign_left">
-                        <p class="admin_value editable_box">default (p_tag)</p>
-                        <input class="form-control-plaintext value_flagmgw" id="value_flagmgw" value="default (input_tag)"></td>
-                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                    </tr>
-                    <!-- token -->
-                    <tr>
-                      <td scope="row">token</td>
-                      <td>token</td>
-                      <td class="textalign_left">
-                        <p class="admin_value editable_box">default (p_tag)</p>
-                        <input class="form-control-plaintext value_token" id="value_token" value="default (input_tag)"></td>
-                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                    </tr>
-                    <!-- path -->
-                    <tr>
-                      <td scope="row">path</td>
-                      <td>srcPath</td>
-                      <td class="textalign_left">
-                        <p class="admin_value editable_box">default (p_tag)</p>
-                        <input class="form-control-plaintext value_srcpath" id="value_srcpath" value="default (input_tag)"></td>
-                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                    </tr>
-                    <!-- TEXT -->
-                    <tr>
-                      <td scope="row">TEXT</td>
-                      <td>sBiTxt</td>
-                      <td class="textalign_left">
-                        <p class="admin_value editable_box">default (p_tag)</p>
-                        <input class="form-control-plaintext value_sbitxt" id="value_sbitxt" value="default (input_tag)"></td>
-                    <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                    </tr>
-
-                    </tbody>
-                  </table>
-                </div>
-
-                <!--이미지관리-->
-
-                <div class="tab-pane img_manage" id="2b">
-                   <table class="table img_manage">
-                     <thead>
-                     <tr>
-                       <th scope="col" class="image_thead first_th">분류</th>
-                       <th scope="col" class="image_thead second_th">목록</th>
-                       <th scope="col" class="image_thead third_th">경로</th>
-                       <th scope="col" class="image_thead fourth_th">미리보기</th>
-                     </tr>
-                     </thead>
-
-                     <tbody>
-                     <!--image-->
-                     <tr>
-                       <td scope="row" rowspan="3">IMAGE</td>
-                       <td>serverImg</td>
-                       <td class="textalign_left">
-                         <p class="route_serverimg editable_box img_editable_box">
-                           이미지 경로 지정</p>
-                         <input type="file" id="img_src" class="form-control">
-                         <!--최초p태그가 노출 되고 클릭시 input태그로 전환됩니다.-->
-                         <!--input태그에서 경로 지정 input영역 이외에 브라우저 영역 클릭시 -->
-                         <!--지정된 경로가 p태그에 text형태로 저장되며 다시 p태그가 노출되고 input태그-->
-                         <!--는 사라집니다.-->
-                       </td>
-                          <!--위에서 지정된 경로는 아래 img태그 안의 src에도 저장되어  -->
-                          <!--이미지를 미리 볼 수 있게 해줍니다.-->
-                       <td><img class="preview_serverimg" src="#"
-                                onerror="this.src='../image/preview.png'" /></td>
-                     </tr>
-                     <tr>
-                       <td>serverLogo</td>
-                       <td class="textalign_left">
-                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
-                         <input type="file" class="form-control">
-                       </td>
-                       <td><img class="preview_serverlogo" src="#"
-                                onerror="this.src='../image/preview.png'" /></td>
-                     </tr>
-                     <tr>
-                       <td>serverThumbnail</td>
-                       <td class="textalign_left">
-                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
-                         <input type="file" class="form-control">
-                       </td>
-                       <td><img class="preview_serverthumbnail" src="#"
-                                onerror="this.src='../image/preview.png'" /></td>
-                     </tr>
-
-                     <!--defaultimage-->
-                     <tr>
-                       <td scope="row" rowspan="5">default image</td>
-                       <td>defaultPoster</td>
-                       <td class="textalign_left">
-                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
-                         <input type="file" class="form-control">
-                       </td>
-                       <td><img class="preview_defaultposter" src="#"
-                                onerror="this.src='../image/preview.png'" /></td>
-                     </tr>
-                     <tr>
-                       <td>defaultPosterSquare</td>
-                       <td class="textalign_left">
-                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
-                         <input type="file" class="form-control">
-                       </td>
-                       <td><img class="preview_defaultpostersquareg" src="#"
-                                onerror="this.src='../image/preview.png'" /></td>
-                     </tr>
-                     <tr>
-                       <td>defaultPromotSOn</td>
-                       <td class="textalign_left">
-                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
-                         <input type="file" class="form-control">
-                       </td>
-                       <td><img class="preview_defaultpromotson" src="#"
-                                onerror="this.src='../image/preview.png'" /></td>
-                     </tr>
-                     <tr>
-                       <td>defaultThumbnail</td>
-                       <td class="textalign_left">
-                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
-                         <input type="file" class="form-control">
-                       </td>
-                       <td><img class="preview_defaultthumbnail" src="#"
-                                onerror="this.src='../image/preview.png'" /></td>
-                     </tr>
-                     <tr>
-                       <td>defaultThumbnailPromotSOn</td>
-                       <td class="textalign_left">
-                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
-                         <input type="file" class="form-control">
-                       </td>
-                       <td><img class="preview_defaultthumbnailpromotson" src="#"
-                                onerror="this.src='../image/preview.png'" /></td>
-                     </tr>
-                     </tbody>
-                 </table>
-                </div>
+                    <!--//key-->
+                    </tbody></table></div>
 
                 <!--서비스 관리-->
-                <div class="tab-pane" id="3b">
+                <div class="tab-pane" id="2b">
                   <table class="table service_manage">
                     <thead>
                     <tr>
@@ -831,7 +655,17 @@
                     </tr>
                     <tr>
                       <td class="textalign_left">홈</td>
-                      <td class="boolean_samsungapps_home">사용</td>
+                      <td>
+                      <p class="boolean_samsungapps_home editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
                       <td class="textalign_left">앱&amp;게임</td>
@@ -1221,10 +1055,625 @@
                         </div>
                       </td>
                     </tr>
+
+                    <!--cjh osk-->
+                    <tr>
+                      <td scope="row">CJH OSK</td>
+                      <td>3.10 검색</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_cjhosk editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!--hcn osk-->
+                    <tr>
+                      <td scope="row">HCN OSK</td>
+                      <td>3.10 검색</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_hcnosk editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!--pip-->
+                    <tr>
+                      <td scope="row">PIP</td>
+                      <td>3.10 검색</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_pip editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!--로그 허용 여부-->
+                    <tr>
+                      <td scope="row">로그허용 여부</td>
+                      <td>3.10 검색</td>
+                      <td class="textalign_left"></td>
+                      <td>
+                        <p class="boolean_permitlog editable_box">사용</p>
+                        <!--bollean-->
+                        <div class="input-group">
+                          <select class="custom-select" >
+                            <option selected>Choose...</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
+                          </select>
+                        </div>
+                      </td>
+                    </tr>
                     </tbody>
                   </table>
 
                 </div>
+
+                <!--ip관리-->
+                <div class="tab-pane" id="3b">
+                  <table class="table so_manage">
+                    <thead>
+                    <tr>
+                      <th scope="col" class="so_thead first_th">분류</th>
+                      <th scope="col" class="so_thead second_th">목록</th>
+                      <th scope="col" class="so_thead third_th">관리 값</th>
+                      <th scope="col" class="so_thead fourth_th">수정시간</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--so관리table-->
+                    <!--socode-->
+
+                    <!--biz-->
+                    <tr>
+                      <td scope="row" rowspan="3">Biz</td>
+                      <td>serverIpLiveBiz</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_serveriplivebiz" id="value_serveriplivebiz" value="default (input_tag)">
+                      </td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+                    <tr>
+
+                      <td>X-Client-App-Key</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_xclientappkey" id="value_xclientappkey" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+                    <tr>
+
+                      <td>flagBiz</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_flagbiz" id="value_flagbiz" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+                    <tr>
+
+                      <!--ui-->
+                      <td scope="row" rowspan="2">Ui</td>
+                      <td>serverIpLiveUi</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_serveripliveui" id="value_serveripliveui" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+                    <tr>
+
+                      <td>flagUi</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_flagui" id="value_flagui" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+
+                    <!--data-->
+                    <tr>
+                      <td scope="row" rowspan="2">Data</td>
+                      <td>serverIpLiveData</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_serveriplivedata" id="value_serveriplivedata" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+                    <tr>
+
+                      <td>flagData</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_flagdata" id="value_flagdata" value="default (input_tag)">
+                      </td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+
+                    <!--search-->
+                    <tr>
+                      <td scope="row" rowspan="2">Search</td>
+                      <td>serverIpLiveSearch</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_serveriplivesearch" id="value_serveriplivesearch" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+                    <tr>
+
+                      <td>flagData</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_search_flagdata" id="value_search_flagdata" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+                    <!-- mgw -->
+                    <tr>
+                      <td scope="row" rowspan="2">MGW</td>
+                      <td>serverIpMGW</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_serverIpmgw" id="value_serverIpmgw" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+                    <tr>
+
+                      <td>flagMgw</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_flagmgw" id="value_flagmgw" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+
+
+                    </tbody>
+                  </table>
+                </div>
+
+                <!--STB관리-->
+                <div class="tab-pane" id="4b">
+                  <table class="table so_manage">
+                    <thead>
+                    <tr>
+                      <th scope="col" class="so_thead first_th">분류</th>
+                      <th scope="col" class="so_thead second_th">목록</th>
+                      <th scope="col" class="so_thead third_th">관리 값</th>
+                      <th scope="col" class="so_thead fourth_th">수정시간</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--stb관리-->
+                    <tr>
+                      <td scope="row" rowspan="9">STB</td>
+                      <td>ibcModel</td>
+                      <td class="textalign_left">
+                        <div>
+                        <p class="admin_value array_box editable_box">array1 (p_tag)</p>
+                          <img src="../image/deleteicon.png" class="icon_delete">
+                        </div>
+                        <div>
+                          <p class="admin_value editable_box">array2 (p_tag)</p>
+                          <img src="../image/deleteicon.png" class="icon_delete">
+                        </div>
+                        <div>
+                          <p class="admin_value editable_box">array3 (p_tag)</p>
+                          <img src="../image/deleteicon.png" class="icon_delete">
+                        </div>
+                        <div>
+                          <p class="admin_value editable_box">array4 (p_tag)</p>
+                          <img src="../image/deleteicon.png" class="icon_delete">
+
+                        </div>
+                        <div>
+                          <p class="admin_value editable_box">배열된 값 중 마지막 요소 우측에 추가아이콘이 붙습니다. (p_tag)</p>
+                          <img src="../image/deleteicon.png" class="icon_delete">
+                          <img src="../image/addicon.png" title="배열 추가" class="icon_add">
+                        </div>
+                        <input class="form-control-plaintext value_serveriplivebiz" id="value_serveriplivebiz" value="default (input_tag)">
+                        <button type="button" class="btn btn-secondary btn-sm">Small button</button>
+                        <button type="button" class="btn btn-secondary btn-sm">Small button</button>
+                      </td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+                    <!--enerhymodel-->
+                    <tr>
+                      <td>energyModel
+                      </td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <img src="../image/deleteicon.png" class="icon_delete">
+                        <img src="../image/addicon.png" title="배열 추가" class="icon_add">
+                        <input class="form-control-plaintext value_xclientappkey" id="value_xclientappkey" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+
+                    <!--uhdstb-->
+                    <tr>
+                      <td>uhdStb
+                      </td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <img src="../image/deleteicon.png" class="icon_delete">
+                        <img src="../image/addicon.png" title="배열 추가" class="icon_add">
+                        <input class="form-control-plaintext value_flagbiz" id="value_flagbiz" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+
+
+                      <!--pvrStb-->
+                    <tr>
+                      <td>pvrStb</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <img src="../image/deleteicon.png" class="icon_delete">
+                        <img src="../image/addicon.png" title="배열 추가" class="icon_add">
+                        <input class="form-control-plaintext value_flagbiz" id="value_flagbiz" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+
+
+                      <!--pvrRedStb-->
+                    <tr>
+                      <td>pvrRedStb</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <img src="../image/deleteicon.png" class="icon_delete">
+                        <img src="../image/addicon.png" title="배열 추가" class="icon_add">
+                        <input class="form-control-plaintext value_flagbiz" id="value_flagbiz" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+
+
+                      <!--pvrSmartStb-->
+                    <tr>
+                      <td>pvrSmartStb</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <img src="../image/deleteicon.png" class="icon_delete">
+                        <img src="../image/addicon.png" title="배열 추가" class="icon_add">
+                        <input class="form-control-plaintext value_flagbiz" id="value_flagbiz" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+
+
+                      <!--pvrOcapStb-->
+                    <tr>
+                      <td>pvrOcapStb</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <img src="../image/deleteicon.png" class="icon_delete">
+                        <img src="../image/addicon.png" title="배열 추가" class="icon_add">
+                        <input class="form-control-plaintext value_flagbiz" id="value_flagbiz" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+
+                    <!--hyperStb-->
+                    <tr>
+                      <td>hyperStb </td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <img src="../image/deleteicon.png" class="icon_delete">
+                        <img src="../image/addicon.png" title="배열 추가" class="icon_add">
+                        <input class="form-control-plaintext value_flagbiz" id="value_flagbiz" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+
+                    <!--animationSettopBox-->
+                    <tr>
+                      <td>animationSettopBox</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <img src="../image/deleteicon.png" class="icon_delete">
+                        <img src="../image/addicon.png" title="배열 추가" class="icon_add">
+                        <input class="form-control-plaintext value_flagbiz" id="value_flagbiz" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+
+
+                    </tbody>
+                  </table>
+                </div>
+
+                <!--채널관리-->
+                <div class="tab-pane" id="5b">
+                  <table class="table so_manage">
+                    <thead>
+                    <tr>
+                      <th scope="col" class="so_thead first_th">분류</th>
+                      <th scope="col" class="so_thead second_th">목록</th>
+                      <th scope="col" class="so_thead third_th">관리 값</th>
+                      <th scope="col" class="so_thead fourth_th">수정시간</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--채널관리-->
+                    <tr>
+                      <td scope="row" rowspan="9">Channel</td>
+                      <td>channelDeleteList</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_serveriplivebiz" id="value_serveriplivebiz" value="default (input_tag)">
+                      </td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+                    <!--enerhymodel-->
+                    <tr>
+                      <td>channelJoinList</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_xclientappkey" id="value_xclientappkey" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+
+                <!--상품관리-->
+                <div class="tab-pane" id="6b">
+                  <table class="table so_manage">
+                    <thead>
+                    <tr>
+                      <th scope="col" class="so_thead first_th">분류</th>
+                      <th scope="col" class="so_thead second_th">목록</th>
+                      <th scope="col" class="so_thead third_th">관리 값</th>
+                      <th scope="col" class="so_thead fourth_th">수정시간</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--상품관리-->
+                    <tr>
+                      <td scope="row" rowspan="9">Product</td>
+                      <!--limitProductB2B-->
+                      <td>limitProductB2B</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_serveriplivebiz" id="value_serveriplivebiz" value="default (input_tag)">
+                      </td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+                    <!--offlineAgreementPrd-->
+                    <tr>
+                      <td>offlineAgreementPrd</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_xclientappkey" id="value_xclientappkey" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+
+                <!--카테고리 관리-->
+                <div class="tab-pane" id="7b">
+                  <table class="table so_manage">
+                    <thead>
+                    <tr>
+                      <th scope="col" class="so_thead first_th">분류</th>
+                      <th scope="col" class="so_thead second_th">목록</th>
+                      <th scope="col" class="so_thead third_th">관리 값</th>
+                      <th scope="col" class="so_thead fourth_th">수정시간</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--상품관리-->
+                    <tr>
+                      <td scope="row" rowspan="4">BaseId</td>
+                      <!--vodChannel-->
+                      <td>vodChannel</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_serveriplivebiz" id="value_serveriplivebiz" value="default (input_tag)">
+                      </td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+                    <!--audioChannel-->
+                    <tr>
+                      <td>audioChannel</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_xclientappkey" id="value_xclientappkey" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+                    <!--appGoogle-->
+                    <tr>
+                      <td>appGoogle</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_xclientappkey" id="value_xclientappkey" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+                    <!--appNetflix-->
+                    <tr>
+                      <td>appNetflix</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_xclientappkey" id="value_xclientappkey" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+
+                <!--텍스트 관리-->
+                <div class="tab-pane" id="8b">
+                  <table class="table so_manage">
+                    <thead>
+                    <tr>
+                      <th scope="col" class="so_thead first_th">분류</th>
+                      <th scope="col" class="so_thead second_th">목록</th>
+                      <th scope="col" class="so_thead third_th">관리 값</th>
+                      <th scope="col" class="so_thead fourth_th">수정시간</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--text관리-->
+                    <tr>
+                      <td scope="row" rowspan="2">Text</td>
+                      <!--sBiTxt-->
+                      <td>sBiTxt</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_serveriplivebiz" id="value_serveriplivebiz" value="default (input_tag)">
+                      </td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+                    <!--sBiTel-->
+                    <tr>
+                      <td>sBiTel</td>
+                      <td class="textalign_left">
+                        <p class="admin_value editable_box">default (p_tag)</p>
+                        <input class="form-control-plaintext value_xclientappkey" id="value_xclientappkey" value="default (input_tag)"></td>
+                      <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!--이미지관리-->
+                <div class="tab-pane " id="9b">
+                   <table class="table img_manage">
+                     <thead>
+                     <tr>
+                       <th scope="col" class="image_thead first_th">분류</th>
+                       <th scope="col" class="image_thead second_th">목록</th>
+                       <th scope="col" class="image_thead third_th">경로</th>
+                       <th scope="col" class="image_thead fourth_th">미리보기</th>
+                     </tr>
+                     </thead>
+
+                     <tbody>
+                     <!--image-->
+                     <tr>
+                       <td scope="row" rowspan="3">IMAGE</td>
+                       <td>serverImg</td>
+                       <td class="textalign_left">
+                         <p class="route_serverimg editable_box img_editable_box">
+                           이미지 경로 지정</p>
+                         <input type="file" id="img_src" class="form-control">
+                         <!--최초p태그가 노출 되고 클릭시 input태그로 전환됩니다.-->
+                         <!--input태그에서 경로 지정 input영역 이외에 브라우저 영역 클릭시 -->
+                         <!--지정된 경로가 p태그에 text형태로 저장되며 다시 p태그가 노출되고 input태그-->
+                         <!--는 사라집니다.-->
+                       </td>
+                          <!--위에서 지정된 경로는 아래 img태그 안의 src에도 저장되어  -->
+                          <!--이미지를 미리 볼 수 있게 해줍니다.-->
+                       <td><img class="preview_serverimg" src="#"
+                                onerror="this.src='../image/preview.png'" /></td>
+                     </tr>
+                     <tr>
+                       <td>serverLogo</td>
+                       <td class="textalign_left">
+                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
+                         <input type="file" class="form-control">
+                       </td>
+                       <td><img class="preview_serverlogo" src="#"
+                                onerror="this.src='../image/preview.png'" /></td>
+                     </tr>
+                     <tr>
+                       <td>serverThumbnail</td>
+                       <td class="textalign_left">
+                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
+                         <input type="file" class="form-control">
+                       </td>
+                       <td><img class="preview_serverthumbnail" src="#"
+                                onerror="this.src='../image/preview.png'" /></td>
+                     </tr>
+
+                     <!--srcpath-->
+                     <tr>
+                       <td scope="row">SrcPath</td>
+                       <td>Srcpath</td>
+                       <td class="textalign_left">
+                         <p class="route_serverimg editable_box img_editable_box">
+                           이미지 경로 지정</p>
+                         <input type="file" id="img_src" class="form-control">
+                         <!--최초p태그가 노출 되고 클릭시 input태그로 전환됩니다.-->
+                         <!--input태그에서 경로 지정 input영역 이외에 브라우저 영역 클릭시 -->
+                         <!--지정된 경로가 p태그에 text형태로 저장되며 다시 p태그가 노출되고 input태그-->
+                         <!--는 사라집니다.-->
+                       </td>
+                       <!--위에서 지정된 경로는 아래 img태그 안의 src에도 저장되어  -->
+                       <!--이미지를 미리 볼 수 있게 해줍니다.-->
+                       <td><img class="preview_serverimg" src="#"
+                                onerror="this.src='../image/preview.png'" /></td>
+                     </tr>
+
+                     <!--defaultimage-->
+                     <tr>
+                       <td scope="row" rowspan="5">Default image</td>
+                       <td>defaultPoster</td>
+                       <td class="textalign_left">
+                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
+                         <input type="file" class="form-control">
+                       </td>
+                       <td><img class="preview_defaultposter" src="#"
+                                onerror="this.src='../image/preview.png'" /></td>
+                     </tr>
+                     <tr>
+                       <td>defaultPosterSquare</td>
+                       <td class="textalign_left">
+                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
+                         <input type="file" class="form-control">
+                       </td>
+                       <td><img class="preview_defaultpostersquareg" src="#"
+                                onerror="this.src='../image/preview.png'" /></td>
+                     </tr>
+                     <tr>
+                       <td>defaultPromotSOn</td>
+                       <td class="textalign_left">
+                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
+                         <input type="file" class="form-control">
+                       </td>
+                       <td><img class="preview_defaultpromotson" src="#"
+                                onerror="this.src='../image/preview.png'" /></td>
+                     </tr>
+                     <tr>
+                       <td>defaultThumbnail</td>
+                       <td class="textalign_left">
+                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
+                         <input type="file" class="form-control">
+                       </td>
+                       <td><img class="preview_defaultthumbnail" src="#"
+                                onerror="this.src='../image/preview.png'" /></td>
+                     </tr>
+                     <tr>
+                       <td>defaultThumbnailPromotSOn</td>
+                       <td class="textalign_left">
+                         <p class="route_serverlogo editable_box img_editable_box">이미지 경로 지정</p>
+                         <input type="file" class="form-control">
+                       </td>
+                       <td><img class="preview_defaultthumbnailpromotson" src="#"
+                                onerror="this.src='../image/preview.png'" /></td>
+                     </tr>
+                     </tbody>
+                 </table>
+                </div>
+
+
 
               </div>
             </div>

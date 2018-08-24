@@ -291,13 +291,22 @@ body.sidebar-toggled footer.sticky-footer {
   margin: 0 1rem;
   top: 0;
 }
+.form-control{
+  height: calc(2.25rem + 7px);
+}
 
+.nav.nav-tabs li {
+  padding: 10px 20px;
+  color: gray;
+}
 
 /*반응형*/
 
 
 @media (max-width: 1200px) {
-
+  .modal-lg {
+    width: 1249px;
+  }
   #wrapper{
     display: -webkit-box;
     width: 1200px;

@@ -211,11 +211,23 @@
                                     <div id="exTab3" >
                                       <ul  class="nav nav-tabs">
                                         <li class="active">
-                                          <a  href="#1b" data-toggle="tab">SO</a>
+                                          <a  href="#1b" data-toggle="tab">SO관리</a>
                                         </li>
-                                        <li><a href="#2b" data-toggle="tab">Image</a>
+                                        <li><a href="#2b" data-toggle="tab">서비스 관리</a>
                                         </li>
-                                        <li><a href="#3b" data-toggle="tab">Service</a>
+                                        <li><a href="#3b" data-toggle="tab">IP관리</a>
+                                        </li>
+                                        <li><a href="#4b" data-toggle="tab">STB 관리</a>
+                                        </li>
+                                        <li><a href="#5b" data-toggle="tab">채널 관리</a>
+                                        </li>
+                                        <li><a href="#6b" data-toggle="tab">상품 관리</a>
+                                        </li>
+                                        <li><a href="#7b" data-toggle="tab">카테고리 관리</a>
+                                        </li>
+                                        <li><a href="#8b" data-toggle="tab">Text 관리</a>
+                                        </li>
+                                        <li><a href="#9b" data-toggle="tab">Image 관리</a>
                                         </li>
                                       </ul>
 
@@ -225,192 +237,80 @@
                                           <table class="table so_manage">
                                             <thead>
                                             <tr>
-                                              <th scope="col" class="so_thead first_th">SO</th>
-                                              <th scope="col" class="so_thead second_th">SP</th>
-                                              <th scope="col" class="so_thead third_th">입력 값</th>
+                                              <th scope="col" class="so_thead first_th">분류</th>
+                                              <th scope="col" class="so_thead second_th">목록</th>
+                                              <th scope="col" class="so_thead third_th">관리 값</th>
                                               <th scope="col" class="so_thead fourth_th">수정시간</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <!--프로바이더 명-->
+                                            <!--so관리table-->
+                                            <!--socode-->
                                             <tr>
-                                              <td scope="row" rowspan="2">Provider</td>
-                                              <td>companyName</td>
-                                              <td class="textalign_left"> <p class="value_companyname ">default</p></td>
-                                             <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                                              <!--마지막으로 수정된 시간이 p태그 안에 반영되어야 합니다.-->
+                                              <td scope="row" rowspan="6">SO</td>
+                                              <td>soCode</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <!-- 최초 p태그 안의 텍스트가 노출 되며, input태그는 display:none 된 상태입니다.
+                                               p태그 클릭시 display:none이 되며 input태그는 display:block으로 바뀌며
+                                               p태그 안의 택스트는 input태그의 value값으로 노출됩니다.
+                                               사용자가 input태그 안에 입력값을 모두 입력 후 input창 이외의 브라우저 공간을 클릭하기 되면
+                                               input창에 입력된 값은 다시 p태그의 텍스트로 저장되며,
+                                               다시 p태그는 노출되고 input태그는 사리지게 됩니다.
+                                                 -->
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                                             </tr>
+                                            <!--//socode-->
+                                            <!--soname-->
                                             <tr>
-
-                                              <td>SP</td>
-                                              <td class="textalign_left"> <p class="value_sp">default</p></td>
-                                             <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                              <td>soName</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                                             </tr>
+                                            <!--//soname-->
+                                            <!--//flag-->
                                             <tr>
-
-                                              <!--biz-->
-                                              <td scope="row" rowspan="3">biz</td>
-                                              <td>serverIpLiveBiz</td>
-                                              <td class="textalign_left"> <p class="value_serveriplivebiz">default</p></td>
-                                             <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                              <td>flag</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                                             </tr>
+                                            <!--//flag-->
+                                            <!--//spCode-->
                                             <tr>
-
-                                              <td>X-Client-App-Key</td>
-                                              <td class="textalign_left"> <p class="value_xclientappkey">default</p></td>
-                                             <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                              <td>spCode</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                                             </tr>
+                                            <!--//spCode-->
+                                            <!--//spName-->
                                             <tr>
-
-                                              <td>flagBiz</td>
-                                              <td class="textalign_left"> <p class="value_flagbiz">default</p></td>
-                                             <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                                            <tr>
-
-                                              <!--ui-->
-                                              <td scope="row" rowspan="2">Ui</td>
-                                              <td>serverIpLiveUi</td>
-                                              <td class="textalign_left"> <p class="value_serveripliveui">default</p></td>
-                                             <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                              <td>spName</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                                             </tr>
-
+                                            <!--//spName-->
+                                            <!--//key-->
                                             <tr>
-                                              <td>flagUi</td>
-                                              <td class="textalign_left"> <p class="value_flagui">default</p></td>
-                                             <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                              <td>key</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                                             </tr>
-
-                                            <!--data-->
-                                            <tr>
-                                              <td scope="row" rowspan="2">Data</td>
-                                              <td>serverIpLiveData</td>
-                                              <td class="textalign_left"> <p class="value_serveriplivedata">default</p></td>
-                                             <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                                            </tr>
-                                            <tr>
-
-                                              <td>flagData</td>
-                                              <td class="textalign_left"> <p class="value_flagdata">default</p></td>
-                                             <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                                            </tr>
-
-                                            <!--search-->
-                                            <tr>
-                                              <td scope="row" rowspan="2">search</td>
-                                              <td>serverIpLiveSearch</td>
-                                              <td class="textalign_left"> <p class="value_serveriplivesearch">default</p></td>
-                                             <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                                            </tr>
-                                            <tr>
-
-                                              <td>flagData</td>
-                                              <td class="textalign_left"> <p class="value_search_flagdata">default</p></td>
-                                             <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                                            </tr>
-                                            <!-- mgw -->
-                                            <tr>
-                                              <td scope="row" rowspan="2">MGW</td>
-                                              <td>serverIpMGW</td>
-                                              <td class="textalign_left"> <p class="value_serverIpmgw">default</p></td>
-                                             <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                                            </tr>
-                                            <tr>
-
-                                              <td>flagMgw</td>
-                                              <td class="textalign_left"> <p class="value_flagmgw">default</p></td>
-                                             <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                                            </tr>
-                                            <!-- token -->
-                                            <tr>
-                                              <td scope="row">token</td>
-                                              <td>token</td>
-                                              <td class="textalign_left"> <p class="value_token">default</p></td>
-                                             <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                                            </tr>
-                                            <!-- path -->
-                                            <tr>
-                                              <td scope="row">path</td>
-                                              <td>srcPath</td>
-                                              <td class="textalign_left"> <p class="value_srcpath">default</p></td>
-                                             <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
-                                            </tr>
-                                            <!-- TEXT -->
-                                            <tr>
-                                              <td scope="row">TEXT</td>
-                                              <td>sBiTxt</td>
-                                              <td class="textalign_left"> <p class="value_sbitxt">default</p></td>
-                                              <td ><p class="fixed_time"></p></td>
-                                            </tr>
-
-                                            </tbody>
-                                          </table>
-
-
-                                          <!--이미지관리-->
-                                        </div>
-                                        <div class="tab-pane" id="2b">
-                                          <table class="table img_manage">
-                                            <thead>
-                                            <tr>
-                                              <th scope="col" class="image_thead first_th">분류</th>
-                                              <th scope="col" class="image_thead second_th">목록</th>
-                                              <th scope="col" class="image_thead third_th">경로</th>
-                                              <th scope="col" class="image_thead fourth_th">미리보기</th>
-                                            </tr>
-                                            </thead>
-
-                                            <tbody>
-                                            <!--image-->
-                                            <tr>
-                                              <td scope="row" rowspan="3">IMAGE</td>
-                                              <td >serverImg</td>
-                                              <td class="textalign_left"><p class="route_serverimg">route</p></td>
-                                              <td><img class="preview_serverimg" src="#" onerror="this.src='../image/preview.png'" /></td>
-                                            </tr>
-                                            <tr>
-                                              <td>serverLogo</td>
-                                              <td class="textalign_left"><p class="route_serverlogo">route</p></td>
-                                              <td><img class="preview_serverlogo" src="#" onerror="this.src='../image/preview.png'" /></td>
-                                            </tr>
-                                            <tr>
-                                              <td>serverThumbnail</td>
-                                              <td class="textalign_left"><p class="route_serverthumbnail">route</p></td>
-                                              <td><img class="preview_serverthumbnail" src="#" onerror="this.src='../image/preview.png'" /></td>
-                                            </tr>
-
-                                            <!--defaultimage-->
-                                            <tr>
-                                              <td scope="row" rowspan="5">default image</td>
-                                              <td>defaultPoster</td>
-                                              <td class="textalign_left"><p class="route_defaultposter">route</p></td>
-                                              <td><img class="preview_defaultposter" src="#" onerror="this.src='../image/preview.png'" /></td>
-                                            </tr>
-                                            <tr>
-                                              <td>defaultPosterSquare</td>
-                                              <td class="textalign_left"><p class="route_defaultpostersquare">route</p></td>
-                                              <td><img class="preview_defaultpostersquareg" src="#" onerror="this.src='../image/preview.png'" /></td>
-                                            </tr>
-                                            <tr>
-                                              <td>defaultPromotSOn</td>
-                                              <td class="textalign_left"><p class="route_defaultpromotson">route</p></td>
-                                              <td><img class="preview_defaultpromotson" src="#" onerror="this.src='../image/preview.png'" /></td>
-                                            </tr>
-                                            <tr>
-                                              <td>defaultThumbnail</td>
-                                              <td class="textalign_left"><p class="route_defaultthumbnail">route</p></td>
-                                              <td><img class="preview_defaultthumbnail" src="#" onerror="this.src='../image/preview.png'" /></td>
-                                            </tr>
-                                            <tr>
-                                              <td>defaultThumbnailPromotSOn</td>
-                                              <td class="textalign_left"><p class="route_defaultthumbnailpromotson">route</p></td>
-                                              <td><img class="preview_defaultthumbnailpromotson" src="#" onerror="this.src='../image/preview.png'" /></td>
-                                            </tr>
-                                            </tbody>
-                                          </table>
-                                        </div>
+                                            <!--//key-->
+                                            </tbody></table></div>
 
                                         <!--서비스 관리-->
-                                        <div class="tab-pane" id="3b">
+                                        <div class="tab-pane" id="2b">
                                           <table class="table service_manage">
                                             <thead>
                                             <tr>
@@ -425,125 +325,175 @@
                                             <tr>
                                               <td scope="row" rowspan="4">사업자 push </td>
                                               <td rowspan="4">3.1 서비스 알림</td>
-                                              <td class="textalign_left" >쿠폰</td>
-                                              <td class="boolean_coupon">사용</td>
+                                              <td class="textalign_left">쿠폰</td>
+                                              <td >
+                                                <p class="boolean_coupon ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td class="textalign_left">이벤트</td>
-                                             <td class="boolean_event">사용</td>
+                                              <td >
+                                                <p class="boolean_event ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td class="textalign_left">선물하기</td>
-                                            <td class="boolean_present">사용</td>
+                                              <td>
+                                                <p class="boolean_present ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td class="textalign_left">공지</td>
-                                              <td class="boolean_notice">사용</td>
+                                              <td>
+                                                <p class="boolean_notice ">사용</p>
+                                              </td>
                                             </tr>
                                             <!--nvod 채널-->
                                             <tr>
                                               <td scope="row" rowspan="4">NVOD채널</td>
                                               <td rowspan="4">3.2 채널 시청</td>
                                               <td class="textalign_left">채널 vod</td>
-                                             <td class="boolean_channelvod">사용</td>
+                                              <td>
+                                                <p class="boolean_channelvod ">사용</p>
+                                                <!--bollean-->
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td class="textalign_left">채널pip</td>
-                                             <td class="boolean_channelpip">사용</td>
+                                              <td>
+                                                <p class="boolean_channelpip ">사용</p>
+                                                <!--bollean-->
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td class="textalign_left">번호로 채널</td>
-                                              <td class="boolean_channelnumber">사용</td>
+                                              <td>
+                                                <p class="boolean_channelnumber ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td class="textalign_left">번호로 VOD</td>
-                                              <td class="boolean_numbervod">사용</td>
+                                              <td>
+                                                <p class="boolean_numbervod ">사용</p>
+                                              </td>
                                             </tr>
                                             <!--4방향트리거-->
                                             <tr>
                                               <td scope="row" rowspan="4">4방향트리거</td>
                                               <td rowspan="4">3.3 4방향</td>
                                               <td class="textalign_left">상키 vod</td>
-                                             <td class="boolean_upkey">사용</td>
+                                              <td>
+                                                <p class="boolean_upkey ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td class="textalign_left">하키</td>
-                                             <td class="boolean_downkey">사용</td>
+                                              <td>
+                                                <p class="boolean_downkey ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td class="textalign_left">좌키</td>
-                                             <td class="boolean_leftkey">사용</td>
+                                              <td>
+                                                <p class="boolean_leftkey ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td class="textalign_left">우키</td>
-                                             <td class="boolean_rightkey">사용</td>
+                                              <td>
+                                                <p class="boolean_rightkey ">사용</p>
+                                              </td>
                                             </tr>
                                             <!--vod간편결제-->
                                             <tr>
                                               <td scope="row" rowspan="3">vod간편결제</td>
                                               <td rowspan="3">3.4구매</td>
                                               <td class="textalign_left">리모컨 핫키</td>
-                                             <td class="boolean_hotkey">사용</td>
+                                              <td>
+                                                <p class="boolean_hotkey ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td class="textalign_left">안내설정</td>
-                                             <td class="boolean_setup">사용</td>
+                                              <td>
+                                                <p class="boolean_setup ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td class="textalign_left">탐색</td>
-                                             <td class="boolean_search">사용</td>
+                                              <td>
+                                                <p class="boolean_search ">사용</p>
+                                              </td>
                                             </tr>
                                             <!--복합결제-->
                                             <tr>
                                               <td scope="row">복합결제</td>
                                               <td>3.4 구매</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_complexbuying">사용</td>
+                                              <td>
+                                                <p class="boolean_complexbuying ">사용</p>
+                                              </td>
                                             </tr>
                                             <!--tv코인 충전-->
                                             <tr>
                                               <td scope="row">tv코인 충전</td>
                                               <td>3.4 구매</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_tvcoincharge">사용</td>
+                                              <td>
+                                                <p class="boolean_tvcoincharge ">사용</p>
+                                              </td>
                                             </tr>
                                             <!--cj one point-->
                                             <tr>
                                               <td scope="row" rowspan="2">CJ ONE POINT</td>
                                               <td rowspan="2">3.4 구매</td>
                                               <td class="textalign_left">나의 tv</td>
-                                             <td class="boolean_buyingcj_mytv">사용</td>
+                                              <td>
+                                                <p class="boolean_buyingcj_mytv ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td class="textalign_left">구매</td>
-                                             <td class="boolean_buyingcj">사용</td>
+                                              <td>
+                                                <p class="boolean_buyingcj ">사용</p>
+                                              </td>
                                             </tr>
                                             <!--h point-->
                                             <tr>
                                               <td scope="row" rowspan="2">H. point</td>
                                               <td rowspan="2">3.4 구매</td>
                                               <td class="textalign_left">나의 tv</td>
-                                             <td class="boolean_buyinghpoint_mytv">사용</td>
+                                              <td>
+                                                <p class="boolean_buyinghpoint_mytv ">사용</p>
+                                              </td>
 
                                             </tr>
                                             <tr>
                                               <td class="textalign_left">구매</td>
-                                             <td class="boolean_buyinghpoint">사용</td>
+                                              <td>
+                                                <p class="boolean_buyinghpoint ">사용</p>
+                                              </td>
                                             </tr>
                                             <!--넷플릭스-->
                                             <tr>
                                               <td scope="row" rowspan="3">넷플릭스</td>
                                               <td rowspan="3">3.5 홈</td>
                                               <td class="textalign_left">채널가이드</td>
-                                             <td class="boolean_netflex_channelguide">사용</td>
+                                              <td>
+                                                <p class="boolean_netflex_channelguide ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td class="textalign_left">홈</td>
-                                             <td class="boolean_netflex_home">사용</td>
+                                              <td>
+                                                <p class="boolean_netflex_home ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
-                                              <td class="textalign_left">앱&게임</td>
-                                             <td class="boolean_netflex_app">사용</td>
+                                              <td class="textalign_left">앱&amp;게임</td>
+                                              <td>
+                                                <p class="boolean_netflex_app ">사용</p>
+                                              </td>
                                             </tr>
 
                                             <!--삼성 앱스-->
@@ -551,15 +501,19 @@
                                               <td scope="row" rowspan="3">삼성 앱스</td>
                                               <td rowspan="3">3.5 홈</td>
                                               <td class="textalign_left">채널가이드</td>
-                                             <td class="boolean_samsungapps_channelguide">사용</td>
+                                              <td>
+                                                <p class="boolean_samsungapps_channelguide ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td class="textalign_left">홈</td>
-                                             <td class="boolean_samsungapps_home">사용</td>
+                                              <td class="boolean_samsungapps_home">사용</td>
                                             </tr>
                                             <tr>
-                                              <td class="textalign_left">앱&게임</td>
-                                             <td class="boolean_samsungapps_app">사용</td>
+                                              <td class="textalign_left">앱&amp;게임</td>
+                                              <td>
+                                                <p class="boolean_samsungapps_app ">사용</p>
+                                              </td>
                                             </tr>
 
                                             <!--본편미리보기-->
@@ -567,7 +521,9 @@
                                               <td scope="row">본편미리보기</td>
                                               <td>3.7 vod 상세화면</td>
                                               <td class="textalign_left">탐색</td>
-                                             <td class="boolean_preview">사용</td>
+                                              <td>
+                                                <p class="boolean_preview ">사용</p>
+                                              </td>
                                             </tr>
 
                                             <!--시리즈 연속보기-->
@@ -575,7 +531,9 @@
                                               <td scope="row">시리즈 연속보기</td>
                                               <td>3.8 vod 시청</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_series">사용</td>
+                                              <td>
+                                                <p class="boolean_series ">사용</p>
+                                              </td>
                                             </tr>
 
                                             <!--개인미디어-->
@@ -583,7 +541,9 @@
                                               <td scope="row">개인미디어</td>
                                               <td>3.11 나의 TV</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_personalmedia">사용</td>
+                                              <td>
+                                                <p class="boolean_personalmedia ">사용</p>
+                                              </td>
                                             </tr>
 
                                             <!--즐겨찾기-->
@@ -591,11 +551,15 @@
                                               <td scope="row" rowspan="2">즐겨찾기</td>
                                               <td rowspan="2">3.11 서비스 알림</td>
                                               <td class="textalign_left">리모컨 핫키</td>
-                                             <td class="boolean_bookmark_hotkey">사용</td>
+                                              <td>
+                                                <p class="boolean_bookmark_hotkey ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td class="textalign_left">나의tv</td>
-                                             <td class="boolean_bookmark_mytv">사용</td>
+                                              <td>
+                                                <p class="boolean_bookmark_mytv ">사용</p>
+                                              </td>
                                             </tr>
 
                                             <!--스마트 추천-->
@@ -603,11 +567,15 @@
                                               <td scope="row" rowspan="2">스마트 추천</td>
                                               <td rowspan="2">3.11 서비스 알림</td>
                                               <td class="textalign_left">ch.890</td>
-                                             <td class="boolean_smart_ch890">사용</td>
+                                              <td>
+                                                <p class="boolean_smart_ch890 ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td class="textalign_left">나의tv</td>
-                                             <td class="boolean_smart_mytv">사용</td>
+                                              <td>
+                                                <p class="boolean_smart_mytv ">사용</p>
+                                              </td>
                                             </tr>
 
                                             <!--tv앱-->
@@ -615,7 +583,9 @@
                                               <td scope="row">tv앱</td>
                                               <td>3.13 TV앱</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_tvapp">사용</td>
+                                              <td>
+                                                <p class="boolean_tvapp ">사용</p>
+                                              </td>
                                             </tr>
 
                                             <!--tts-->
@@ -623,7 +593,9 @@
                                               <td scope="row">tts</td>
                                               <td>3.14 안내설정</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_tts">사용</td>
+                                              <td>
+                                                <p class="boolean_tts ">사용</p>
+                                              </td>
                                             </tr>
 
                                             <!--cj hello smart app-->
@@ -631,12 +603,16 @@
                                               <td scope="row" rowspan="2">cj hello smart app</td>
                                               <td>3.14 안내설정</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_cjsmart_setup">사용</td>
+                                              <td>
+                                                <p class="boolean_cjsmart_setup ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td>3.8 vod 시청</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_cjsmart_vod">사용</td>
+                                              <td>
+                                                <p class="boolean_cjsmart_vod ">사용</p>
+                                              </td>
                                             </tr>
 
                                             <!--현대 hcn smart app-->
@@ -644,12 +620,16 @@
                                               <td scope="row" rowspan="2">현대 hcn smary app</td>
                                               <td>3.14 안내설정</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_hcn_setup">사용</td>
+                                              <td>
+                                                <p class="boolean_hcn_setup ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td>3.8 vod 시청</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_hcn_vod">사용</td>
+                                              <td>
+                                                <p class="boolean_hcn_vod ">사용</p>
+                                              </td>
                                             </tr>
 
                                             <!--키즈모드-->
@@ -657,7 +637,9 @@
                                               <td scope="row">키즈모드</td>
                                               <td>3.15 키즈모드</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_kidsmode">사용</td>
+                                              <td>
+                                                <p class="boolean_kidsmode ">사용</p>
+                                              </td>
                                             </tr>
 
                                             <!--쉬운 사용 모드-->
@@ -665,12 +647,16 @@
                                               <td scope="row" rowspan="2">쉬운 사용 모드</td>
                                               <td>3.27 쉬운 사용모드</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_easymode">사용</td>
+                                              <td>
+                                                <p class="boolean_easymode ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td>3.14 안내설정</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_easymode_setup">사용</td>
+                                              <td>
+                                                <p class="boolean_easymode_setup ">사용</p>
+                                              </td>
                                             </tr>
 
                                             <!--녹화 pvr-->
@@ -678,12 +664,16 @@
                                               <td scope="row" rowspan="2">녹화(pvr)</td>
                                               <td>3.16 녹화</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_pvr">사용</td>
+                                              <td>
+                                                <p class="boolean_pvr ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td>3.17 녹화 메뉴</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_pvr_menu">사용</td>
+                                              <td>
+                                                <p class="boolean_pvr_menu ">사용</p>
+                                              </td>
                                             </tr>
 
                                             <!--cug-->
@@ -691,20 +681,27 @@
                                               <td scope="row" rowspan="2">cug</td>
                                               <td>3.22 [Biz]HOME</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_cug_home">사용</td>
+                                              <td>
+                                                <p class="boolean_cug_home ">사용</p>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td>3.23 [Biz]Watching TV</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_cug_watchingtv">사용</td>
+                                              <td>
+                                                <p class="boolean_cug_watchingtv ">사용</p>
+                                              </td>
                                             </tr>
+
 
                                             <!--tv청구서-->
                                             <tr>
                                               <td scope="row">tv청구서</td>
                                               <td>3.11 나의 TV</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_tvbill">사용</td>
+                                              <td>
+                                                <p class="boolean_tvbill ">사용</p>
+                                              </td>
                                             </tr>
 
                                             <!--천지인 검색-->
@@ -712,11 +709,488 @@
                                               <td scope="row">천지인 검색</td>
                                               <td>3.10 검색</td>
                                               <td class="textalign_left"></td>
-                                             <td class="boolean_chunjiin_search">사용</td>
+                                              <td>
+                                                <p class="boolean_chunjiin_search ">사용</p>
+                                              </td>
+                                            </tr>
+                                            </tbody>
+                                          </table>
+
+                                        </div>
+
+                                        <!--ip관리-->
+                                        <div class="tab-pane" id="3b">
+                                          <table class="table so_manage">
+                                            <thead>
+                                            <tr>
+                                              <th scope="col" class="so_thead first_th">분류</th>
+                                              <th scope="col" class="so_thead second_th">목록</th>
+                                              <th scope="col" class="so_thead third_th">관리 값</th>
+                                              <th scope="col" class="so_thead fourth_th">수정시간</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <!--so관리table-->
+                                            <!--socode-->
+
+                                            <!--biz-->
+                                            <tr>
+                                              <td scope="row" rowspan="3">Biz</td>
+                                              <td>serverIpLiveBiz</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+                                            <tr>
+
+                                              <td>X-Client-App-Key</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+                                            <tr>
+
+                                              <td>flagBiz</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+                                            <tr>
+
+                                              <!--ui-->
+                                              <td scope="row" rowspan="2">Ui</td>
+                                              <td>serverIpLiveUi</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+                                            <tr>
+
+                                              <td>flagUi</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+
+                                            <!--data-->
+                                            <tr>
+                                              <td scope="row" rowspan="2">Data</td>
+                                              <td>serverIpLiveData</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+                                            <tr>
+
+                                              <td>flagData</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+
+                                            <!--search-->
+                                            <tr>
+                                              <td scope="row" rowspan="2">Search</td>
+                                              <td>serverIpLiveSearch</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+                                            <tr>
+
+                                              <td>flagData</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+                                            <!-- mgw -->
+                                            <tr>
+                                              <td scope="row" rowspan="2">MGW</td>
+                                              <td>serverIpMGW</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+                                            <tr>
+
+                                              <td>flagMgw</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+
+
+                                            </tbody>
+                                          </table>
+                                        </div>
+
+                                        <!--STB관리-->
+                                        <div class="tab-pane" id="4b">
+                                          <table class="table so_manage">
+                                            <thead>
+                                            <tr>
+                                              <th scope="col" class="so_thead first_th">분류</th>
+                                              <th scope="col" class="so_thead second_th">목록</th>
+                                              <th scope="col" class="so_thead third_th">관리 값</th>
+                                              <th scope="col" class="so_thead fourth_th">수정시간</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <!--stb관리-->
+                                            <tr>
+                                              <td scope="row" rowspan="9">STB</td>
+                                              <td>ibcModel</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+                                            <!--enerhymodel-->
+                                            <tr>
+                                              <td>energyModel
+                                              </td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+
+                                            <!--uhdstb-->
+                                            <tr>
+                                              <td>uhdStb
+                                              </td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                               </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+
+
+                                            <!--pvrStb-->
+                                            <tr>
+                                              <td>pvrStb</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                               </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+
+
+                                            <!--pvrRedStb-->
+                                            <tr>
+                                              <td>pvrRedStb</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                               </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+
+
+                                            <!--pvrSmartStb-->
+                                            <tr>
+                                              <td>pvrSmartStb</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                               </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+
+
+                                            <!--pvrOcapStb-->
+                                            <tr>
+                                              <td>pvrOcapStb</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                               </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+
+                                            <!--hyperStb-->
+                                            <tr>
+                                              <td>hyperStb </td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                               </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+
+                                            <!--animationSettopBox-->
+                                            <tr>
+                                              <td>animationSettopBox</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                               </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+
+
+                                            </tbody>
+                                          </table>
+                                        </div>
+
+                                        <!--채널관리-->
+                                        <div class="tab-pane" id="5b">
+                                          <table class="table so_manage">
+                                            <thead>
+                                            <tr>
+                                              <th scope="col" class="so_thead first_th">분류</th>
+                                              <th scope="col" class="so_thead second_th">목록</th>
+                                              <th scope="col" class="so_thead third_th">관리 값</th>
+                                              <th scope="col" class="so_thead fourth_th">수정시간</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <!--채널관리-->
+                                            <tr>
+                                              <td scope="row" rowspan="9">Channel</td>
+                                              <td>channelDeleteList</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+                                            <!--enerhymodel-->
+                                            <tr>
+                                              <td>channelJoinList</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+
+                                            </tbody>
+                                          </table>
+                                        </div>
+
+                                        <!--상품관리-->
+                                        <div class="tab-pane" id="6b">
+                                          <table class="table so_manage">
+                                            <thead>
+                                            <tr>
+                                              <th scope="col" class="so_thead first_th">분류</th>
+                                              <th scope="col" class="so_thead second_th">목록</th>
+                                              <th scope="col" class="so_thead third_th">관리 값</th>
+                                              <th scope="col" class="so_thead fourth_th">수정시간</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <!--상품관리-->
+                                            <tr>
+                                              <td scope="row" rowspan="9">Product</td>
+                                              <!--limitProductB2B-->
+                                              <td>limitProductB2B</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+                                            <!--offlineAgreementPrd-->
+                                            <tr>
+                                              <td>offlineAgreementPrd</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+
+                                            </tbody>
+                                          </table>
+                                        </div>
+
+                                        <!--카테고리 관리-->
+                                        <div class="tab-pane" id="7b">
+                                          <table class="table so_manage">
+                                            <thead>
+                                            <tr>
+                                              <th scope="col" class="so_thead first_th">분류</th>
+                                              <th scope="col" class="so_thead second_th">목록</th>
+                                              <th scope="col" class="so_thead third_th">관리 값</th>
+                                              <th scope="col" class="so_thead fourth_th">수정시간</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <!--상품관리-->
+                                            <tr>
+                                              <td scope="row" rowspan="4">BaseId</td>
+                                              <!--vodChannel-->
+                                              <td>vodChannel</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+                                            <!--audioChannel-->
+                                            <tr>
+                                              <td>audioChannel</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+                                            <!--appGoogle-->
+                                            <tr>
+                                              <td>appGoogle</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+                                            <!--appNetflix-->
+                                            <tr>
+                                              <td>appNetflix</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+
+                                            </tbody>
+                                          </table>
+                                        </div>
+
+                                        <!--텍스트 관리-->
+                                        <div class="tab-pane" id="8b">
+                                          <table class="table so_manage">
+                                            <thead>
+                                            <tr>
+                                              <th scope="col" class="so_thead first_th">분류</th>
+                                              <th scope="col" class="so_thead second_th">목록</th>
+                                              <th scope="col" class="so_thead third_th">관리 값</th>
+                                              <th scope="col" class="so_thead fourth_th">수정시간</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <!--text관리-->
+                                            <tr>
+                                              <td scope="row" rowspan="2">Text</td>
+                                              <!--sBiTxt-->
+                                              <td>sBiTxt</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
+                                            </tr>
+                                            <!--sBiTel-->
+                                            <tr>
+                                              <td>sBiTel</td>
+                                              <td class="textalign_left">
+                                                <p class="admin_value ">default (p_tag)</p>
+                                              </td>
+                                              <td class="fixed_time"><p>2018/08/09 00:00:00</p></td>
                                             </tr>
                                             </tbody>
                                           </table>
                                         </div>
+
+                                        <!--이미지관리-->
+                                        <div class="tab-pane " id="9b">
+                                          <table class="table img_manage">
+                                            <thead>
+                                            <tr>
+                                              <th scope="col" class="image_thead first_th">분류</th>
+                                              <th scope="col" class="image_thead second_th">목록</th>
+                                              <th scope="col" class="image_thead third_th">경로</th>
+                                              <th scope="col" class="image_thead fourth_th">미리보기</th>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+                                            <!--image-->
+                                            <tr>
+                                              <td scope="row" rowspan="3">IMAGE</td>
+                                              <td>serverImg</td>
+                                              <td class="textalign_left">
+                                                <p class="route_serverimg  ">
+                                                  이미지 경로 지정</p>
+                                              </td>
+                                              <!--위에서 지정된 경로는 아래 img태그 안의 src에도 저장되어  -->
+                                              <!--이미지를 미리 볼 수 있게 해줍니다.-->
+                                              <td><img class="preview_serverimg" src="#"
+                                                       onerror="this.src='../image/preview.png'" /></td>
+                                            </tr>
+                                            <tr>
+                                              <td>serverLogo</td>
+                                              <td class="textalign_left">
+                                                <p class="route_serverlogo  ">이미지 경로 지정</p>
+                                              </td>
+                                              <td><img class="preview_serverlogo" src="#"
+                                                       onerror="this.src='../image/preview.png'" /></td>
+                                            </tr>
+                                            <tr>
+                                              <td>serverThumbnail</td>
+                                              <td class="textalign_left">
+                                                <p class="route_serverlogo  ">이미지 경로 지정</p>
+                                              </td>
+                                              <td><img class="preview_serverthumbnail" src="#"
+                                                       onerror="this.src='../image/preview.png'" /></td>
+                                            </tr>
+
+                                            <!--srcpath-->
+                                            <tr>
+                                              <td scope="row">SrcPath</td>
+                                              <td>Srcpath</td>
+                                              <td class="textalign_left">
+                                                <p class="route_serverimg  ">
+                                                  이미지 경로 지정</p>
+                                                <!--최초p태그가 노출 되고 클릭시 input태그로 전환됩니다.-->
+                                                <!--input태그에서 경로 지정 input영역 이외에 브라우저 영역 클릭시 -->
+                                                <!--지정된 경로가 p태그에 text형태로 저장되며 다시 p태그가 노출되고 input태그-->
+                                                <!--는 사라집니다.-->
+                                              </td>
+                                              <!--위에서 지정된 경로는 아래 img태그 안의 src에도 저장되어  -->
+                                              <!--이미지를 미리 볼 수 있게 해줍니다.-->
+                                              <td><img class="preview_serverimg" src="#"
+                                                       onerror="this.src='../image/preview.png'" /></td>
+                                            </tr>
+
+                                            <!--defaultimage-->
+                                            <tr>
+                                              <td scope="row" rowspan="5">Default image</td>
+                                              <td>defaultPoster</td>
+                                              <td class="textalign_left">
+                                                <p class="route_serverlogo  ">이미지 경로 지정</p>
+                                              </td>
+                                              <td><img class="preview_defaultposter" src="#"
+                                                       onerror="this.src='../image/preview.png'" /></td>
+                                            </tr>
+                                            <tr>
+                                              <td>defaultPosterSquare</td>
+                                              <td class="textalign_left">
+                                                <p class="route_serverlogo  ">이미지 경로 지정</p>
+                                              </td>
+                                              <td><img class="preview_defaultpostersquareg" src="#"
+                                                       onerror="this.src='../image/preview.png'" /></td>
+                                            </tr>
+                                            <tr>
+                                              <td>defaultPromotSOn</td>
+                                              <td class="textalign_left">
+                                                <p class="route_serverlogo  ">이미지 경로 지정</p>
+                                              </td>
+                                              <td><img class="preview_defaultpromotson" src="#"
+                                                       onerror="this.src='../image/preview.png'" /></td>
+                                            </tr>
+                                            <tr>
+                                              <td>defaultThumbnail</td>
+                                              <td class="textalign_left">
+                                                <p class="route_serverlogo  ">이미지 경로 지정</p>
+                                              </td>
+                                              <td><img class="preview_defaultthumbnail" src="#"
+                                                       onerror="this.src='../image/preview.png'" /></td>
+                                            </tr>
+                                            <tr>
+                                              <td>defaultThumbnailPromotSOn</td>
+                                              <td class="textalign_left">
+                                                <p class="route_serverlogo  ">이미지 경로 지정</p>
+                                              </td>
+                                              <td><img class="preview_defaultthumbnailpromotson" src="#"
+                                                       onerror="this.src='../image/preview.png'" /></td>
+                                            </tr>
+                                            </tbody>
+                                          </table>
+                                        </div>
+
+
 
                                       </div>
                                     </div>
@@ -928,7 +1402,7 @@
                             </button>
                           </div>
                           <div class="modal-body">
-                            하위 요소들이 삭제될 수 있습니다. 계속 진행하시겠습니까3?
+                            하위 항목들이 함께 삭제됩니다. 계속 진행하시겠습니까?
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
