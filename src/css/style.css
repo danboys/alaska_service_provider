@@ -334,9 +334,7 @@ table.so_manage tr td p{
   line-height: 34px;
 }
 
-.tab_area .tab-content td p.editable_box[class*="boolean"]{
- padding-left: 30px;
-}
+
 /*탭영역*/
 
 .tab_area .tab-content td p{
