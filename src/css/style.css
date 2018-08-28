@@ -2,6 +2,10 @@ li{
   list-style: none;
 }
 
+html,body {
+  min-width: 1400px;
+}
+
 a{
   color:#212529;
 }
@@ -326,7 +330,8 @@ table.so_manage tr td p{
 
 .form_desc .col-10 p.editable_box {
   padding-right: 30px;
-  vertical-align: -webkit-baseline-middle;
+  line-height: 32px;
+
 }
 
 .tab_area .tab-content td p.editable_box{
@@ -356,16 +361,16 @@ table.so_manage tr td p{
 }
 
 
-/*반응형 */
+/*!*반응형 *!*/
 
-  .add_sp .col-sm-3{
-  -ms-flex: 0 0 80%;
-  flex: 0 0 80%;
-  max-width: 70%;
-  text-align: left;
-  }
-  .row_addso .input-group{
-    display: inline-flex;
-    vertical-align: top;
-  }
-}
+  /*.add_sp .col-sm-3{*/
+  /*-ms-flex: 0 0 80%;*/
+  /*flex: 0 0 80%;*/
+  /*max-width: 70%;*/
+  /*text-align: left;*/
+  /*}*/
+  /*.row_addso .input-group{*/
+    /*display: inline-flex;*/
+    /*vertical-align: top;*/
+  /*}*/
+/*}*/
