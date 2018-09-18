@@ -62,6 +62,10 @@ const User = () => import('@/views/users/User')
 const So = () => import('@/views/so/So')
 const Sp = () => import('@/views/so/Sp')
 
+// SoFire
+const SoFire = () => import('@/views/soFire/SoFire')
+const SpFire = () => import('@/views/soFire/SpFire')
+
 Vue.use(Router)
 
 export default new Router({
@@ -145,6 +149,25 @@ export default new Router({
               meta: { label: 'Sp 관리 목록'},
               name: 'Sp',
               component: Sp,
+            },
+          ]
+        },
+        {
+          path: 'soFire',
+          meta: { label: 'soFire'},
+          component: {
+            render (c) { return c('router-view') }
+          },
+          children: [
+            {
+              path: '',
+              component: SoFire,
+            },
+            {
+              path: ':key',
+              meta: { label: 'Sp 관리 목록 firebase'},
+              name: 'SpFire',
+              component: SpFire,
             },
           ]
         },
