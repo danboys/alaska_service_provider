@@ -24,19 +24,18 @@
                           <div>
                             <!--<div class="item_view"><a href="#" v-on:click="openEditor">{{dItem.value}} <i class="fa fa-edit fa-lg"></i></a></div>-->
                             <!--<div class="item_modify"><input type="text" :value="dItem.value" ref="value_input"><a href="#" v-on:click="closeEditor(dItem, $event)"><i class="fa fa-check-square-o fa-lg"></i></a></div>-->
-                            <ul class="item_view">
+                            <ul class="item_view item_array">
                               <li v-for="(eItem, eindex) in detailEntries(dItem.value)">
-                                <div v-if="eindex != detailEntries(dItem.value).length-1">{{eItem.key}} : {{eItem.value}}</div>
-                                <div v-else="eindex == detailEntries(dItem.value).length-1">
-                                  {{eItem.key}} : {{eItem.value}}<br>
+                                <div v-if="eindex != detailEntries(dItem.value).length-1"><a href="#" v-on:click="deleteItemPopup(dItem, eItem, $event)">{{eItem.key}} : {{eItem.value}} <i class="fa fa-window-close-o fa-lg"></i></a></div>
+                                <div v-else="eindex != detailEntries(dItem.value).length-1">
+                                  <a href="#" v-on:click="deleteItemPopup(dItem, eItem, $event)">{{eItem.key}} : {{eItem.value}} <i class="fa fa-window-close-o fa-lg"></i></a><br>
                                   <a href="#" v-on:click="openEditor">
-                                    .......
-                                    <i class="fa fa-edit fa-lg"></i>
+                                    {{eItem.key*1+1}} : <span class="add">추가 <i class="fa fa-plus-square-o fa-lg" style="display: inline-block;"></i></span>
                                   </a>
                                 </div>
                               </li>
                             </ul>
-                            <div class="item_modify"><input type="text" :value="dItem.value.toString()" ref="value_input"><a href="#" v-on:click="closeEditorArray(dItem, $event)"><i class="fa fa-check-square-o fa-lg"></i></a></div>
+                            <div class="item_modify"><input type="text" ref="value_input"><a href="#" v-on:click="closeEditorArray(dItem, $event)"><i class="fa fa-check-square-o fa-lg"></i></a></div>
                           </div>
                         </template>
                         <template v-else="Array.isArray(dItem.value)">
@@ -78,6 +77,12 @@
         </b-card>
       </b-col>
     </b-row>
+
+    <!--SO 삭제 모달-->
+    <b-modal title="Item 삭제" v-model="deleteItemPopupMode" @ok="deleteItem()">
+      "{{deleteData.targetValue}}" 항목을 삭제하시겠습니까?
+    </b-modal>
+
   </div>
 </template>
 
@@ -98,7 +103,12 @@ export default {
         {key: 'key'},
         {key: 'value'},
       ],
-      selected: undefined,
+      deleteData:{
+        orgValue : null,
+        targetValue : null,
+        event : null
+      },
+      deleteItemPopupMode : false
     }
   },
   methods: {
@@ -150,6 +160,47 @@ export default {
       console.log('openEditorLine ::');
       const targetEdit = $event.target.closest('li');
       targetEdit.classList.add("open");
+    },
+    deleteItemPopup: function (dItem, eItem, $event) {
+      console.log('deleteItem ::');
+      let orgValue = dItem.value;
+      const targetValue = eItem.value;
+
+      this.deleteData = {
+        orgValue : orgValue,
+        targetValue : targetValue,
+        event : $event
+      };
+
+      this.deleteItemPopupMode = true;
+    },
+    deleteItem: function () {
+      console.log('deleteItem ::');
+
+      const $event = this.deleteData.event;
+      let orgValue = this.deleteData.orgValue;
+      let targetValue = this.deleteData.targetValue;
+
+      orgValue.splice(orgValue.indexOf(targetValue),1);
+
+      /**
+       * update
+       */
+      console.log('update target ::');
+      // tab key
+      var tabKey = document.querySelector('.tabs .nav-link.active div').dataset.tabtitle;
+
+      // block key
+      var blockKey = $event.target.closest('.card').dataset.cardtitle;
+
+      firebase.database().ref('sp/'+this.$route.params.key+'/'+tabKey).update({
+        [blockKey]:orgValue
+      }).then((data)=>{
+        this.fetchFirebaseData();
+      });
+
+      this.deleteItemPopupMode = false;
+
     },
     closeEditor: function (dItem, $event) {
       const targetEdit = $event.target.closest('.edit');
@@ -204,32 +255,40 @@ export default {
       targetEdit.classList.remove("open");
     },
     closeEditorArray: function (dItem, $event) {
-      const targetEdit = $event.target.closest('.edit');
+      let targetEdit = $event.target.closest('.edit');
       const targetValue = targetEdit.getElementsByTagName('input')[0].value;
       let targetObj = null;
 
       if(targetValue.length){
-        let targetArray = targetValue.split(',');
-        targetObj = targetArray;
+        if(dItem.value.indexOf(targetValue) == -1){
+          dItem.value.push(targetValue);
+          let targetArray = dItem.value;
+          targetObj = targetArray;
+
+          console.log(targetObj);
+
+          /**
+           * update
+           */
+          console.log('update target ::');
+          // tab key
+          var tabKey = document.querySelector('.tabs .nav-link.active div').dataset.tabtitle;
+
+          // block key
+          var blockKey = $event.target.closest('.card').dataset.cardtitle;
+
+          firebase.database().ref('sp/'+this.$route.params.key+'/'+tabKey).update({
+            [blockKey]:targetObj
+          }).then((data)=>{
+            this.fetchFirebaseData();
+          });
+        }else{
+          alert('이미 존재하는 항목이므로 추가할 수 없습니다.');
+        }
       }
 
-      console.log(targetObj);
-
-      /**
-       * update
-       */
-      console.log('update target ::');
-      // tab key
-      var tabKey = document.querySelector('.tabs .nav-link.active div').dataset.tabtitle;
-
-      // block key
-      var blockKey = $event.target.closest('.card').dataset.cardtitle;
-
-      firebase.database().ref('sp/'+this.$route.params.key+'/'+tabKey).update({
-        [blockKey]:targetObj
-      }).then((data)=>{
-        this.fetchFirebaseData();
-      });
+      // input 값 초기화
+      targetEdit.getElementsByTagName('input')[0].value = "";
 
       /**
        * close
@@ -254,6 +313,12 @@ export default {
     margin: 0;
   }
   .open .item_view{
+    display: none;
+  }
+  .open .item_view.item_array{
+    display: block;
+  }
+  .open .item_view.item_array .add{
     display: none;
   }
   .item_modify{

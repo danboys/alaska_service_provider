@@ -10,7 +10,7 @@
       <b-navbar-nav class="d-md-down-none">
         <!--<b-nav-item class="px-3" to="/dashboard">Dashboard</b-nav-item>-->
         <!--<b-nav-item class="px-3" to="/users" exact>Users</b-nav-item>-->
-        <b-nav-item class="px-3" to="/so" exact>So</b-nav-item>
+        <!--<b-nav-item class="px-3" to="/so" exact>So</b-nav-item>-->
         <b-nav-item class="px-3" to="/soFire" exact>SoFire</b-nav-item>
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
