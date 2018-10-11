@@ -32,7 +32,7 @@ let SpInitialData = {
     },
     ip: {
       serverIpLiveBiz: "",
-      "X-Client-App-Key": "9CQQR9V1UHJF87PMRUOD6JSLG4",
+      "X-Client-App-Key": "",
       flagBiz: "",
       token: "",
 
@@ -59,19 +59,19 @@ let SpInitialData = {
       smartStb: []
     },
     channel : {
-      channelDeleteList : ["176", "192", "193", "345", "349", "163", "181", "108", "443"],
-      channelJoinList : ["103", "108", "163", "176", "181", "192", "193", "304", "317", "345", "349", "443", "492", "493"]
+      channelDeleteList : [],
+      channelJoinList : []
     },
     product : {
-      limitProductB2B : ["VDCTSSXX100000000387","VDCTSSXX100000000385","VDCTSSXX100000000381","VDCTSSXX100000000380","VDCTSSXX100000000376","VDCTSSXX100000000375","VDCTSSXX100000000372","VDCTSSXX100000000370","VDCTSSXX100000000369","BDNNSSNM100000000394"],
-      offlineAgreementPrd : ["CHNMSSXX100000002151","BDNNSSNM100000003572"]
+      limitProductB2B : [],
+      offlineAgreementPrd : []
     },
     category: {
       baseId: {
-        vodChannel: "1006339", //가상채널(vod채널)
-        audioChannel: "1006340", //오디오채널
-        appGoogle: "1013012", //  TV 앱 7열 타입
-        appNetflix: "1013013" // 넷플릭스 배너 타입
+        vodChannel: "", //가상채널(vod채널)
+        audioChannel: "", //오디오채널
+        appGoogle: "", //  TV 앱 7열 타입
+        appNetflix: "" // 넷플릭스 배너 타입
       }
     },
     text: {
@@ -88,12 +88,12 @@ let SpInitialData = {
         srcPath: ''
       },
       defaultImage: {
-        defaultPoster: 'img/common/default_img/img_default_poster_220_316.png',
-        defaultPosterSquare: 'img/common/default_img/img_default_poster_220_220.png',
+        defaultPoster: '',
+        defaultPosterSquare: '',
         defaultPromotion: '',
-        defaultThumbnail: 'img/common/default_img/img_default_thumbnail_355_200.png',
-        defaultThumbnailLine: 'img/common/default_img/img_default_thumbnail_line.png',
-        defaultChannelLogo: 'img/common/hello_logo.png'
+        defaultThumbnail: '',
+        defaultThumbnailLine: '',
+        defaultChannelLogo: ''
       }
     }
   }

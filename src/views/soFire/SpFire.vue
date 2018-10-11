@@ -14,56 +14,147 @@
                   {{ item.key }}
                 </div>
                 <template>
-                  <b-row v-for="i in Math.ceil(detailEntries(item.value).length/2)" :key="i">
-                    <b-col v-for="(dItem, index) in detailEntries(item.value).slice((i-1)*2, i*2)" v-bind:key="dItem.key">
-                      <b-card class="edit" :data-cardtitle="dItem.key">
-                        <div slot="header">
-                          {{ dItem.key }}
-                        </div>
-                        <template v-if="Array.isArray(dItem.value)">
-                          <div>
-                            <!--<div class="item_view"><a href="#" v-on:click="openEditor">{{dItem.value}} <i class="fa fa-edit fa-lg"></i></a></div>-->
-                            <!--<div class="item_modify"><input type="text" :value="dItem.value" ref="value_input"><a href="#" v-on:click="closeEditor(dItem, $event)"><i class="fa fa-check-square-o fa-lg"></i></a></div>-->
-                            <ul class="item_view item_array">
-                              <li v-for="(eItem, eindex) in detailEntries(dItem.value)">
-                                <div v-if="eindex != detailEntries(dItem.value).length-1"><a href="#" v-on:click="deleteItemPopup(dItem, eItem, $event)">{{eItem.key}} : {{eItem.value}} <i class="fa fa-window-close-o fa-lg"></i></a></div>
-                                <div v-else="eindex != detailEntries(dItem.value).length-1">
-                                  <a href="#" v-on:click="deleteItemPopup(dItem, eItem, $event)">{{eItem.key}} : {{eItem.value}} <i class="fa fa-window-close-o fa-lg"></i></a><br>
-                                  <a href="#" v-on:click="openEditor">
-                                    {{eItem.key*1+1}} : <span class="add">추가 <i class="fa fa-plus-square-o fa-lg" style="display: inline-block;"></i></span>
-                                  </a>
-                                </div>
-                              </li>
-                            </ul>
-                            <div class="item_modify"><input type="text" ref="value_input"><a href="#" v-on:click="closeEditorArray(dItem, $event)"><i class="fa fa-check-square-o fa-lg"></i></a></div>
+                  <div v-if="getColumn(item.key) == 2">
+                    <b-row v-for="i in Math.ceil(detailEntries(item.value).length/2)" :key="i">
+                      <b-col v-for="(dItem, index) in detailEntries(item.value).slice((i-1)*2, i*2)" v-bind:key="dItem.key">
+                        <b-card class="edit" :data-cardtitle="dItem.key">
+                          <div slot="header">
+                            {{ dItem.key }}
+                            <div class="description">- {{getDesc(item.key, dItem.key)}}</div>
                           </div>
-                        </template>
-                        <template v-else="Array.isArray(dItem.value)">
-                          <template v-if="typeof dItem.value === 'object'">
-                            <div>
-                              <ul class="">
-                                <li v-for="(eItem, eindex) in detailEntries(dItem.value)">
-                                  {{eItem.key}} :
-                                  <a href="#" class="item_view" v-on:click="openEditorLine">
-                                    <span v-if="eItem.value !== ''">{{eItem.value}}</span>
-                                    <span v-else="eItem.value !== ''">값을 입력하세요.</span>
-                                    <i class="fa fa-edit fa-lg"></i>
-                                  </a>
-                                  <div class="item_modify"><input type="text" :value="eItem.value" ref="value_input"><a href="#" v-on:click="closeEditorLine(eItem, $event)"><i class="fa fa-check-square-o fa-lg"></i></a></div>
+                          <!--<template v-if="Array.isArray(dItem.value)">-->
+                          <template v-if="isDataType(item.key) == 'array'">
+                            <!--값이 없을때-->
+                            <div v-if="dItem.value == ''">
+                              <ul class="item_view item_array">
+                                <li>
+                                  <div>
+                                    <a href="#" v-on:click="openEditor">
+                                      0 : <span class="add">추가 <i class="fa fa-plus-square-o fa-lg" style="display: inline-block;"></i></span>
+                                    </a>
+                                  </div>
                                 </li>
                               </ul>
+                              <div class="item_modify">
+                                <input type="text" ref="value_input">
+                                <a href="#" v-on:click="closeEditorArray(dItem, $event)"><i class="fa fa-check-square-o fa-lg"></i></a>
+                              </div>
+                            </div>
+                            <!--값이 있을때-->
+                            <div v-else="dItem.value == ''">
+                              <ul class="item_view item_array">
+                                <li v-for="(eItem, eindex) in detailEntries(dItem.value)">
+                                  <div v-if="eindex != detailEntries(dItem.value).length-1"><a href="#" v-on:click="deleteItemPopup(dItem, eItem, $event)">{{eItem.key}} : {{eItem.value}} <i class="fa fa-window-close-o fa-lg"></i></a></div>
+                                  <div v-else="eindex != detailEntries(dItem.value).length-1">
+                                    <a href="#" v-on:click="deleteItemPopup(dItem, eItem, $event)">{{eItem.key}} : {{eItem.value}} <i class="fa fa-window-close-o fa-lg"></i></a><br>
+                                    <a href="#" v-on:click="openEditor">
+                                      {{eItem.key*1+1}} : <span class="add">추가 <i class="fa fa-plus-square-o fa-lg" style="display: inline-block;"></i></span>
+                                    </a>
+                                  </div>
+                                </li>
+                              </ul>
+                              <div class="item_modify"><input type="text" ref="value_input"><a href="#" v-on:click="closeEditorArray(dItem, $event)"><i class="fa fa-check-square-o fa-lg"></i></a></div>
                             </div>
                           </template>
-                          <template v-else="typeof dItem.value === 'object'">
-                            <div class="item_view"><a href="#" v-on:click="openEditor">
-                              <span v-if="dItem.value !== ''">{{dItem.value}}</span>
-                              <span v-else="dItem.value !== ''">값을 입력하세요. </span> <i class="fa fa-edit fa-lg"></i></a></div>
-                            <div class="item_modify"><input type="text" :value="dItem.value" ref="value_input"><a href="#" v-on:click="closeEditor(dItem, $event)"><i class="fa fa-check-square-o fa-lg"></i></a></div>
+                          <template v-else="isDataType(item.key) == 'array'">
+                            <template v-if="typeof dItem.value === 'object'">
+                              <div>
+                                <ul class="">
+                                  <li v-for="(eItem, eindex) in detailEntries(dItem.value)">
+                                    {{eItem.key}} :
+                                    <a href="#" class="item_view" v-on:click="openEditorLine">
+                                      <span v-if="eItem.value !== ''">{{eItem.value}}</span>
+                                      <span v-else="eItem.value !== ''">값을 입력하세요.</span>
+                                      <i class="fa fa-edit fa-lg ml-md-1"></i>
+                                    </a>
+                                    <div class="item_modify">
+                                      <div class="description">{{getDesc(item.key, dItem.key, eItem.key)}}</div>
+                                      <input type="text" :value="eItem.value" ref="value_input">
+                                      <a href="#" v-on:click="closeEditorLine(eItem, $event)"><i class="fa fa-check-square-o fa-lg"></i></a>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </template>
+                            <template v-else="typeof dItem.value === 'object'">
+                              <div class="item_view"><a href="#" v-on:click="openEditor">
+                                <span v-if="dItem.value !== ''">{{dItem.value}}</span>
+                                <span v-else="dItem.value !== ''">값을 입력하세요. </span> <i class="fa fa-edit fa-lg ml-md-1"></i></a></div>
+                              <div class="item_modify"><input type="text" :value="dItem.value" ref="value_input"><a href="#" v-on:click="closeEditor(dItem, $event)"><i class="fa fa-check-square-o fa-lg"></i></a></div>
+                            </template>
                           </template>
-                        </template>
-                      </b-card>
-                    </b-col>
-                  </b-row>
+                        </b-card>
+                      </b-col>
+                    </b-row>
+                  </div>
+                  <div v-else-if="getColumn(item.key) == 4">
+                    <b-row v-for="i in Math.ceil(detailEntries(item.value).length/4)" :key="i">
+                      <b-col v-for="(dItem, index) in detailEntries(item.value).slice((i-1)*4, i*4)" v-bind:key="dItem.key">
+                        <b-card class="edit" :data-cardtitle="dItem.key">
+                          <div slot="header">
+                            {{ dItem.key }}
+                            <div class="description">- {{getDesc(item.key, dItem.key)}}</div>
+                          </div>
+                          <!--todo isArray 대신 spConfig의 contentType별로 분기 예정-->
+                          <!--<template v-if="Array.isArray(dItem.value)">-->
+                          <template v-if="isDataType(item.key) == 'array'">
+                            <!--값이 없을때-->
+                            <div v-if="dItem.value == ''">
+                              <ul class="item_view item_array">
+                                <li>
+                                  <div>
+                                    <a href="#" v-on:click="openEditor">
+                                      0 : <span class="add">추가 <i class="fa fa-plus-square-o fa-lg" style="display: inline-block;"></i></span>
+                                    </a>
+                                  </div>
+                                </li>
+                              </ul>
+                              <div class="item_modify"><input type="text" ref="value_input"><a href="#" v-on:click="closeEditorArray(dItem, $event)"><i class="fa fa-check-square-o fa-lg"></i></a></div>
+                            </div>
+                            <!--값이 있을때-->
+                            <div v-else="dItem.value == ''">
+                              <ul class="item_view item_array">
+                                <li v-for="(eItem, eindex) in detailEntries(dItem.value)">
+                                  <div v-if="eindex != detailEntries(dItem.value).length-1"><a href="#" v-on:click="deleteItemPopup(dItem, eItem, $event)">{{eItem.key}} : {{eItem.value}} <i class="fa fa-window-close-o fa-lg"></i></a></div>
+                                  <div v-else="eindex != detailEntries(dItem.value).length-1">
+                                    <a href="#" v-on:click="deleteItemPopup(dItem, eItem, $event)">{{eItem.key}} : {{eItem.value}} <i class="fa fa-window-close-o fa-lg"></i></a><br>
+                                    <a href="#" v-on:click="openEditor">
+                                      {{eItem.key*1+1}} : <span class="add">추가 <i class="fa fa-plus-square-o fa-lg" style="display: inline-block;"></i></span>
+                                    </a>
+                                  </div>
+                                </li>
+                              </ul>
+                              <div class="item_modify"><input type="text" ref="value_input"><a href="#" v-on:click="closeEditorArray(dItem, $event)"><i class="fa fa-check-square-o fa-lg"></i></a></div>
+                            </div>
+                          </template>
+                          <template v-else="isDataType(item.key) == 'array'">
+                            <template v-if="typeof dItem.value === 'object'">
+                              <div>
+                                <ul class="">
+                                  <li v-for="(eItem, eindex) in detailEntries(dItem.value)">
+                                    {{eItem.key}} :
+                                    <a href="#" class="item_view" v-on:click="openEditorLine">
+                                      <span v-if="eItem.value !== ''">{{eItem.value}}</span>
+                                      <span v-else="eItem.value !== ''">값을 입력하세요.</span>
+                                      <i class="fa fa-edit fa-lg ml-md-1"></i>
+                                    </a>
+                                    <div class="item_modify"><input type="text" :value="eItem.value" ref="value_input"><a href="#" v-on:click="closeEditorLine(eItem, $event)"><i class="fa fa-check-square-o fa-lg"></i></a></div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </template>
+                            <template v-else="typeof dItem.value === 'object'">
+                              <div class="item_view"><a href="#" v-on:click="openEditor">
+                                <span v-if="dItem.value !== ''">{{dItem.value}}</span>
+                                <span v-else="dItem.value !== ''">값을 입력하세요. </span> <i class="fa fa-edit fa-lg ml-md-1"></i></a></div>
+                              <div class="item_modify"><input type="text" :value="dItem.value" ref="value_input"><a href="#" v-on:click="closeEditor(dItem, $event)"><i class="fa fa-check-square-o fa-lg"></i></a></div>
+                            </template>
+                          </template>
+                        </b-card>
+                      </b-col>
+                    </b-row>
+                  </div>
+
                 </template>
               </b-tab>
             </template>
@@ -87,6 +178,8 @@
 </template>
 
 <script>
+import SpConfigData from './SpConfig'
+
 export default {
   name: 'SpFire',
   props: {
@@ -140,6 +233,40 @@ export default {
       // console.log(obj);
       return Object.entries(obj).map(([key, value]) => {return {key: key, value: value}});
     },
+    isDataType: function (key) {
+      // console.log("isDataType == ");
+      // console.log("key : " + key);
+      // console.log("contentType : " + SpConfigData[key].contentType);
+      return SpConfigData[key].contentType
+    },
+    getColumn: function (key) {
+      // console.log("isDataType == ");
+      // console.log("key : " + key);
+      // console.log("contentType : " + SpConfigData[key].contentType);
+      return SpConfigData[key].column
+    },
+    getDesc: function (tabKey, blockKey, objectKey) {
+      // console.log(SpConfigData[tabKey]);
+      // console.log(SpConfigData[tabKey].content);
+      // console.log(SpConfigData[tabKey].content[blockKey]);
+      // console.log(SpConfigData[tabKey].content[blockKey].description);
+      if(objectKey){
+        // console.log("objectKey :: "+objectKey);
+        // console.log(SpConfigData[tabKey].content[blockKey][objectKey]);
+      }
+
+      let desc = '';
+      if(objectKey){
+        if(SpConfigData[tabKey].content[blockKey][objectKey]){
+          desc = SpConfigData[tabKey].content[blockKey][objectKey].description;
+        }
+      } else if(SpConfigData[tabKey].content[blockKey].description){
+        desc = SpConfigData[tabKey].content[blockKey].description;
+      }
+
+      return desc;
+
+    },
     goBack() {
       this.$router.go(-1)
       // this.$router.replace({path: '/users'})
@@ -151,16 +278,28 @@ export default {
       myWindow.document.write(oData);
       myWindow.focus();
     },
+    /**
+     * open
+     */
     openEditor: function ($event) {
       console.log('openEditor ::');
       const targetEdit = $event.target.closest('.edit');
+      if(document.querySelector('.edit.open') !== null){
+        document.querySelector('.edit.open').classList.remove('open');
+      }
       targetEdit.classList.add("open");
     },
     openEditorLine: function ($event) {
       console.log('openEditorLine ::');
       const targetEdit = $event.target.closest('li');
+      if(document.querySelector('.edit li.open') !== null) {
+        document.querySelector('.edit li.open').classList.remove('open');
+      }
       targetEdit.classList.add("open");
     },
+    /**
+     * delete
+     */
     deleteItemPopup: function (dItem, eItem, $event) {
       console.log('deleteItem ::');
       let orgValue = dItem.value;
@@ -183,6 +322,10 @@ export default {
 
       orgValue.splice(orgValue.indexOf(targetValue),1);
 
+      if(!orgValue.length){
+        orgValue = "";
+      }
+
       /**
        * update
        */
@@ -202,6 +345,9 @@ export default {
       this.deleteItemPopupMode = false;
 
     },
+    /**
+     * close
+     */
     closeEditor: function (dItem, $event) {
       const targetEdit = $event.target.closest('.edit');
       const targetValue = targetEdit.getElementsByTagName('input')[0].value;
@@ -261,7 +407,12 @@ export default {
 
       if(targetValue.length){
         if(dItem.value.indexOf(targetValue) == -1){
+          if(dItem.value == ''){
+            dItem.value = [];
+          }
+
           dItem.value.push(targetValue);
+
           let targetArray = dItem.value;
           targetObj = targetArray;
 
@@ -295,7 +446,8 @@ export default {
        */
       console.log('closeEditor ::');
       targetEdit.classList.remove("open");
-    }
+    },
+
   },
   created(){
     this.fetchFirebaseData();
@@ -329,6 +481,7 @@ export default {
   }
   .item_modify input{
     width: 100%;
+    max-width: 500px;
   }
   .item_view i{
     display: none;
@@ -341,6 +494,10 @@ export default {
   }
   .item_modify a{
     margin-left: 4px;
+  }
+  .edit .description {
+    font-size: 12px;
+    color: #666;
   }
 
 
