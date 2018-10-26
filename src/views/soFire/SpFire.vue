@@ -22,6 +22,7 @@
                             {{ dItem.key }}
                             <div class="description">- {{getDesc(item.key, dItem.key)}}</div>
                           </div>
+                          <!--todo isArray 대신 spConfig의 contentType별로 분기 예정-->
                           <!--<template v-if="Array.isArray(dItem.value)">-->
                           <template v-if="isDataType(item.key) == 'array'">
                             <!--값이 없을때-->
@@ -143,6 +144,10 @@
                                 </ul>
                               </div>
                             </template>
+                            <template v-else-if="typeof dItem.value === 'boolean'">
+                              <c-switch class="mx-1" color="primary" checked label variant="pill" v-model="dItem.value"/>
+                              <a href="#" v-on:click="updateBoolean(dItem, $event)">UPDATE</a>
+                            </template>
                             <template v-else="typeof dItem.value === 'object'">
                               <div class="item_view"><a href="#" v-on:click="openEditor">
                                 <span v-if="dItem.value !== ''">{{dItem.value}}</span>
@@ -179,9 +184,13 @@
 
 <script>
 import SpConfigData from './SpConfig'
+import { Switch as cSwitch } from '@coreui/vue'
 
 export default {
   name: 'SpFire',
+  components: {
+    cSwitch
+  },
   props: {
     caption: {
       type: String,
@@ -201,25 +210,36 @@ export default {
         targetValue : null,
         event : null
       },
-      deleteItemPopupMode : false
+      deleteItemPopupMode : false,
+
+      // switch
+      labelIcon: {
+        dataOn: '\u2713',
+        dataOff: '\u2715'
+      },
+      labelTxt: {
+        dataOn: 'yes',
+        dataOff: 'no'
+      }
     }
   },
   methods: {
     fetchFirebaseData(){
+      let self = this;
       console.log('fetchFirebaseData !!!!');
       firebase.database().ref('sp').once('value')
         .then((data)=>{
           /**
            * route key oData object
            */
-          this.oData = data.val()[this.$route.params.key]
+          self.oData = data.val()[self.$route.params.key]
           // console.log('this.oData ::');
           // console.log(this.oData);
 
           /**
            * route key items array
            */
-          this.items = Object.entries(this.oData).map(([key, value]) => {return {key: key, value: value}});
+          self.items = Object.entries(self.oData).map(([key, value]) => {return {key: key, value: value}});
           // console.log('this.items ::');
           // console.log(this.items);
 
@@ -314,6 +334,7 @@ export default {
       this.deleteItemPopupMode = true;
     },
     deleteItem: function () {
+      let self = this;
       console.log('deleteItem ::');
 
       const $event = this.deleteData.event;
@@ -336,19 +357,48 @@ export default {
       // block key
       var blockKey = $event.target.closest('.card').dataset.cardtitle;
 
-      firebase.database().ref('sp/'+this.$route.params.key+'/'+tabKey).update({
+      firebase.database().ref('sp/'+self.$route.params.key+'/'+tabKey).update({
         [blockKey]:orgValue
       }).then((data)=>{
-        this.fetchFirebaseData();
+        self.fetchFirebaseData();
       });
 
       this.deleteItemPopupMode = false;
 
     },
     /**
-     * close
+     * close & update
      */
+    updateBoolean: function (dItem, $event) {
+      let self = this;
+      const targetEdit = $event.target.closest('.edit');
+      // const targetValue = dItem.value;
+      const targetValue = targetEdit.querySelector('input').checked;
+
+      console.log('targetValue :: ' + targetValue);
+      // if(targetValue == 'true'){
+      //
+      // }
+
+      /**
+       * update
+       */
+      console.log('update target ::');
+      // tab key
+      var tabKey = document.querySelector('.tabs .nav-link.active div').dataset.tabtitle;
+
+      // block key
+      var blockKey = dItem.key;
+
+      firebase.database().ref('sp/'+self.$route.params.key+'/'+tabKey).update({
+        [blockKey]:targetValue
+      }).then((data)=>{
+        self.fetchFirebaseData();
+      });
+
+    },
     closeEditor: function (dItem, $event) {
+      let self = this;
       const targetEdit = $event.target.closest('.edit');
       const targetValue = targetEdit.getElementsByTagName('input')[0].value;
 
@@ -362,10 +412,10 @@ export default {
       // block key
       var blockKey = $event.target.closest('.card').dataset.cardtitle;
 
-      firebase.database().ref('sp/'+this.$route.params.key+'/'+tabKey).update({
+      firebase.database().ref('sp/'+self.$route.params.key+'/'+tabKey).update({
         [blockKey]:targetValue
       }).then((data)=>{
-        this.fetchFirebaseData();
+        self.fetchFirebaseData();
       });
 
       /**
@@ -375,6 +425,7 @@ export default {
       targetEdit.classList.remove("open");
     },
     closeEditorLine: function (eItem, $event) {
+      let self = this;
       const targetEdit = $event.target.closest('li');
       const targetValue = targetEdit.getElementsByTagName('input')[0].value;
 
@@ -388,10 +439,10 @@ export default {
       // block key
       var blockKey = $event.target.closest('.card').dataset.cardtitle;
 
-      firebase.database().ref('sp/'+this.$route.params.key+'/'+tabKey+'/'+blockKey).update({
+      firebase.database().ref('sp/'+self.$route.params.key+'/'+tabKey+'/'+blockKey).update({
         [eItem.key]:targetValue
       }).then((data)=>{
-        this.fetchFirebaseData();
+        self.fetchFirebaseData();
       });
 
       /**
@@ -401,6 +452,7 @@ export default {
       targetEdit.classList.remove("open");
     },
     closeEditorArray: function (dItem, $event) {
+      let self = this;
       let targetEdit = $event.target.closest('.edit');
       const targetValue = targetEdit.getElementsByTagName('input')[0].value;
       let targetObj = null;
@@ -428,10 +480,10 @@ export default {
           // block key
           var blockKey = $event.target.closest('.card').dataset.cardtitle;
 
-          firebase.database().ref('sp/'+this.$route.params.key+'/'+tabKey).update({
+          firebase.database().ref('sp/'+self.$route.params.key+'/'+tabKey).update({
             [blockKey]:targetObj
           }).then((data)=>{
-            this.fetchFirebaseData();
+            self.fetchFirebaseData();
           });
         }else{
           alert('이미 존재하는 항목이므로 추가할 수 없습니다.');
@@ -449,6 +501,26 @@ export default {
     },
 
   },
+  computed: {
+    toggleSwitches: {
+      get:function() {
+        console.log('get!!!');
+        // console.log(dItem);
+        console.log(this);
+      },
+      set:function(newValue) {
+        console.log('set!!!');
+        console.log(newValue);
+      },
+    }
+  },
+  // watch: {
+  //   toggleSwitches: function (val, oldVal) {
+  //     console.log('val ::' + val);
+  //     console.log('oldVal ::' + oldVal);
+  //   }
+  //
+  // },
   created(){
     this.fetchFirebaseData();
   }
