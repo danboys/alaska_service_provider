@@ -572,5 +572,13 @@ export default {
     color: #666;
   }
 
+  .mx-1.switch {
+    float: left;
+  }
+  .mx-1 + a {
+    display: block;
+    float: right;
+    padding-top: 3px;
+  }
 
 </style>
