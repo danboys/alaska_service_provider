@@ -20,52 +20,53 @@
 
 
     <style>
-        .sidebar {
-          -moz-box-shadow: 5px 0 6px 5px rgba(0,0,0,0.1);;
-          box-shadow: 5px 0 6px 5px rgba(0,0,0,0.1);
-          border-right: none;
-        }
-        .sidebar.sidebar_home {
-          z-index: 10000;
-        }
+          /*사이드바 공통*/
+          .sidebar {
+            -moz-box-shadow: 5px 0 6px 5px rgba(0,0,0,0.1);;
+            box-shadow: 5px 0 6px 5px rgba(0,0,0,0.1);
+            border-right: none;
+          }
 
-        .icon_w{
+          /*사이드바 뎁스 -공통*/
+          .sidebar_depth {
+            left: 199px;
+            z-index: 9000;
+          }
+
+          .sidebar_depth .nav {
+            padding-left: 6px;
+            padding-right: 6px;
+          }
+
+          .sidebar-minimized .sidebar_depth .nav {
+            padding-left: 0;
+            padding-right: 0;
+          }
+
+          /*사이드바 뎁스2 메뉴*/
+          .sidebar_depth2 {
+            left: 199px;
+            background: #3d4f64;
+          }
+
+          /*아이콘 컬러*/
+          .icon_w{
             color: #ffffff !important;
-        }
+          }
+          .icon_y {
+            color: #ff7061 !important;
+          }
 
-        .icon_y {
-          color: #ff7061 !important;
-        }
-        .sidebar_home .nav{
-            margin-bottom: -300px;
-        }
-
-        .sidebar-minimized .btn.btn_m {
-          width: 100%;
-        }
-
-        .sidebar_depth {
-          left: 199px;
-          background: #3d4f64;
-          z-index: 9000;
-        }
-
-        .sidebar_depth2 {
-          left: 199px;
-        }
-
-        .nav-title-m {
-          padding: 10px 0;
-        }
-
-        .nav-title-minimized {
-          display: none;
-        }
-
-        .sidebar-minimized .sidebar .nav-title-minimized {
-          display: block;
-        }
-
+          /*사이드 나비 타이틀*/
+          .nav-title-m {
+            padding: 10px 0;
+          }
+          .nav-title-minimized {
+            display: none;
+          }
+          .sidebar-minimized .sidebar .nav-title-minimized {
+            display: block;
+          }
     </style>
 </head>
 <body class="sidebar-fixed sidebar-lg-show pace-done">
@@ -95,42 +96,7 @@
     }
   }
 </script>
-   <!-- <div class="sidebar sidebar_home">&lt;!&ndash;사이드 메뉴가 home일 경우 sidebar_home class를 붙입니다.&ndash;&gt;
-      <nav class="sidebar-nav ps ps&#45;&#45;active-y">
-        <div class="nav-logo">
-            <a href="#" class="btn-block icon_domfam"></a>
-        </div>
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="nav-icon cui-list icon_w"></i>
-              <span>SPM</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="nav-icon cui-settings icon_w"></i>
-              <span>SPM Setting</span>
-            </a>
-          </li>
-        </ul>
-          <a class="nav-link btn btn_m btn-block btn-secondary" href="">
-            <i class="nav-icon cui-user icon_w"></i>로그인
-          </a>
-          <a class="nav-link btn btn_m btn-block btn-secondary" href="">
-            <i class="nav-icon cui-cloud-download icon_w"></i>내보내기
-          </a>
-          <a class="nav-link btn btn_m btn-block btn-secondary" href="">
-            <i class="nav-icon cui-cloud-upload icon_w"></i>가져오기
-          </a>
-          <a class="nav-link btn btn_m btn-block btn-secondary" href="">
-            <i class="nav-icon cui-basket-loaded icon_w"></i>저장하기
-          </a>
-      </nav>
 
-      &lt;!&ndash;접기/펼치기 버튼&ndash;&gt;
-      <button class="sidebar-minimizer brand-minimizer" type="button"></button>
-    </div>-->
     <div class="sidebar sidebar_depth sidebar_depth2"><!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다. sidebar_depth2는 댑스2, sidebar_depth3는 댑스3로 left 조절-->
       <nav class="sidebar-nav ps ps--active-y">
         <ul class="nav">
