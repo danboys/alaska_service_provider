@@ -21,8 +21,6 @@ let config = {
 let firebaseApp = Firebase.initializeApp(config);
 
 window.firebase=Firebase;
-// todo
-// cssVars()
 
 Vue.use(BootstrapVue)
 

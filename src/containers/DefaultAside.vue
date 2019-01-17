@@ -1,251 +1,267 @@
 <template>
-  <!--<b-tabs>-->
-    <!--<b-tab>-->
-      <!--<template slot="title">-->
-        <!--<i class='icon-list'></i>-->
-      <!--</template>-->
-      <!--<b-list-group class="list-group-accent">-->
-        <!--<b-list-group-item class="list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small">-->
-          <!--Today-->
-        <!--</b-list-group-item>-->
-        <!--<b-list-group-item href="#" class="list-group-item-accent-warning list-group-item-divider">-->
-          <!--<div class="avatar float-right">-->
-            <!--<img class="img-avatar" src="img/avatars/7.jpg" alt="admin@bootstrapmaster.com">-->
-          <!--</div>-->
-          <!--<div>Meeting with-->
-            <!--<strong>Lucas</strong>-->
-          <!--</div>-->
-          <!--<small class="text-muted mr-3">-->
-            <!--<i class="icon-calendar"></i>&nbsp;&nbsp;1 - 3pm-->
-          <!--</small>-->
-          <!--<small class="text-muted">-->
-            <!--<i class="icon-location-pin"></i>&nbsp;&nbsp;Palo Alto, CA-->
-          <!--</small>-->
-        <!--</b-list-group-item>-->
-        <!--<b-list-group-item href="#" class="list-group-item-accent-info">-->
-          <!--<div class="avatar float-right">-->
-            <!--<img class="img-avatar" src="img/avatars/4.jpg" alt="admin@bootstrapmaster.com">-->
-          <!--</div>-->
-          <!--<div>Skype with <strong>Megan</strong>-->
-          <!--</div>-->
-          <!--<small class="text-muted mr-3"><i class="icon-calendar"></i>&nbsp;&nbsp;4 - 5pm</small>-->
-          <!--<small class="text-muted"><i class="icon-social-skype"></i>&nbsp;&nbsp;On-line</small>-->
-        <!--</b-list-group-item>-->
-        <!--<hr class="transparent mx-3 my-0">-->
-        <!--<b-list-group-item class="list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small">-->
-          <!--Tomorrow-->
-        <!--</b-list-group-item>-->
-        <!--<b-list-group-item href="#" class="list-group-item-accent-danger list-group-item-divider">-->
-          <!--<div>New UI Project - <strong>deadline</strong>-->
-          <!--</div>-->
-          <!--<small class="text-muted mr-3"><i class="icon-calendar"></i>&nbsp;&nbsp;10 - 11pm</small>-->
-          <!--<small class="text-muted"><i class="icon-home"></i>&nbsp;&nbsp;creativeLabs HQ</small>-->
-          <!--<div class="avatars-stack mt-2">-->
-            <!--<div class="avatar avatar-xs">-->
-              <!--<img class="img-avatar" src="img/avatars/2.jpg" alt="admin@bootstrapmaster.com">-->
-            <!--</div>-->
-            <!--<div class="avatar avatar-xs">-->
-              <!--<img class="img-avatar" src="img/avatars/3.jpg" alt="admin@bootstrapmaster.com">-->
-            <!--</div>-->
-            <!--<div class="avatar avatar-xs">-->
-              <!--<img class="img-avatar" src="img/avatars/4.jpg" alt="admin@bootstrapmaster.com">-->
-            <!--</div>-->
-            <!--<div class="avatar avatar-xs">-->
-              <!--<img class="img-avatar" src="img/avatars/5.jpg" alt="admin@bootstrapmaster.com">-->
-            <!--</div>-->
-            <!--<div class="avatar avatar-xs">-->
-              <!--<img class="img-avatar" src="img/avatars/6.jpg" alt="admin@bootstrapmaster.com">-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</b-list-group-item>-->
-        <!--<b-list-group-item href="#" class="list-group-item-accent-success list-group-item-divider">-->
-          <!--<div><strong>#10 Startups.Garden</strong> Meetup</div>-->
-          <!--<small class="text-muted mr-3"><i class="icon-calendar"></i>&nbsp; 1 - 3pm</small>-->
-          <!--<small class="text-muted"><i class="icon-location-pin"></i>&nbsp; Palo Alto, CA</small>-->
-        <!--</b-list-group-item>-->
-        <!--<b-list-group-item href="#" class="list-group-item-accent-primary list-group-item-divider">-->
-          <!--<div><strong>Team meeting</strong></div>-->
-          <!--<small class="text-muted mr-3"><i class="icon-calendar"></i>&nbsp; 4 - 6pm</small>-->
-          <!--<small class="text-muted"><i class="icon-home"></i>&nbsp; creativeLabs HQ</small>-->
-          <!--<div class="avatars-stack mt-2">-->
-            <!--<div class="avatar avatar-xs">-->
-              <!--<img src="img/avatars/2.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">-->
-            <!--</div>-->
-            <!--<div class="avatar avatar-xs">-->
-              <!--<img src="img/avatars/3.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">-->
-            <!--</div>-->
-            <!--<div class="avatar avatar-xs">-->
-              <!--<img src="img/avatars/4.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">-->
-            <!--</div>-->
-            <!--<div class="avatar avatar-xs">-->
-              <!--<img src="img/avatars/5.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">-->
-            <!--</div>-->
-            <!--<div class="avatar avatar-xs">-->
-              <!--<img src="img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">-->
-            <!--</div>-->
-            <!--<div class="avatar avatar-xs">-->
-              <!--<img src="img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">-->
-            <!--</div>-->
-            <!--<div class="avatar avatar-xs">-->
-              <!--<img src="img/avatars/8.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</b-list-group-item>-->
-      <!--</b-list-group>-->
-    <!--</b-tab>-->
-    <!--<b-tab>-->
-      <!--<template slot="title">-->
-        <!--<i class='icon-speech'></i>-->
-      <!--</template>-->
-      <!--<div class="p-3">-->
-        <!--<div class="message">-->
-          <!--<div class="py-3 pb-5 mr-3 float-left">-->
-            <!--<div class="avatar">-->
-              <!--<img src="img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">-->
-              <!--<b-badge variant="success" class="avatar-status"></b-badge>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div>-->
-            <!--<small class="text-muted">Lukasz Holeczek</small>-->
-            <!--<small class="text-muted float-right mt-1">1:52 PM</small>-->
-          <!--</div>-->
-          <!--<div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>-->
-          <!--<small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>-->
-        <!--</div>-->
-        <!--<hr>-->
-        <!--<div class="message">-->
-          <!--<div class="py-3 pb-5 mr-3 float-left">-->
-            <!--<div class="avatar">-->
-              <!--<img src="img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">-->
-              <!--<b-badge variant="danger" class="avatar-status"></b-badge>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div>-->
-            <!--<small class="text-muted">Lukasz Holeczek</small>-->
-            <!--<small class="text-muted float-right mt-1">1:52 PM</small>-->
-          <!--</div>-->
-          <!--<div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>-->
-          <!--<small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>-->
-        <!--</div>-->
-        <!--<hr>-->
-        <!--<div class="message">-->
-          <!--<div class="py-3 pb-5 mr-3 float-left">-->
-            <!--<div class="avatar">-->
-              <!--<img src="img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">-->
-              <!--<b-badge variant="info" class="avatar-status"></b-badge>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div>-->
-            <!--<small class="text-muted">Lukasz Holeczek</small>-->
-            <!--<small class="text-muted float-right mt-1">1:52 PM</small>-->
-          <!--</div>-->
-          <!--<div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>-->
-          <!--<small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>-->
-        <!--</div>-->
-        <!--<hr>-->
-        <!--<div class="message">-->
-          <!--<div class="py-3 pb-5 mr-3 float-left">-->
-            <!--<div class="avatar">-->
-              <!--<img src="img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">-->
-              <!--<b-badge variant="warning" class="avatar-status"></b-badge>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div>-->
-            <!--<small class="text-muted">Lukasz Holeczek</small>-->
-            <!--<small class="text-muted float-right mt-1">1:52 PM</small>-->
-          <!--</div>-->
-          <!--<div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>-->
-          <!--<small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>-->
-        <!--</div>-->
-        <!--<hr>-->
-        <!--<div class="message">-->
-          <!--<div class="py-3 pb-5 mr-3 float-left">-->
-            <!--<div class="avatar">-->
-              <!--<img src="img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">-->
-              <!--<b-badge variant="dark" class="avatar-status"></b-badge>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div>-->
-            <!--<small class="text-muted">Lukasz Holeczek</small>-->
-            <!--<small class="text-muted float-right mt-1">1:52 PM</small>-->
-          <!--</div>-->
-          <!--<div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>-->
-          <!--<small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</b-tab>-->
-    <!--<b-tab>-->
-      <!--<template slot="title">-->
-        <!--<i class='icon-settings'></i>-->
-      <!--</template>-->
-      <!--<div class="p-3">-->
-        <!--<h6>Settings</h6>-->
-        <!--<div class="aside-options">-->
-          <!--<div class="clearfix mt-4">-->
-            <!--<small><b>Option 1</b></small>-->
-            <!--<c-switch color="success" label variant="pill" size="sm" class="float-right" checked />-->
-          <!--</div>-->
-          <!--<div>-->
-            <!--<small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="aside-options">-->
-          <!--<div class="clearfix mt-3">-->
-            <!--<small><b>Option 2</b></small>-->
-            <!--<c-switch color="success" label variant="pill" size="sm" class="float-right" />-->
-          <!--</div>-->
-          <!--<div>-->
-            <!--<small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="aside-options">-->
-          <!--<div class="clearfix mt-3">-->
-            <!--<small><b>Option 3</b></small>-->
-            <!--<c-switch color="success" label variant="pill" size="sm" class="float-right" disabled defaultChecked/>-->
-          <!--</div>-->
-          <!--<div>-->
-            <!--<small class="text-muted">Disabled option.</small>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="aside-options">-->
-          <!--<div class="clearfix mt-3">-->
-            <!--<small><b>Option 4</b></small>-->
-            <!--<c-switch color="success" label variant="pill" size="sm" class="float-right" checked />-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<hr>-->
-        <!--<h6>System Utilization</h6>-->
-        <!--<div class="text-uppercase mb-1 mt-4">-->
-          <!--<small><b>CPU Usage</b></small>-->
-        <!--</div>-->
-        <!--<b-progress height={} class="progress-xs" variant="info" :value="25"></b-progress>-->
-        <!--<small class="text-muted">348 Processes. 1/4 Cores.</small>-->
-        <!--<div class="text-uppercase mb-1 mt-2">-->
-          <!--<small><b>Memory Usage</b></small>-->
-        <!--</div>-->
-        <!--<b-progress height={} class="progress-xs" variant="warning" :value="70"></b-progress>-->
-        <!--<small class="text-muted">11444GB/16384MB</small>-->
-        <!--<div class="text-uppercase mb-1 mt-2">-->
-          <!--<small><b>SSD 1 Usage</b></small>-->
-        <!--</div>-->
-        <!--<b-progress height={} class="progress-xs" variant="danger" :value="95"></b-progress>-->
-        <!--<small class="text-muted">243GB/256GB</small>-->
-        <!--<div class="text-uppercase mb-1 mt-2">-->
-          <!--<small><b>SSD 2 Usage</b></small>-->
-        <!--</div>-->
-        <!--<b-progress height={} class="progress-xs" variant="success" :value="10"></b-progress>-->
-        <!--<small class="text-muted">25GB/256GB</small>-->
-      <!--</div>-->
-    <!--</b-tab>-->
-  <!--</b-tabs>-->
+  <div class="sidebar-fixed sidebar-lg-show pace-done">
+    <div class="sidebar sidebar_home"><!--사이드 메뉴가 home일 경우 sidebar_home class를 붙입니다.-->
+      <nav class="sidebar-nav ps ps--active-y">
+        <div class="nav-logo">
+          <a href="#" class="btn-block icon_domfam"></a>
+        </div>
+        <ul class="nav">
+          <li class="nav-item">
+            <a href="#" class="nav-link" @click="expandMenu()">
+              <i class="nav-icon cui-list icon_w"></i>
+              <span>SPM</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" @click="expandMenu()">
+              <i class="nav-icon cui-settings icon_w"></i>
+              <span>SPM Setting</span>
+            </a>
+          </li>
+        </ul>
+        <a class="nav-link btn btn_m btn-block btn-secondary" href="">
+          <i class="nav-icon cui-user icon_w"></i>로그인
+        </a>
+        <a class="nav-link btn btn_m btn-block btn-secondary" href="">
+          <i class="nav-icon cui-cloud-download icon_w"></i>내보내기
+        </a>
+        <a class="nav-link btn btn_m btn-block btn-secondary" href="">
+          <i class="nav-icon cui-cloud-upload icon_w"></i>가져오기
+        </a>
+        <a class="nav-link btn btn_m btn-block btn-secondary" href="">
+          <i class="nav-icon cui-basket-loaded icon_w"></i>저장하기
+        </a>
+      </nav>
+
+      <!--접기/펼치기 버튼-->
+      <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+    </div>
+    <div class="sidebar sidebar_depth sidebar_depth2"><!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다. sidebar_depth2는 댑스2, sidebar_depth3는 댑스3로 left 조절-->
+      <nav class="sidebar-nav ps ps--active-y">
+        <ul class="nav">
+          <li class="nav-item text-center nav-title-m">
+              <span class="nav-title">
+                  <span class="font-sm">SP 목록</span>
+                  <i class="nav-icon"></i>
+              </span>
+            <span class="nav-title-minimized ">
+                <span class="font-sm">SP</span>
+              </span>
+          </li>
+          <li class="nav-item click_folder">
+            <a class="nav-link" href="#">
+              <i class="nav-icon icon_w fas fa-folder"></i><!--클릭될 경우  icon_w 와 fa-folder가 icon-y와 fa-folder-open로 교체 -->
+              <span>CJH TESTbed</span>
+            </a>
+          </li>
+          <li class="nav-item click_folder">
+            <a class="nav-link" href="#">
+              <i class="nav-icon icon_w fas fa-folder"></i>
+              <span>CJH LIVEbed</span>
+            </a>
+          </li>
+          <li class="nav-item click_folder">
+            <a class="nav-link" href="#">
+              <i class="nav-icon icon_w fas fa-folder"></i>
+              <span>일이삼사오육칠팔구십일이삼사오육칠팔구십</span>
+            </a>
+          </li>
+          <li class="nav-item click_folder">
+            <a class="nav-link" href="#">
+              <i class="nav-icon icon_w fas fa-folder"></i>
+              <span>bbbbbbbbbb</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!--접기/펼치기 버튼-->
+      <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+    </div>
+    <div class="sidebar sidebar_depth sidebar_depth3"><!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다. sidebar_depth2는 댑스2, sidebar_depth3는 댑스3로 left 조절-->
+      <nav class="sidebar-nav ps ps--active-y">
+        <ul class="nav">
+          <li class="nav-item text-center nav-title-m">
+              <span class="nav-title">
+                  <span class="font-sm">서비스 목록</span>
+                  <i class="nav-icon"></i>
+              </span>
+            <span class="nav-title-minimized">
+                <span class="font-sm">SV</span>
+              </span>
+          </li>
+          <li class="nav-item click_folder click_service">
+            <a class="nav-link" href="#">
+              <i class="nav-icon icon_w fas fa-clipboard-list"></i><!--클릭될 경우  icon_w 가 icon-y로 교체 -->
+              <span>SO</span>
+            </a>
+          </li>
+          <li class="nav-item click_folder click_service">
+            <a class="nav-link" href="#">
+              <i class="nav-icon icon_w fas fa-clipboard-list"></i>
+              <span>IP</span>
+            </a>
+          </li>
+          <li class="nav-item click_folder click_service">
+            <a class="nav-link" href="#">
+              <i class="nav-icon icon_w fas fa-clipboard-list"></i>
+              <span>Channel</span>
+            </a>
+          </li>
+          <li class="nav-item click_folder click_service">
+            <a class="nav-link" href="#">
+              <i class="nav-icon icon_w fas fa-clipboard-list"></i>
+              <span>Category</span>
+            </a>
+          </li>
+          <li class="nav-item click_folder click_service">
+            <a class="nav-link" href="#">
+              <i class="nav-icon icon_w fas fa-clipboard-list"></i>
+              <span>Image</span>
+            </a>
+          </li>
+          <li class="nav-item click_folder click_service">
+            <a class="nav-link" href="#">
+              <i class="nav-icon icon_w fas fa-clipboard-list"></i>
+              <span>123</span>
+            </a>
+          </li>
+          <li class="nav-item click_folder click_service">
+            <a class="nav-link" href="#">
+              <i class="nav-icon icon_w fas fa-clipboard-list"></i>
+              <span>987654</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!--접기/펼치기 버튼-->
+      <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+    </div>
+  </div>
 </template>
 
 <script>
-import { Switch as cSwitch } from '@coreui/vue'
 export default {
   name: 'DefaultAside',
   components: {
-    cSwitch
+  },
+  data:() => {
+    return {
+    }
+  },
+  methods:{
+    expandMenu: function () {
+      console.log('메뉴 펼치기');
+      /**
+       * depth 펼치기
+       */
+    },
+    fordingMenu: function () {
+      console.log('메뉴 접기');
+      /**
+       * depth 접기
+       */
+    },
   }
 }
 </script>
+
+<style scoped>
+
+  .sidebar.sidebar_home {
+    background: #3A4158;
+  }
+
+  .sidebar .nav-logo .icon_domfam {
+    padding: .75rem 1rem;
+    font-size: 80%;
+    font-weight: 700;
+    color: #e4e7ea;
+    text-transform: uppercase;
+  }
+
+  .icon_w{
+    color: #ffffff !important;
+  }
+
+  .sidebar_home .nav{
+    margin-bottom: -300px;
+  }
+
+  .btn.btn_m {
+    width: 80%;
+    padding: 0.52rem 1rem ;
+    margin: .5rem auto 0;
+  }
+
+  .sidebar-minimized .btn.btn_m {
+    width: 100%;
+  }
+
+  .nav-logo {
+    height: 60px;
+  }
+  .icon_domfam {
+    width: 100%;
+    height: 100%;
+    background: url(../assets/static/img/logo_domfam.png) no-repeat center;
+  }
+
+  .sidebar-minimized .icon_domfam {
+    background-image: url(../assets/static/img/logo_domfam_mrk.png);
+  }
+
+  /*사이드바 뎁스 -공통*/
+  .sidebar_depth {
+    left: 199px;
+    z-index: 9000;
+  }
+
+  .sidebar_depth .nav {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  .sidebar-minimized .sidebar_depth .nav {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /*사이드바 뎁스2 메뉴*/
+  .sidebar_depth2 {
+    left: 199px;
+    background: #3d4f64;
+  }
+
+  /*사이드바 뎁스3 메뉴*/
+  .sidebar_depth3 {
+    left: 398px;
+    background: #50647c;
+    z-index: 8000;
+  }
+
+  /*아이콘 컬러*/
+  .icon_w{
+    color: #ffffff !important;
+  }
+  .icon_y {
+    color: #ff7061 !important;
+  }
+
+  /*사이드 나비 타이틀*/
+  .nav-title-m {
+    padding: 10px 0;
+  }
+  .nav-title-minimized {
+    display: none;
+  }
+  .sidebar-minimized .sidebar .nav-title-minimized {
+    display: block;
+  }
+
+  /*길이 줄이기*/
+  .sidebar-minimized .sidebar_home {
+    width: 50px;
+  }
+</style>

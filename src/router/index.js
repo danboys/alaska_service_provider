@@ -66,6 +66,9 @@ const Sp = () => import('@/views/so/Sp')
 const SoFire = () => import('@/views/soFire/SoFire')
 const SpFire = () => import('@/views/soFire/SpFire')
 
+// ProviderMenu
+const ProviderMenu = () => import('@/views/provider/ProviderMenu');
+
 Vue.use(Router)
 
 export default new Router({
@@ -75,7 +78,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/soFire',
+      redirect: '/dashboard',
       name: 'Home',
       component: DefaultContainer,
       children: [
@@ -83,6 +86,10 @@ export default new Router({
           path: 'dashboard',
           name: 'Dashboard',
           component: Dashboard
+        },{
+          path: 'sp',
+          name: 'ProviderMenu',
+          component: ProviderMenu
         },
         {
           path: 'theme',
