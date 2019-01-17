@@ -5,8 +5,10 @@
     <title>SPM</title>
     <link rel="stylesheet" type="text/html" href="../css/coreui.min.css">
     <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" type="text/html"  href="../../node_modules/@coreui/coreui/scss/_sidebar.scss">
     <link rel="stylesheet" type="text/html"  href="../../node_modules/@coreui/icons/css/coreui-icons.css">
+    <link rel="stylesheet" type="text/html"  href="../../node_modules/@coreui/icons/scss/_core.scss">
     <link rel="stylesheet" type="text/html" href="../../node_modules/@coreui/coreui/scss/mixins/_sidebar-width.scss">
     <link rel="stylesheet" type="text/html" href="../../node_modules/@coreui/coreui/scss/_layout.scss">
     <link rel="stylesheet" type="text/css"  href="../css/style.css">
@@ -19,50 +21,27 @@
 
     <style>
         .sidebar {
-          box-shadow: 5px 0 6px 5px rgba(0,0,0,0.3);
+          -moz-box-shadow: 5px 0 6px 5px rgba(0,0,0,0.1);;
+          box-shadow: 5px 0 6px 5px rgba(0,0,0,0.1);
+          border-right: none;
         }
         .sidebar.sidebar_home {
           z-index: 10000;
         }
-        .sidebar .nav-link.btn-primary {
-            background-color: #20a8d8;
-        }
-        .sidebar .nav-logo .icon_domfam {
-          padding: .75rem 1rem;
-          font-size: 80%;
-          font-weight: 700;
-          color: #e4e7ea;
-          text-transform: uppercase;
-        }
+
         .icon_w{
             color: #ffffff !important;
+        }
+
+        .icon_y {
+          color: #ff7061 !important;
         }
         .sidebar_home .nav{
             margin-bottom: -300px;
         }
 
-        .btn.btn_m {
-            width: 80%;
-            padding: 0.62rem 1rem ;
-            margin: .5rem auto 0;
-        }
-
         .sidebar-minimized .btn.btn_m {
           width: 100%;
-        }
-
-        .nav-logo {
-          height: 60px;
-        }
-        .icon_domfam {
-          width: 100%;
-          height: 100%;
-          background: url(../img/logo_domfam.png) no-repeat center;
-        }
-
-        .sidebar-minimized .icon_domfam {
-          background-image: url(../img/logo_domfam_mrk.png);
-
         }
 
         .sidebar_depth {
@@ -71,15 +50,39 @@
           z-index: 9000;
         }
 
-      /*test*/
+        .sidebar_depth2 {
+          left: 199px;
+        }
 
+        .nav-title-m {
+          padding: 10px 0;
+        }
+
+        .nav-title-minimized {
+          display: none;
+        }
+
+        .sidebar-minimized .sidebar .nav-title-minimized {
+          display: block;
+        }
 
     </style>
 </head>
 <body class="sidebar-fixed sidebar-lg-show pace-done">
-
-    <div class="sidebar sidebar_home"><!--사이드 메뉴가 home일 경우 sidebar_home class를 붙입니다.-->
-      <nav class="sidebar-nav ps ps--active-y">
+<!--<script>
+  window.onload = function(){
+    var cFolder = document.getElementsByClassName('click_folder')[1];
+    console.log(cFolder);
+    cFolder.addEventListener('click', function(e){
+      console.log(e.target);
+      console.log(e.target.querySelector(".nav-icon"));
+      e.target.querySelector(".nav-icon").classList.add("fa-folder-open icon-y");
+      e.target.querySelector(".nav-icon").classList.remove("fa-folder icon-w");// add/remove/toggle
+    })
+  }
+</script>-->
+   <!-- <div class="sidebar sidebar_home">&lt;!&ndash;사이드 메뉴가 home일 경우 sidebar_home class를 붙입니다.&ndash;&gt;
+      <nav class="sidebar-nav ps ps&#45;&#45;active-y">
         <div class="nav-logo">
             <a href="#" class="btn-block icon_domfam"></a>
         </div>
@@ -97,59 +100,60 @@
             </a>
           </li>
         </ul>
-          <a class="nav-link btn btn_m btn-block btn-primary" href="">
+          <a class="nav-link btn btn_m btn-block btn-secondary" href="">
             <i class="nav-icon cui-user icon_w"></i>로그인
           </a>
-          <a class="nav-link btn btn_m btn-block btn-primary" href="">
+          <a class="nav-link btn btn_m btn-block btn-secondary" href="">
             <i class="nav-icon cui-cloud-download icon_w"></i>내보내기
           </a>
-          <a class="nav-link btn btn_m btn-block btn-primary" href="">
+          <a class="nav-link btn btn_m btn-block btn-secondary" href="">
             <i class="nav-icon cui-cloud-upload icon_w"></i>가져오기
           </a>
-          <a class="nav-link btn btn_m btn-block btn-primary" href="">
+          <a class="nav-link btn btn_m btn-block btn-secondary" href="">
             <i class="nav-icon cui-basket-loaded icon_w"></i>저장하기
           </a>
       </nav>
 
-      <!--접기/펼치기 버튼-->
+      &lt;!&ndash;접기/펼치기 버튼&ndash;&gt;
       <button class="sidebar-minimizer brand-minimizer" type="button"></button>
-    </div>
-    <div class="sidebar sidebar_depth"><!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다.-->
+    </div>-->
+    <div class="sidebar sidebar_depth sidebar_depth2"><!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다. sidebar_depth2는 댑스2, sidebar_depth3는 댑스3로 left 조절-->
       <nav class="sidebar-nav ps ps--active-y">
-        <div class="nav-title">
-          <!--<a href="#" class="btn-block icon_domfam"></a>-->
-        </div>
         <ul class="nav">
-          <li class="nav-item">
-            <span>
-            <i class="nav-icon icon_w"></i>
-            <span>SP 목록</span></span>
+          <li class="nav-item text-center nav-title-m">
+              <span class="nav-title">
+                  <span class="font-sm">SP 목록</span>
+                  <i class="nav-icon"></i>
+              </span>
+              <span class="nav-title-minimized ">
+                <span class="font-sm">SP</span>
+              </span>
           </li>
-          <li class="nav-item">
+          <li class="nav-item click_folder">
             <a class="nav-link" href="#">
-              <i class="nav-icon cui-list icon_w"></i>
-              <span>SPM</span>
+              <i class="nav-icon icon_w fas fa-folder"></i><!--클릭될 경우  icon_w 와 fa-folder가 icon-y와 fa-folder-open로 교체 -->
+              <span>CJH TESTbed</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item click_folder">
             <a class="nav-link" href="#">
-              <i class="nav-icon cui-settings icon_w"></i>
-              <span>SPM Setting</span>
+              <i class="nav-icon icon_w fas fa-folder"></i>
+              <span>CJH LIVEbed</span>
+            </a>
+          </li>
+          <li class="nav-item click_folder">
+            <a class="nav-link" href="#">
+              <i class="nav-icon icon_w fas fa-folder"></i>
+              <span>일이삼사오육칠팔구십일이삼사오육칠팔구십</span>
+            </a>
+          </li>
+          <li class="nav-item click_folder">
+            <a class="nav-link" href="#">
+              <i class="nav-icon icon_w fas fa-folder"></i>
+              <span>bbbbbbbbbb</span>
             </a>
           </li>
         </ul>
-        <a class="nav-link btn btn_m btn-block btn-primary" href="">
-          <i class="nav-icon cui-user icon_w"></i>로그인
-        </a>
-        <a class="nav-link btn btn_m btn-block btn-primary" href="">
-          <i class="nav-icon cui-cloud-download icon_w"></i>내보내기
-        </a>
-        <a class="nav-link btn btn_m btn-block btn-primary" href="">
-          <i class="nav-icon cui-cloud-upload icon_w"></i>가져오기
-        </a>
-        <a class="nav-link btn btn_m btn-block btn-primary" href="">
-          <i class="nav-icon cui-basket-loaded icon_w"></i>저장하기
-        </a>
       </nav>
 
       <!--접기/펼치기 버튼-->
