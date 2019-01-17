@@ -69,18 +69,32 @@
     </style>
 </head>
 <body class="sidebar-fixed sidebar-lg-show pace-done">
-<!--<script>
+<script>
   window.onload = function(){
-    var cFolder = document.getElementsByClassName('click_folder')[1];
-    console.log(cFolder);
-    cFolder.addEventListener('click', function(e){
-      console.log(e.target);
-      console.log(e.target.querySelector(".nav-icon"));
-      e.target.querySelector(".nav-icon").classList.add("fa-folder-open icon-y");
-      e.target.querySelector(".nav-icon").classList.remove("fa-folder icon-w");// add/remove/toggle
-    })
+
+    var cFolder = document.getElementsByClassName("click_folder");
+    var toggleFolder = function (e) {
+      // console.log(e);
+      var clickedItem = e.currentTarget;
+      var targetClassList = clickedItem.getElementsByClassName("nav-icon")[0].classList;
+      if(targetClassList.contains('fa-folder')){
+        // 닫힌 상태
+        targetClassList.add("fa-folder-open", "icon-y");
+        targetClassList.remove("fa-folder", "icon-w");
+      }else{
+        // 열린 상태
+        targetClassList.remove("fa-folder-open", "icon-y");
+        targetClassList.add("fa-folder", "icon-w");
+      }
+
+    };
+
+    for (var i = 0; i < cFolder.length; i++) {
+      var childElement = cFolder[i];
+      childElement.addEventListener('click', toggleFolder, false);
+    }
   }
-</script>-->
+</script>
    <!-- <div class="sidebar sidebar_home">&lt;!&ndash;사이드 메뉴가 home일 경우 sidebar_home class를 붙입니다.&ndash;&gt;
       <nav class="sidebar-nav ps ps&#45;&#45;active-y">
         <div class="nav-logo">
