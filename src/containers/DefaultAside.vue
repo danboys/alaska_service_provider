@@ -8,13 +8,13 @@
           </div>
           <ul class="nav">
             <li class="nav-item">
-              <a href="#" class="nav-link" @click="showDepth2()">
+              <a href="#" class="nav-link">
                 <i class="nav-icon cui-list icon_w"></i>
                 <span>SPM</span>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" @click="showDepth2()">
+              <a href="#" class="nav-link">
                 <i class="nav-icon cui-settings icon_w"></i>
                 <span>SPM Setting</span>
               </a>
@@ -35,7 +35,7 @@
         </nav>
 
         <!--접기/펼치기 버튼-->
-        <button class="sidebar-minimizer brand-minimizer _dep01" type="button" @click="sidebarToggle"></button>
+        <button class="sidebar-minimizer brand-minimizer _dep01" type="button" @click="sidebarToggle(1)"></button>
       </div>
     </div>
     <div class="sidebar-fixed sidebar-lg-show _dep02" v-bind:class="{ 'sidebar-minimized': mode.minimizedDep02 }">
@@ -53,26 +53,26 @@
               </span>
             </li>
             <li class="nav-item click_folder">
-              <a class="nav-link" href="#" @click="showDepth3()">
+              <a class="nav-link" href="#">
                 <i class="nav-icon icon_w fa fa-folder"></i>
                 <!--클릭될 경우  icon_w 와 fa-folder가 icon-y와 fa-folder-open로 교체 -->
                 <span>CJH TESTbed</span>
               </a>
             </li>
             <li class="nav-item click_folder">
-              <a class="nav-link" href="#" @click="showDepth3()">
+              <a class="nav-link" href="#">
                 <i class="nav-icon icon_w fa fa-folder"></i>
                 <span>CJH LIVEbed</span>
               </a>
             </li>
             <li class="nav-item click_folder">
-              <a class="nav-link" href="#" @click="showDepth3()">
+              <a class="nav-link" href="#">
                 <i class="nav-icon icon_w fa fa-folder"></i>
                 <span>일이삼사오육칠팔구십일이삼사오육칠팔구십</span>
               </a>
             </li>
             <li class="nav-item click_folder">
-              <a class="nav-link" href="#" @click="showDepth3()">
+              <a class="nav-link" href="#">
                 <i class="nav-icon icon_w fa fa-folder"></i>
                 <span>bbbbbbbbbb</span>
               </a>
@@ -81,7 +81,7 @@
         </nav>
 
         <!--접기/펼치기 버튼-->
-        <button class="sidebar-minimizer brand-minimizer _dep02" type="button" @click="sidebarToggle"></button>
+        <button class="sidebar-minimizer brand-minimizer _dep02" type="button" @click="sidebarToggle(2)"></button>
       </div>
     </div>
     <div class="sidebar-fixed sidebar-lg-show _dep03" v-bind:class="{ 'sidebar-minimized': mode.minimizedDep03 }">
@@ -132,7 +132,7 @@
         </nav>
 
         <!--접기/펼치기 버튼-->
-        <button class="sidebar-minimizer brand-minimizer _dep03" type="button" @click="sidebarToggle"></button>
+        <button class="sidebar-minimizer brand-minimizer _dep03" type="button" @click="sidebarToggle(3)"></button>
       </div>
     </div>
   </div>
@@ -157,6 +157,19 @@ export default {
   },
   methods:{
     /**
+     * sidebar minimized
+     */
+    sidebarToggle : function (num) {
+      console.log('sidebarToggle ::');
+      console.log(num);
+
+      // 기본 body에 들어가던 sidebar-minimized 제거
+      document.body.classList.toggle('sidebar-minimized');
+
+      this.mode['minimizedDep0'+num] = !this.mode['minimizedDep0'+num]
+    },
+
+    /**
      * router link 설정
      */
     detailLink (serviceName) {
@@ -168,28 +181,6 @@ export default {
         }
       };
       return routeInfo
-    },
-    showDepth2 () {
-      this.mode.isDepth2 = true;
-    },
-    showDepth3 () {
-      this.mode.isDepth3 = true;
-    },
-    sidebarToggle : function (e) {
-      console.log('sidebarToggle ::')
-      e.preventDefault();
-
-      // 기본 body에 들어가던 sidebar-minimized 제거
-      document.body.classList.toggle('sidebar-minimized');
-
-      if(e.currentTarget.classList.contains('_dep01')){
-        this.mode.minimizedDep01 = !this.mode.minimizedDep01;
-      }else if(e.currentTarget.classList.contains('_dep02')){
-        this.mode.minimizedDep02 = !this.mode.minimizedDep02
-      }else if(e.currentTarget.classList.contains('_dep03')){
-        this.mode.minimizedDep03 = !this.mode.minimizedDep03
-      }
-
     },
   }
 }
