@@ -36,133 +36,46 @@
       <!--접기/펼치기 버튼-->
       <button class="sidebar-minimizer brand-minimizer" type="button"></button>
     </div>
-    <div class="sidebar sidebar_depth sidebar_depth2"><!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다. sidebar_depth2는 댑스2, sidebar_depth3는 댑스3로 left 조절-->
-      <nav class="sidebar-nav ps ps--active-y">
-        <ul class="nav">
-          <li class="nav-item text-center nav-title-m">
-              <span class="nav-title">
-                  <span class="font-sm">SP 목록</span>
-                  <i class="nav-icon"></i>
-              </span>
-            <span class="nav-title-minimized ">
-                <span class="font-sm">SP</span>
-              </span>
-          </li>
-          <li class="nav-item click_folder">
-            <a class="nav-link" href="#">
-              <i class="nav-icon icon_w fas fa-folder"></i><!--클릭될 경우  icon_w 와 fa-folder가 icon-y와 fa-folder-open로 교체 -->
-              <span>CJH TESTbed</span>
-            </a>
-          </li>
-          <li class="nav-item click_folder">
-            <a class="nav-link" href="#">
-              <i class="nav-icon icon_w fas fa-folder"></i>
-              <span>CJH LIVEbed</span>
-            </a>
-          </li>
-          <li class="nav-item click_folder">
-            <a class="nav-link" href="#">
-              <i class="nav-icon icon_w fas fa-folder"></i>
-              <span>일이삼사오육칠팔구십일이삼사오육칠팔구십</span>
-            </a>
-          </li>
-          <li class="nav-item click_folder">
-            <a class="nav-link" href="#">
-              <i class="nav-icon icon_w fas fa-folder"></i>
-              <span>bbbbbbbbbb</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-      <!--접기/펼치기 버튼-->
-      <button class="sidebar-minimizer brand-minimizer" type="button"></button>
-    </div>
-    <div class="sidebar sidebar_depth sidebar_depth3"><!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다. sidebar_depth2는 댑스2, sidebar_depth3는 댑스3로 left 조절-->
-      <nav class="sidebar-nav ps ps--active-y">
-        <ul class="nav">
-          <li class="nav-item text-center nav-title-m">
-              <span class="nav-title">
-                  <span class="font-sm">서비스 목록</span>
-                  <i class="nav-icon"></i>
-              </span>
-            <span class="nav-title-minimized">
-                <span class="font-sm">SV</span>
-              </span>
-          </li>
-          <li class="nav-item click_folder click_service">
-            <a class="nav-link" href="#">
-              <i class="nav-icon icon_w fas fa-clipboard-list"></i><!--클릭될 경우  icon_w 가 icon-y로 교체 -->
-              <span>SO</span>
-            </a>
-          </li>
-          <li class="nav-item click_folder click_service">
-            <a class="nav-link" href="#">
-              <i class="nav-icon icon_w fas fa-clipboard-list"></i>
-              <span>IP</span>
-            </a>
-          </li>
-          <li class="nav-item click_folder click_service">
-            <a class="nav-link" href="#">
-              <i class="nav-icon icon_w fas fa-clipboard-list"></i>
-              <span>Channel</span>
-            </a>
-          </li>
-          <li class="nav-item click_folder click_service">
-            <a class="nav-link" href="#">
-              <i class="nav-icon icon_w fas fa-clipboard-list"></i>
-              <span>Category</span>
-            </a>
-          </li>
-          <li class="nav-item click_folder click_service">
-            <a class="nav-link" href="#">
-              <i class="nav-icon icon_w fas fa-clipboard-list"></i>
-              <span>Image</span>
-            </a>
-          </li>
-          <li class="nav-item click_folder click_service">
-            <a class="nav-link" href="#">
-              <i class="nav-icon icon_w fas fa-clipboard-list"></i>
-              <span>123</span>
-            </a>
-          </li>
-          <li class="nav-item click_folder click_service">
-            <a class="nav-link" href="#">
-              <i class="nav-icon icon_w fas fa-clipboard-list"></i>
-              <span>987654</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-      <!--접기/펼치기 버튼-->
-      <button class="sidebar-minimizer brand-minimizer" type="button"></button>
-    </div>
+    <AsideDepth2/>
   </div>
 </template>
 
 <script>
+  import AsideDepth2 from '@/views/aside/AsideDepth2'
 export default {
   name: 'DefaultAside',
   components: {
+    AsideDepth2
   },
   data:() => {
     return {
     }
   },
   methods:{
+    /**
+     * depth 펼치기
+     */
     expandMenu: function () {
       console.log('메뉴 펼치기');
-      /**
-       * depth 펼치기
-       */
+
     },
+    /**
+     * depth 접기
+     */
     fordingMenu: function () {
       console.log('메뉴 접기');
-      /**
-       * depth 접기
-       */
+
     },
+    /**
+     * router link 설정
+     */
+    // detailLink (key) {
+    //   return `detail/${key.toString()}`
+    // },
+    // goToDetail (item) {
+    //   const detailLink = this.detailLink(item.key);
+    //   this.$router.push({path: userLink, query:{ spName:item.spName}})
+    // },
   }
 }
 </script>
