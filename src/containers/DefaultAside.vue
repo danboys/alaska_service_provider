@@ -1,19 +1,20 @@
 <template>
-  <div class="sidebar-fixed sidebar-lg-show pace-done">
+  <!--<div class="sidebar-fixed sidebar-lg-show pace-done">-->
+  <div class="sidebar-fixed sidebar-lg-show">
     <div class="sidebar sidebar_home"><!--사이드 메뉴가 home일 경우 sidebar_home class를 붙입니다.-->
       <nav class="sidebar-nav ps ps--active-y">
         <div class="nav-logo">
-          <a href="#" class="btn-block icon_domfam"></a>
+          <router-link href="#" class="btn-block icon_domfam" to="/"></router-link>
         </div>
         <ul class="nav">
           <li class="nav-item">
-            <a href="#" class="nav-link" @click="expandMenu()">
+            <a href="#" class="nav-link" @click="showDepth2()">
               <i class="nav-icon cui-list icon_w"></i>
               <span>SPM</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link" @click="expandMenu()">
+            <a href="#" class="nav-link" @click="showDepth2()">
               <i class="nav-icon cui-settings icon_w"></i>
               <span>SPM Setting</span>
             </a>
@@ -34,31 +35,122 @@
       </nav>
 
       <!--접기/펼치기 버튼-->
-      <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+      <button class="sidebar-minimizer brand-minimizer" type="button" @click="sidebarToggle"></button>
     </div>
-    <AsideDepth2/>
+    <div v-if="mode.isDepth2" class="sidebar-fixed sidebar-lg-show pace-done">
+      <div class="sidebar sidebar_depth sidebar_depth2"><!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다. sidebar_depth2는 댑스2, sidebar_depth3는 댑스3로 left 조절-->
+        <nav class="sidebar-nav ps ps--active-y">
+          <ul class="nav">
+            <li class="nav-item text-center nav-title-m">
+              <span class="nav-title">
+                  <span class="font-sm">SP 목록</span>
+                  <i class="nav-icon"></i>
+              </span>
+              <span class="nav-title-minimized ">
+                <span class="font-sm">SP</span>
+              </span>
+            </li>
+            <li class="nav-item click_folder">
+              <a class="nav-link" href="#" @click="showDepth3()">
+                <i class="nav-icon icon_w fa fa-folder"></i><!--클릭될 경우  icon_w 와 fa-folder가 icon-y와 fa-folder-open로 교체 -->
+                <span>CJH TESTbed</span>
+              </a>
+            </li>
+            <li class="nav-item click_folder">
+              <a class="nav-link" href="#" @click="showDepth3()">
+                <i class="nav-icon icon_w fa fa-folder"></i>
+                <span>CJH LIVEbed</span>
+              </a>
+            </li>
+            <li class="nav-item click_folder">
+              <a class="nav-link" href="#" @click="showDepth3()">
+                <i class="nav-icon icon_w fa fa-folder"></i>
+                <span>일이삼사오육칠팔구십일이삼사오육칠팔구십</span>
+              </a>
+            </li>
+            <li class="nav-item click_folder">
+              <a class="nav-link" href="#" @click="showDepth3()">
+                <i class="nav-icon icon_w fa fa-folder"></i>
+                <span>bbbbbbbbbb</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <!--접기/펼치기 버튼-->
+        <button class="sidebar-minimizer brand-minimizer" type="button" @click="sidebarToggle"></button>
+      </div>
+    </div>
+    <div v-if="mode.isDepth3" class="sidebar-fixed sidebar-lg-show pace-done">
+      <div class="sidebar sidebar_depth sidebar_depth3"><!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다. sidebar_depth2는 댑스2, sidebar_depth3는 댑스3로 left 조절-->
+        <nav class="sidebar-nav ps ps--active-y">
+          <ul class="nav">
+            <li class="nav-item text-center nav-title-m">
+            <span class="nav-title">
+                <span class="font-sm">서비스 목록</span>
+                <i class="nav-icon"></i>
+            </span>
+              <span class="nav-title-minimized">
+              <span class="font-sm">SV</span>
+            </span>
+            </li>
+            <li class="nav-item click_folder click_service">
+              <router-link class="nav-link" href="#" :to="detailLink('so')">
+                <i class="nav-icon icon_w fa fa-file-text"></i><!--클릭될 경우  icon_w 가 icon-y로 교체 -->
+                <span>SO</span>
+              </router-link>
+            </li>
+            <li class="nav-item click_folder click_service">
+              <router-link class="nav-link" href="#" :to="detailLink('ip')">
+                <i class="nav-icon icon_w fa fa-file-text"></i>
+                <span>IP</span>
+              </router-link>
+            </li>
+            <li class="nav-item click_folder click_service">
+              <router-link class="nav-link" href="#" :to="detailLink('channel')">
+                <i class="nav-icon icon_w fa fa-file-text"></i>
+                <span>Channel</span>
+              </router-link>
+            </li>
+            <li class="nav-item click_folder click_service">
+              <router-link class="nav-link" href="#" :to="detailLink('category')">
+                <i class="nav-icon icon_w fa fa-file-text"></i>
+                <span>Category</span>
+              </router-link>
+            </li>
+            <li class="nav-item click_folder click_service">
+              <router-link class="nav-link" href="#" :to="detailLink('image')">
+                <i class="nav-icon icon_w fa fa-file-text"></i>
+                <span>Image</span>
+              </router-link>
+            </li>
+          </ul>
+        </nav>
+
+        <!--접기/펼치기 버튼-->
+        <button class="sidebar-minimizer brand-minimizer" type="button" @click="sidebarToggle"></button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  import AsideDepth2 from '@/views/aside/AsideDepth2'
 export default {
   name: 'DefaultAside',
   components: {
-    AsideDepth2
   },
   data:() => {
     return {
+      mode : {
+        isDepth2 : false,
+        isDepth3 : false
+      },
+      selected : {
+        depth2 : "cjh_livebed"
+      }
     }
   },
   methods:{
-    /**
-     * depth 펼치기
-     */
-    expandMenu: function () {
-      console.log('메뉴 펼치기');
-
-    },
     /**
      * depth 접기
      */
@@ -69,13 +161,33 @@ export default {
     /**
      * router link 설정
      */
-    // detailLink (key) {
-    //   return `detail/${key.toString()}`
-    // },
-    // goToDetail (item) {
-    //   const detailLink = this.detailLink(item.key);
-    //   this.$router.push({path: userLink, query:{ spName:item.spName}})
-    // },
+    detailLink (serviceName) {
+      let routeInfo = {
+        path:'details',
+        query:{
+          spName:this.selected.depth2,
+          serviceName:serviceName
+        }
+      };
+      return routeInfo
+    },
+    showDepth2 () {
+      this.mode.isDepth2 = true;
+    },
+    showDepth3 () {
+      this.mode.isDepth3 = true;
+    },
+    goToDetail (serviceName) {
+      // const detailLink = this.detailLink(item.key);
+      console.log('goToDetail ::');
+      const detailLink = 'details';
+      this.$router.push({path: detailLink, query:{ spName:this.selected.depth2, serviceName:serviceName}})
+    },
+    sidebarToggle : function (e) {
+      console.log('sidebarToggle () 실행')
+      e.preventDefault();
+
+    },
   }
 }
 </script>
@@ -174,7 +286,15 @@ export default {
   }
 
   /*길이 줄이기*/
-  .sidebar-minimized .sidebar_home {
+  .sidebar-minimized .sidebar_home,
+  .sidebar-minimized .sidebar_depth2,
+  .sidebar-minimized .sidebar_depth3 {
     width: 50px;
+  }
+  .sidebar-minimized .sidebar_depth2 {
+    left: 50px;
+  }
+  .sidebar-minimized .sidebar_depth3 {
+    left: 100px;
   }
 </style>

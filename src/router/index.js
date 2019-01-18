@@ -58,20 +58,7 @@ const Register = () => import('@/views/pages/Register')
 const Users = () => import('@/views/users/Users')
 const User = () => import('@/views/users/User')
 
-// So
-// const So = () => import('@/views/so/So')
-// const Sp = () => import('@/views/so/Sp')
 
-// SoFire
-// const SoFire = () => import('@/views/soFire/SoFire')
-// const SpFire = () => import('@/views/soFire/SpFire')
-
-// ProviderMenu
-const ProviderMenu = () => import('@/views/provider/ProviderMenu');
-
-// Aside
-const AsideDepth2 = () => import('@/views/aside/AsideDepth2');
-const AsideDepth3 = () => import('@/views/aside/AsideDepth3');
 
 // Details
 const Details = () => import('@/views/details/Details');
@@ -147,44 +134,6 @@ export default new Router({
             },
           ]
         },
-        /*{
-          path: 'so',
-          meta: { label: 'So'},
-          component: {
-            render (c) { return c('router-view') }
-          },
-          children: [
-            {
-              path: '',
-              component: So,
-            },
-            {
-              path: ':key',
-              meta: { label: 'Sp 관리 목록'},
-              name: 'Sp',
-              component: Sp,
-            },
-          ]
-        },
-        {
-          path: 'soFire',
-          meta: { label: 'soFire'},
-          component: {
-            render (c) { return c('router-view') }
-          },
-          children: [
-            {
-              path: '',
-              component: SoFire,
-            },
-            {
-              path: ':key',
-              meta: { label: 'Sp 관리 목록 firebase'},
-              name: 'SpFire',
-              component: SpFire,
-            },
-          ]
-        },*/
         {
           path: 'base',
           redirect: '/base/cards',
