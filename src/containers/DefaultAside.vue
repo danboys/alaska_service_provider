@@ -1,44 +1,46 @@
 <template>
-  <!--<div class="sidebar-fixed sidebar-lg-show pace-done">-->
-  <div class="sidebar-fixed sidebar-lg-show">
-    <div class="sidebar sidebar_home"><!--사이드 메뉴가 home일 경우 sidebar_home class를 붙입니다.-->
-      <nav class="sidebar-nav ps ps--active-y">
-        <div class="nav-logo">
-          <router-link href="#" class="btn-block icon_domfam" to="/"></router-link>
-        </div>
-        <ul class="nav">
-          <li class="nav-item">
-            <a href="#" class="nav-link" @click="showDepth2()">
-              <i class="nav-icon cui-list icon_w"></i>
-              <span>SPM</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link" @click="showDepth2()">
-              <i class="nav-icon cui-settings icon_w"></i>
-              <span>SPM Setting</span>
-            </a>
-          </li>
-        </ul>
-        <a class="nav-link btn btn_m btn-block btn-secondary" href="">
-          <i class="nav-icon cui-user icon_w"></i>로그인
-        </a>
-        <a class="nav-link btn btn_m btn-block btn-secondary" href="">
-          <i class="nav-icon cui-cloud-download icon_w"></i>내보내기
-        </a>
-        <a class="nav-link btn btn_m btn-block btn-secondary" href="">
-          <i class="nav-icon cui-cloud-upload icon_w"></i>가져오기
-        </a>
-        <a class="nav-link btn btn_m btn-block btn-secondary" href="">
-          <i class="nav-icon cui-basket-loaded icon_w"></i>저장하기
-        </a>
-      </nav>
+  <div>
+    <div class="sidebar-fixed sidebar-lg-show _dep01" v-bind:class="{ 'sidebar-minimized': mode.minimizedDep01 }">
+      <div class="sidebar sidebar_home"><!--사이드 메뉴가 home일 경우 sidebar_home class를 붙입니다.-->
+        <nav class="sidebar-nav ps ps--active-y">
+          <div class="nav-logo">
+            <router-link href="#" class="btn-block icon_domfam" to="/"></router-link>
+          </div>
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="#" class="nav-link" @click="showDepth2()">
+                <i class="nav-icon cui-list icon_w"></i>
+                <span>SPM</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" @click="showDepth2()">
+                <i class="nav-icon cui-settings icon_w"></i>
+                <span>SPM Setting</span>
+              </a>
+            </li>
+          </ul>
+          <a class="nav-link btn btn_m btn-block btn-secondary" href="">
+            <i class="nav-icon cui-user icon_w"></i>로그인
+          </a>
+          <a class="nav-link btn btn_m btn-block btn-secondary" href="">
+            <i class="nav-icon cui-cloud-download icon_w"></i>내보내기
+          </a>
+          <a class="nav-link btn btn_m btn-block btn-secondary" href="">
+            <i class="nav-icon cui-cloud-upload icon_w"></i>가져오기
+          </a>
+          <a class="nav-link btn btn_m btn-block btn-secondary" href="">
+            <i class="nav-icon cui-basket-loaded icon_w"></i>저장하기
+          </a>
+        </nav>
 
-      <!--접기/펼치기 버튼-->
-      <button class="sidebar-minimizer brand-minimizer" type="button" @click="sidebarToggle"></button>
+        <!--접기/펼치기 버튼-->
+        <button class="sidebar-minimizer brand-minimizer _dep01" type="button" @click="sidebarToggle"></button>
+      </div>
     </div>
-    <div v-if="mode.isDepth2" class="sidebar-fixed sidebar-lg-show pace-done">
-      <div class="sidebar sidebar_depth sidebar_depth2"><!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다. sidebar_depth2는 댑스2, sidebar_depth3는 댑스3로 left 조절-->
+    <div class="sidebar-fixed sidebar-lg-show _dep02" v-bind:class="{ 'sidebar-minimized': mode.minimizedDep02 }">
+      <div class="sidebar sidebar_depth sidebar_depth2">
+        <!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다. sidebar_depth2는 댑스2, sidebar_depth3는 댑스3로 left 조절-->
         <nav class="sidebar-nav ps ps--active-y">
           <ul class="nav">
             <li class="nav-item text-center nav-title-m">
@@ -52,7 +54,8 @@
             </li>
             <li class="nav-item click_folder">
               <a class="nav-link" href="#" @click="showDepth3()">
-                <i class="nav-icon icon_w fa fa-folder"></i><!--클릭될 경우  icon_w 와 fa-folder가 icon-y와 fa-folder-open로 교체 -->
+                <i class="nav-icon icon_w fa fa-folder"></i>
+                <!--클릭될 경우  icon_w 와 fa-folder가 icon-y와 fa-folder-open로 교체 -->
                 <span>CJH TESTbed</span>
               </a>
             </li>
@@ -78,11 +81,12 @@
         </nav>
 
         <!--접기/펼치기 버튼-->
-        <button class="sidebar-minimizer brand-minimizer" type="button" @click="sidebarToggle"></button>
+        <button class="sidebar-minimizer brand-minimizer _dep02" type="button" @click="sidebarToggle"></button>
       </div>
     </div>
-    <div v-if="mode.isDepth3" class="sidebar-fixed sidebar-lg-show pace-done">
-      <div class="sidebar sidebar_depth sidebar_depth3"><!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다. sidebar_depth2는 댑스2, sidebar_depth3는 댑스3로 left 조절-->
+    <div class="sidebar-fixed sidebar-lg-show _dep03" v-bind:class="{ 'sidebar-minimized': mode.minimizedDep03 }">
+      <div class="sidebar sidebar_depth sidebar_depth3">
+        <!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다. sidebar_depth2는 댑스2, sidebar_depth3는 댑스3로 left 조절-->
         <nav class="sidebar-nav ps ps--active-y">
           <ul class="nav">
             <li class="nav-item text-center nav-title-m">
@@ -128,7 +132,7 @@
         </nav>
 
         <!--접기/펼치기 버튼-->
-        <button class="sidebar-minimizer brand-minimizer" type="button" @click="sidebarToggle"></button>
+        <button class="sidebar-minimizer brand-minimizer _dep03" type="button" @click="sidebarToggle"></button>
       </div>
     </div>
   </div>
@@ -142,8 +146,9 @@ export default {
   data:() => {
     return {
       mode : {
-        isDepth2 : false,
-        isDepth3 : false
+        minimizedDep01 : true,
+        minimizedDep02 : true,
+        minimizedDep03 : true,
       },
       selected : {
         depth2 : "cjh_livebed"
@@ -151,13 +156,6 @@ export default {
     }
   },
   methods:{
-    /**
-     * depth 접기
-     */
-    fordingMenu: function () {
-      console.log('메뉴 접기');
-
-    },
     /**
      * router link 설정
      */
@@ -177,15 +175,20 @@ export default {
     showDepth3 () {
       this.mode.isDepth3 = true;
     },
-    goToDetail (serviceName) {
-      // const detailLink = this.detailLink(item.key);
-      console.log('goToDetail ::');
-      const detailLink = 'details';
-      this.$router.push({path: detailLink, query:{ spName:this.selected.depth2, serviceName:serviceName}})
-    },
     sidebarToggle : function (e) {
-      console.log('sidebarToggle () 실행')
+      console.log('sidebarToggle ::')
       e.preventDefault();
+
+      // 기본 body에 들어가던 sidebar-minimized 제거
+      document.body.classList.toggle('sidebar-minimized');
+
+      if(e.currentTarget.classList.contains('_dep01')){
+        this.mode.minimizedDep01 = !this.mode.minimizedDep01;
+      }else if(e.currentTarget.classList.contains('_dep02')){
+        this.mode.minimizedDep02 = !this.mode.minimizedDep02
+      }else if(e.currentTarget.classList.contains('_dep03')){
+        this.mode.minimizedDep03 = !this.mode.minimizedDep03
+      }
 
     },
   }
@@ -285,16 +288,25 @@ export default {
     display: block;
   }
 
-  /*길이 줄이기*/
+  /*사이드 네비 폴딩 조절*/
   .sidebar-minimized .sidebar_home,
   .sidebar-minimized .sidebar_depth2,
   .sidebar-minimized .sidebar_depth3 {
     width: 50px;
+
   }
-  .sidebar-minimized .sidebar_depth2 {
+  .sidebar {
+    transition: margin-left 0.25s, margin-right 0.25s, width 0.25s, flex 0.25s, -webkit-box-flex 0.25s, -ms-flex 0.25s, left 0.25s;
+  }
+  .sidebar-minimized + ._dep02 .sidebar{
     left: 50px;
   }
-  .sidebar-minimized .sidebar_depth3 {
+  .sidebar-minimized + ._dep02 + ._dep03 .sidebar,
+  ._dep02.sidebar-minimized + ._dep03 .sidebar{
+    left: 250px;
+  }
+  .sidebar-minimized + ._dep02.sidebar-minimized + ._dep03 .sidebar{
     left: 100px;
   }
+
 </style>
