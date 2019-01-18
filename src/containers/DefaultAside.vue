@@ -52,30 +52,11 @@
                 <span class="font-sm">SP</span>
               </span>
             </li>
-
-            <li class="nav-item click_folder">
-              <a class="nav-link" href="#">
+            <li v-for="item in depth2Data" class="nav-item click_folder">
+              <a class="nav-link" href="#" @click="selectProvider(item.key)">
                 <i class="nav-icon icon_w fa fa-folder"></i>
                 <!--클릭될 경우  icon_w 와 fa-folder가 icon-y와 fa-folder-open로 교체 -->
-                <span>CJH TESTbed</span>
-              </a>
-            </li>
-            <li class="nav-item click_folder">
-              <a class="nav-link" href="#">
-                <i class="nav-icon icon_w fa fa-folder"></i>
-                <span>CJH LIVEbed</span>
-              </a>
-            </li>
-            <li class="nav-item click_folder">
-              <a class="nav-link" href="#">
-                <i class="nav-icon icon_w fa fa-folder"></i>
-                <span>일이삼사오육칠팔구십일이삼사오육칠팔구십</span>
-              </a>
-            </li>
-            <li class="nav-item click_folder">
-              <a class="nav-link" href="#">
-                <i class="nav-icon icon_w fa fa-folder"></i>
-                <span>bbbbbbbbbb</span>
+                <span>{{item.spName}}</span>
               </a>
             </li>
           </ul>
@@ -99,34 +80,10 @@
               <span class="font-sm">SV</span>
             </span>
             </li>
-            <li class="nav-item click_folder click_service">
-              <router-link class="nav-link" href="#" :to="detailLink('so')">
+            <li v-for="item in depth3Data" class="nav-item click_folder click_service">
+              <router-link class="nav-link" href="#" :to="detailLink(item.name)">
                 <i class="nav-icon icon_w fa fa-file-text"></i><!--클릭될 경우  icon_w 가 icon-y로 교체 -->
-                <span>SO</span>
-              </router-link>
-            </li>
-            <li class="nav-item click_folder click_service">
-              <router-link class="nav-link" href="#" :to="detailLink('ip')">
-                <i class="nav-icon icon_w fa fa-file-text"></i>
-                <span>IP</span>
-              </router-link>
-            </li>
-            <li class="nav-item click_folder click_service">
-              <router-link class="nav-link" href="#" :to="detailLink('channel')">
-                <i class="nav-icon icon_w fa fa-file-text"></i>
-                <span>Channel</span>
-              </router-link>
-            </li>
-            <li class="nav-item click_folder click_service">
-              <router-link class="nav-link" href="#" :to="detailLink('category')">
-                <i class="nav-icon icon_w fa fa-file-text"></i>
-                <span>Category</span>
-              </router-link>
-            </li>
-            <li class="nav-item click_folder click_service">
-              <router-link class="nav-link" href="#" :to="detailLink('image')">
-                <i class="nav-icon icon_w fa fa-file-text"></i>
-                <span>Image</span>
+                <span>{{item.name}}</span>
               </router-link>
             </li>
           </ul>
@@ -146,7 +103,7 @@
     data: () => {
       return {
         mode: {
-          minimizedDep01: true,
+          minimizedDep01: false,
           minimizedDep02: true,
           minimizedDep03: true,
         },
@@ -174,9 +131,9 @@
              */
             this.oData = data.val();
             console.log('setDepthData 데이터 가공 시작 :: depth2Data');
-            this.setDepthData(this.oData.so, this.depth2Data);
+            this.setDepth2Data(this.oData.so, "depth2Data");
             console.log('setDepthData 데이터 가공 시작 :: depth3Data');
-            this.setDepthData(this.oData.sp[this.selected.depth2], this.depth3Data);
+            this.setDepth3Data(this.oData.sp[this.selected.depth2], "depth3Data");
           })
           .catch((error) => {
             console.log(error)
@@ -186,12 +143,35 @@
       /**
        * 데이터 가공
        */
-      setDepthData: function (objectData, store) {
+      setDepth2Data: function (objectData, storeName) {
         // Object를 array로 변경
+        let store = [];
         for (let key in objectData) {
           store.push(objectData[key]);
         }
-        console.log(store);
+        // console.log(store);
+        this[storeName] = store;
+        // console.log(this[storeName]);
+      },
+      setDepth3Data: function (objectData, storeName) {
+        // Object를 array로 변경
+        let store = [];
+        for (let key in objectData) {
+          objectData[key].name = key;
+          store.push(objectData[key]);
+        }
+        // console.log(store);
+        this[storeName] = store;
+        console.log(this[storeName]);
+      },
+
+      /**
+       * provider 선택
+       */
+      selectProvider: function(key){
+        this.selected.depth2 = key;
+        console.log('selected.depth2 change :: ' + this.selected.depth2);
+        this.setDepthData(this.oData.sp[this.selected.depth2], this.depth3Data);
       },
 
       /**
@@ -339,11 +319,17 @@
 
   .sidebar-minimized + ._dep02 + ._dep03 .sidebar,
   ._dep02.sidebar-minimized + ._dep03 .sidebar {
-    left: 250px;
+    /*left: 250px;*/
+    left: 249px;  /* border 1px 확인 필요*/
   }
 
   .sidebar-minimized + ._dep02.sidebar-minimized + ._dep03 .sidebar {
     left: 100px;
+  }
+
+  /* 서비스 목록 첫글자 대문자로 변경 */
+  .click_service {
+    text-transform: uppercase;
   }
 
 </style>
