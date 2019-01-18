@@ -52,6 +52,7 @@
                 <span class="font-sm">SP</span>
               </span>
             </li>
+
             <li class="nav-item click_folder">
               <a class="nav-link" href="#">
                 <i class="nav-icon icon_w fa fa-folder"></i>
@@ -139,51 +140,88 @@
 </template>
 
 <script>
-export default {
-  name: 'DefaultAside',
-  components: {
-  },
-  data:() => {
-    return {
-      mode : {
-        minimizedDep01 : true,
-        minimizedDep02 : true,
-        minimizedDep03 : true,
-      },
-      selected : {
-        depth2 : "cjh_livebed"
+  export default {
+    name: 'DefaultAside',
+    components: {},
+    data: () => {
+      return {
+        mode: {
+          minimizedDep01: true,
+          minimizedDep02: true,
+          minimizedDep03: true,
+        },
+        selected: {
+          depth2: "cjh_livebed"
+        },
+        oData: {},
+        depth2Data: [],
+        depth3Data: []
       }
-    }
-  },
-  methods:{
-    /**
-     * sidebar minimized
-     */
-    sidebarToggle : function (num) {
-      console.log('sidebarToggle ::');
-      console.log(num);
-
-      // 기본 body에 들어가던 sidebar-minimized 제거
-      document.body.classList.toggle('sidebar-minimized');
-
-      this.mode['minimizedDep0'+num] = !this.mode['minimizedDep0'+num]
     },
+    created() {
+      this.fetchFirebaseData();
+    },
+    methods: {
+      /**
+       * firebase 연동
+       */
+      fetchFirebaseData() {
+        console.log('fetchFirebaseData !!!!');
+        firebase.database().ref('provider').once('value')
+          .then((data) => {
+            /**
+             * 전체 Database Object
+             */
+            this.oData = data.val();
+            console.log('setDepthData 데이터 가공 시작 :: depth2Data');
+            this.setDepthData(this.oData.so, this.depth2Data);
+            console.log('setDepthData 데이터 가공 시작 :: depth3Data');
+            this.setDepthData(this.oData.sp[this.selected.depth2], this.depth3Data);
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      },
 
-    /**
-     * router link 설정
-     */
-    detailLink (serviceName) {
-      let routeInfo = {
-        path:'details',
-        query:{
-          spName:this.selected.depth2,
-          serviceName:serviceName
+      /**
+       * 데이터 가공
+       */
+      setDepthData: function (objectData, store) {
+        // Object를 array로 변경
+        for (let key in objectData) {
+          store.push(objectData[key]);
         }
-      };
-      return routeInfo
-    },
+        console.log(store);
+      },
+
+      /**
+       * sidebar minimized
+       */
+      sidebarToggle: function (num) {
+        console.log('sidebarToggle ::');
+        console.log(num);
+
+        // 기본 body에 들어가던 sidebar-minimized 제거
+        document.body.classList.toggle('sidebar-minimized');
+
+        this.mode['minimizedDep0' + num] = !this.mode['minimizedDep0' + num]
+      },
+
+      /**
+       * router link 설정
+       */
+      detailLink(serviceName) {
+        let routeInfo = {
+          path: 'details',
+          query: {
+            spName: this.selected.depth2,
+            serviceName: serviceName
+          }
+        };
+        return routeInfo
+      },
+    }
   }
-}
 </script>
 
 <style scoped>
@@ -200,17 +238,17 @@ export default {
     text-transform: uppercase;
   }
 
-  .icon_w{
+  .icon_w {
     color: #ffffff !important;
   }
 
-  .sidebar_home .nav{
+  .sidebar_home .nav {
     margin-bottom: -300px;
   }
 
   .btn.btn_m {
     width: 80%;
-    padding: 0.52rem 1rem ;
+    padding: 0.52rem 1rem;
     margin: .5rem auto 0;
   }
 
@@ -221,6 +259,7 @@ export default {
   .nav-logo {
     height: 60px;
   }
+
   .icon_domfam {
     width: 100%;
     height: 100%;
@@ -261,9 +300,10 @@ export default {
   }
 
   /*아이콘 컬러*/
-  .icon_w{
+  .icon_w {
     color: #ffffff !important;
   }
+
   .icon_y {
     color: #ff7061 !important;
   }
@@ -272,9 +312,11 @@ export default {
   .nav-title-m {
     padding: 10px 0;
   }
+
   .nav-title-minimized {
     display: none;
   }
+
   .sidebar-minimized .sidebar .nav-title-minimized {
     display: block;
   }
@@ -286,17 +328,21 @@ export default {
     width: 50px;
 
   }
+
   .sidebar {
     transition: margin-left 0.25s, margin-right 0.25s, width 0.25s, flex 0.25s, -webkit-box-flex 0.25s, -ms-flex 0.25s, left 0.25s;
   }
-  .sidebar-minimized + ._dep02 .sidebar{
+
+  .sidebar-minimized + ._dep02 .sidebar {
     left: 50px;
   }
+
   .sidebar-minimized + ._dep02 + ._dep03 .sidebar,
-  ._dep02.sidebar-minimized + ._dep03 .sidebar{
+  ._dep02.sidebar-minimized + ._dep03 .sidebar {
     left: 250px;
   }
-  .sidebar-minimized + ._dep02.sidebar-minimized + ._dep03 .sidebar{
+
+  .sidebar-minimized + ._dep02.sidebar-minimized + ._dep03 .sidebar {
     left: 100px;
   }
 
