@@ -81,7 +81,7 @@
             </span>
             </li>
             <li v-for="item in depth3Data" class="nav-item click_folder click_service">
-              <router-link class="nav-link" href="#" :to="detailLink(item.name)">
+              <router-link class="nav-link" href="#" :to="detailLink(item.name)" exact>
                 <i class="nav-icon icon_w fa fa-file-text"></i><!--클릭될 경우  icon_w 가 icon-y로 교체 -->
                 <span>{{item.name}}</span>
               </router-link>
@@ -306,6 +306,10 @@
   /*아이콘 컬러*/
   .icon_w {
     color: #ffffff !important;
+  }
+
+  .nav-link.active .icon_w {
+    color: #ff7061 !important;
   }
 
   .icon_y {
