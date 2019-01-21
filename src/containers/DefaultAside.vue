@@ -46,14 +46,14 @@
             <li class="nav-item text-center nav-title-m">
               <span class="nav-title">
                   <span class="font-sm">SP 목록</span>
-                  <i class="nav-icon"></i>
+                  <!--<i class="nav-icon"></i>-->
               </span>
               <span class="nav-title-minimized ">
                 <span class="font-sm">SP</span>
               </span>
             </li>
             <li v-for="item in depth2Data" class="nav-item click_folder">
-              <a class="nav-link" href="#" @click="selectProvider(item.key)">
+              <a class="nav-link" href="#" @click="selectProvider(item.key,$event)">
                 <i class="nav-icon icon_w fa fa-folder"></i>
                 <!--클릭될 경우  icon_w 와 fa-folder가 icon-y와 fa-folder-open로 교체 -->
                 <span>{{item.spName}}</span>
@@ -74,7 +74,7 @@
             <li class="nav-item text-center nav-title-m">
             <span class="nav-title">
                 <span class="font-sm">서비스 목록</span>
-                <i class="nav-icon"></i>
+                <!--<i class="nav-icon"></i>-->
             </span>
               <span class="nav-title-minimized">
               <span class="font-sm">SV</span>
@@ -168,10 +168,34 @@
       /**
        * provider 선택
        */
-      selectProvider: function(key){
+      selectProvider: function(key, $event){
+        const currentTarget = $event.currentTarget;
+        const linkTarget = currentTarget.parentNode.parentNode;
+        const link = linkTarget.getElementsByClassName('nav-link');
+
+        // nav-link active class 초기화
+        for(let i=0;i<link.length;i++) {
+          link[i].classList.remove("active");
+        }
+        // nav-link active
+        currentTarget.classList.add("active");
+
+        // icon
+        const icon = linkTarget.getElementsByClassName('nav-icon');
+        const currnetIcon = currentTarget.getElementsByClassName('nav-icon')[0];
+        // icon class 초기화
+        for(let i=0;i<icon.length;i++) {
+          icon[i].classList.add("icon_w","fa-folder");
+          icon[i].classList.remove("icon_y","fa-folder-open");
+        }
+
+        // icon open
+        currnetIcon.classList.remove("icon_w","fa-folder");
+        currnetIcon.classList.add("icon_y","fa-folder-open");
+
         this.selected.depth2 = key;
         console.log('selected.depth2 change :: ' + this.selected.depth2);
-        this.setDepthData(this.oData.sp[this.selected.depth2], this.depth3Data);
+        this.setDepth3Data(this.oData.sp[this.selected.depth2], "depth3Data");
       },
 
       /**
