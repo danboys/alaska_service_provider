@@ -5,15 +5,15 @@
     </div>
     <div>
       <ul>
-        <li  v-for="item in depth2Data">
-          <div>{{item.name}}</div>
+        <li v-for="item in depth1Data">
+          <div>{{item}}</div>
           <ul>
-            <li>
-              srcPath
+            <li v-for="item in depth2Data">
+              {{item}}
               <ul>
                 <li>
-                  <span>img/common/default_img/img_default_poster_220_316.png</span>
-                  <span style="margin-left: 10px;"><a href="#" @click="showPopup(item.name)">수정하기</a></span>
+                  <span></span>
+                  <span style="margin-left: 10px;"><a href="#">수정하기</a></span>
                 </li>
               </ul>
             </li>
@@ -21,9 +21,7 @@
         </li>
       </ul>
     </div>
-    <popup
-      v-show="isPopupVisible"
-      @close="closePopup"/>
+
   </div>
 
 </template>
@@ -43,7 +41,9 @@
         serviceName : null,
         path : null,
         oData: {},
+        depth1Data: [],
         depth2Data: [],
+        depth3Data: [],
         resultData:[],
         resultData2:[],
         isPopupVisible : false,
@@ -63,16 +63,32 @@
        */
       fetchFirebaseData() {
         console.log('fetchFirebaseData !!!!');
-        firebase.database().ref('provider/sp/' + this.spName).once('value')
+        firebase.database().ref('provider/sp/' + this.spName+'/'+this.serviceName).once('value')
           .then((data) => {
             /**
              * 전체 Database Object
              */
             this.oData = data.val();
 
-            console.log('setDepthData 데이터 가공 시작 :: depth2Data');
-            this.setDepth2Data(this.oData[this.serviceName], "depth2Data");
 
+            this.setDepth1Data(this.oData, "depth1Data");
+
+            for(let i=0; i<Object.entries(data.val()).length; i++){
+              this.resultData.push(Object.entries(data.val())[i][1])
+            }
+
+            console.log(this.resultData)
+            console.log(Object.values(this.resultData))
+
+            this.setDepth2Data(Object.entries(this.resultData), "depth2Data");
+
+            for(let j=0; j<this.depth2Data.length; j++){
+              this.resultData2.push(Object.entries(Object.entries(data.val())[0][1])[j][1])
+            }
+            console.log(this.resultData2)
+            console.log(Object.values(this.resultData2))
+
+            this.setDepth3Data(this.resultData2, "depth3Data");
           })
           .catch((error) => {
             console.log(error)
@@ -81,15 +97,38 @@
       /**
        * 데이터 가공
        */
-
-      setDepth2Data: function (objectData, storeName) {
+      setDepth1Data: function (objectData, storeName) {
         // Object를 array로 변경
         let store = [];
         for (let key in objectData) {
-          objectData[key].name = key;
+          objectData[key]= key;
           store.push(objectData[key]);
         }
         // console.log(store);
+
+        this[storeName] = store;
+        console.log(this[storeName]);
+      },
+      setDepth2Data: function (objectData, storeName) {
+        // Object를 array로 변경
+        let store = [];
+        for (let key in objectData[0][1]) {
+          objectData[key]  = key;
+          store.push(objectData[key]);
+        }
+        // console.log(store);
+
+        this[storeName] = store;
+        console.log(this[storeName]);
+      },
+      setDepth3Data: function (objectData, storeName) {
+        // Object를 array로 변경
+        let store = [];
+        for (let key in objectData) {
+          store.push(objectData[key]);
+        }
+        // console.log(store);
+
         this[storeName] = store;
         console.log(this[storeName]);
       },
