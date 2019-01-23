@@ -9,6 +9,8 @@ import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import router from './router'
 import Firebase from 'firebase'
+import store from './store';
+
 
 let config = {
   apiKey: "AIzaSyAIFkpFW9m-vWqzXlUaGvu9idWcn2r32c0",
@@ -28,6 +30,7 @@ Vue.use(BootstrapVue)
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: {
     App

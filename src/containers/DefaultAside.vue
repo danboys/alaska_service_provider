@@ -62,6 +62,9 @@
           </ul>
         </nav>
 
+        <!--설정 버튼-->
+        <a href="#" class="btn_setting" @click="showModal('ModalProviderList')">설정하기 <i class="fa fa-cog"></i></a>
+
         <!--접기/펼치기 버튼-->
         <button class="sidebar-minimizer brand-minimizer _dep02" type="button" @click="sidebarToggle(2)"></button>
       </div>
@@ -97,6 +100,7 @@
 </template>
 
 <script>
+  import { mapMutations } from 'vuex'
   export default {
     name: 'DefaultAside',
     components: {},
@@ -119,6 +123,7 @@
       this.fetchFirebaseData();
     },
     methods: {
+      ...mapMutations([`showModal`]),
       /**
        * firebase 연동
        */
@@ -358,6 +363,11 @@
   /* 서비스 목록 첫글자 대문자로 변경 */
   .click_service {
     text-transform: uppercase;
+  }
+
+  /*setting btn*/
+  .sidebar-minimized .btn_setting {
+    display: none;
   }
 
 </style>

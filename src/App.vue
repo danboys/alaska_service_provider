@@ -1,10 +1,17 @@
 <template>
-  <router-view></router-view>
+  <div id="app">
+    <router-view></router-view>
+    <app-modal></app-modal>
+  </div>
 </template>
 
 <script>
+  import AppModal from './containers/DefaultModal'
 export default {
-  name: 'app'
+  name: 'app',
+  components:{
+    AppModal
+  }
 }
 </script>
 
