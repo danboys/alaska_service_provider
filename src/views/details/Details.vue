@@ -13,7 +13,7 @@
               <ul>
                 <li>
                   <span></span>
-                  <span style="margin-left: 10px;"><a href="#">수정하기</a></span>
+                  <span style="margin-left: 10px;"><a href="#" @click="showModal('ModalDetailsPopup')">수정하기</a></span>
                 </li>
               </ul>
             </li>
@@ -29,11 +29,11 @@
 
 
 <script >
-  import popup from './popup';
+  import { mapMutations } from 'vuex'
+
   export default {
     name: 'Details',
     components: {
-      popup
     },
     data:()=>{
       return {
@@ -57,7 +57,7 @@
     },
 
     methods: {
-
+      ...mapMutations([`showModal`]),
       /**
        * firebase 연동
        */
@@ -131,15 +131,6 @@
 
         this[storeName] = store;
         console.log(this[storeName]);
-      },
-      showPopup: function (key) {
-
-        this.data = key
-        this.isPopupVisible = true
-      },
-      closePopup: function () {
-
-        this.isPopupVisible = false
       }
     }
   }
