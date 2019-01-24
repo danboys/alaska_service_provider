@@ -20,88 +20,224 @@
 
 
     <style>
+      /*컨텐츠 영역*/
       .wrap {
+        position: relative;
         width: 100%;
         height: 100%;
+        margin: 0 auto;
       }
-
       .container {
-
+        width: 700px;
       }
 
-      .card-header {
-        padding: 0 10px;
-        line-height: 36px;
-        height: 36px;
+      /*리스트*/
+      .item.card {
+        position: relative;
+      }
+      .item.card > a:first-child {
+        margin-right: 50px;
       }
 
-      .card-header h5 {
-        line-height: 36px;
+      /*툴팁 마크*/
+      .q_mark {
+        position: absolute;
+        top: 0.4rem;
+        right: 1rem;
+        width: 15px;
+        height: 15px;
+        display: block;
+      }
+      .q_mark:hover {
+        color: pink;
       }
 
+      /*툴팁박스*/
+      .q_mark:hover + .tooltip_box {
+        display: block;
+      }
+      .tooltip_box {
+        display: none;
+        min-width: 100px;
+        background: #fff;
+        position: absolute;
+        bottom: 30px;
+        right: -20px;
+        font-size: 12px;
+        color: #0a3544;
+        padding: 0.2rem;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+      }
+      .tooltip_box:after {
+        content:"▼";
+        color: #fff;
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        position: absolute;
+        bottom: 1px;
+        right: 45px;
+      }
 
+      /*수정 아이콘*/
+      .edit_list {
+        position: absolute;
+        top: 0.7rem;
+        right: 1rem;
+      }
     </style>
 </head>
 
 
 <body>
-<!--진입 경로-->
-<nav class="breadcrumb">
-  <a class="breadcrumb-item" href="#">Home</a>
-  <a class="breadcrumb-item" href="#">Library</a>
-  <a class="breadcrumb-item" href="#">Data</a>
-  <span class="breadcrumb-item active">Bootstrap</span>
-</nav>
-<!--//진입 경로-->
-
 <div class="wrap">
+
+  <!--진입 경로-->
+  <nav class="breadcrumb">
+    <a class="breadcrumb-item" href="#">Home</a>
+    <a class="breadcrumb-item" href="#">Library</a>
+    <a class="breadcrumb-item" href="#">Data</a>
+    <span class="breadcrumb-item active">Bootstrap</span>
+  </nav>
+  <!--//진입 경로-->
+
+
+
+
   <div class="container">
-    <div class="card-body">
-      <div id="accordion" role="tablist">
 
-        <div class="card mb-0">
-          <div class="card-header" id="headingOne" role="tab">
-            <h5 class="mb-0">
-              <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="">image</a>
-            </h5>
+      <!--서비스분류 카테고리 1개 단위-->
+      <div class="title mb-1"><strong>타이틀1</strong></div>
+      <div class="card p-3" id="Accordion" data-children=".item">
+          <div class="item card p-2 mb-2">
+            <div class="position-relative">
+              <a data-toggle="collapse" data-parent="#Accordion" href="#Accordion2" aria-expanded="true" aria-controls="Accordion2">1depth</a>
+
+              <!--툴팁-->
+              <a href="#" class="q_mark fas fa-question-circle"></a>
+              <div class="tooltip_box">툴팁입니다툴팁입니다툴팁입니다툴팁입니다툴팁입니다툴팁입니다<br>툴팁입니다</div>
+              <!--//툴팁-->
+
+              <div class="collapse card p-2 mb-2 mt-2 position-relative" id="Accordion2" role="tabpanel" style="">
+                <p class="mb-0">1111111111111</p>
+                <a href="#" class="edit_list far fa-edit"></a>
+              </div>
+            </div>
           </div>
-          <div class="collapse" id="collapseOne" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" style=""><!--열어둘 경우 show class 추가한다-->
-            <div class="card-body">
-              <a href="#">serverImg</a>
+
+
+
+
+          <div class="item card p-2 mb-2">
+            <div class="position-relative">
+              <a data-toggle="collapse" data-parent="#Accordion" href="#Accordion1" aria-expanded="true" aria-controls="Accordion1">2depth가진 경우</a>
+              <!--툴팁-->
+              <a href="#" class="q_mark fas fa-question-circle"></a>
+              <div class="tooltip_box">툴팁입니다툴팁입니다툴팁입니다툴팁입니다툴팁입니다툴팁입니다</div>
+              <!--//툴팁-->
+
+              <div class="collapse card p-2 mb-2 mt-2" id="Accordion1" role="tabpanel" style="">
+                <div class="position-relative">
+                  <a data-toggle="collapse" data-parent="#Accordion1_d1" href="#Accordion1_d1" aria-expanded="true" aria-controls="Accordion1" class="">serverImg</a>
+                  <!--툴팁-->
+                  <a href="#" class="q_mark fas fa-question-circle"></a>
+                  <div class="tooltip_box">툴팁입니다툴팁입니다툴팁입니다툴팁입니다툴팁입니다툴팁입니다</div>
+                  <!--//툴팁-->
+                  <div class="collapse card p-2 mb-2 mt-2 position-relative" id="Accordion1_d1" role="tabpanel" style="">
+                      <p class="mb-0">1111111111111111</p>
+                      <a href="#" class="edit_list far fa-edit"></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
 
 
 
-            </div><!--//card-body-->
+          <div class="item card p-2 mb-2">
+              <div class="position-relative">
+                  <a data-toggle="collapse" data-parent="#Accordion" href="#Accordion3" aria-expanded="true" aria-controls="Accordion3" class="">2depth 여러 메뉴인 경우</a>
+
+                <!--툴팁-->
+                <a href="#" class="q_mark fas fa-question-circle"></a>
+                <div class="tooltip_box">툴팁입니다툴팁입니다툴팁입니다툴팁입니다툴팁입니다툴팁입니다</div>
+                <!--//툴팁-->
+
+                  <div class="collapse card p-2 mb-2 mt-2" id="Accordion3" role="tabpanel" style="">
+                      <div class="position-relative">
+                        <a data-toggle="collapse" data-parent="#Accordion3_d1" href="#Accordion3_d1" aria-expanded="true" aria-controls="Accordion3" class="">serverImg1</a>
+
+                        <!--툴팁-->
+                        <a href="#" class="q_mark fas fa-question-circle"></a>
+                        <div class="tooltip_box">툴팁입니다툴팁입니다툴팁입니다툴팁입니다툴팁입니다툴팁입니다</div>
+                        <!--//툴팁-->
+
+                        <div class="collapse card p-2 mb-2 mt-2 position-relative" id="Accordion3_d1" role="tabpanel" style="">
+                            <p class="mb-0">1111111111111111</p>
+                            <a href="#" class="edit_list far fa-edit"></a>
+                        </div>
+                      </div>
+                    <div class="position-relative">
+                      <a data-toggle="collapse" data-parent="#Accordion3_d2" href="#Accordion3_d2" aria-expanded="true" aria-controls="Accordion4" class="">serverImg2</a>
+                      <!--툴팁-->
+                      <a href="#" class="q_mark fas fa-question-circle"></a>
+                      <div class="tooltip_box">툴팁입니다툴팁입니다툴팁입니다툴팁입니다툴팁입니다툴팁입니다</div>
+                      <!--//툴팁-->
+                      <div class="collapse card p-2 mb-2 mt-2 position-relative" id="Accordion3_d2" role="tabpanel" style="">
+                         <p class="mb-0">1111111111111111</p>
+                          <a href="#" class="edit_list far fa-edit"></a>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+      <!--//서비스분류 카테고리 1개 단위-->
+
+      <!--서비스분류 카테고리 1개 단위-->
+      <div class="title mb-1"><strong>타이틀2</strong></div>
+      <div class="card p-3" id="Accordion" data-children=".item">
+          <div class="item card p-2 mb-2">
+              <div class="position-relative">
+                  <a data-toggle="collapse" data-parent="#Accordion" href="#Accordion4" aria-expanded="true" aria-controls="Accordion4" class="">3depth가진 경우</a>
+                  <!--툴팁-->
+                  <a href="#" class="q_mark fas fa-question-circle"></a>
+                  <div class="tooltip_box">툴팁입니다툴팁입니다툴팁입니다툴팁입니다툴팁입니다툴팁입니다</div>
+                  <!--//툴팁-->
+                  <div class="collapse card p-2 mb-2 mt-2" id="Accordion4" role="tabpanel" style="">
+                    <div class="position-relative">
+                      <a data-toggle="collapse" data-parent="#Accordion4_d1" href="#Accordion4_d1" aria-expanded="true" aria-controls="Accordion4_d1">serverImg</a>
+                      <!--툴팁-->
+                      <a href="#" class="q_mark fas fa-question-circle"></a>
+                      <div class="tooltip_box">툴팁입니다툴팁입니다툴팁입니다툴팁입니다툴팁입니다툴팁입니다</div>
+                      <!--//툴팁-->
+                      <div class="collapse card p-2 mb-2 mt-2" id="Accordion4_d1" role="tabpanel" style="">
+                        <div class="position-relative">
+                          <a data-toggle="collapse" data-parent="#Accordion4_d2" href="#Accordion4_d2" aria-expanded="true" aria-controls="Accordion4_d2">serverImg</a>
+                          <!--툴팁-->
+                          <a href="#" class="q_mark fas fa-question-circle"></a>
+                          <div class="tooltip_box">툴팁입니다툴팁입니다툴팁입니다툴팁입니다툴팁입니다툴팁입니다</div>
+                          <!--//툴팁-->
+                          <div class="collapse card p-2 mb-2 mt-2 position-relative" id="Accordion4_d2" role="tabpanel" style="">
+                            <p class="mb-0">1111111111111111</p>
+                            <a href="#" class="edit_list far fa-edit"></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
           </div>
         </div>
-
-        <div class="card mb-0">
-          <div class="card-header" id="headingTwo" role="tab">
-            <h5 class="mb-0">
-              <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">SrcPath</a>
-            </h5>
-          </div>
-          <div class="collapse" id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion" style="">
-            <div class="card-body">SrcPath menu</div>
-          </div>
-        </div>
-        <div class="card mb-0">
-          <div class="card-header" id="headingThree" role="tab">
-            <h5 class="mb-0">
-              <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">DefaultImg</a>
-            </h5>
-          </div>
-          <div class="collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion" style="">
-            <div class="card-body">DefaultImg menu</div>
-          </div>
-        </div>
-      </div>
     </div>
+     <!--//서비스분류 카테고리 1개 단위-->
 
-  </div>
-</div>
+  <span class="add_property"></span>
+  </div><!--//container-->
+</div><!--//wrap-->
 </body>
 
 
