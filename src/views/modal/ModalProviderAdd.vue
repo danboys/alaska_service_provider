@@ -182,15 +182,49 @@
       },
       check(){
         // key 설정
-        this.targetProvider.key = `${this.targetProvider.soName}_${this.targetProvider.spCode}`
+        const today = new Date();
+        this.targetProvider.key = `${this.targetProvider.soName}_${this.targetProvider.spCode}`;
+        this.targetProvider.update = today.getFullYear()+"-"+("0" + (today.getMonth() + 1)).slice(-2)+"-"+today.getDate();
         console.log("this.targetProvider");
         console.log(this.targetProvider);
 
         // save 로직 구현
+        // so 추가
+        firebase.database().ref('provider/so').update({
+          [this.targetProvider.key]: this.targetProvider
+        }).then(() => {
+          console.log('%cSO 추가 완료','color:blue')
 
+          // provider_default 정보 가져오기
+          firebase.database().ref('provider_default/sp').once('value')
+            .then((data) => {
+              console.log('%cprovider_default 정보 가져오기 완료 (Initial Data)','color:blue')
+              let spData = data.val();
+              delete this.targetProvider.update;
+              spData.so = this.targetProvider;
 
-        // 추가 피드백 팝업
-        this.next();
+              // SP 생성
+              firebase.database().ref('provider/sp').update({
+                [this.targetProvider.key]: spData
+              }).then((data) => {
+                console.log('%cSP 추가 완료 (Initial Data)','color:blue')
+                // 추가 피드백 팝업
+                this.next();
+              }).catch((error) => {
+                console.log('%cSP 추가 중 에러가 발생하였습니다.','color:red');
+                console.log(error)
+              })
+
+            })
+            .catch((error) => {
+              console.log('%cDefault SP 데이터를 가져오는 중 에러가 발생하였습니다.','color:red');
+              console.log(error)
+            })
+
+        }).catch((error) => {
+          console.log('%cSO 추가 중 에러가 발생하였습니다.','color:red');
+          console.log(error);
+        });
 
       }
     },
