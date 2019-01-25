@@ -39,57 +39,59 @@
         margin-right: 50px;
       }
 
-      /*툴팁 마크*/
-      .q_mark {
-        position: absolute;
-        top: 0.4rem;
-        right: 1rem;
-        width: 15px;
-        height: 15px;
-        display: block;
-      }
-      .q_mark:hover {
-        color: pink;
-      }
-
-      /*툴팁박스*/
-      .q_mark:hover + .tooltip_box {
-        display: block;
-      }
-      .tooltip_box {
-        display: none;
-        min-width: 100px;
-        background: #fff;
-        position: absolute;
-        bottom: 30px;
-        right: -20px;
-        font-size: 12px;
-        color: #0a3544;
-        padding: 0.2rem;
-        -webkit-border-radius: 4px;
-        border-radius: 4px;
-      }
-      .tooltip_box:after {
-        content:"▼";
-        color: #fff;
-        display: inline-block;
-        width: 5px;
-        height: 5px;
-        position: absolute;
-        bottom: 1px;
-        right: 45px;
-      }
-
-      /*수정 아이콘*/
+      /*버튼 아이콘*/
+      /*수정 버튼*/
       .setting .edit_list {
         position: absolute;
         top: 0.25rem;
         right: 1.7rem;
       }
+      /*삭제 버튼*/
       .setting .delete_list {
         position: absolute;
-        top: 0.25rem;
+        top: 0.2rem;
         right: 0.5rem;
+      }
+
+      /*플러스 버튼*/
+      /*타이틀 영역*/
+      .setting .title {
+        position: relative;
+      }
+
+      .setting .title .btn_add {
+        position: absolute;
+        right: 0.8rem;
+        top: 0.2rem;
+      }
+
+      .setting .card .btn_add {
+        position: absolute;
+        top: 0.3rem;
+        right: 3rem;
+      }
+
+      .add_property {
+        height: 60px;
+        line-height: 50px;
+        text-align: center;
+        display: block;
+        border: 5px dashed #686b6e;
+      }
+
+      .add_property:hover {
+        border-color: #20a8d8;
+      }
+      .add_property:hover i,
+      .add_property:hover span {
+        color: #20a8d8;
+      }
+      .add_property i,
+      .add_property span {
+        color: #686b6e;
+      }
+      a, i, span {
+        text-decoration: none !important;
       }
 
     </style>
@@ -98,7 +100,6 @@
 
 <body>
 <div class="wrap">
-
   <!--진입 경로-->
   <nav class="breadcrumb">
     <a class="breadcrumb-item" href="#">Home</a>
@@ -108,119 +109,57 @@
   </nav>
   <!--//진입 경로-->
 
-  <div class="container setting">
-
+  <div class="container setting"><!--관리(설정) 페이지에서는 setting 클래스가 들어갑니다-->
       <!--서비스분류 카테고리 1개 단위-->
-      <div class="title mb-1"><strong>타이틀1</strong></div>
+      <div class="title mb-1"><strong>타이틀1</strong><a href="#" class="btn_add font-lg text-white fa fa-plus mr-1"></a></div>
       <div class="card p-3" id="Accordion" data-children=".item">
+           <!--key 1개 단위-->
           <div class="item card p-2 mb-2">
             <div class="position-relative">
               <a data-toggle="collapse" data-parent="#Accordion" href="#Accordion2" aria-expanded="true" aria-controls="Accordion2">1depth</a>
-
+              <a href="#" class="btn_add fa fa-plus mr-1"></a>
               <a href="#" class="edit_list far fa-edit"></a>
               <a href="#" class="delete_list fas fa-times font-lg"></a>
 
-              <div class="collapse card p-2 mb-2 mt-2 position-relative" id="Accordion2" role="tabpanel" style="">
+             <!-- <div class="collapse card p-2 mb-2 mt-2 position-relative" id="Accordion2" role="tabpanel" style="">
                 <p class="mb-0">1111111111111</p>
-              </div>
+                <a href="#" class="edit_list far fa-edit"></a>
+              </div>-->
             </div>
           </div>
+          <!--// key 1개 단위-->
 
-
-
-
+          <!-- key 1개 단위-->
           <div class="item card p-2 mb-2">
             <div class="position-relative">
               <a data-toggle="collapse" data-parent="#Accordion" href="#Accordion1" aria-expanded="true" aria-controls="Accordion1">2depth가진 경우</a>
+              <a href="#" class="btn_add fa fa-plus mr-1"></a>
               <a href="#" class="edit_list far fa-edit"></a>
               <a href="#" class="delete_list fas fa-times font-lg"></a>
 
               <div class="collapse card p-2 mb-2 mt-2" id="Accordion1" role="tabpanel" style="">
                 <div class="position-relative">
                   <a data-toggle="collapse" data-parent="#Accordion1_d1" href="#Accordion1_d1" aria-expanded="true" aria-controls="Accordion1" class="">serverImg</a>
+
+                  <a href="#" class="btn_add fa fa-plus mr-1"></a>
                   <a href="#" class="edit_list far fa-edit"></a>
                   <a href="#" class="delete_list fas fa-times font-lg"></a>
 
-                  <div class="collapse card p-2 mb-2 mt-2 position-relative" id="Accordion1_d1" role="tabpanel" style="">
+                  <!--<div class="collapse card p-2 mb-2 mt-2 position-relative" id="Accordion1_d1" role="tabpanel" style="">
                       <p class="mb-0">1111111111111111</p>
-                  </div>
+                  </div>-->
                 </div>
               </div>
             </div>
           </div>
+         <!--// key 1개 단위-->
 
-
-
-
-
-          <div class="item card p-2 mb-2">
-              <div class="position-relative">
-                  <a data-toggle="collapse" data-parent="#Accordion" href="#Accordion3" aria-expanded="true" aria-controls="Accordion3" class="">2depth 여러 메뉴인 경우</a>
-
-                <a href="#" class="edit_list far fa-edit"></a>
-                <a href="#" class="delete_list fas fa-times font-lg"></a>
-
-                  <div class="collapse card p-2 mb-2 mt-2" id="Accordion3" role="tabpanel" style="">
-                      <div class="position-relative">
-                        <a data-toggle="collapse" data-parent="#Accordion3_d1" href="#Accordion3_d1" aria-expanded="true" aria-controls="Accordion3" class="">serverImg1</a>
-
-                        <a href="#" class="edit_list far fa-edit"></a>
-                        <a href="#" class="delete_list fas fa-times font-lg"></a>
-
-                        <div class="collapse card p-2 mb-2 mt-2 position-relative" id="Accordion3_d1" role="tabpanel" style="">
-                            <p class="mb-0">1111111111111111</p>
-
-                        </div>
-                      </div>
-                    <div class="position-relative">
-                      <a data-toggle="collapse" data-parent="#Accordion3_d2" href="#Accordion3_d2" aria-expanded="true" aria-controls="Accordion4" class="">serverImg2</a>
-                      <a href="#" class="edit_list far fa-edit"></a>
-                      <a href="#" class="delete_list fas fa-times font-lg"></a>
-
-                      <div class="collapse card p-2 mb-2 mt-2 position-relative" id="Accordion3_d2" role="tabpanel" style="">
-                         <p class="mb-0">1111111111111111</p>
-
-                      </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-        </div>
+      </div>
       <!--//서비스분류 카테고리 1개 단위-->
 
-      <!--서비스분류 카테고리 1개 단위-->
-      <div class="title mb-1"><strong>타이틀2</strong></div>
-      <div class="card p-3" id="Accordion" data-children=".item">
-          <div class="item card p-2 mb-2">
-              <div class="position-relative">
-                  <a data-toggle="collapse" data-parent="#Accordion" href="#Accordion4" aria-expanded="true" aria-controls="Accordion4" class="">3depth가진 경우</a>
-                  <a href="#" class="edit_list far fa-edit"></a>
-                  <a href="#" class="delete_list fas fa-times font-lg"></a>
-                  <div class="collapse card p-2 mb-2 mt-2" id="Accordion4" role="tabpanel" style="">
-                    <div class="position-relative">
-                      <a data-toggle="collapse" data-parent="#Accordion4_d1" href="#Accordion4_d1" aria-expanded="true" aria-controls="Accordion4_d1">serverImg</a>
-                      <a href="#" class="edit_list far fa-edit"></a>
-                      <a href="#" class="delete_list fas fa-times font-lg"></a>
-                      <div class="collapse card p-2 mb-2 mt-2" id="Accordion4_d1" role="tabpanel" style="">
-                        <div class="position-relative">
-                          <a data-toggle="collapse" data-parent="#Accordion4_d2" href="#Accordion4_d2" aria-expanded="true" aria-controls="Accordion4_d2">serverImg</a>
-                          <a href="#" class="edit_list far fa-edit"></a>
-                          <a href="#" class="delete_list fas fa-times font-lg"></a>
-                          <div class="collapse card p-2 mb-2 mt-2 position-relative" id="Accordion4_d2" role="tabpanel" style="">
-                            <p class="mb-0">1111111111111111</p>
-                            <a href="#" class="edit_list far fa-edit"></a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-          </div>
-        </div>
-     <!--//서비스분류 카테고리 1개 단위-->
-    <a href="#" class="text-white">
-      <i class="fas fa-plus"></i>
-      <span class="add_property">ADD Property</span>
+    <a href="#" class="text-white w-100 add_property">
+      <i class="fa fa-plus mr-1"></i>
+      <span>ADD Property</span>
     </a>
 
   </div><!--//container-->
