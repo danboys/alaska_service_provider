@@ -11,7 +11,6 @@ import router from './router'
 import Firebase from 'firebase'
 import store from './store';
 
-
 let config = {
   apiKey: "AIzaSyCTasmR9mfQvGMN9LbMbb4ViQkwH41cmxU",
   authDomain: "alaska-service-provider.firebaseapp.com",
@@ -26,7 +25,9 @@ window.firebase=Firebase;
 
 Vue.use(BootstrapVue)
 
-/* eslint-disable no-new */
+// EventBus
+Vue.prototype.$EventBus = new Vue();
+
 new Vue({
   el: '#app',
   router,

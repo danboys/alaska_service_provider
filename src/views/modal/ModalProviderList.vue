@@ -70,6 +70,10 @@
     },
     created() {
       this.fetchFirebaseData();
+      this.$EventBus.$on('update', () => {
+        console.log('$EventBus.$on update:: ModalProviderList');
+        this.fetchFirebaseData();
+      });
     },
     methods: {
       ...mapMutations(['showSubModal', 'hideModal']),
@@ -88,15 +92,6 @@
           .catch((error) => {
             console.log(error)
           })
-      },
-      modifyProvider() {
-        // sp 수정
-
-      },
-      deleteProvider(key) {
-        // sp 삭제
-        console.log('deleteProvider key ::' + key );
-
       },
     },
   }

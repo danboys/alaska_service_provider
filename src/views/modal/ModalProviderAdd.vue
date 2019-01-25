@@ -117,7 +117,7 @@
 
           <!--버튼-->
           <div class="card-footer card-footer-bg-none text-right">
-            <button class="btn btn-sm btn-primary" type="reset" @click="hideSubModal">
+            <button class="btn btn-sm btn-primary" type="reset" @click="refresh">
               <i class="fa"></i>닫기</button>
           </div>
           <!--//버튼-->
@@ -226,7 +226,13 @@
           console.log(error);
         });
 
-      }
+      },
+      refresh() {
+        // refresh
+        console.log('$EventBus.$emit update::');
+        this.$EventBus.$emit('update');
+        this.hideSubModal();
+      },
     },
   }
 </script>

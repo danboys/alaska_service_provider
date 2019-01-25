@@ -5,8 +5,10 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state:{
+    // modal
     modalVisible: false,
     modalComponent: null,
+    // subModal
     subModalVisible: false,
     subModalComponent: null,
   },
