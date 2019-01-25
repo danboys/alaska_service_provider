@@ -107,16 +107,6 @@
       this.serviceName = this.$route.query.serviceName
       this.fetchFirebaseData();
     },
-    computed:{
-
-      change(){
-        if(this.serviceName === null){
-          console.log(this.serviceName)
-        }else{
-          console.log(this.serviceName)
-        }
-      }
-    },
     methods: {
       ...mapMutations([`showModal`]),
       /**
@@ -131,7 +121,7 @@
              */
             this.oData = data.val();
 
-            let convert = require('object-array-converter');
+            //let convert = require('object-array-converter');
             this.depth1Data = data.val()
             console.log(this.depth1Data)
 
