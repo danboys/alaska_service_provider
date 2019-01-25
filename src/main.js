@@ -11,14 +11,13 @@ import router from './router'
 import Firebase from 'firebase'
 import store from './store';
 
-
 let config = {
-  apiKey: "AIzaSyAIFkpFW9m-vWqzXlUaGvu9idWcn2r32c0",
-  authDomain: "sptest-822cd.firebaseapp.com",
-  databaseURL: "https://sptest-822cd.firebaseio.com",
-  projectId: "sptest-822cd",
-  storageBucket: "sptest-822cd.appspot.com",
-  messagingSenderId: "315486298175"
+  apiKey: "AIzaSyCTasmR9mfQvGMN9LbMbb4ViQkwH41cmxU",
+  authDomain: "alaska-service-provider.firebaseapp.com",
+  databaseURL: "https://alaska-service-provider.firebaseio.com",
+  projectId: "alaska-service-provider",
+  storageBucket: "alaska-service-provider.appspot.com",
+  messagingSenderId: "1048042695905"
 };
 let firebaseApp = Firebase.initializeApp(config);
 
@@ -26,7 +25,9 @@ window.firebase=Firebase;
 
 Vue.use(BootstrapVue)
 
-/* eslint-disable no-new */
+// EventBus
+Vue.prototype.$EventBus = new Vue();
+
 new Vue({
   el: '#app',
   router,

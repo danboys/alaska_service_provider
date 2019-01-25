@@ -1,25 +1,31 @@
 <template>
-  <div class="c-appMadal">
-    <component :is="component" v-if="visible"/>
+  <div class="c-subModal">
+    <component :is="component" v-if="visible" v-bind:target-provider="targetProvider"/>
   </div>
 </template>
 
 <script>
   import Vue from 'vue';
-  import { mapState, mapMutations } from 'vuex'
+  import { mapState } from 'vuex'
 
   export default {
-    name: 'DefaultModal',
+    name: 'DefaultSubModal',
+    props: ['targetProvider'],
     data() {
       return {
-        component: null
+        component: null,
+        oValues: null,
       }
+    },
+    mounted(){
+      console.log("DefaultSubModal");
+      console.log(this.targetProvider);
     },
     computed: {
       ...mapState({
-        visible: 'modalVisible',
-        modalComponent: 'modalComponent',
-      }),
+        visible: 'subModalVisible',
+        modalComponent: 'subModalComponent',
+      })
     },
     watch: {
       modalComponent(componentName) {
@@ -29,10 +35,7 @@
         Vue.component(componentName, () => import(`../views/modal/${componentName}`));
         this.component = componentName;
       },
-    },
-    methods: {
-      ...mapMutations(['hideModal']),
-    },
+    }
   }
 </script>
 
