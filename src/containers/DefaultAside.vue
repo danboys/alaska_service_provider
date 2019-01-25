@@ -121,6 +121,10 @@
     },
     created() {
       this.fetchFirebaseData();
+      this.$EventBus.$on('update', () => {
+        console.log('$EventBus.$on update:: DefaultAside');
+        this.fetchFirebaseData();
+      });
     },
     methods: {
       ...mapMutations([`showModal`]),
