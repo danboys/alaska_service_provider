@@ -21,7 +21,7 @@
                   </ul>
                 </div>
                 <div>
-                  <a href="#" @click="addProvider"><i class="fa fa-plus" aria-hidden="true"></i> Add provider</a>
+                  <a href="#" @click="showSubModal('ModalProviderAdd')"><i class="fa fa-plus" aria-hidden="true"></i> Add provider</a>
                 </div>
               </div>
             </div>
@@ -38,9 +38,7 @@
       </div>
     </div>
 
-    <div v-if="modal">
-      <component :is="componentName"/>
-    </div>
+    <sub-modal v-bind:target-provider="targetProvider"></sub-modal>
 
 
   </div>
@@ -49,13 +47,15 @@
 <script>
   import Vue from 'vue';
   import { mapMutations } from 'vuex';
-  import ModalProviderAdd from './ModalProviderAdd'
+  import SubModal from '../../containers/DefaultSubModal'
 
   export default {
     name: 'ModalProviderList',
+    components: {
+      SubModal
+    },
     data: () => {
       return {
-        modal : false,
         targetProvider : {
           "flag" : "",
           "key" : "",
@@ -71,20 +71,8 @@
     created() {
       this.fetchFirebaseData();
     },
-    watch : {
-      componentName : () => {
-        console.log(this.componentName);
-        // 방어로직
-        // if (!this.componentName) return;
-
-        // Vue.component(this.componentName, () => import(`./${this.componentName}`));
-        // this.component = componentName;
-      },
-    },
     methods: {
-      ...mapMutations([
-        'hideModal'
-      ]),
+      ...mapMutations(['showSubModal', 'hideModal']),
       fetchFirebaseData() {
         console.log('fetchFirebaseData !!!!');
         firebase.database().ref('/provider/so').once('value')
@@ -100,12 +88,6 @@
           .catch((error) => {
             console.log(error)
           })
-      },
-      addProvider() {
-        // sp 추가
-        console.log('sp 추가');
-        this.modal = true;
-        this.componentName = 'ModalProviderAdd';
       },
       modifyProvider() {
         // sp 수정
