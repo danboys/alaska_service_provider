@@ -67,35 +67,33 @@
           .sidebar-minimized .sidebar .nav-title-minimized {
             display: block;
           }
+          /*사이드와 컨텐츠 관계:
+          사이드가 접히는 경우에 따라 상위 div.main에 아래 클래스가 추가됩니다.
+          1. 0개 닫혔을 경우 : side_show_03
+          2. 1개 닫혔을 경우 : side_show_02
+          3. 2개 닫혔을 경우 : side_show_01
+          4. 3개 모두 닫혔을 경우 : side_show_none
+          */
+          /*사이드 닫히는 경우 콘텐츠 위치*/
+          /*0개 닫혔을 경우*/
+          .side_show_03 .wrap {
+            margin-left: 600px;
+          }
+          /*1개 닫혔을 경우*/
+          .side_show_02 .wrap {
+            margin-left: 450px;
+          }
+          /*2개 닫혔을 경우*/
+          .side_show_01 .wrap {
+            margin-left: 300px;
+          }
+          /*3개 모두 닫혔을 경우*/
+          .side_show_none .wrap {
+            margin-left: 150px;
+          }
     </style>
 </head>
 <body class="sidebar-fixed sidebar-lg-show pace-done">
-<script>
-  window.onload = function(){
-
-    var cFolder = document.getElementsByClassName("click_folder");
-    var toggleFolder = function (e) {
-      // console.log(e);
-      var clickedItem = e.currentTarget;
-      var targetClassList = clickedItem.getElementsByClassName("nav-icon")[0].classList;
-      if(targetClassList.contains('fa-folder')){
-        // 닫힌 상태
-        targetClassList.add("fa-folder-open", "icon-y");
-        targetClassList.remove("fa-folder", "icon-w");
-      }else{
-        // 열린 상태
-        targetClassList.remove("fa-folder-open", "icon-y");
-        targetClassList.add("fa-folder", "icon-w");
-      }
-
-    };
-
-    for (var i = 0; i < cFolder.length; i++) {
-      var childElement = cFolder[i];
-      childElement.addEventListener('click', toggleFolder, false);
-    }
-  }
-</script>
 
     <div class="sidebar sidebar_depth sidebar_depth2"><!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다. sidebar_depth2는 댑스2, sidebar_depth3는 댑스3로 left 조절-->
       <nav class="sidebar-nav ps ps--active-y">
@@ -110,25 +108,25 @@
           </li>
           <li class="nav-item click_folder">
             <a class="nav-link" href="#">
-              <i class="nav-icon icon_w fas fa-folder"></i><!--클릭될 경우  icon_w 와 fa-folder가 icon-y와 fa-folder-open로 교체 -->
+              <i class="nav-icon icon_w fa fa-folder"></i><!--클릭될 경우  icon_w 와 fa-folder가 icon-y와 fa-folder-open로 교체 -->
               <span>CJH TESTbed</span>
             </a>
           </li>
           <li class="nav-item click_folder">
             <a class="nav-link" href="#">
-              <i class="nav-icon icon_w fas fa-folder"></i>
+              <i class="nav-icon icon_w fa fa-folder"></i>
               <span>CJH LIVEbed</span>
             </a>
           </li>
           <li class="nav-item click_folder">
             <a class="nav-link" href="#">
-              <i class="nav-icon icon_w fas fa-folder"></i>
+              <i class="nav-icon icon_w fa fa-folder"></i>
               <span>일이삼사오육칠팔구십일이삼사오육칠팔구십</span>
             </a>
           </li>
           <li class="nav-item click_folder">
             <a class="nav-link" href="#">
-              <i class="nav-icon icon_w fas fa-folder"></i>
+              <i class="nav-icon icon_w fa fa-folder"></i>
               <span>bbbbbbbbbb</span>
             </a>
           </li>
