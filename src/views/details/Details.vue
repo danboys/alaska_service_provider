@@ -23,7 +23,7 @@
                 <!--//툴팁-->
                 <div class="card p-2 mb-2 mt-2 position-relative collapse " :id="key2" role="tabpanel" style="">
                   <p class="mb-0">{{val2}}</p>
-                  <a href="#" class="edit_list fa fa-edit"></a>
+                  <a href="#" class="edit_list fa fa-edit" @click="showModal('ModalDetailsPopup')"></a>
                 </div>
               </div>
             </div>
@@ -34,7 +34,7 @@
         <div class="card p-3" id="Accordion" data-children=".item">
           <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
             <p class="mb-0">{{val1}}</p>
-            <a href="#" class="edit_list fa fa-edit"></a>
+            <a href="#" class="edit_list fa fa-edit" @click="showModal('ModalDetailsPopup')"></a>
           </div>
         </div>
       </div>
@@ -43,7 +43,7 @@
         <div class="card p-3" id="Accordion" data-children=".item">
           <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
             <p class="mb-0">{{val1}}</p>
-            <a href="#" class="edit_list fa fa-edit"></a>
+            <a href="#" class="edit_list fa fa-edit" @click="showModal('ModalDetailsPopup')"></a>
           </div>
         </div>
       </div>
@@ -52,7 +52,7 @@
         <div class="card p-3" id="Accordion" data-children=".item">
           <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" v-for="(val2,key2) in val1">
             <p class="mb-0">{{val2}}</p>
-            <a href="#" class="edit_list fa fa-edit"></a>
+            <a href="#" class="edit_list fa fa-edit" @click="showModal('ModalDetailsPopup')"></a>
           </div>
         </div>
       </div>
@@ -98,7 +98,7 @@
           .catch((error) => {
             console.log(error)
           })
-      },
+      }
     }
   }
 </script>
