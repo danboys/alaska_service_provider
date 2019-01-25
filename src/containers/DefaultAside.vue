@@ -263,6 +263,7 @@
 
   .sidebar-minimized .btn.btn_m {
     width: 100%;
+    padding-left: 0;
   }
 
   .nav-logo {
