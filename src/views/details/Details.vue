@@ -34,18 +34,18 @@
         <div class="card p-3" id="Accordion" data-children=".item" style=""  >
           <div class="item card p-2 mb-2">
             <div class="position-relative">
-              <a data-toggle="collapse" data-parent="#Accordion" href="#key" aria-expanded="true" aria-controls="Accordion2">
+              <a data-toggle="collapse" data-parent="#Accordion" :href="'#'+key1" aria-expanded="true" aria-controls="Accordion2">
                 {{key1}}
               </a>
               <!--툴팁-->
               <a href="#" class="q_mark  fa fa-exclamation-circle"></a>
               <div class="tooltip_box">툴팁<br>툴팁입니다</div>
               <!--//툴팁-->
-              <div class="collapse card p-2 mb-2 mt-2 position-relative" id="key" role="tabpanel"  v-if="typeof(val1) === 'string'">
+              <div class="collapse card p-2 mb-2 mt-2 position-relative" :id="key1" role="tabpanel"  v-if="typeof(val1) === 'string'">
                 <p class="mb-0">{{val1}}</p>
                 <a href="#" class="edit_list fa fa-edit"></a>
               </div>
-              <div class="collapse card p-2 mb-2 mt-2 position-relative" id="key" role="tabpanel"  v-else>
+              <div class="collapse card p-2 mb-2 mt-2 position-relative" :id="key1" role="tabpanel"  v-else>
                 <p class="mb-0">{{val2}}</p>
                 <a href="#" class="edit_list fa fa-edit"></a>
               </div>
