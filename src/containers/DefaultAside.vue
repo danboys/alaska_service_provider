@@ -43,6 +43,10 @@
         <!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다. sidebar_depth2는 댑스2, sidebar_depth3는 댑스3로 left 조절-->
         <nav class="sidebar-nav ps ps--active-y">
           <ul class="nav">
+            <!--설정 버튼-->
+            <a href="#" class="btn_admin text-white text-right font-lg p-1" @click="showModal('ModalProviderList')">
+              <i class="fa fa-cog"></i>
+            </a>
             <li class="nav-item text-center nav-title-m">
               <span class="nav-title">
                   <span class="font-sm">SP 목록</span>
@@ -62,9 +66,6 @@
           </ul>
         </nav>
 
-        <!--설정 버튼-->
-        <a href="#" class="btn_setting" @click="showModal('ModalProviderList')">설정하기 <i class="fa fa-cog"></i></a>
-
         <!--접기/펼치기 버튼-->
         <button class="sidebar-minimizer brand-minimizer _dep02" type="button" @click="sidebarToggle(2)"></button>
       </div>
@@ -74,6 +75,10 @@
         <!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다. sidebar_depth2는 댑스2, sidebar_depth3는 댑스3로 left 조절-->
         <nav class="sidebar-nav ps ps--active-y">
           <ul class="nav">
+            <!--설정 버튼-->
+            <a href="#" class="btn_admin text-white text-right font-lg p-1">
+              <i class="fa fa-cog"></i>
+            </a>
             <li class="nav-item text-center nav-title-m">
             <span class="nav-title">
                 <span class="font-sm">서비스 목록</span>
