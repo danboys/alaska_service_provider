@@ -10,7 +10,7 @@ const store = new Vuex.Store({
     // modal
     modalVisible: false,
     modalComponent: null,
-    modalKey: null,
+    modalValues: null,
     // subModal
     subModalVisible: false,
     subModalComponent: null,
@@ -22,14 +22,13 @@ const store = new Vuex.Store({
     /**
      * modal
      * @param state
-     * @param options {componentName:'ModalServiceList', componentKey:'cjh_testbed'}
-     * options 객체에 필드를 추가할 수 있습니다.
+     * @param options ex.{componentName:'ModalServiceList', key:'cjh_livebed', spName :'CJH Livebed'}
+     * componentName만 필수이고 나머지 값들은 필요한 필드를 추가하여 사용한다.
      */
     showModal(state, options) {
-      debugger
       state.modalVisible = true;
       state.modalComponent = options.componentName;
-      state.modalKey = options.componentKey;
+      state.modalValues = options;
     },
     hideModal(state) {
       state.modalVisible = false;

@@ -250,7 +250,8 @@
       modalServiceList(){
         this.showModal({
           componentName : 'ModalServiceList',
-          componentKey : this.selected.depth2.key
+          spName : this.selected.depth2.spName,
+          key : this.selected.depth2.key
         });
       }
     }
