@@ -5,6 +5,8 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state:{
+    // setting
+    isSetting: false,
     // modal
     modalVisible: false,
     modalComponent: null,
@@ -13,6 +15,9 @@ const store = new Vuex.Store({
     subModalComponent: null,
   },
   mutations: {
+    setMode(state, val) {
+      state.isSetting = val;
+    },
     /**
      * modal
      * @param state

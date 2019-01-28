@@ -8,13 +8,13 @@
           </div>
           <ul class="nav">
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link" @click="setMode(false)">
                 <i class="nav-icon cui-list icon_w"></i>
                 <span>SPM</span>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link" @click="setMode(true)">
                 <i class="nav-icon cui-settings icon_w"></i>
                 <span>SPM Setting</span>
               </a>
@@ -44,7 +44,7 @@
         <nav class="sidebar-nav ps ps--active-y">
           <ul class="nav">
             <!--설정 버튼-->
-            <a href="#" class="btn_admin text-white text-right font-lg p-1" @click="showModal('ModalProviderList')">
+            <a v-if="isSetting" href="#" class="btn_admin text-white text-right font-lg p-1" @click="showModal('ModalProviderList')">
               <i class="fa fa-cog"></i>
             </a>
             <li class="nav-item text-center nav-title-m">
@@ -76,7 +76,7 @@
         <nav class="sidebar-nav ps ps--active-y">
           <ul class="nav">
             <!--설정 버튼-->
-            <a href="#" class="btn_admin text-white text-right font-lg p-1">
+            <a v-if="isSetting" href="#" class="btn_admin text-white text-right font-lg p-1">
               <i class="fa fa-cog"></i>
             </a>
             <li class="nav-item text-center nav-title-m">
@@ -105,7 +105,7 @@
 </template>
 
 <script>
-  import { mapMutations } from 'vuex'
+  import { mapState, mapMutations } from 'vuex'
   export default {
     name: 'DefaultAside',
     components: {},
@@ -131,8 +131,13 @@
         this.fetchFirebaseData();
       });
     },
+    computed: {
+      ...mapState({
+        isSetting: 'isSetting',
+      }),
+    },
     methods: {
-      ...mapMutations([`showModal`]),
+      ...mapMutations([`showModal`, `setMode`]),
       /**
        * firebase 연동
        */
