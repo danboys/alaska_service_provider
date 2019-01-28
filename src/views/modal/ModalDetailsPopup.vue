@@ -4,7 +4,7 @@
 
       <div class="card card_modify">
         <div class="card-header">
-          <strong>server img</strong>
+          <strong></strong>
           <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal">
             <span aria-hidden="true">×</span>
           </button>
@@ -15,9 +15,9 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="form-group">
-                <label for="name" class="help-block c_light_blue">이미지 경로값을 입력해주세요.</label>
+                <label for="name" class="help-block c_light_blue"></label>
                 <input class="form-control" id="name" type="text" placeholder="입력하세요">
-                <small class="text-muted">ex) CJH: img/common/default_img/img_default_poster_220_316.png</small><!--description이 붙을 경우 추가-->
+                <small class="text-muted">ex)</small><!--description이 붙을 경우 추가-->
               </div>
             </div>
           </div>
