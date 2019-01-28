@@ -133,6 +133,10 @@
         console.log('$EventBus.$on update:: DefaultAside');
         this.fetchFirebaseData();
       });
+      this.$EventBus.$on('updateService', () => {
+        console.log('$EventBus.$on updateService:: DefaultAside');
+        this.fetchFirebaseData();
+      });
     },
     computed: {
       ...mapState({

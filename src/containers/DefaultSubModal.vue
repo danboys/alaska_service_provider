@@ -1,6 +1,6 @@
 <template>
   <div class="c-subModal">
-    <component :is="component" v-if="visible" v-bind:target-provider="targetProvider"/>
+    <component :is="component" v-if="visible" v-bind:target-provider="targetProvider" v-bind:target-service="targetService"/>
   </div>
 </template>
 
@@ -10,7 +10,7 @@
 
   export default {
     name: 'DefaultSubModal',
-    props: ['targetProvider'],
+    props: ['targetProvider', 'targetService'],
     data() {
       return {
         component: null,
@@ -19,7 +19,14 @@
     },
     mounted(){
       console.log("DefaultSubModal");
-      console.log(this.targetProvider);
+      if(this.targetProvider) {
+        console.log("this.targetProvider");
+        console.log(this.targetProvider);
+      }
+      if(this.targetService) {
+        console.log("this.targetService");
+        console.log(this.targetService);
+      }
     },
     computed: {
       ...mapState({
