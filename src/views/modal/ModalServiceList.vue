@@ -5,7 +5,7 @@
       <div class="popup">
         <div class="card card_modify_SP">
           <div class="card-header">
-            <strong>{{targetValues.spName}} 서비스 목록 설정</strong>
+            <strong>서비스 목록 설정</strong>
             <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal">
               <span aria-hidden="true">×</span>
             </button>
