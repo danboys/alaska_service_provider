@@ -106,7 +106,7 @@
       },
       deleteProvider(item){
         this.targetProvider = item;
-
+        this.showSubModal('ModalProviderDelete');
       }
     },
   }
