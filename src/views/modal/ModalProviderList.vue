@@ -18,16 +18,16 @@
                 <div class="col-sm-6 text-dark">
                   <span>{{item.spName}}</span>
                 </div>
-                <a href="#"><i class="fa fa-edit text-dark font-lg btn_edit "></i></a><!--수정 버튼-->
-                <a href="#" @click="deleteProvider(item.key)"><i class="fa fa-trash text-dark font-lg btn_delete"></i></a><!--삭제 버튼-->
+                <a href="#" @click="modifyProvider(item)"><i class="fa fa-edit text-dark font-lg btn_edit "></i></a><!--수정 버튼-->
+                <a href="#" @click="deleteProvider(item)"><i class="fa fa-trash text-dark font-lg btn_delete"></i></a><!--삭제 버튼-->
               </div>
               <!--even-->
               <div v-else class="form-group row">
                 <div class="col-sm-6">
                   <span>{{item.spName}}</span>
                 </div>
-                <a href="#"><i class="fa fa-edit font-lg btn_edit "></i></a><!--수정 버튼-->
-                <a href="#" @click="deleteProvider(item.key)"><i class="fa fa-trash font-lg btn_delete"></i></a><!--삭제 버튼-->
+                <a href="#" @click="modifyProvider(item)"><i class="fa fa-edit font-lg btn_edit "></i></a><!--수정 버튼-->
+                <a href="#" @click="deleteProvider(item)"><i class="fa fa-trash font-lg btn_delete"></i></a><!--삭제 버튼-->
               </div>
             </div>
 
@@ -100,6 +100,14 @@
             console.log(error)
           })
       },
+      modifyProvider(item){
+        this.targetProvider = item;
+        this.showSubModal('ModalProviderModify');
+      },
+      deleteProvider(item){
+        this.targetProvider = item;
+
+      }
     },
   }
 </script>
