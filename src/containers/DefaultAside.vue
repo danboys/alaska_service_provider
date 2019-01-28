@@ -380,4 +380,9 @@
     text-align: center !important;
   }
 
+  /*타이틀 라인*/
+  .sidebar_depth .nav li:nth-child(2) {
+    margin: 0 10% 5px;
+    border-bottom: 1px solid #fff;
+  }
 </style>
