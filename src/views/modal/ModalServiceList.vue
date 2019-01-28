@@ -32,7 +32,7 @@
             </div>
 
 
-            <div class="mt-4"><a href="#" class="font-lg" @click="showSubModal('ModalServiceAdd')"><i class="fa fa-plus mr-1"></i>Add Service</a></div>
+            <div class="mt-4"><a href="#" class="font-lg" @click="addService"><i class="fa fa-plus mr-1"></i>Add Service</a></div>
           </div><!--//card-body-->
 
           <!--버튼-->
@@ -46,7 +46,6 @@
     </div>
 
     <sub-modal v-bind:target-service="targetService"></sub-modal>
-
 
   </div>
 </template>
@@ -66,7 +65,9 @@
         targetValues : {},
         serviceData : [],
         componentName: null,
-        targetService : ""
+        targetService : {
+          serviceName : ""
+        }
       }
     },
     created() {
@@ -76,8 +77,8 @@
       Object.assign(this.targetValues, this.$store.state.modalValues);
 
       this.fetchFirebaseData();
-      this.$EventBus.$on('update', () => {
-        console.log('$EventBus.$on update:: ModalServiceList');
+      this.$EventBus.$on('updateService', () => {
+        console.log('$EventBus.$on updateService:: ModalServiceList');
         this.fetchFirebaseData();
       });
     },
@@ -99,12 +100,15 @@
             console.log(error)
           })
       },
+      addService(){
+        this.showSubModal('ModalServiceAdd');
+      },
       modifyService(item){
-        this.targetService = item;
+        this.targetService.serviceName = item;
         this.showSubModal('ModalServiceModify');
       },
       deleteService(item){
-        this.targetService = item;
+        this.targetService.serviceName = item;
         this.showSubModal('ModalServiceDelete');
       }
     },
