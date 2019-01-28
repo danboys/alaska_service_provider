@@ -375,9 +375,9 @@
     text-transform: uppercase;
   }
 
-  /*setting btn*/
-  .sidebar-minimized .btn_setting {
-    display: none;
+  /*설정 버튼*/
+  .sidebar-minimized .btn_admin {
+    text-align: center !important;
   }
 
 </style>
