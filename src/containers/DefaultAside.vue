@@ -8,13 +8,13 @@
           </div>
           <ul class="nav">
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link" @click="setMode(false)">
                 <i class="nav-icon cui-list icon_w"></i>
                 <span>SPM</span>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link" @click="setMode(true)">
                 <i class="nav-icon cui-settings icon_w"></i>
                 <span>SPM Setting</span>
               </a>
@@ -44,7 +44,7 @@
         <nav class="sidebar-nav ps ps--active-y">
           <ul class="nav">
             <!--설정 버튼-->
-            <a href="#" class="btn_admin text-white text-right font-lg p-1" @click="showModal('ModalProviderList')">
+            <a v-if="isSetting" href="#" class="btn_admin text-white text-right font-lg p-1" @click="showModal({componentName : 'ModalProviderList'})">
               <i class="fa fa-cog"></i>
             </a>
             <li class="nav-item text-center nav-title-m">
@@ -57,7 +57,7 @@
               </span>
             </li>
             <li v-for="item in depth2Data" class="nav-item click_folder">
-              <a class="nav-link" href="#" @click="selectProvider(item.key,$event)">
+              <a class="nav-link" href="#" @click="selectProvider(item,$event)">
                 <i class="nav-icon icon_w fa fa-folder"></i>
                 <!--클릭될 경우  icon_w 와 fa-folder가 icon-y와 fa-folder-open로 교체 -->
                 <span>{{item.spName}}</span>
@@ -76,12 +76,12 @@
         <nav class="sidebar-nav ps ps--active-y">
           <ul class="nav">
             <!--설정 버튼-->
-            <a href="#" class="btn_admin text-white text-right font-lg p-1">
+            <a v-if="isSetting" href="#" class="btn_admin text-white text-right font-lg p-1" @click="modalServiceList">
               <i class="fa fa-cog"></i>
             </a>
             <li class="nav-item text-center nav-title-m">
             <span class="nav-title">
-                <span class="font-sm">서비스 목록</span>
+                <span class="font-sm">{{selected.depth2.spName}} Service</span>
                 <!--<i class="nav-icon"></i>-->
             </span>
               <span class="nav-title-minimized">
@@ -105,7 +105,7 @@
 </template>
 
 <script>
-  import { mapMutations } from 'vuex'
+  import { mapState, mapMutations } from 'vuex'
   export default {
     name: 'DefaultAside',
     components: {},
@@ -117,7 +117,10 @@
           minimizedDep03: true,
         },
         selected: {
-          depth2: "cjh_livebed"
+          depth2: {
+            key : "cjh_livebed",
+            spName : "CJH Livebed"
+          },
         },
         oData: {},
         depth2Data: [],
@@ -131,8 +134,13 @@
         this.fetchFirebaseData();
       });
     },
+    computed: {
+      ...mapState({
+        isSetting: 'isSetting',
+      }),
+    },
     methods: {
-      ...mapMutations([`showModal`]),
+      ...mapMutations([`showModal`, `setMode`]),
       /**
        * firebase 연동
        */
@@ -147,7 +155,7 @@
             console.log('setDepthData 데이터 가공 시작 :: depth2Data');
             this.setDepth2Data(this.oData.so, "depth2Data");
             console.log('setDepthData 데이터 가공 시작 :: depth3Data');
-            this.setDepth3Data(this.oData.sp[this.selected.depth2], "depth3Data");
+            this.setDepth3Data(this.oData.sp[this.selected.depth2.key], "depth3Data");
           })
           .catch((error) => {
             console.log(error)
@@ -182,7 +190,7 @@
       /**
        * provider 선택
        */
-      selectProvider: function(key, $event){
+      selectProvider: function(item, $event){
         const currentTarget = $event.currentTarget;
         const linkTarget = currentTarget.parentNode.parentNode;
         const link = linkTarget.getElementsByClassName('nav-link');
@@ -207,9 +215,9 @@
         currnetIcon.classList.remove("icon_w","fa-folder");
         currnetIcon.classList.add("icon_y","fa-folder-open");
 
-        this.selected.depth2 = key;
-        console.log('selected.depth2 change :: ' + this.selected.depth2);
-        this.setDepth3Data(this.oData.sp[this.selected.depth2], "depth3Data");
+        this.selected.depth2 = item;
+        console.log('selected.depth2 change :: ' + this.selected.depth2.key);
+        this.setDepth3Data(this.oData.sp[this.selected.depth2.key], "depth3Data");
       },
 
       /**
@@ -232,12 +240,19 @@
         let routeInfo = {
           path: 'details',
           query: {
-            spName: this.selected.depth2,
+            spName: this.selected.depth2.key,
             serviceName: serviceName
           }
         };
         return routeInfo
       },
+
+      modalServiceList(){
+        this.showModal({
+          componentName : 'ModalServiceList',
+          componentKey : this.selected.depth2.key
+        });
+      }
     }
   }
 </script>

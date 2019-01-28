@@ -5,22 +5,31 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state:{
+    // setting
+    isSetting: false,
     // modal
     modalVisible: false,
     modalComponent: null,
+    modalKey: null,
     // subModal
     subModalVisible: false,
     subModalComponent: null,
   },
   mutations: {
+    setMode(state, val) {
+      state.isSetting = val;
+    },
     /**
      * modal
      * @param state
-     * @param componentName
+     * @param options {componentName:'ModalServiceList', componentKey:'cjh_testbed'}
+     * options 객체에 필드를 추가할 수 있습니다.
      */
-    showModal(state, componentName) {
+    showModal(state, options) {
+      debugger
       state.modalVisible = true;
-      state.modalComponent = componentName;
+      state.modalComponent = options.componentName;
+      state.modalKey = options.componentKey;
     },
     hideModal(state) {
       state.modalVisible = false;

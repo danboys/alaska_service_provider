@@ -1,11 +1,11 @@
 <template>
   <div>
-    <!--SP 추가 팝업-->
+    <!--SP 수정 팝업-->
     <div v-if="active == 0" :data-sequence-number="sequenceNumber" class="popup_wrap m-auto">
       <div class="popup popup_400">
         <div class="card card_modify_SP">
           <div class="card-header">
-            <strong>SP 추가</strong>
+            <strong>SP 수정</strong>
             <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
@@ -20,22 +20,20 @@
             </div>
             <div class="form-group mb-2">
               <label for="soCode">SO Code</label>
-              <!--<small>(ex. 43)</small>-->
               <input type="text" v-model="provider.soCode" class="form-control" id="soCode" placeholder="(ex. 43)">
             </div>
             <div class="form-group mb-2">
               <label for="soName">SO Name</label>
-              <!--<small>(ex. cjh)</small>-->
-              <input type="text" v-model="provider.soName" class="form-control" id="soName" placeholder="(ex. cjh)">
+              <!--key value disabled-->
+              <input type="text" v-model="provider.soName" class="form-control" id="soName" placeholder="(ex. cjh)" disabled>
             </div>
             <div class="form-group mb-2">
               <label for="spCode">SP Code</label>
-              <!--<small>(ex. livebed)</small>-->
-              <input type="text" v-model="provider.spCode" class="form-control" id="spCode" placeholder="(ex. livebed)">
+              <!--key value disabled-->
+              <input type="text" v-model="provider.spCode" class="form-control" id="spCode" placeholder="(ex. livebed)" disabled>
             </div>
             <div class="form-group">
               <label for="flag">Flag</label>
-              <!--<small>(ex. CJHV)</small>-->
               <input type="text" v-model="provider.flag" class="form-control" id="flag" placeholder="(ex. CJHV)">
             </div>
 
@@ -52,13 +50,13 @@
       </div><!--//popup-->
     </div>
 
-    <!--SP 추가 확인 팝업-->
+    <!--SP 수정 확인 팝업-->
     <div v-if="active == 1" :data-sequence-number="sequenceNumber" class="popup_wrap m-auto">
       <div class="popup">
 
         <div class="card card_modify">
           <div class="card-header">
-            <strong>SP 추가</strong>
+            <strong>SP 수정</strong>
             <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
@@ -69,7 +67,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="form-group">
-                  <p class="help-block c_light_blue">추가 하시겠습니까?</p>
+                  <p class="help-block c_light_blue">수정 하시겠습니까?</p>
                 </div>
               </div>
             </div>
@@ -87,13 +85,13 @@
       </div><!--//popup-->
     </div>
 
-    <!--SP 추가 피드백 팝업-->
+    <!--SP 수정 피드백 팝업-->
     <div v-if="active == 2" :data-sequence-number="sequenceNumber" class="popup_wrap m-auto">
       <div class="popup">
 
         <div class="card card_modify">
           <div class="card-header">
-            <strong>SP 추가 완료</strong>
+            <strong>SP 수정 완료</strong>
             <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
@@ -104,7 +102,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="form-group">
-                  <p class="help-block c_light_blue">추가 완료되었습니다.</p>
+                  <p class="help-block c_light_blue">수정 완료되었습니다.</p>
                 </div>
               </div>
             </div>
@@ -128,7 +126,8 @@
   import { mapMutations } from 'vuex';
 
   export default {
-    name: 'ModalProviderAdd',
+    name: 'ModalProviderModify',
+    props: ['targetProvider'],
     data: () => {
       return {
         active : 0,
@@ -143,18 +142,13 @@
       }
     },
     created() {
-
+      console.log('ModalProviderModify ::');
+      console.log('this.targetProvider');
+      console.log(this.targetProvider);
+      Object.assign(this.provider, this.targetProvider)
     },
     mounted(){
       this.active = 0;
-      this.provider = {
-        "flag" : "",
-        "key" : "",
-        "soCode" : null,
-        "soName" : "",
-        "spCode" : "",
-        "spName" : ""
-      }
     },
     computed:{
       sequenceNumber: function () {
@@ -194,36 +188,11 @@
         firebase.database().ref('provider/so').update({
           [this.provider.key]: this.provider
         }).then(() => {
-          console.log('%cSO 추가 완료','color:blue')
-
-          // provider_default 정보 가져오기
-          firebase.database().ref('provider_default/sp').once('value')
-            .then((data) => {
-              console.log('%cprovider_default 정보 가져오기 완료 (Initial Data)','color:blue')
-              let spData = data.val();
-              delete this.provider.update;
-              spData.so = this.provider;
-
-              // SP 생성
-              firebase.database().ref('provider/sp').update({
-                [this.provider.key]: spData
-              }).then((data) => {
-                console.log('%cSP 추가 완료 (Initial Data)','color:blue')
-                // 추가 피드백 팝업
-                this.next();
-              }).catch((error) => {
-                console.log('%cSP 추가 중 에러가 발생하였습니다.','color:red');
-                console.log(error)
-              })
-
-            })
-            .catch((error) => {
-              console.log('%cDefault SP 데이터를 가져오는 중 에러가 발생하였습니다.','color:red');
-              console.log(error)
-            })
-
+          console.log('%cSO 수정 완료','color:blue')
+          // 추가 피드백 팝업
+          this.next();
         }).catch((error) => {
-          console.log('%cSO 추가 중 에러가 발생하였습니다.','color:red');
+          console.log('%cSO 수정 중 에러가 발생하였습니다.','color:red');
           console.log(error);
         });
 

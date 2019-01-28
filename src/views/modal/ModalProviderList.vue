@@ -3,7 +3,7 @@
     <!-- SP 목록 설정 팝업 -->
     <div class="popup_wrap m-auto">
       <div class="popup">
-        <div class="card card_modify">
+        <div class="card card_modify_SP">
           <div class="card-header">
             <strong>SP 목록 설정</strong>
             <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal">
@@ -12,29 +12,36 @@
           </div><!--//card-header-->
 
           <div class="card-body">
-            <!--수정하기의 input 1칸-->
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="form-group">
-                  <ul>
-                    <li v-for="item in providerData">{{item.spName}} <a href="#" @click="deleteProvider(item.key)"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
-                  </ul>
+            <div v-for="(item, index) in providerData">
+              <!--odd-->
+              <div v-if="index % 2 == 0" class="form-group row bg-gray-500 font-weight-bold">
+                <div class="col-sm-6 text-dark">
+                  <span>{{item.spName}}</span>
                 </div>
-                <div>
-                  <a href="#" @click="showSubModal('ModalProviderAdd')"><i class="fa fa-plus" aria-hidden="true"></i> Add provider</a>
+                <a href="#" @click="modifyProvider(item)"><i class="fa fa-edit text-dark font-lg btn_edit "></i></a><!--수정 버튼-->
+                <a href="#" @click="deleteProvider(item)"><i class="fa fa-trash text-dark font-lg btn_delete"></i></a><!--삭제 버튼-->
+              </div>
+              <!--even-->
+              <div v-else class="form-group row">
+                <div class="col-sm-6">
+                  <span>{{item.spName}}</span>
                 </div>
+                <a href="#" @click="modifyProvider(item)"><i class="fa fa-edit font-lg btn_edit "></i></a><!--수정 버튼-->
+                <a href="#" @click="deleteProvider(item)"><i class="fa fa-trash font-lg btn_delete"></i></a><!--삭제 버튼-->
               </div>
             </div>
+
+
+            <div class="mt-4"><a href="#" class="font-lg" @click="showSubModal('ModalProviderAdd')"><i class="fa fa-plus mr-1"></i>Add SP</a></div>
           </div><!--//card-body-->
 
           <!--버튼-->
           <div class="card-footer card-footer-bg-none text-right">
-            <button class="btn btn-sm btn-primary" @click="hideModal">
-              <i class="fa"></i>닫기</button>
+            <button class="btn btn-sm btn-primary" type="submit" @click="hideModal">닫기</button>
           </div>
           <!--//버튼-->
 
-        </div><!--//card-->
+        </div>
       </div>
     </div>
 
@@ -93,21 +100,29 @@
             console.log(error)
           })
       },
+      modifyProvider(item){
+        this.targetProvider = item;
+        this.showSubModal('ModalProviderModify');
+      },
+      deleteProvider(item){
+        this.targetProvider = item;
+        this.showSubModal('ModalProviderDelete');
+      }
     },
   }
 </script>
 
 <style scoped>
+  /*팝업 공통*/
   .popup_wrap {
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.3);
+    text-align: center;
+
     /*사이드바 위로 보이도록 position, z-index 추가 */
     position: absolute;
     z-index: 9999;
-
-    width: 100%;
-    height: 100vh;
-    background: rgba(0,0,0,0.5);
-    text-align: center;
-
     top: 0;
     left: 0;
   }
@@ -139,6 +154,7 @@
     opacity: 1 !important;
   }
 
+
   /*폰트 컬러*/
   .c_light_blue {
     color: #63c2de;
@@ -148,12 +164,37 @@
   .form-group {
     margin-bottom: 0;
   }
-  .help-block:last-child {
-    margin-bottom: 0;
-  }
   .card-footer.card-footer-bg-none {
     background: none;
     border-top: none;
   }
+  .form-group.row {
+    height: 36px;
+    line-height: 36px;
+    margin: 0;
+  }
+  .card_modify_SP .card-body .form-group {
+    position: relative;
+  }
 
+  /*버튼*/
+  .btn_edit{
+    position: absolute;
+    top: 0;
+    right: 50px;
+    width: 30px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+  }
+
+  .btn_delete{
+    position: absolute;
+    top: 0;
+    right: 18px;
+    width: 30px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+  }
 </style>
