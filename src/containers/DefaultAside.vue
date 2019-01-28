@@ -44,7 +44,7 @@
         <nav class="sidebar-nav ps ps--active-y">
           <ul class="nav">
             <!--설정 버튼-->
-            <a v-if="isSetting" href="#" class="btn_admin text-white text-right font-lg p-1" @click="showModal('ModalProviderList')">
+            <a v-if="isSetting" href="#" class="btn_admin text-white text-right font-lg p-1" @click="showModal({componentName : 'ModalProviderList'})">
               <i class="fa fa-cog"></i>
             </a>
             <li class="nav-item text-center nav-title-m">
@@ -76,7 +76,7 @@
         <nav class="sidebar-nav ps ps--active-y">
           <ul class="nav">
             <!--설정 버튼-->
-            <a v-if="isSetting" href="#" class="btn_admin text-white text-right font-lg p-1">
+            <a v-if="isSetting" href="#" class="btn_admin text-white text-right font-lg p-1" @click="modalServiceList">
               <i class="fa fa-cog"></i>
             </a>
             <li class="nav-item text-center nav-title-m">
@@ -246,6 +246,13 @@
         };
         return routeInfo
       },
+
+      modalServiceList(){
+        this.showModal({
+          componentName : 'ModalServiceList',
+          componentKey : this.selected.depth2.key
+        });
+      }
     }
   }
 </script>
