@@ -16,27 +16,27 @@
             <div class="form-group mb-2">
               <label for="spName">SP Name</label>
               <small></small>
-              <input type="text" v-model="targetProvider.spName" class="form-control" id="spName" placeholder="(ex. CJH Livebed)">
+              <input type="text" v-model="provider.spName" class="form-control" id="spName" placeholder="(ex. CJH Livebed)">
             </div>
             <div class="form-group mb-2">
               <label for="soCode">SO Code</label>
               <!--<small>(ex. 43)</small>-->
-              <input type="text" v-model="targetProvider.soCode" class="form-control" id="soCode" placeholder="(ex. 43)">
+              <input type="text" v-model="provider.soCode" class="form-control" id="soCode" placeholder="(ex. 43)">
             </div>
             <div class="form-group mb-2">
               <label for="soName">SO Name</label>
               <!--<small>(ex. cjh)</small>-->
-              <input type="text" v-model="targetProvider.soName" class="form-control" id="soName" placeholder="(ex. cjh)">
+              <input type="text" v-model="provider.soName" class="form-control" id="soName" placeholder="(ex. cjh)">
             </div>
             <div class="form-group mb-2">
               <label for="spCode">SP Code</label>
               <!--<small>(ex. livebed)</small>-->
-              <input type="text" v-model="targetProvider.spCode" class="form-control" id="spCode" placeholder="(ex. livebed)">
+              <input type="text" v-model="provider.spCode" class="form-control" id="spCode" placeholder="(ex. livebed)">
             </div>
             <div class="form-group">
               <label for="flag">Flag</label>
               <!--<small>(ex. CJHV)</small>-->
-              <input type="text" v-model="targetProvider.flag" class="form-control" id="flag" placeholder="(ex. CJHV)">
+              <input type="text" v-model="provider.flag" class="form-control" id="flag" placeholder="(ex. CJHV)">
             </div>
 
           </div><!--//card-body-->
@@ -132,7 +132,7 @@
     data: () => {
       return {
         active : 0,
-        targetProvider : {
+        provider : {
           "flag" : "",
           "key" : "",
           "soCode" : null,
@@ -147,7 +147,7 @@
     },
     mounted(){
       this.active = 0;
-      this.targetProvider = {
+      this.provider = {
         "flag" : "",
         "key" : "",
         "soCode" : null,
@@ -179,15 +179,20 @@
       check(){
         // key 설정
         const today = new Date();
-        this.targetProvider.key = `${this.targetProvider.soName}_${this.targetProvider.spCode}`;
-        this.targetProvider.update = today.getFullYear()+"-"+("0" + (today.getMonth() + 1)).slice(-2)+"-"+today.getDate();
-        console.log("this.targetProvider");
-        console.log(this.targetProvider);
+        this.provider.key = `${this.provider.soName}_${this.provider.spCode}`;
+        this.provider.update = today.getFullYear() + "-" +
+          ("0" + (today.getMonth()+1)).slice(-2) + "-" +
+          ("0" + today.getDate()).slice(-2) + "T" +
+          ("0" + today.getHours()).slice(-2) + ":" +
+          ("0" + today.getMinutes()).slice(-2) + ":" +
+          ("0" + today.getSeconds()).slice(-2);
+        console.log("this.provider");
+        console.log(this.provider);
 
         // save 로직 구현
         // so 추가
         firebase.database().ref('provider/so').update({
-          [this.targetProvider.key]: this.targetProvider
+          [this.provider.key]: this.provider
         }).then(() => {
           console.log('%cSO 추가 완료','color:blue')
 
@@ -196,12 +201,12 @@
             .then((data) => {
               console.log('%cprovider_default 정보 가져오기 완료 (Initial Data)','color:blue')
               let spData = data.val();
-              delete this.targetProvider.update;
-              spData.so = this.targetProvider;
+              delete this.provider.update;
+              spData.so = this.provider;
 
               // SP 생성
               firebase.database().ref('provider/sp').update({
-                [this.targetProvider.key]: spData
+                [this.provider.key]: spData
               }).then((data) => {
                 console.log('%cSP 추가 완료 (Initial Data)','color:blue')
                 // 추가 피드백 팝업
