@@ -11,7 +11,7 @@
           <span class="c_name">{{item.name}}</span>
           <span class="c_content">
             {{item.message}}
-            <a href="#" class="btn_delete">X</a>
+            <a href="#" class="btn_delete" @click="deleteHistory(item.key)">X</a>
           </span>
           <span class="c_date">{{item.date}}</span>
         </div>
@@ -109,8 +109,17 @@ export default {
       }else{
         alert('작성자명과 변경 내용을 입력하세요.')
       }
-
-
+    },
+    deleteHistory(key){
+      // key 설정
+        // comment 추가
+        firebase.database().ref('history/' + key).remove().then(() => {
+          console.log('%ccomment 삭제 완료','color:blue');
+          this.fetchFirebaseData();
+        }).catch((error) => {
+          console.log('%ccomment 삭제 중 에러가 발생하였습니다.','color:red');
+          console.log(error);
+        });
     },
   }
 }
