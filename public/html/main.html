@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>SPM</title>
+    <link rel="stylesheet" type="text/html" href="../css/coreui.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/html"  href="../../node_modules/@coreui/coreui/scss/_sidebar.scss">
+    <link rel="stylesheet" type="text/html"  href="../../node_modules/@coreui/icons/css/coreui-icons.css">
+    <link rel="stylesheet" type="text/html"  href="../../node_modules/@coreui/icons/scss/_core.scss">
+    <link rel="stylesheet" type="text/html" href="../../node_modules/@coreui/coreui/scss/mixins/_sidebar-width.scss">
+    <link rel="stylesheet" type="text/html" href="../../node_modules/@coreui/coreui/scss/_layout.scss">
+    <link rel="stylesheet" type="text/css"  href="../css/style.css">
+
+
+
+    <style>
+    /*컨텐츠 영역*/
+    .wrap {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+    }
+    .container {
+      width: 700px;
+    }
+
+    /* ▼ 아래부터 main.html 적용된 style */
+    /*공통*/
+    .clearfix:after {
+      clear: both;
+    }
+    /*input_text*/
+    .input_text_wrap {
+      position: relative;
+    }
+    .input_name {
+      width: 150px;
+    }
+    .input_memo {
+      width: 450px;
+    }
+    .input_text {
+      float: left;
+    }
+    .input_text input {
+      height: 30px;
+    }
+    .input_text label {
+      font-size: 0.8rem;
+      color: #0c0e10;
+    }
+    .input_text_wrap .btn_submit {
+      position: absolute;
+      right: 20px;
+      bottom: 2px;
+    }
+
+    /*코멘트 보드*/
+    .comment_board {
+      border: 1px solid #0a3544;
+    }
+    .comment {
+      width: 100%;
+      height: 600px;
+      position: relative;
+      padding-left: 55px;
+      padding-right: 85px;
+      /*overflow-y: scroll;*/
+    }
+    .comment span {
+      color: #0c0e10;
+    }
+    .comment .c_name {
+      width: 50px;
+      height: 28px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .comment .c_content {
+      width: 100%;
+    }
+    .comment .c_date {
+      width: 80px;
+      height: 28px;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    /*코멘트 삭제 버튼*/
+    .btn_delete {
+      color: red;
+    }
+    .btn_delete:hover {
+      color: pink;
+    }
+    </style>
+</head>
+
+
+<body>
+<div class="wrap">
+  <!--진입 경로-->
+  <nav class="breadcrumb">
+    <a class="breadcrumb-item" href="#">Home</a>
+    <a class="breadcrumb-item" href="#">Library</a>
+    <a class="breadcrumb-item" href="#">Data</a>
+    <span class="breadcrumb-item active">Bootstrap</span>
+  </nav>
+  <!--//진입 경로-->
+
+  <div class="container">
+    <div class="title font-2xl text-center text-dark mb-4">SPM 변경 사항</div>
+    <div class="comment_board p-2">
+      <small class="text-dark">*주요 변경 사항을 작성해주세요.</small>
+      <div class="comment">
+        <span class="c_name">홍길동</span>
+        <span class="c_content">변경된 사항은 가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하 입니다. <a
+          href="#" class="btn_delete">X</a></span>
+        <span class="c_date">2019-01-30</span>
+      </div>
+    </div><!--//notice_board-->
+
+    <div class="write_board mt-3">
+      <form class="input_text_wrap clearfix" action="" method="post">
+        <div class="input_text input_name mr-1">
+          <label class="mr-1" for="inputName">작성자명</label>
+          <input class="form-control" id="inputName" type="text" placeholder="작성자명" autocomplete="name">
+        </div>
+        <div class="input_text input_memo">
+          <label class="mx-1" for="recentToDo">변경 내용</label>
+          <input class="form-control" id="recentToDo" type="text" placeholder="변경사항을 기록해주세요.">
+        </div>
+        <button class="btn btn-sm btn-primary btn_submit" type="submit">
+          <i class="fa fa-dot-circle-o"></i>작성</button>
+      </form>
+    </div>
+
+
+
+  </div><!--//container-->
+</div><!--//wrap-->
+</body>
+
+
+
+
+</html>
