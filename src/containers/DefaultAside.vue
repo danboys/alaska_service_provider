@@ -206,6 +206,9 @@
         const linkTarget = currentTarget.parentNode.parentNode;
         const link = linkTarget.getElementsByClassName('nav-link');
 
+        // route 변경
+        this.$router.replace('/');
+
         // nav-link active class 초기화
         for(let i=0;i<link.length;i++) {
           link[i].classList.remove("active");
