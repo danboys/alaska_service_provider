@@ -6,7 +6,7 @@
         <div class="card card_modify_SP">
           <div class="card-header">
             <strong>SP 수정</strong>
-            <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close">
+            <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideSubModal()">
               <span aria-hidden="true">×</span>
             </button>
           </div><!--//card-header-->
