@@ -20,18 +20,18 @@
               </a>
             </li>
           </ul>
-          <a class="nav-link btn btn_m btn-block btn-secondary" href="">
+          <!--<a class="nav-link btn btn_m btn-block btn-secondary" href="">
             <i class="nav-icon cui-user icon_w"></i>로그인
-          </a>
+          </a>-->
           <a class="nav-link btn btn_m btn-block btn-secondary" href="">
-            <i class="nav-icon cui-cloud-download icon_w"></i>내보내기
+            <i class="nav-icon fa fa-share fa-lg icon_w"></i>내보내기
           </a>
-          <a class="nav-link btn btn_m btn-block btn-secondary" href="">
+          <!--<a class="nav-link btn btn_m btn-block btn-secondary" href="">
             <i class="nav-icon cui-cloud-upload icon_w"></i>가져오기
           </a>
           <a class="nav-link btn btn_m btn-block btn-secondary" href="">
             <i class="nav-icon cui-basket-loaded icon_w"></i>저장하기
-          </a>
+          </a>-->
         </nav>
 
         <!--접기/펼치기 버튼-->
@@ -47,7 +47,7 @@
             <a v-if="isSetting" href="#" class="btn_admin text-white text-right font-lg p-1" @click="showModal({componentName : 'ModalProviderList'})">
               <i class="fa fa-cog"></i>
             </a>
-            <li class="nav-item text-center nav-title-m">
+            <li class="nav-item text-center nav-title-m have_border">
               <span class="nav-title">
                   <span class="font-sm">SP 목록</span>
                   <!--<i class="nav-icon"></i>-->
@@ -79,7 +79,7 @@
             <a v-if="isSetting" href="#" class="btn_admin text-white text-right font-lg p-1" @click="modalServiceList">
               <i class="fa fa-cog"></i>
             </a>
-            <li class="nav-item text-center nav-title-m">
+            <li class="nav-item text-center nav-title-m have_border">
             <span class="nav-title">
                 <span class="font-sm">{{selected.depth2.spName}} Service</span>
                 <!--<i class="nav-icon"></i>-->
@@ -268,6 +268,10 @@
     background: #3A4158;
   }
 
+  .sidebar_home .nav {
+    margin-bottom: -128px;
+  }
+
   .sidebar .nav-logo .icon_domfam {
     padding: .75rem 1rem;
     font-size: 80%;
@@ -280,9 +284,10 @@
     color: #ffffff !important;
   }
 
-  .sidebar_home .nav {
+  /*사이드바 홈 버튼 4개일 경우*/
+/*  .sidebar_home .nav {
     margin-bottom: -300px;
-  }
+  }*/
 
   .btn.btn_m {
     width: 80%;
@@ -401,8 +406,18 @@
   }
 
   /*타이틀 라인*/
-  .sidebar_depth .nav li:nth-child(2) {
-    margin: 0 10% 5px;
+  .sidebar_depth .nav .have_border  {
+    margin: 0 5% 5px;
     border-bottom: 1px solid #fff;
   }
+  .sidebar_depth li.have_border {
+    padding-top: 32px;
+  }
+  .sidebar_depth .btn_admin + li.have_border {
+    padding-top: 0;
+  }
+  .sidebar_depth .nav .have_border .nav-title {
+    padding: 0;
+  }
+
 </style>

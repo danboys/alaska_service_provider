@@ -71,9 +71,18 @@
           }
 
           /*타이틀 라인*/
-          .sidebar_depth .nav li:nth-child(2)  {
-            margin: 0 10% 5px;
+          .sidebar_depth .nav .have_border  {
+            margin: 0 5% 5px;
             border-bottom: 1px solid #fff;
+          }
+          .sidebar_depth li.have_border {
+            padding-top: 32px;
+          }
+          .sidebar_depth .btn_admin + li.have_border {
+            padding-top: 0;
+          }
+          .sidebar_depth .nav .have_border .nav-title {
+            padding: 0;
           }
     </style>
 </head>
@@ -111,7 +120,7 @@
           <a href="#" class="btn_admin text-white text-right font-lg p-1">
             <i class="fa fa-cog"></i>
           </a>
-          <li class="nav-item text-center nav-title-m position-relative">
+          <li class="nav-item text-center nav-title-m position-relative have_border">
               <span class="nav-title">
                   <span class="font-sm">SP 목록</span>
               </span>
