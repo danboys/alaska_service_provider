@@ -20,18 +20,18 @@
               </a>
             </li>
           </ul>
-          <a class="nav-link btn btn_m btn-block btn-secondary" href="">
-            <i class="nav-icon cui-user icon_w"></i>로그인
-          </a>
+          <!--<a class="nav-link btn btn_m btn-block btn-secondary" href="">-->
+            <!--<i class="nav-icon cui-user icon_w"></i>로그인-->
+          <!--</a>-->
           <a class="nav-link btn btn_m btn-block btn-secondary" href="">
             <i class="nav-icon cui-cloud-download icon_w"></i>내보내기
           </a>
-          <a class="nav-link btn btn_m btn-block btn-secondary" href="">
-            <i class="nav-icon cui-cloud-upload icon_w"></i>가져오기
-          </a>
-          <a class="nav-link btn btn_m btn-block btn-secondary" href="">
-            <i class="nav-icon cui-basket-loaded icon_w"></i>저장하기
-          </a>
+          <!--<a class="nav-link btn btn_m btn-block btn-secondary" href="">-->
+            <!--<i class="nav-icon cui-cloud-upload icon_w"></i>가져오기-->
+          <!--</a>-->
+          <!--<a class="nav-link btn btn_m btn-block btn-secondary" href="">-->
+            <!--<i class="nav-icon cui-basket-loaded icon_w"></i>저장하기-->
+          <!--</a>-->
         </nav>
 
         <!--접기/펼치기 버튼-->
