@@ -128,7 +128,10 @@
       }
     },
     created() {
+      // data
       this.fetchFirebaseData();
+
+      // EventBus
       this.$EventBus.$on('update', () => {
         console.log('$EventBus.$on update:: DefaultAside');
         this.fetchFirebaseData();
@@ -137,6 +140,10 @@
         console.log('$EventBus.$on updateService:: DefaultAside');
         this.fetchFirebaseData();
       });
+    },
+    mounted(){
+      // container class 조절
+      this.setClass();
     },
     computed: {
       ...mapState({
@@ -234,7 +241,50 @@
         // 기본 body에 들어가던 sidebar-minimized 제거
         document.body.classList.toggle('sidebar-minimized');
 
+        // mode 변경
         this.mode['minimizedDep0' + num] = !this.mode['minimizedDep0' + num]
+
+        // container class 조절
+        this.setClass();
+
+      },
+
+      setClass(){
+        /*
+        사이드와 컨텐츠 관계:
+        사이드가 접히는 경우에 따라 상위 div.main에 아래 클래스가 추가됩니다.
+        1. 0개 닫혔을 경우 : side_show_03
+        2. 1개 닫혔을 경우 : side_show_02
+        3. 2개 닫혔을 경우 : side_show_01
+        4. 3개 모두 닫혔을 경우 : side_show_none
+        */
+        console.log('setClass ::');
+        let isFolding = {
+          dep01 : this.mode.minimizedDep01 ? 1 : 0,
+          dep02 : this.mode.minimizedDep02 ? 1 : 0,
+          dep03 : this.mode.minimizedDep03 ? 1 : 0
+        };
+        let countFolding = isFolding.dep01 + isFolding.dep02 + isFolding.dep03;
+        console.log(isFolding);
+        console.log(countFolding);
+
+        document.getElementsByClassName('main')[0].classList.remove('side_show_01', 'side_show_02', 'side_show_03', 'side_show_none');
+        console.log(document.getElementsByClassName('main')[0].classList);
+
+        switch(countFolding){
+          case 0:
+            document.getElementsByClassName('main')[0].classList.add('side_show_03');
+            break;
+          case 1:
+            document.getElementsByClassName('main')[0].classList.add('side_show_02');
+            break;
+          case 2:
+            document.getElementsByClassName('main')[0].classList.add('side_show_01');
+            break;
+          case 3:
+            document.getElementsByClassName('main')[0].classList.add('side_show_none');
+            break;
+        }
       },
 
       /**
