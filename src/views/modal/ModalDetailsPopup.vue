@@ -1,143 +1,268 @@
 <template>
-  <div class="popup_wrap m-auto">
-    <div class="popup">
+  <div>
+    <!--SP 추가 팝업-->
+    <div v-if="active == 0" :data-sequence-number="sequenceNumber" class="popup_wrap m-auto">
 
-      <div class="card card_modify">
-        <div class="card-header">
-          <strong></strong>
-          <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div><!--//card-header-->
-
-        <div class="card-body">
-          <!--수정하기의 input 1칸-->
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label for="name" class="help-block c_light_blue"></label>
-                <input class="form-control" id="name" type="text" placeholder="입력하세요">
-                <small class="text-muted">ex)</small><!--description이 붙을 경우 추가-->
+      <div v-if="this.serviceName === 'service' " class="popup">
+        <div class="card card_modify">
+          <div class="card-header">
+            <strong>server img</strong>
+            <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div><!--//card-header-->
+          <div class="card-body">
+            <!--수정하기의 input 1칸-->
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="name" class="help-block c_light_blue">값을 선택해주세요.</label>
+                  <div class="input_box input_box_col2">
+                    <div class="input_radio">
+                      <input type="radio" id="true" name="contents_select" @click="serviceValueChecked(true)" v-bind="{ 'checked': checkValue.true }" >
+                      <label for="true">TRUE</label>
+                    </div>
+                    <div class="input_radio">
+                      <input type="radio" id="false" name="contents_select" @click="serviceValueChecked(false)" v-bind="{ 'checked': checkValue.false }">
+                      <label for="false">FALSE</label>
+                    </div>
+                  </div>
+                  <small class="text-muted">ex) true / false 선택해주세요</small><!--description이 붙을 경우 추가-->
+                </div>
               </div>
             </div>
+            <!--//수정하기의 input 1칸-->
+          </div><!--//card-body-->
+          <!--버튼-->
+          <div class="card-footer card-footer-bg-none text-right">
+            <button class="btn btn-sm btn-primary" type="submit" @click="next()">
+              <i class="fa fa-dot-circle-o"></i>저장</button>
+            <button class="btn btn-sm btn-danger" type="reset" @click="hideModal">
+              <i class="fa"></i>취소</button>
           </div>
-          <!--//수정하기의 input 1칸-->
-        </div><!--//card-body-->
+          <!--//버튼-->
 
-        <!--버튼-->
-        <div class="card-footer card-footer-bg-none text-right">
-          <button class="btn btn-sm btn-primary" type="submit" @click="save">
-            <i class="fa fa-dot-circle-o"></i>저장</button>
-          <button class="btn btn-sm btn-danger" type="reset" @click="hideModal">
-            <i class="fa"></i>취소</button>
-        </div>
-        <!--//버튼-->
+        </div><!--//card-->
 
-      </div><!--//card-->
-    </div><!--//popup-->
+      </div><!--//popup-->
+      <div v-else class="popup">
 
-    <div v-if="modal">
-      <component :is="componentName"/>
+        <div class="card card_modify">
+          <div class="card-header">
+            <strong>{{targetValues.valueName}}</strong>
+            <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div><!--//card-header-->
+          <div class="card-body">
+            <!--수정하기의 input 1칸-->
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="name" class="help-block c_light_blue">{{targetValues.valueName}}를 입력하세요</label>
+                  <input class="form-control" id="name" type="text" placeholder="입력하세요">
+                  <small class="text-muted">ex) {{targetValues.value}}</small><!--description이 붙을 경우 추가-->
+                </div>
+              </div>
+            </div>
+            <!--//수정하기의 input 1칸-->
+          </div><!--//card-body-->
+          <!--버튼-->
+          <div class="card-footer card-footer-bg-none text-right">
+            <button class="btn btn-sm btn-primary" type="submit" @click="next()">
+              <i class="fa fa-dot-circle-o"></i>저장</button>
+            <button class="btn btn-sm btn-danger" type="reset"  @click="hideModal">
+              <i class="fa"></i>취소</button>
+          </div>
+          <!--//버튼-->
+        </div><!--//card-->
+      </div><!--//popup-->
     </div>
+    <!--SP 추가 확인 팝업-->
+    <div v-if="active == 1" :data-sequence-number="sequenceNumber" class="popup_wrap m-auto">
+      <div class="popup">
+        <div class="card card_modify">
+          <div class="card-header">
+            <strong>{{targetValues.valueName}}</strong>
+            <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div><!--//card-header-->
+          <div class="card-body">
+            <!--수정하기의 input 1칸-->
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <p class="help-block" v-if="this.serviceName === 'service'">{{spValue}}</p>
+                  <p class="help-block" v-else>{{inputText}}</p>
+                  <p class="help-block c_light_blue">수정하시겠습니까?</p>
+                </div>
+              </div>
+            </div>
+            <!--//수정하기의 input 1칸-->
+          </div><!--//card-body-->
+          <!--버튼-->
+          <div class="card-footer card-footer-bg-none text-right">
+            <button class="btn btn-sm btn-primary" type="submit" @click="check()">
+              <i class="fa fa-dot-circle-o"></i>확인</button>
+            <button class="btn btn-sm btn-danger" type="reset" @click="prev()">
+              <i class="fa"></i>취소</button>
+          </div>
+          <!--//버튼-->
+        </div><!--//card-->
+      </div><!--//popup-->
+    </div>
+    <!--SP 추가 피드백 팝업-->
+    <div v-if="active == 2" :data-sequence-number="sequenceNumber" class="popup_wrap m-auto">
+      <div class="popup">
+        <div class="card card_modify">
+          <div class="card-header">
+            <strong>{{targetValues.valueName}}</strong>
+            <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div><!--//card-header-->
 
+          <div class="card-body">
+            <!--수정하기의 input 1칸-->
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <p class="help-block">{{inputText}}</p>
+                  <p class="help-block c_light_blue">수정되었습니다.</p>
+                </div>
+              </div>
+            </div>
+            <!--//수정하기의 input 1칸-->
+          </div><!--//card-body-->
+
+          <!--버튼-->
+          <div class="card-footer card-footer-bg-none text-right">
+            <button class="btn btn-sm btn-primary" type="reset" @click="hideModal">
+              <i class="fa"></i>닫기</button>
+          </div>
+          <!--//버튼-->
+
+        </div><!--//card-->
+      </div><!--//popup-->
+    </div>
   </div>
 </template>
 
-<script>
-  import Vue from 'vue';
+<script >
   import { mapMutations } from 'vuex';
-
-
+  import SubModal from '../../containers/DefaultSubModal'
   export default {
     name: 'ModalDetailsPopup',
+    components: {
+      SubModal
+    },
     data: () => {
       return {
-        spName : null,
-        serviceName : null,
-        modal : false,
-        targetProvider : {
-          "flag" : "",
-          "key" : "",
-          "soCode" : null,
-          "soName" : "",
-          "spCode" : "",
-          "spName" : ""
+        targetValues : {},
+        active : 0,
+        inputText:"",
+        key : "",
+        checkValue:{
+          false : false,
+          true : false
         },
-        providerData : [],
-        componentName: null
+        spValue:""
       }
     },
     created() {
       this.spName = this.$route.query.spName
       this.serviceName = this.$route.query.serviceName
-      this.fetchFirebaseData();
+      console.log('this.targetValues :: ');
+      Object.assign(this.targetValues, this.$store.state.modalValues);
+      console.log(this.targetValues);
+      if(this.serviceName === 'service'){
+        this.defaultChecked();
+      }
+    },
+    computed:{
+      sequenceNumber: function () {
+        console.log('sequenceNumber change!!');
+        return this.active
+      }
+    },
+    mounted(){
+      this.active = 0;
     },
     watch : {
-
       componentName : () => {
         console.log(this.componentName);
-        // 방어로직
-        // if (!this.componentName) return;
-
-        // Vue.component(this.componentName, () => import(`./${this.componentName}`));
-        // this.component = componentName;
       },
     },
     methods: {
-
       ...mapMutations([
         'hideModal'
       ]),
-      fetchFirebaseData() {
-
-        console.log('fetchFirebaseData !!!!');
-        firebase.database().ref('/provider/so').once('value')
-          .then((data) => {
-            /**
-             * 전체 Database Object
-             */
-            this.providerData = Object.values(data.val());
-            console.log('this.providerData :: ');
-            console.log(this.providerData);
-
-          })
-          .catch((error) => {
-            console.log(error)
-          })
+      defaultChecked(){
+        if(this.targetValues.value === true){
+          this.checkValue.true = true
+          this.spValue = true
+        }else if (this.targetValues.value === false){
+          this.checkValue.false = true
+          this.spValue = false
+        }
       },
-      addProvider() {
-        // sp 추가
-        console.log('sp 추가');
-        this.modal = true;
-        this.componentName = 'ModalProviderAdd';
+      serviceValueChecked(value){
+        this.spValue = value
       },
-      modifyProvider() {
-        // sp 수정
+      next() {
+        this.inputText = $('.form-group input').val()
+        if(this.active !==  2){
+          this.active++;
+        }
+      },
+      prev() {
+        if(this.active !== 0){
+          this.active--;
+        }
+      },
+      check(){
+        let query
+        let key
+        let inputText
+
+        if(this.serviceName === "channel" || this.serviceName === "product" || this.serviceName === "stb"){
+            query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`
+            key = this.targetValues.key
+            inputText = this.inputText
+        }else if(this.serviceName === "category" || this.serviceName === "image"){
+          query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`
+          key = this.targetValues.valueName
+          inputText = this.inputText
+        }else if (this.serviceName === "service"){
+          query = `provider/sp/${this.spName}/${this.serviceName}`
+          key = this.targetValues.valueName
+          inputText = this.spValue
+        }else{
+          query = `provider/sp/${this.spName}/${this.serviceName}`
+          key = this.targetValues.valueName
+          inputText = this.inputText
+        }
+        firebase.database().ref(query).update({
+          [key] : inputText
+        }).then(() => {
+          console.log('%cSP 수정 완료','color:blue')
+          this.next();
+        }).catch((error) => {
+          console.log('%cSP 수정 중 에러가 발생하였습니다.','color:red');
+          console.log(error);
+        });
 
       },
-      deleteProvider(key) {
-        // sp 삭제
-        console.log('deleteProvider key ::' + key );
-
+      refresh() {
+        // refresh
+        console.log('$EventBus.$emit update::');
+        this.$EventBus.$emit('update');
+        this.hideSubModal();
       },
-      save(){
-
-        firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}`).once('value')
-          .then((data) => {
-            /**
-             * 전체 Database Object
-             */
-            this.oData = data.val();
-
-
-            console.log(this.oData)
-          })
-
-      }
     },
   }
 </script>
-
 <style scoped>
   .popup_wrap {
     /*사이드바 위로 보이도록 position, z-index 추가 */
@@ -195,6 +320,29 @@
   .card-footer.card-footer-bg-none {
     background: none;
     border-top: none;
+  }
+
+  /*input radio*/
+  .input_box {
+    position: relative;
+  }
+  .input_box_col2 .input_radio {
+    width: 50%;
+  }
+  .input_radio {
+    float: left;
+  }
+
+  .input_radio input {
+    position: absolute;
+    top: 5px;
+  }
+  .input_radio label {
+    margin-left: 18px;
+  }
+
+  .input_radio label:hover {
+    color: #63c2de;
   }
 
 </style>

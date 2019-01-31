@@ -1,58 +1,58 @@
 <template>
-  <div class="wrap">
-    <!--진입 경로-->
-    <nav class="breadcrumb">
-      <a class="breadcrumb-item" href="#">Home</a>
-      <a class="breadcrumb-item" href="#">Library</a>
-      <a class="breadcrumb-item" href="#">Data</a>
-      <span class="breadcrumb-item active">Bootstrap</span>
-    </nav>
-    <!--//진입 경로-->
-    <div class="container">
-      <!--서비스분류 카테고리 1개 단위-->
-      <div v-for="(val1, key1) in depth1Data" v-if="Object.prototype.toString.call(val1) === '[object Object]'">
-      <div class="title mb-1"><strong>{{key1}}</strong></div>
-        <div class="card p-3" id="Accordion" data-children=".item">
-            <div class="item card p-2 mb-2" v-for="(val2,key2) in val1">
-              <div class="position-relative">
-                <a data-toggle="collapse" data-parent="#Accordion" :href="'#'+key2" aria-expanded="true" aria-controls="Accordion2" class="">
-                  {{key2}}</a>
-                <!--툴팁-->
-                <a href="#" class="q_mark fa fa-exclamation-circle"></a>
-                <div class="tooltip_box">툴팁입니다<br>툴팁입니다</div>
-                <!--//툴팁-->
-                <div class="card p-2 mb-2 mt-2 position-relative collapse " :id="key2" role="tabpanel" style="">
-                  <p class="mb-0">{{val2}}</p>
-                  <a href="#" class="edit_list fa fa-edit" @click="showModal('ModalDetailsPopup')"></a>
+  <div>
+    <div class="wrap">
+      <!--진입 경로-->
+      <nav class="breadcrumb">
+        <a class="breadcrumb-item" href="#">{{spName}}</a>
+        <a class="breadcrumb-item" href="#">{{serviceName}}</a>
+      </nav>
+      <!--//진입 경로-->
+      <div class="container">
+        <!--서비스분류 카테고리 1개 단위-->
+        <div v-for="(val1, key1) in depth1Data" v-if="Object.prototype.toString.call(val1) === '[object Object]'">
+        <div class="title mb-1"><strong>{{key1}}</strong></div>
+          <div class="card p-3" id="Accordion" data-children=".item">
+              <div class="item card p-2 mb-2" v-for="(val2,key2) in val1">
+                <div class="position-relative">
+                  <a data-toggle="collapse" data-parent="#Accordion" :href="'#'+key2" aria-expanded="true" aria-controls="Accordion2" class="">
+                    {{key2}}</a>
+                  <!--툴팁-->
+                  <a href="#" class="q_mark fa fa-exclamation-circle"></a>
+                  <div class="tooltip_box">툴팁입니다<br>툴팁입니다</div>
+                  <!--//툴팁-->
+                  <div class="card p-2 mb-2 mt-2 position-relative collapse " :id="key2" role="tabpanel" style="" >
+                    <p class="mb-0">{{val2}}</p>
+                    <a href="#" class="edit_list fa fa-edit" @click="modalServiceList(key2,val2,key1)"></a>
+                  </div>
                 </div>
               </div>
+          </div>
+        </div>
+        <div v-else-if="Object.prototype.toString.call(val1) === '[object String]'">
+          <div class="title mb-1"><strong>{{key1}}</strong></div>
+          <div class="card p-3" id="Accordion" data-children=".item">
+            <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
+              <p class="mb-0">{{val1}}</p>
+              <a href="#" class="edit_list fa fa-edit" @click="modalServiceList(key1,val1,key1)" ></a>
             </div>
-        </div>
-      </div>
-      <div v-else-if="Object.prototype.toString.call(val1) === '[object String]'">
-        <div class="title mb-1"><strong>{{key1}}</strong></div>
-        <div class="card p-3" id="Accordion" data-children=".item">
-          <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
-            <p class="mb-0">{{val1}}</p>
-            <a href="#" class="edit_list fa fa-edit" @click="showModal('ModalDetailsPopup')"></a>
           </div>
         </div>
-      </div>
-      <div v-else-if="Object.prototype.toString.call(val1) === '[object Boolean]'">
-        <div class="title mb-1"><strong>{{key1}}</strong></div>
-        <div class="card p-3" id="Accordion" data-children=".item">
-          <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
-            <p class="mb-0">{{val1}}</p>
-            <a href="#" class="edit_list fa fa-edit" @click="showModal('ModalDetailsPopup')"></a>
+        <div v-else-if="Object.prototype.toString.call(val1) === '[object Boolean]'">
+          <div class="title mb-1"><strong>{{key1}}</strong></div>
+          <div class="card p-3" id="Accordion" data-children=".item">
+            <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
+              <p class="mb-0">{{val1}}</p>
+              <a href="#" class="edit_list fa fa-edit" @click="modalServiceList(key1,val1,key1)"></a>
+            </div>
           </div>
         </div>
-      </div>
-      <div v-else >
-        <div class="title mb-1"><strong>{{key1}}</strong></div>
-        <div class="card p-3" id="Accordion" data-children=".item">
-          <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" v-for="(val2,key2) in val1">
-            <p class="mb-0">{{val2}}</p>
-            <a href="#" class="edit_list fa fa-edit" @click="showModal('ModalDetailsPopup')"></a>
+        <div v-else >
+          <div class="title mb-1"><strong>{{key1}}</strong></div>
+          <div class="card p-3" id="Accordion" data-children=".item">
+            <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" v-for="(val2,key2) in val1"  >
+              <p class="mb-0">{{val2}}</p>
+              <a href="#" class="edit_list fa fa-edit" @click="modalServiceList(key1,val2,key2)"></a>
+            </div>
           </div>
         </div>
       </div>
@@ -61,9 +61,12 @@
 </template>
 <script >
   import { mapMutations } from 'vuex'
+  import SubModal from '../../containers/DefaultSubModal'
+
   export default {
     name: 'Details',
     components: {
+      SubModal
     },
     data:()=>{
       return {
@@ -78,9 +81,10 @@
       this.spName = this.$route.query.spName
       this.serviceName = this.$route.query.serviceName
       this.fetchFirebaseData();
+
     },
     methods: {
-      ...mapMutations([`showModal`]),
+      ...mapMutations([`showModal`,'showSubModal']),
       /**
        * firebase 연동
        */
@@ -98,6 +102,15 @@
           .catch((error) => {
             console.log(error)
           })
+      },
+      modalServiceList(name,value,key,type){
+        this.showModal({
+          componentName : 'ModalDetailsPopup',
+          valueName : name,
+          value : value,
+          key: key,
+          type : type
+        });
       }
     }
   }
