@@ -24,7 +24,7 @@
             <!--<i class="nav-icon cui-user icon_w"></i>로그인-->
           <!--</a>-->
          
-          <a class="nav-link btn btn_m btn-block btn-secondary" href="">
+          <a class="nav-link btn btn_m btn-block btn-secondary" href="#" @click="showModal({componentName : 'ModalExportProvider'})">
             <i class="nav-icon fa fa-share fa-lg icon_w"></i>내보내기
           </a>
 
@@ -313,7 +313,8 @@
           spName : this.selected.depth2.spName,
           key : this.selected.depth2.key
         });
-      }
+      },
+
     }
   }
 </script>
