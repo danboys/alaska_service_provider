@@ -1,6 +1,6 @@
 <template>
   <div class="c-subModal">
-    <component :is="component" v-if="visible" v-bind:target-provider="targetProvider" v-bind:target-service="targetService"/>
+    <component :is="component" v-if="visible" v-bind:target-provider="targetProvider" v-bind:target-service="targetService" v-bind:target-comment="targetComment"/>
   </div>
 </template>
 
@@ -10,7 +10,7 @@
 
   export default {
     name: 'DefaultSubModal',
-    props: ['targetProvider', 'targetService'],
+    props: ['targetProvider', 'targetService', 'targetComment'],
     data() {
       return {
         component: null,
@@ -26,6 +26,10 @@
       if(this.targetService) {
         console.log("this.targetService");
         console.log(this.targetService);
+      }
+      if(this.targetComment) {
+        console.log("this.targetComment");
+        console.log(this.targetComment);
       }
     },
     computed: {

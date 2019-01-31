@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <nav class="breadcrumb">
-      <a class="breadcrumb-item" href="#">Home</a>
+      <router-link class="breadcrumb-item" to="/">Home</router-link>
     </nav>
     <div class="container">
       <div class="title font-2xl text-center text-dark mb-4">SPM 변경 사항</div>
@@ -11,7 +11,7 @@
           <span class="c_name">{{item.name}}</span>
           <span class="c_content">
             {{item.message}}
-            <a href="#" class="btn_delete" @click="deleteHistory(item.key)">X</a>
+            <a href="#" class="btn_delete" @click="deleteHistory(item)">X</a>
           </span>
           <span class="c_date">{{item.date}}</span>
         </div>
@@ -32,25 +32,27 @@
         </form>
       </div>
 
-
-
+      <sub-modal v-bind:target-comment="targetComment"></sub-modal>
     </div><!--//container-->
   </div>
 </template>
 
 <script>
-
+  import { mapMutations } from 'vuex';
+  import SubModal from '../containers/DefaultSubModal'
 export default {
   name: 'dashboard',
   components: {
+    SubModal
   },
   data: function () {
     return {
       historyData : [],
       comment:{
         name : '',
-        message : ''
-      }
+        message : '',
+      },
+      targetComment:{}
     }
   },
   create() {
@@ -60,8 +62,13 @@ export default {
   mounted(){
     console.log('Dashboard mounted');
     this.fetchFirebaseData();
+    this.$EventBus.$on('updateComment', () => {
+      console.log('$EventBus.$on updateComment:: Dashboard');
+      this.fetchFirebaseData();
+    });
   },
   methods: {
+    ...mapMutations([`showSubModal`]),
     /**
      * firebase 연동
      */
@@ -77,7 +84,8 @@ export default {
           console.log(this.historyData);
         })
         .catch((error) => {
-          console.log(error)
+          console.log(error);
+          this.historyData = [];
         })
     },
     addHistory(){
@@ -110,16 +118,18 @@ export default {
         alert('작성자명과 변경 내용을 입력하세요.')
       }
     },
-    deleteHistory(key){
+    deleteHistory(item){
       // key 설정
         // comment 추가
-        firebase.database().ref('history/' + key).remove().then(() => {
-          console.log('%ccomment 삭제 완료','color:blue');
-          this.fetchFirebaseData();
-        }).catch((error) => {
-          console.log('%ccomment 삭제 중 에러가 발생하였습니다.','color:red');
-          console.log(error);
-        });
+        // firebase.database().ref('history/' + key).remove().then(() => {
+        //   console.log('%ccomment 삭제 완료','color:blue');
+        //   this.fetchFirebaseData();
+        // }).catch((error) => {
+        //   console.log('%ccomment 삭제 중 에러가 발생하였습니다.','color:red');
+        //   console.log(error);
+        // });
+      this.targetComment = item;
+      this.showSubModal('ModalCommentDelete');
     },
   }
 }
