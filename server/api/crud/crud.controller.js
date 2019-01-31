@@ -19,7 +19,9 @@ let setFirebase = function(key, callback){
    */
   console.log('DB 연결 준비중.......');
 
-  firebase.initializeApp(config);
+  if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+  }
   console.log('firebase initializing.......');
 
   console.log('fetchFirebaseData !!!!');
