@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Node Server</title>
+</head>
+<body>
+
+<div>
+    <p>API</p>
+    <p><a href="#" class="button">json file 저장하기</a></p>
+    <textarea class="box_result"></textarea>
+</div>
+
+<script type="text/javascript">
+    window.onload = function () {
+        const resultBox = document.getElementsByClassName('box_result');
+        const button = document.getElementsByClassName('button');
+
+      function loadXMLDoc() {
+        window.open('http://127.0.0.1:3000/save/file/cjh_livebed');
+      }
+
+        button[0].addEventListener('click', loadXMLDoc);
+
+    };
+</script>
+
+</body>
+</html>
