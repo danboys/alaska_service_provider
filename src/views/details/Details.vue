@@ -10,7 +10,7 @@
       <div class="container setting">
         <!--서비스분류 카테고리 1개 단위-->
         <div v-for="(val1, key1) in depth1Data" v-if="Object.prototype.toString.call(val1) === '[object Object]'">
-          <div class="title mb-1"><strong>{{key1}}</strong><a href="#" class="btn_add font-lg text-white fa fa-plus mr-1" @click="ModalSettingAdd(key1)"></a></div>
+          <div class="title mb-1"><strong>{{key1}}</strong><a href="#" class="btn_add font-lg text-white fa fa-plus mr-1" @click="ModalSettingAdd(key1,'objcet')"></a></div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="item card p-2 mb-2" v-for="(val2,key2) in val1">
               <div class="position-relative">
@@ -48,7 +48,7 @@
           </div>
         </div>
         <div v-else >
-          <div class="title mb-1"><strong>{{key1}}</strong><a href="#" class="btn_add font-lg text-white fa fa-plus mr-1" @click="ModalSettingAdd(key1)"></a></div>
+          <div class="title mb-1"><strong>{{key1}}</strong><a href="#" class="btn_add font-lg text-white fa fa-plus mr-1" @click="ModalSettingAdd(key1,'array')"></a></div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" v-for="(val2,key2) in val1"  >
               <!--<a href="#" class="btn_add fa fa-plus mr-1" @click="addProperty()"></a>-->
@@ -186,11 +186,12 @@
           key: key
         });
       },
-      ModalSettingAdd(key){
+      ModalSettingAdd(key,type){
         console.log("----------------------")
         this.showModal({
           componentName : 'ModalSettingAdd',
           key: key,
+          type :type
         });
       },
       ModalSettingModify(name,value,key){
