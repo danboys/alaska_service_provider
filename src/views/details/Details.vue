@@ -49,7 +49,7 @@
             </div>
           </div>
         </div>
-        <a href="#" class="text-white w-100 add_property">
+        <a href="#" class="text-white w-100 add_property" @click="ModalSettingAdd('','property')">
           <i class="fa fa-plus mr-1"></i>
           <span>ADD Property</span>
         </a>

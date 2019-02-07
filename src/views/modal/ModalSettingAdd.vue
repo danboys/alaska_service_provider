@@ -160,25 +160,17 @@
         }
       },
       check(){
-        if(this.targetValues.type === "objcet"){
-          firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`).once('value')
-            .then((data) => {
-              firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`).update({
-                [data.val().length] : this.inputText
-              }).then(() => {
-                console.log('%cSP 추가 완료','color:blue')
-                this.next();
-              }).catch((error) => {
-                console.log('%cSP 추가 중 에러가 발생하였습니다.','color:red');
-                console.log(error);
-              });
-            })
-            .catch((error) => {
-              console.log(error)
-            })
-        }else{
-          firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`).update({
-            [this.inputText] : this.inputValue
+        if(this.targetValues.type === "property"){
+          let inputText
+          let inputValue
+          let qurey
+          if(this.serviceName === "ip" || this.serviceName === "service" || this.serviceName === "so" || this.serviceName === "text" ){
+            qurey = `provider/sp/${this.spName}/${this.serviceName}`
+            inputText = this.inputText
+            inputValue = this.inputValue
+          }
+          firebase.database().ref(qurey).update({
+            [inputText] : inputValue
           }).then(() => {
             console.log('%cSP 추가 완료','color:blue')
             this.next();
@@ -186,6 +178,34 @@
             console.log('%cSP 추가 중 에러가 발생하였습니다.','color:red');
             console.log(error);
           });
+        }else{
+          if(this.targetValues.type === "objcet"){
+            firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`).once('value')
+              .then((data) => {
+                firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`).update({
+                  [data.val().length] : this.inputText
+                }).then(() => {
+                  console.log('%cSP 추가 완료','color:blue')
+                  this.next();
+                }).catch((error) => {
+                  console.log('%cSP 추가 중 에러가 발생하였습니다.','color:red');
+                  console.log(error);
+                });
+              })
+              .catch((error) => {
+                console.log(error)
+              })
+          }else{
+            firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`).update({
+              [this.inputText] : this.inputValue
+            }).then(() => {
+              console.log('%cSP 추가 완료','color:blue')
+              this.next();
+            }).catch((error) => {
+              console.log('%cSP 추가 중 에러가 발생하였습니다.','color:red');
+              console.log(error);
+            });
+          }
         }
       },
       refresh() {
