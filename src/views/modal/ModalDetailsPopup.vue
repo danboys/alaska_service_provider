@@ -226,15 +226,15 @@
         let key
         let inputText
 
-        if(this.serviceName === "channel" || this.serviceName === "product" || this.serviceName === "stb"){
+        if(this.targetValues.type === "array"){
             query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`
             key = this.targetValues.key
             inputText = this.inputText
-        }else if(this.serviceName === "category" || this.serviceName === "image"){
+        }else if(this.targetValues.type === "object"){
           query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`
           key = this.targetValues.valueName
           inputText = this.inputText
-        }else if (this.serviceName === "service"){
+        }else if (this.targetValues.type === "boolean"){
           query = `provider/sp/${this.spName}/${this.serviceName}`
           key = this.targetValues.valueName
           inputText = this.spValue
