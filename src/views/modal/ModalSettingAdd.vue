@@ -160,7 +160,7 @@
         }
       },
       check(){
-        if(this.type === "objcet"){
+        if(this.targetValues.type === "objcet"){
           firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`).once('value')
             .then((data) => {
               firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`).update({
