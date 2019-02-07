@@ -108,83 +108,83 @@
 <script>
   import { mapMutations } from 'vuex';
   import SubModal from '../../containers/DefaultSubModal'
-    export default {
-        name: "ModalSettingModify",
-      components: {
-        SubModal
+  export default {
+    name: "ModalSettingModify",
+    components: {
+      SubModal
+    },
+    data: () => {
+      return {
+        targetValues : {},
+        active : 0,
+        inputText:"",
+        inputValue:"",
+        oData: {},
+      }
+    },
+    created() {
+      this.spName = this.$route.query.spName
+      this.serviceName = this.$route.query.serviceName
+      console.log('this.targetValues :: ');
+      Object.assign(this.targetValues, this.$store.state.modalValues);
+      console.log(this.targetValues);
+    },
+    computed:{
+      sequenceNumber: function () {
+        console.log('sequenceNumber change!!');
+        return this.active
+      }
+    },
+    mounted(){
+      this.active = 0;
+    },
+    watch : {
+      componentName : () => {
+        console.log(this.componentName);
       },
-      data: () => {
-        return {
-          targetValues : {},
-          active : 0,
-          inputText:"",
-          inputValue:"",
-          oData: {},
+    },
+    methods: {
+      ...mapMutations([
+        'hideModal'
+      ]),
+      next() {
+        this.inputText = $('.form-group input').val()
+        this.inputValue = $('.form-group textarea').val()
+        if(this.active !==  2){
+          this.active++;
         }
       },
-      created() {
-        this.spName = this.$route.query.spName
-        this.serviceName = this.$route.query.serviceName
-        console.log('this.targetValues :: ');
-        Object.assign(this.targetValues, this.$store.state.modalValues);
-        console.log(this.targetValues);
-      },
-      computed:{
-        sequenceNumber: function () {
-          console.log('sequenceNumber change!!');
-          return this.active
+      prev() {
+        if(this.active !== 0){
+          this.active--;
         }
       },
-      mounted(){
-        this.active = 0;
-      },
-      watch : {
-        componentName : () => {
-          console.log(this.componentName);
-        },
-      },
-      methods: {
-        ...mapMutations([
-          'hideModal'
-        ]),
-        next() {
-          this.inputText = $('.form-group input').val()
-          this.inputValue = $('.form-group textarea').val()
-          if(this.active !==  2){
-            this.active++;
-          }
-        },
-        prev() {
-          if(this.active !== 0){
-            this.active--;
-          }
-        },
-        check(){
-          firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`).update({
-            [this.inputText] : this.inputValue
-          }).then(() => {
-            console.log('%cSP 필드 수정 완료1','color:blue')
-            firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}/${this.targetValues.valueName}`).remove(
-            ).then(() => {
-              console.log('%cSP 필드 수정 완료2','color:blue')
-              this.next();
-            }).catch((error) => {
-              console.log('%cSP 필드 수정2 중 에러가 발생하였습니다.','color:red');
-              console.log(error);
-            });
+      check(){
+        firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`).update({
+          [this.inputText] : this.inputValue
+        }).then(() => {
+          console.log('%cSP 필드 수정 완료1','color:blue')
+          firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}/${this.targetValues.valueName}`).remove(
+          ).then(() => {
+            console.log('%cSP 필드 수정 완료2','color:blue')
+            this.next();
           }).catch((error) => {
-            console.log('%cSP 필드 수정1 중 에러가 발생하였습니다.','color:red');
+            console.log('%cSP 필드 수정2 중 에러가 발생하였습니다.','color:red');
             console.log(error);
           });
-        },
-        refresh() {
-          // refresh
-          console.log('$EventBus.$emit update::');
-          this.$EventBus.$emit('update');
-          this.hideSubModal();
-        },
+        }).catch((error) => {
+          console.log('%cSP 필드 수정1 중 에러가 발생하였습니다.','color:red');
+          console.log(error);
+        });
       },
-    }
+      refresh() {
+        // refresh
+        console.log('$EventBus.$emit update::');
+        this.$EventBus.$emit('update');
+        this.hideSubModal();
+      },
+    },
+  }
 </script>
 <style scoped>
   /*팝업 공통*/

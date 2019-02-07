@@ -1,31 +1,96 @@
 <template>
   <div>
-    <div class="wrap">
+    <div class="wrap" v-if="this.spCheck ">
       <!--진입 경로-->
       <nav class="breadcrumb">
         <a class="breadcrumb-item" href="#">{{spName}}</a>
         <a class="breadcrumb-item" href="#">{{serviceName}}</a>
       </nav>
       <!--//진입 경로-->
+      <div class="container setting">
+        <!--서비스분류 카테고리 1개 단위-->
+        <div v-for="(val1, key1) in depth1Data" v-if="Object.prototype.toString.call(val1) === '[object Object]'">
+          <div class="title mb-1"><strong>{{key1}}</strong><a href="#" class="btn_add font-lg text-white fa fa-plus mr-1" @click="ModalSettingAdd(key1)"></a></div>
+          <div class="card p-3" id="Accordion" data-children=".item">
+            <div class="item card p-2 mb-2" v-for="(val2,key2) in val1">
+              <div class="position-relative">
+                <a data-toggle="collapse" data-parent="#Accordion" :href="'#'+key2" aria-expanded="true" aria-controls="Accordion2" class="">
+                  {{key2}}</a>
+                <!--<a href="#" class="btn_add fa fa-plus mr-1" @click="addProperty()"></a>-->
+                <a href="#" class="edit_list fa fa-edit" @click="ModalSettingModify(key2,val2,key1)"></a>
+                <a href="#" class="delete_list fa fa-times font-lg" @click="ModalSettingDelete(key2,val2,key1)"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div v-else-if="Object.prototype.toString.call(val1) === '[object String]'">
+          <div class="title mb-1"><strong>{{key1}}</strong></div>
+          <div class="card p-3" id="Accordion" data-children=".item">
+            <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
+              <!-- <a href="#" class="btn_add fa fa-plus mr-1" @click="addProperty()"></a>-->
+              <!--<a href="#" class="edit_list fa fa-edit" @click="ModalSettingModify(key1,val1,key1)"></a>-->
+              <a href="#" class="delete_list fa fa-times font-lg"  @click="ModalSettingDelete(key1,val1,key1)"></a>
+              <p class="mb-0">{{val1}}</p>
+              <!--<a href="#" class="edit_list fa fa-edit" @click="modalServiceList(key1,val1,key1)" ></a>-->
+            </div>
+          </div>
+        </div>
+        <div v-else-if="Object.prototype.toString.call(val1) === '[object Boolean]'">
+          <div class="title mb-1"><strong>{{key1}}</strong></div>
+          <div class="card p-3" id="Accordion" data-children=".item">
+            <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
+              <!-- <a href="#" class="btn_add fa fa-plus mr-1" @click="addProperty()"></a>-->
+              <!--<a href="#" class="edit_list fa fa-edit" @click="ModalSettingModify(key1,val1,key1)"></a>-->
+              <a href="#" class="delete_list fa fa-times font-lg"@click="ModalSettingDelete(key1,val1,key1)" ></a>
+              <p class="mb-0">{{val1}}</p>
+              <!-- <a href="#" class="edit_list fa fa-edit" @click="modalServiceList(key1,val1,key1)"></a>-->
+            </div>
+          </div>
+        </div>
+        <div v-else >
+          <div class="title mb-1"><strong>{{key1}}</strong><a href="#" class="btn_add font-lg text-white fa fa-plus mr-1" @click="ModalSettingAdd(key1)"></a></div>
+          <div class="card p-3" id="Accordion" data-children=".item">
+            <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" v-for="(val2,key2) in val1"  >
+              <!--<a href="#" class="btn_add fa fa-plus mr-1" @click="addProperty()"></a>-->
+              <!--<a href="#" class="edit_list fa fa-edit" @click="ModalSettingModify(key1,val2,key2)"></a>-->
+              <a href="#" class="delete_list fa fa-times font-lg" @click="ModalSettingDelete(key1,val2,key2)"></a>
+              <p class="mb-0">{{val2}}</p>
+              <!--<a href="#" class="edit_list fa fa-edit" @click="modalServiceList(key1,val2,key2)"></a>-->
+            </div>
+          </div>
+        </div>
+        <a href="#" class="text-white w-100 add_property">
+          <i class="fa fa-plus mr-1"></i>
+          <span>ADD Property</span>
+        </a>
+      </div>
+    </div>
+    <div class="wrap" v-else>
+      <!--진입 경로-->
+      <nav class="breadcrumb">
+        <a class="breadcrumb-item" href="#">{{spName}}</a>
+        <a class="breadcrumb-item" href="#">{{serviceName}}</a>
+      </nav>
+      <!--진입 경로-->
       <div class="container">
         <!--서비스분류 카테고리 1개 단위-->
         <div v-for="(val1, key1) in depth1Data" v-if="Object.prototype.toString.call(val1) === '[object Object]'">
-        <div class="title mb-1"><strong>{{key1}}</strong></div>
+          <div class="title mb-1"><strong>{{key1}}</strong></div>
           <div class="card p-3" id="Accordion" data-children=".item">
-              <div class="item card p-2 mb-2" v-for="(val2,key2) in val1">
-                <div class="position-relative">
-                  <a data-toggle="collapse" data-parent="#Accordion" :href="'#'+key2" aria-expanded="true" aria-controls="Accordion2" class="">
-                    {{key2}}</a>
-                  <!--툴팁-->
-                  <a href="#" class="q_mark fa fa-exclamation-circle"></a>
-                  <div class="tooltip_box">툴팁입니다<br>툴팁입니다</div>
-                  <!--//툴팁-->
-                  <div class="card p-2 mb-2 mt-2 position-relative collapse " :id="key2" role="tabpanel" style="" >
-                    <p class="mb-0">{{val2}}</p>
-                    <a href="#" class="edit_list fa fa-edit" @click="modalServiceList(key2,val2,key1)"></a>
-                  </div>
+            <div class="item card p-2 mb-2" v-for="(val2,key2) in val1">
+              <div class="position-relative">
+                <a data-toggle="collapse" data-parent="#Accordion" :href="'#'+key2" aria-expanded="true" aria-controls="Accordion2" class="">
+                  {{key2}}</a>
+                <!--툴팁-->
+                <a href="#" class="q_mark fa fa-exclamation-circle"></a>
+                <div class="tooltip_box">툴팁입니다<br>툴팁입니다</div>
+                <!--툴팁-->
+                <div class="card p-2 mb-2 mt-2 position-relative collapse " :id="key2" role="tabpanel" style="" >
+                  <p class="mb-0">{{val2}}</p>
+                  <a href="#" class="edit_list fa fa-edit" @click="modalServiceList(key2,val2,key1)"></a>
                 </div>
               </div>
+            </div>
           </div>
         </div>
         <div v-else-if="Object.prototype.toString.call(val1) === '[object String]'">
@@ -60,7 +125,7 @@
   </div>
 </template>
 <script >
-  import { mapMutations } from 'vuex'
+  import { mapState, mapMutations } from 'vuex'
   import SubModal from '../../containers/DefaultSubModal'
 
   export default {
@@ -75,13 +140,23 @@
         path : null,
         oData: {},
         depth1Data: [],
+        spCheck : false
       }
     },
     created(){
       this.spName = this.$route.query.spName
       this.serviceName = this.$route.query.serviceName
+      this.spCheck = $('.sidebar_depth2 .nav a').eq(0).hasClass('text-white')
       this.fetchFirebaseData();
 
+    },
+    computed: {
+      ...mapState({
+        isSetting: 'isSetting',
+      }),
+      sp () {
+        return this.spCheck
+      }
     },
     methods: {
       ...mapMutations([`showModal`,'showSubModal']),
@@ -103,15 +178,40 @@
             console.log(error)
           })
       },
-      modalServiceList(name,value,key,type){
+      modalServiceList(name,value,key){
         this.showModal({
           componentName : 'ModalDetailsPopup',
           valueName : name,
           value : value,
-          key: key,
-          type : type
+          key: key
         });
-      }
+      },
+      ModalSettingAdd(key){
+        console.log("----------------------")
+        this.showModal({
+          componentName : 'ModalSettingAdd',
+          key: key,
+        });
+      },
+      ModalSettingModify(name,value,key){
+        console.log("")
+        this.showModal({
+          componentName : 'ModalSettingModify',
+          valueName : name,
+          value : value,
+          key: key
+        });
+      },
+      ModalSettingDelete(name,value,key){
+        console.log("")
+        this.showModal({
+          componentName : 'ModalSettingDelete',
+          valueName : name,
+          value : value,
+          key: key
+        });
+      },
+
     }
   }
 </script>
@@ -181,5 +281,73 @@
     position: absolute;
     top: 0.7rem;
     right: 1rem;
+  }
+
+  /*리스트*/
+  .item.card {
+    position: relative;
+  }
+  .item.card > a:first-child {
+    margin-right: 50px;
+  }
+
+  /*버튼 아이콘*/
+  /*수정 버튼*/
+  .setting .edit_list {
+    position: absolute;
+    top: 0.25rem;
+    right: 1.7rem;
+  }
+  /*삭제 버튼*/
+  .setting .delete_list {
+    position: absolute;
+    top: 0.2rem;
+    right: 0.5rem;
+  }
+
+  /*플러스 버튼*/
+  /*타이틀 영역*/
+  .setting .title {
+    position: relative;
+  }
+
+  .setting .title .btn_add {
+    position: absolute;
+    right: 0.8rem;
+    top: 0.2rem;
+  }
+
+  .setting .card .btn_add {
+    position: absolute;
+    top: 0.3rem;
+    right: 3rem;
+  }
+
+  .add_property {
+    height: 60px;
+    line-height: 50px;
+    text-align: center;
+    display: block;
+    border: 5px dashed #686b6e;
+  }
+
+  .add_property:hover {
+    border-color: #20a8d8;
+  }
+  .add_property:hover i,
+  .add_property:hover span {
+    color: #20a8d8;
+  }
+  .add_property i,
+  .add_property span {
+    color: #686b6e;
+  }
+
+  /*공통*/
+  a, i, span {
+    text-decoration: none !important;
+  }
+  .container a:hover {
+    color: pink;
   }
 </style>
