@@ -124,9 +124,9 @@
       check(){
         let query
 
-        if(this.serviceName === "channel" || this.serviceName === "product" || this.serviceName === "stb"){
+        if(this.type === "array"){
           query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}/${this.targetValues.key}`
-        }else if (this.serviceName === "category" || this.serviceName === "image"){
+        }else if (this.type === "object"){
           query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}/${this.targetValues.valueName}`
         }else{
           query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`

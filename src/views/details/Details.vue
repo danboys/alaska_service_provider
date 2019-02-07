@@ -16,9 +16,8 @@
               <div class="position-relative">
                 <a data-toggle="collapse" data-parent="#Accordion" :href="'#'+key2" aria-expanded="true" aria-controls="Accordion2" class="">
                   {{key2}}</a>
-                <!--<a href="#" class="btn_add fa fa-plus mr-1" @click="addProperty()"></a>-->
                 <a href="#" class="edit_list fa fa-edit" @click="ModalSettingModify(key2,val2,key1)"></a>
-                <a href="#" class="delete_list fa fa-times font-lg" @click="ModalSettingDelete(key2,val2,key1)"></a>
+                <a href="#" class="delete_list fa fa-times font-lg" @click="ModalSettingDelete(key2,val2,key1,'objcet')"></a>
               </div>
             </div>
           </div>
@@ -27,11 +26,8 @@
           <div class="title mb-1"><strong>{{key1}}</strong></div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
-              <!-- <a href="#" class="btn_add fa fa-plus mr-1" @click="addProperty()"></a>-->
-              <!--<a href="#" class="edit_list fa fa-edit" @click="ModalSettingModify(key1,val1,key1)"></a>-->
-              <a href="#" class="delete_list fa fa-times font-lg"  @click="ModalSettingDelete(key1,val1,key1)"></a>
+              <a href="#" class="delete_list fa fa-times font-lg"  @click="ModalSettingDelete(key1,val1,key1,'string')"></a>
               <p class="mb-0">{{val1}}</p>
-              <!--<a href="#" class="edit_list fa fa-edit" @click="modalServiceList(key1,val1,key1)" ></a>-->
             </div>
           </div>
         </div>
@@ -39,11 +35,8 @@
           <div class="title mb-1"><strong>{{key1}}</strong></div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
-              <!-- <a href="#" class="btn_add fa fa-plus mr-1" @click="addProperty()"></a>-->
-              <!--<a href="#" class="edit_list fa fa-edit" @click="ModalSettingModify(key1,val1,key1)"></a>-->
-              <a href="#" class="delete_list fa fa-times font-lg"@click="ModalSettingDelete(key1,val1,key1)" ></a>
+              <a href="#" class="delete_list fa fa-times font-lg"@click="ModalSettingDelete(key1,val1,key1,'boolean')" ></a>
               <p class="mb-0">{{val1}}</p>
-              <!-- <a href="#" class="edit_list fa fa-edit" @click="modalServiceList(key1,val1,key1)"></a>-->
             </div>
           </div>
         </div>
@@ -51,11 +44,8 @@
           <div class="title mb-1"><strong>{{key1}}</strong><a href="#" class="btn_add font-lg text-white fa fa-plus mr-1" @click="ModalSettingAdd(key1,'array')"></a></div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" v-for="(val2,key2) in val1"  >
-              <!--<a href="#" class="btn_add fa fa-plus mr-1" @click="addProperty()"></a>-->
-              <!--<a href="#" class="edit_list fa fa-edit" @click="ModalSettingModify(key1,val2,key2)"></a>-->
-              <a href="#" class="delete_list fa fa-times font-lg" @click="ModalSettingDelete(key1,val2,key2)"></a>
+              <a href="#" class="delete_list fa fa-times font-lg" @click="ModalSettingDelete(key1,val2,key2,'array')"></a>
               <p class="mb-0">{{val2}}</p>
-              <!--<a href="#" class="edit_list fa fa-edit" @click="modalServiceList(key1,val2,key2)"></a>-->
             </div>
           </div>
         </div>
@@ -187,7 +177,6 @@
         });
       },
       ModalSettingAdd(key,type){
-        console.log("----------------------")
         this.showModal({
           componentName : 'ModalSettingAdd',
           key: key,
@@ -195,7 +184,6 @@
         });
       },
       ModalSettingModify(name,value,key){
-        console.log("")
         this.showModal({
           componentName : 'ModalSettingModify',
           valueName : name,
@@ -203,13 +191,13 @@
           key: key
         });
       },
-      ModalSettingDelete(name,value,key){
-        console.log("")
+      ModalSettingDelete(name,value,key,type){
         this.showModal({
           componentName : 'ModalSettingDelete',
           valueName : name,
           value : value,
-          key: key
+          key: key,
+          type :type
         });
       },
 
