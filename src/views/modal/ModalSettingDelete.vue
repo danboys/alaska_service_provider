@@ -124,9 +124,9 @@
       check(){
         let query
 
-        if(this.type === "array"){
+        if(this.targetValues.type === "array"){
           query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}/${this.targetValues.key}`
-        }else if (this.type === "object"){
+        }else if (this.targetValues.type === "object"){
           query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}/${this.targetValues.valueName}`
         }else{
           query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`
