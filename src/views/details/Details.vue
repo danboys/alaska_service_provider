@@ -10,20 +10,27 @@
       <div class="container setting">
         <!--서비스분류 카테고리 1개 단위-->
         <div v-for="(val1, key1) in depth1Data" v-if="Object.prototype.toString.call(val1) === '[object Object]'">
-          <div class="title mb-1"><strong>{{key1}}</strong><a href="#" class="btn_add font-lg text-white fa fa-plus mr-1" @click="ModalSettingAdd(key1,'objcet')"></a></div>
+          <div class="title mb-1"><strong>{{key1}}</strong>
+            <a href="#" class="btn_add font-lg text-white fa fa-plus mr-1" @click="ModalSettingAdd(key1,'object')"></a>
+            <a href="#" class="btn_delete  fa fa-times font-lg" @click="ModalSettingDelete(key1,key1,val1,'object','btn')"></a>
+            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,'objcet')"></a>
+          </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="item card p-2 mb-2" v-for="(val2,key2) in val1">
               <div class="position-relative">
                 <a data-toggle="collapse" data-parent="#Accordion" :href="'#'+key2" aria-expanded="true" aria-controls="Accordion2" class="">
                   {{key2}}</a>
                 <a href="#" class="edit_list fa fa-edit" @click="ModalSettingModify(key2,val2,key1)"></a>
-                <a href="#" class="delete_list fa fa-times font-lg" @click="ModalSettingDelete(key2,val2,key1,'objcet')"></a>
+                <a href="#" class="delete_list fa fa-times font-lg" @click="ModalSettingDelete(key2,val2,key1,'object')"></a>
               </div>
             </div>
           </div>
         </div>
         <div v-else-if="Object.prototype.toString.call(val1) === '[object String]'">
-          <div class="title mb-1"><strong>{{key1}}</strong></div>
+          <div class="title mb-1"><strong>{{key1}}</strong>
+            <a href="#" class="btn_delete  fa fa-times font-lg" @click="ModalSettingDelete(key1,key1,val1,'string','btn')"></a>
+            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,'string')"></a>
+          </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
               <a href="#" class="delete_list fa fa-times font-lg"  @click="ModalSettingDelete(key1,val1,key1,'string')"></a>
@@ -32,7 +39,10 @@
           </div>
         </div>
         <div v-else-if="Object.prototype.toString.call(val1) === '[object Boolean]'">
-          <div class="title mb-1"><strong>{{key1}}</strong></div>
+          <div class="title mb-1"><strong>{{key1}}</strong>
+            <a href="#" class="btn_delete  fa fa-times font-lg" @click="ModalSettingDelete(key1,key1,val1,'boolean','btn')"></a>
+            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,'boolean')"></a>
+          </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
               <a href="#" class="delete_list fa fa-times font-lg"@click="ModalSettingDelete(key1,val1,key1,'boolean')" ></a>
@@ -41,7 +51,11 @@
           </div>
         </div>
         <div v-else >
-          <div class="title mb-1"><strong>{{key1}}</strong><a href="#" class="btn_add font-lg text-white fa fa-plus mr-1" @click="ModalSettingAdd(key1,'array')"></a></div>
+          <div class="title mb-1"><strong>{{key1}}</strong>
+            <a href="#" class="btn_add font-lg text-white fa fa-plus mr-1" @click="ModalSettingAdd(key1,'array')"></a>
+            <a href="#" class="btn_delete  fa fa-times font-lg" @click="ModalSettingDelete(key1,key1,val1,'array','btn')"></a>
+            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,'array')"></a>
+          </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" v-for="(val2,key2) in val1"  >
               <a href="#" class="delete_list fa fa-times font-lg" @click="ModalSettingDelete(key1,val2,key2,'array')"></a>
@@ -192,13 +206,14 @@
           key: key
         });
       },
-      ModalSettingDelete(name,value,key,type){
+      ModalSettingDelete(name,value,key,type,divi){
         this.showModal({
           componentName : 'ModalSettingDelete',
           valueName : name,
           value : value,
           key: key,
-          type :type
+          type :type,
+          divi : divi
         });
       },
 
@@ -303,8 +318,19 @@
 
   .setting .title .btn_add {
     position: absolute;
-    right: 0.8rem;
+    right: 5.0rem;
     top: 0.2rem;
+  }
+  .setting .title .btn_edit {
+    position: absolute;
+    right: 3.5rem;
+    top: 0.3rem;
+  }
+  .setting .title .btn_delete {
+    position: absolute;
+    right: 2.1rem;
+    top: 0.2rem;
+    color: #20a8d8;
   }
 
   .setting .card .btn_add {

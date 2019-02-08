@@ -4,8 +4,8 @@
       <div  class="popup">
         <div class="card card_delete">
           <div class="card-header">
-            <strong v-if="this.serviceName === 'category' || this.serviceName=== 'image'" >{{targetValues.key}} - {{targetValues.valueName}}</strong>
-            <strong v-else>{{targetValues.valueName}} - {{targetValues.value}}</strong>
+            <strong v-if="this.serviceName === 'category' || this.serviceName=== 'image'" >{{targetValues.valueName}}</strong>
+            <strong v-else>{{targetValues.value}}</strong>
             <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal">
               <span aria-hidden="true">×</span>
             </button>
@@ -124,12 +124,16 @@
       check(){
         let query
 
-        if(this.targetValues.type === "array"){
-          query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}/${this.targetValues.key}`
-        }else if (this.targetValues.type === "object"){
-          query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}/${this.targetValues.valueName}`
-        }else{
+        if(this.targetValues.divi === "btn"){
           query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`
+        }else{
+          if(this.targetValues.type === "array"){
+            query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}/${this.targetValues.key}`
+          }else if (this.targetValues.type === "object"){
+            query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}/${this.targetValues.valueName}`
+          }else{
+            query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`
+          }
         }
         firebase.database().ref(query).remove().then(() => {
           console.log('%cSP 삭제 완료','color:blue')
