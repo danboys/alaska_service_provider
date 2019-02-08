@@ -13,7 +13,7 @@
           <div class="title mb-1"><strong>{{key1}}</strong>
             <a href="#" class="btn_add font-lg text-white fa fa-plus mr-1" @click="ModalSettingAdd(key1,'object')"></a>
             <a href="#" class="btn_delete  fa fa-times font-lg" @click="ModalSettingDelete(key1,key1,val1,'object','btn')"></a>
-            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,'objcet')"></a>
+            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,key1,val1,'object','btn')"></a>
           </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="item card p-2 mb-2" v-for="(val2,key2) in val1">
@@ -29,7 +29,7 @@
         <div v-else-if="Object.prototype.toString.call(val1) === '[object String]'">
           <div class="title mb-1"><strong>{{key1}}</strong>
             <a href="#" class="btn_delete  fa fa-times font-lg" @click="ModalSettingDelete(key1,key1,val1,'string','btn')"></a>
-            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,'string')"></a>
+            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,key1,val1,'string','btn')"></a>
           </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
@@ -41,7 +41,7 @@
         <div v-else-if="Object.prototype.toString.call(val1) === '[object Boolean]'">
           <div class="title mb-1"><strong>{{key1}}</strong>
             <a href="#" class="btn_delete  fa fa-times font-lg" @click="ModalSettingDelete(key1,key1,val1,'boolean','btn')"></a>
-            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,'boolean')"></a>
+            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,key1,val1,'boolean','btn')"></a>
           </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
@@ -54,7 +54,7 @@
           <div class="title mb-1"><strong>{{key1}}</strong>
             <a href="#" class="btn_add font-lg text-white fa fa-plus mr-1" @click="ModalSettingAdd(key1,'array')"></a>
             <a href="#" class="btn_delete  fa fa-times font-lg" @click="ModalSettingDelete(key1,key1,val1,'array','btn')"></a>
-            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,'array')"></a>
+            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,key1,val1,'array','btn')"></a>
           </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" v-for="(val2,key2) in val1"  >
@@ -198,12 +198,14 @@
           type :type
         });
       },
-      ModalSettingModify(name,value,key){
+      ModalSettingModify(name,value,key,type,divi){
         this.showModal({
           componentName : 'ModalSettingModify',
           valueName : name,
           value : value,
-          key: key
+          key: key,
+          type :type,
+          divi : divi
         });
       },
       ModalSettingDelete(name,value,key,type,divi){

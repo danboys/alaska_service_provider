@@ -160,22 +160,55 @@
         }
       },
       check(){
-        firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`).update({
-          [this.inputText] : this.inputValue
-        }).then(() => {
-          console.log('%cSP 필드 수정 완료1','color:blue')
-          firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}/${this.targetValues.valueName}`).remove(
-          ).then(() => {
-            console.log('%cSP 필드 수정 완료2','color:blue')
-            this.next();
+        if(this.targetValues.divi === "btn"){
+          let query
+          let query2
+          if(this.targetValues.type === "object"){
+            query = ``
+          }else if(this.targetValues.type === "array"){
+            query = ``
+          }else{
+            query = `provider/sp/${this.spName}/${this.serviceName}`
+          }
+          firebase.database().ref(query).update({
+            [this.inputText] : this.inputValue
+          }).then(() => {
+            if(this.targetValues.type === "object"){
+              query2 = ``
+            }else if(this.targetValues.type === "array"){
+              query2 = ``
+            }else{
+              query2 = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`
+            }
+            firebase.database().ref(query2).remove(
+            ).then(() => {
+              this.next();
+            }).catch((error) => {
+              console.log('%cSP 항목 수정2 중 에러가 발생하였습니다.','color:red');
+              console.log(error);
+            });
           }).catch((error) => {
-            console.log('%cSP 필드 수정2 중 에러가 발생하였습니다.','color:red');
+            console.log('%cSP 항목 수정1 중 에러가 발생하였습니다.','color:red');
             console.log(error);
           });
-        }).catch((error) => {
-          console.log('%cSP 필드 수정1 중 에러가 발생하였습니다.','color:red');
-          console.log(error);
-        });
+        }else{
+          firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`).update({
+            [this.inputText] : this.inputValue
+          }).then(() => {
+            console.log('%cSP 필드 수정 완료1','color:blue')
+            firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}/${this.targetValues.valueName}`).remove(
+            ).then(() => {
+              console.log('%cSP 필드 수정 완료2','color:blue')
+              this.next();
+            }).catch((error) => {
+              console.log('%cSP 필드 수정2 중 에러가 발생하였습니다.','color:red');
+              console.log(error);
+            });
+          }).catch((error) => {
+            console.log('%cSP 필드 수정1 중 에러가 발생하였습니다.','color:red');
+            console.log(error);
+          });
+        }
       },
       refresh() {
         // refresh
