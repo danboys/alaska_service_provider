@@ -136,8 +136,23 @@
           }
         }
         firebase.database().ref(query).remove().then(() => {
-          console.log('%cSP 삭제 완료','color:blue')
-          this.next();
+          if(this.targetValues.type === "array"){
+            firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`).once('value')
+              .then((data) => {
+                this.resultData = $.grep(data.val(),function(n){ return n == " " || n; });
+                console.log(this.resultData);
+                firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`).set(this.resultData).then(() => {
+                  console.log('%cSP 삭제 완료','color:blue')
+                }).catch((error) => {
+                  console.log('%cSP 삭제 중 에러가 발생하였습니다.','color:red');
+                  console.log(error);
+                });
+                this.next();
+              })
+          }else{
+            console.log('%cSP 삭제 완료','color:blue')
+            this.next();
+          }
         }).catch((error) => {
           console.log('%cSP 삭제 중 에러가 발생하였습니다.','color:red');
           console.log(error);
