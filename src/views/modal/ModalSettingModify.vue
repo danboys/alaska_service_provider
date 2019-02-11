@@ -198,7 +198,7 @@
           });
         }else{
           firebase.database().ref(this.keyQuery).update({
-            [this.inputText] : this.inputValue
+            [this.inputText] : this.targetValues.value
           }).then(() => {
             this.remove()
           }).catch((error) => {
