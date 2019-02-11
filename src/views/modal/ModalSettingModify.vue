@@ -4,7 +4,8 @@
       <div class="popup popup_400">
         <div class="card card_modify_SP">
           <div class="card-header">
-            <strong>{{targetValues.key}} 하위 항목 추가/수정</strong>
+            <strong v-if="targetValues.divi === 'btn'">{{targetValues.valueName}} 하위 항목 추가/수정</strong>
+            <strong v-else>{{targetValues.key}} 하위 항목 추가/수정</strong>
             <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal">
               <span aria-hidden="true">×</span>
             </button>
@@ -119,7 +120,10 @@
         active : 0,
         inputText:"",
         inputValue:"",
-        oData: {},
+        defaultQuery :"",
+        valueQuery :"",
+        keyQuery:"",
+        keyValueQuery:"",
       }
     },
     created() {
@@ -128,6 +132,10 @@
       console.log('this.targetValues :: ');
       Object.assign(this.targetValues, this.$store.state.modalValues);
       console.log(this.targetValues);
+      this.defaultQuery = `provider/sp/${this.spName}/${this.serviceName}`;
+      this.valueQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`;
+      this.keyQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`;
+      this.keyValueQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}/${this.targetValues.valueName}`
     },
     computed:{
       sequenceNumber: function () {
@@ -162,53 +170,55 @@
       check(){
         if(this.targetValues.divi === "btn"){
           let query
-          let query2
-          if(this.targetValues.type === "object"){
-            query = ``
-          }else if(this.targetValues.type === "array"){
-            query = ``
+          let value
+          if(this.targetValues.type === "object" || this.targetValues.type === "array"){
+            query = this.defaultQuery
+            firebase.database().ref(this.valueQuery).once('value')
+              .then((data) => {
+                value = data.val()
+                this.update(query,value);
+              })
           }else{
-            query = `provider/sp/${this.spName}/${this.serviceName}`
+            query = this.defaultQuery
+            value = this.inputValue
+            this.update(query,value);
           }
+        }else{
+          this.update();
+        }
+      },
+      update(query,value){
+        if(this.targetValues.divi === "btn"){
           firebase.database().ref(query).update({
-            [this.inputText] : this.inputValue
+            [this.inputText] : value
           }).then(() => {
-            if(this.targetValues.type === "object"){
-              query2 = ``
-            }else if(this.targetValues.type === "array"){
-              query2 = ``
-            }else{
-              query2 = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`
-            }
-            firebase.database().ref(query2).remove(
-            ).then(() => {
-              this.next();
-            }).catch((error) => {
-              console.log('%cSP 항목 수정2 중 에러가 발생하였습니다.','color:red');
-              console.log(error);
-            });
+            this.remove()
           }).catch((error) => {
-            console.log('%cSP 항목 수정1 중 에러가 발생하였습니다.','color:red');
             console.log(error);
           });
         }else{
-          firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`).update({
+          firebase.database().ref(this.keyQuery).update({
             [this.inputText] : this.inputValue
           }).then(() => {
-            console.log('%cSP 필드 수정 완료1','color:blue')
-            firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}/${this.targetValues.valueName}`).remove(
-            ).then(() => {
-              console.log('%cSP 필드 수정 완료2','color:blue')
-              this.next();
-            }).catch((error) => {
-              console.log('%cSP 필드 수정2 중 에러가 발생하였습니다.','color:red');
-              console.log(error);
-            });
+            this.remove()
           }).catch((error) => {
-            console.log('%cSP 필드 수정1 중 에러가 발생하였습니다.','color:red');
             console.log(error);
           });
         }
+      },
+      remove(){
+        let query
+        if(this.targetValues.divi === "btn"){
+          query = this.valueQuery
+        }else{
+          query = this.keyValueQuery
+        }
+        firebase.database().ref(query).remove(
+        ).then(() => {
+          this.next();
+        }).catch((error) => {
+          console.log(error);
+        });
       },
       refresh() {
         // refresh
