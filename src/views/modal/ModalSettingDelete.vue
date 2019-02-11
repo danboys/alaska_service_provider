@@ -81,7 +81,11 @@
         active : 0,
         inputText:"",
         inputValue:"",
-        oData: {},
+        defaultQuery :"",
+        valueQuery :"",
+        keyQuery:"",
+        keyValueQuery:"",
+        valueKeyQuery:"",
       }
     },
     created() {
@@ -90,6 +94,11 @@
       console.log('this.targetValues :: ');
       Object.assign(this.targetValues, this.$store.state.modalValues);
       console.log(this.targetValues);
+      this.defaultQuery = `provider/sp/${this.spName}/${this.serviceName}`;
+      this.valueQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`;
+      this.keyQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`;
+      this.keyValueQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}/${this.targetValues.valueName}`
+      this.valueKeyQuery =  `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}/${this.targetValues.key}`
     },
     computed:{
       sequenceNumber: function () {
@@ -123,38 +132,33 @@
       },
       check(){
         let query
-
         if(this.targetValues.divi === "btn"){
-          query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`
+          query = this.valueQuery
         }else{
           if(this.targetValues.type === "array"){
-            query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}/${this.targetValues.key}`
+            query = this.valueKeyQuery
           }else if (this.targetValues.type === "object"){
-            query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}/${this.targetValues.valueName}`
+            query = this.keyValueQuery
           }else{
-            query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`
+            query = this.valueQuery
           }
         }
         firebase.database().ref(query).remove().then(() => {
           if(this.targetValues.type === "array"){
-            firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`).once('value')
+            firebase.database().ref(this.valueQuery).once('value')
               .then((data) => {
                 this.resultData = $.grep(data.val(),function(n){ return n == " " || n; });
                 console.log(this.resultData);
-                firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`).set(this.resultData).then(() => {
-                  console.log('%cSP 삭제 완료','color:blue')
+                firebase.database().ref(this.valueQuery).set(this.resultData).then(() => {
                 }).catch((error) => {
-                  console.log('%cSP 삭제 중 에러가 발생하였습니다.','color:red');
                   console.log(error);
                 });
                 this.next();
               })
           }else{
-            console.log('%cSP 삭제 완료','color:blue')
             this.next();
           }
         }).catch((error) => {
-          console.log('%cSP 삭제 중 에러가 발생하였습니다.','color:red');
           console.log(error);
         });
       },
