@@ -4,7 +4,8 @@
       <div class="popup popup_400">
         <div class="card card_modify_SP">
           <div class="card-header">
-            <strong>{{targetValues.key}} 하위 항목 추가/수정</strong>
+            <strong v-if="targetValues.divi === 'property'">{{serviceName}} 하위 항목 추가/수정</strong>
+            <strong v-else>{{targetValues.key}} 하위 항목 추가/수정</strong>
             <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal">
               <span aria-hidden="true">×</span>
             </button>
@@ -19,7 +20,12 @@
             <div class="form-group mb-2">
               <label for="company">설명</label>
               <textarea class="form-control text-area-height" id="company" type="text" placeholder="(ex.항목설명)"></textarea>
+              <div v-if="targetValues.type === 'object'">
+                <label for="company" class="mt-2 ">하위설명</label>
+                <textarea class="form-control text-area-height _sub" id="company" type="text" placeholder="(ex.하위항목설명)"></textarea>
+              </div>
             </div>
+
 
           </div><!--//card-body-->
 
@@ -119,7 +125,11 @@
         active : 0,
         inputText:"",
         inputValue:"",
-        oData: {},
+        subInputValue:"",
+        defaultQuery :"",
+        valueQuery :"",
+        keyQuery:"",
+        keyValueQuery:"",
       }
     },
     created() {
@@ -128,6 +138,10 @@
       console.log('this.targetValues :: ');
       Object.assign(this.targetValues, this.$store.state.modalValues);
       console.log(this.targetValues);
+      this.defaultQuery = `provider/sp/${this.spName}/${this.serviceName}`;
+      this.valueQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`;
+      this.keyQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`;
+      this.keyValueQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}/${this.targetValues.valueName}`
     },
     computed:{
       sequenceNumber: function () {
@@ -150,6 +164,9 @@
       next() {
         this.inputText = $('.form-group input').val()
         this.inputValue = $('.form-group textarea').val()
+        if(this.targetValues.divi=== "property" && this.targetValues.type === "object"){
+          this.subInputValue = $('.form-group ._sub').val()
+        }
         if(this.active !==  2){
           this.active++;
         }
@@ -160,35 +177,36 @@
         }
       },
       check(){
-        if(this.targetValues.type === "property"){
+        if(this.targetValues.divi=== "property"){
           let inputText
           let inputValue
           let qurey
-          if(this.serviceName === "ip" || this.serviceName === "service" || this.serviceName === "so" || this.serviceName === "text" ){
-            qurey = `provider/sp/${this.spName}/${this.serviceName}`
-            inputText = this.inputText
+          qurey = this.defaultQuery
+          inputText = this.inputText
+          if(this.targetValues.type === "array"){
+            inputValue = [this.inputValue]
+          }else if(this.targetValues.type === "object"){
+            let object ={[this.inputValue]:this.subInputValue}
+            inputValue = object
+          }else{
             inputValue = this.inputValue
           }
           firebase.database().ref(qurey).update({
             [inputText] : inputValue
           }).then(() => {
-            console.log('%cSP 추가 완료','color:blue')
             this.next();
           }).catch((error) => {
-            console.log('%cSP 추가 중 에러가 발생하였습니다.','color:red');
             console.log(error);
           });
         }else{
           if(this.targetValues.type === "objcet"){
-            firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`).once('value')
+            firebase.database().ref(this.keyQuery).once('value')
               .then((data) => {
-                firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`).update({
+                firebase.database().ref(this.keyQuery).update({
                   [data.val().length] : this.inputText
                 }).then(() => {
-                  console.log('%cSP 추가 완료','color:blue')
                   this.next();
                 }).catch((error) => {
-                  console.log('%cSP 추가 중 에러가 발생하였습니다.','color:red');
                   console.log(error);
                 });
               })
@@ -196,13 +214,11 @@
                 console.log(error)
               })
           }else{
-            firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`).update({
+            firebase.database().ref(this.keyQuery).update({
               [this.inputText] : this.inputValue
             }).then(() => {
-              console.log('%cSP 추가 완료','color:blue')
               this.next();
             }).catch((error) => {
-              console.log('%cSP 추가 중 에러가 발생하였습니다.','color:red');
               console.log(error);
             });
           }

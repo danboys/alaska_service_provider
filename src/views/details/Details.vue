@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="wrap" v-if="this.spCheck ">
+    <div class="wrap" v-if="this.spCheck">
       <!--진입 경로-->
       <nav class="breadcrumb">
         <a class="breadcrumb-item" href="#">{{spName}}</a>
@@ -25,7 +25,12 @@
               </div>
             </div>
           </div>
+          <a href="#" class="text-white w-100 add_property" @click="ModalSettingAdd(key1,val1,'object','property')">
+            <i class="fa fa-plus mr-1"></i>
+            <span>ADD Property</span>
+          </a>
         </div>
+
         <div v-else-if="Object.prototype.toString.call(val1) === '[object String]'">
           <div class="title mb-1"><strong>{{key1}}</strong>
             <a href="#" class="btn_delete  fa fa-times font-lg" @click="ModalSettingDelete(key1,key1,val1,'string','btn')"></a>
@@ -37,6 +42,10 @@
               <p class="mb-0">{{val1}}</p>
             </div>
           </div>
+          <a href="#" class="text-white w-100 add_property" @click="ModalSettingAdd(key1,val1,'string','property')">
+            <i class="fa fa-plus mr-1"></i>
+            <span>ADD Property</span>
+          </a>
         </div>
         <div v-else-if="Object.prototype.toString.call(val1) === '[object Boolean]'">
           <div class="title mb-1"><strong>{{key1}}</strong>
@@ -49,6 +58,10 @@
               <p class="mb-0">{{val1}}</p>
             </div>
           </div>
+          <a href="#" class="text-white w-100 add_property" @click="ModalSettingAdd(key1,val1,'boolean','property')">
+            <i class="fa fa-plus mr-1"></i>
+            <span>ADD Property</span>
+          </a>
         </div>
         <div v-else >
           <div class="title mb-1"><strong>{{key1}}</strong>
@@ -62,11 +75,12 @@
               <p class="mb-0">{{val2}}</p>
             </div>
           </div>
+          <a href="#" class="text-white w-100 add_property" @click="ModalSettingAdd(key1,val1,'array','property')">
+            <i class="fa fa-plus mr-1"></i>
+            <span>ADD Property</span>
+          </a>
         </div>
-        <a href="#" class="text-white w-100 add_property" @click="ModalSettingAdd('','property')">
-          <i class="fa fa-plus mr-1"></i>
-          <span>ADD Property</span>
-        </a>
+
       </div>
     </div>
     <div class="wrap" v-else>
@@ -154,6 +168,12 @@
       this.fetchFirebaseData();
 
     },
+    updated(){
+      if(this.spCheck === true){
+        let index = $('.add_property').length -1
+        $('.add_property:lt('+index+')').remove();
+      }
+    },
     computed: {
       ...mapState({
         isSetting: 'isSetting',
@@ -191,11 +211,13 @@
           type :type
         });
       },
-      ModalSettingAdd(key,type){
+      ModalSettingAdd(key,value,type,divi){
         this.showModal({
           componentName : 'ModalSettingAdd',
           key: key,
-          type :type
+          value : value,
+          type :type,
+          divi : divi
         });
       },
       ModalSettingModify(name,value,key,type,divi){
