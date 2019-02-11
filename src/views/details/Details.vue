@@ -20,8 +20,10 @@
               <div class="position-relative">
                 <a data-toggle="collapse" data-parent="#Accordion" :href="'#'+key2" aria-expanded="true" aria-controls="Accordion2" class="">
                   {{key2}}</a>
-                <a href="#" class="edit_list fa fa-edit" @click="ModalSettingModify(key2,val2,key1)"></a>
-                <a href="#" class="delete_list fa fa-times font-lg" @click="ModalSettingDelete(key2,val2,key1,'object')"></a>
+                <div v-if="key2 !== '' ">
+                  <a href="#" class="edit_list fa fa-edit" @click="ModalSettingModify(key2,val2,key1)"></a>
+                  <a href="#" class="delete_list fa fa-times font-lg" @click="ModalSettingDelete(key2,val2,key1,'object')"></a>
+                </div>
               </div>
             </div>
           </div>
@@ -38,7 +40,7 @@
           </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
-              <a href="#" class="delete_list fa fa-times font-lg"  @click="ModalSettingDelete(key1,val1,key1,'string')"></a>
+              <a v-if="val1 !== '' " href="#" class="delete_list fa fa-times font-lg"  @click="ModalSettingDelete(key1,val1,key1,'string')"></a>
               <p class="mb-0">{{val1}}</p>
             </div>
           </div>
@@ -54,7 +56,7 @@
           </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
-              <a href="#" class="delete_list fa fa-times font-lg"@click="ModalSettingDelete(key1,val1,key1,'boolean')" ></a>
+              <a v-if="val1 !== '' " href="#" class="delete_list fa fa-times font-lg"@click="ModalSettingDelete(key1,val1,key1,'boolean')" ></a>
               <p class="mb-0">{{val1}}</p>
             </div>
           </div>
@@ -71,7 +73,7 @@
           </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" v-for="(val2,key2) in val1"  >
-              <a href="#" class="delete_list fa fa-times font-lg" @click="ModalSettingDelete(key1,val2,key2,'array')"></a>
+              <a v-if="val2 !== '' " href="#" class="delete_list fa fa-times font-lg" @click="ModalSettingDelete(key1,val2,key2,'array')"></a>
               <p class="mb-0">{{val2}}</p>
             </div>
           </div>
@@ -105,7 +107,7 @@
                 <!--툴팁-->
                 <div class="card p-2 mb-2 mt-2 position-relative collapse " :id="key2" role="tabpanel" style="" >
                   <p class="mb-0">{{val2}}</p>
-                  <a href="#" class="edit_list fa fa-edit" @click="modalServiceList(key2,val2,key1,'object')"></a>
+                  <a v-if="val2 !== '' " href="#" class="edit_list fa fa-edit" @click="modalServiceList(key2,val2,key1,'object')"></a>
                 </div>
               </div>
             </div>
@@ -116,7 +118,7 @@
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
               <p class="mb-0">{{val1}}</p>
-              <a href="#" class="edit_list fa fa-edit" @click="modalServiceList(key1,val1,key1,'string')" ></a>
+              <a v-if="val1 !== '' " href="#" class="edit_list fa fa-edit" @click="modalServiceList(key1,val1,key1,'string')" ></a>
             </div>
           </div>
         </div>
@@ -125,7 +127,7 @@
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
               <p class="mb-0">{{val1}}</p>
-              <a href="#" class="edit_list fa fa-edit" @click="modalServiceList(key1,val1,key1,'boolean')"></a>
+              <a v-if="val1 !== '' " href="#" class="edit_list fa fa-edit" @click="modalServiceList(key1,val1,key1,'boolean')"></a>
             </div>
           </div>
         </div>
@@ -134,7 +136,7 @@
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" v-for="(val2,key2) in val1"  >
               <p class="mb-0">{{val2}}</p>
-              <a href="#" class="edit_list fa fa-edit" @click="modalServiceList(key1,val2,key2,'array')"></a>
+              <a v-if="val2 !== '' " href="#" class="edit_list fa fa-edit" @click="modalServiceList(key1,val2,key2,'array')"></a>
             </div>
           </div>
         </div>
