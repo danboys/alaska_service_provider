@@ -180,7 +180,7 @@
               })
           }else{
             query = this.defaultQuery
-            value = this.inputValue
+            value = this.targetValues.key
             this.update(query,value);
           }
         }else{
