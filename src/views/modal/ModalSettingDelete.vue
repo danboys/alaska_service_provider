@@ -147,13 +147,17 @@
           if(this.targetValues.divi !== "btn" && this.targetValues.type === "array"){
             firebase.database().ref(this.valueQuery).once('value')
               .then((data) => {
-                this.resultData = $.grep(data.val(),function(n){ return n == " " || n; });
-                console.log(this.resultData);
-                firebase.database().ref(this.valueQuery).set(this.resultData).then(() => {
+                if(data.val() === null){
                   this.next();
-                }).catch((error) => {
-                  console.log(error);
-                });
+                }else{
+                  this.resultData = $.grep(data.val(),function(n){ return n == " " || n; });
+                  console.log(this.resultData);
+                  firebase.database().ref(this.valueQuery).set(this.resultData).then(() => {
+                    this.next();
+                  }).catch((error) => {
+                    console.log(error);
+                  });
+                }
               })
           }else{
             this.next();
