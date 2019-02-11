@@ -11,7 +11,7 @@
         <!--서비스분류 카테고리 1개 단위-->
         <div v-for="(val1, key1) in depth1Data" v-if="Object.prototype.toString.call(val1) === '[object Object]'">
           <div class="title mb-1"><strong>{{key1}}</strong>
-            <a href="#" class="btn_add font-lg text-white fa fa-plus mr-1" @click="ModalSettingAdd(key1,'object')"></a>
+            <a href="#" class="btn_add font-lg text-white fa fa-plus mr-1" @click="ModalSettingAdd(key1,val1,'object','btn')"></a>
             <a href="#" class="btn_delete  fa fa-times font-lg" @click="ModalSettingDelete(key1,key1,val1,'object','btn')"></a>
             <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,key1,val1,'object','btn')"></a>
           </div>
@@ -67,7 +67,7 @@
         </div>
         <div v-else >
           <div class="title mb-1"><strong>{{key1}}</strong>
-            <a href="#" class="btn_add font-lg text-white fa fa-plus mr-1" @click="ModalSettingAdd(key1,'array')"></a>
+            <a href="#" class="btn_add font-lg text-white fa fa-plus mr-1" @click="ModalSettingAdd(key1,val1,'array','btn')"></a>
             <a href="#" class="btn_delete  fa fa-times font-lg" @click="ModalSettingDelete(key1,key1,val1,'array','btn')"></a>
             <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,key1,val1,'array','btn')"></a>
           </div>

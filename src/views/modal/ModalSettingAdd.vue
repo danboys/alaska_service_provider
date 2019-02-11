@@ -20,7 +20,7 @@
             <div class="form-group mb-2">
               <label for="company">설명</label>
               <textarea class="form-control text-area-height" id="company" type="text" placeholder="(ex.항목설명)"></textarea>
-              <div v-if="targetValues.type === 'object'">
+              <div v-if="targetValues.type === 'object' && targetValues.divi === 'property'">
                 <label for="company" class="mt-2 ">하위설명</label>
                 <textarea class="form-control text-area-height _sub" id="company" type="text" placeholder="(ex.하위항목설명)"></textarea>
               </div>
@@ -199,7 +199,7 @@
             console.log(error);
           });
         }else{
-          if(this.targetValues.type === "objcet"){
+          if(this.targetValues.type === "array"){
             firebase.database().ref(this.keyQuery).once('value')
               .then((data) => {
                 firebase.database().ref(this.keyQuery).update({
