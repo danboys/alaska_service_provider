@@ -16,6 +16,8 @@
               <div class="col-sm-12">
                 <div class="form-group">
                   <p class="help-block c_light_blue">삭제하시겠습니까?</p>
+                  <p v-if="caution === true" class="help-block c_light_blue caution">* CAUTION * <br> 해당 카테고리의 하위 항목이 {{targetValues.valueName}} 한 개로 <br>
+                    확인 버튼 클릭 시 해당 카테고리가 삭제됩니다. </p>
                 </div>
               </div>
             </div>
@@ -86,6 +88,7 @@
         keyQuery:"",
         keyValueQuery:"",
         valueKeyQuery:"",
+        caution: false
       }
     },
     created() {
@@ -99,6 +102,9 @@
       this.keyQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`;
       this.keyValueQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}/${this.targetValues.valueName}`
       this.valueKeyQuery =  `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}/${this.targetValues.key}`
+      if(this.targetValues.divi === "btn"){
+        this.lenghtCheck();
+      }
     },
     computed:{
       sequenceNumber: function () {
@@ -129,6 +135,14 @@
         if(this.active !== 0){
           this.active--;
         }
+      },
+      lenghtCheck(){
+        firebase.database().ref(this.defaultQuery).once('value')
+          .then((data) => {
+            if(Object.keys(data.val()).length === 1){
+              this.caution = true
+            }
+          })
       },
       check(){
         let query
@@ -220,6 +234,9 @@
   /*폼 변형*/
   .form-group {
     margin-bottom: 0;
+  }
+  .form-group .caution {
+    color: red;
   }
   .card-footer.card-footer-bg-none {
     background: none;
