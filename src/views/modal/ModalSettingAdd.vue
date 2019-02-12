@@ -18,11 +18,22 @@
               <input class="form-control" id="company" type="text" placeholder="(ex.항목명)">
             </div>
             <div class="form-group mb-2">
-              <label for="company">설명</label>
-              <textarea class="form-control text-area-height" id="company" type="text" placeholder="(ex.항목설명)"></textarea>
-              <div v-if="targetValues.type === 'object' && targetValues.divi === 'property'">
-                <label for="company" class="mt-2 ">하위설명</label>
-                <textarea class="form-control text-area-height _sub" id="company" type="text" placeholder="(ex.하위항목설명)"></textarea>
+              <div v-if="targetValues.type === 'boolean' && targetValues.divi === 'property'">
+                <label for="company">선택</label>
+                <div class="input_box input_box_col2">
+                  <div class="input_radio">
+                    <input type="radio" id="true" name="contents_select" @click="serviceValueChecked(true)">
+                    <label for="true">TRUE</label>
+                  </div>
+                  <div class="input_radio">
+                    <input type="radio" id="false" name="contents_select" @click="serviceValueChecked(false)">
+                    <label for="false">FALSE</label>
+                  </div>
+                </div>
+              </div>
+              <div v-else>
+                <label for="company">설명</label>
+                <textarea class="form-control text-area-height" id="company" type="text" placeholder="(ex.항목설명)"></textarea>
               </div>
             </div>
 
@@ -130,12 +141,14 @@
         valueQuery :"",
         keyQuery:"",
         keyValueQuery:"",
+        spValue:""
       }
     },
     created() {
       this.spName = this.$route.query.spName
       this.serviceName = this.$route.query.serviceName
       Object.assign(this.targetValues, this.$store.state.modalValues);
+      console.log(this.targetValues);
       this.defaultQuery = `provider/sp/${this.spName}/${this.serviceName}`;
       this.valueQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`;
       this.keyQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`;
@@ -158,6 +171,9 @@
       ...mapMutations([
         'hideModal'
       ]),
+      serviceValueChecked(value){
+        this.spValue = value
+      },
       next() {
         this.inputText = $('.form-group input').val()
         this.inputValue = $('.form-group textarea').val()
@@ -185,6 +201,8 @@
           }else if(this.targetValues.type === "object"){
             let object ={[this.inputValue]:this.subInputValue}
             inputValue = object
+          }else if(this.targetValues.type === "boolean"){
+            inputValue = this.spValue
           }else{
             inputValue = this.inputValue
           }
@@ -286,4 +304,29 @@
   textarea.text-area-height {
     height: 100px;
   }
+
+  /*추가*/
+  /*input radio*/
+  .input_box {
+    position: relative;
+  }
+  .input_box_col2 .input_radio {
+    width: 50%;
+  }
+  .input_radio {
+    float: left;
+  }
+
+  .input_radio input {
+    position: absolute;
+    top: 5px;
+  }
+  .input_radio label {
+    margin-left: 18px;
+  }
+
+  .input_radio label:hover {
+    color: #63c2de;
+  }
+
 </style>

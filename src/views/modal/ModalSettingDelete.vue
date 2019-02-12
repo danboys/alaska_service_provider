@@ -95,6 +95,7 @@
       this.spName = this.$route.query.spName
       this.serviceName = this.$route.query.serviceName
       Object.assign(this.targetValues, this.$store.state.modalValues);
+      console.log(this.targetValues);
       this.defaultQuery = `provider/sp/${this.spName}/${this.serviceName}`;
       this.valueQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`;
       this.keyQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`;
