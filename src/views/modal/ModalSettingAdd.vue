@@ -101,7 +101,7 @@
 
           <!--버튼-->
           <div class="card-footer card-footer-bg-none text-right">
-            <button class="btn btn-sm btn-primary" type="reset" @click="hideModal">
+            <button class="btn btn-sm btn-primary" type="reset" @click="refresh">
               <i class="fa"></i>닫기</button>
           </div>
           <!--//버튼-->
@@ -135,9 +135,7 @@
     created() {
       this.spName = this.$route.query.spName
       this.serviceName = this.$route.query.serviceName
-      console.log('this.targetValues :: ');
       Object.assign(this.targetValues, this.$store.state.modalValues);
-      console.log(this.targetValues);
       this.defaultQuery = `provider/sp/${this.spName}/${this.serviceName}`;
       this.valueQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`;
       this.keyQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`;
@@ -145,7 +143,6 @@
     },
     computed:{
       sequenceNumber: function () {
-        console.log('sequenceNumber change!!');
         return this.active
       }
     },
@@ -226,9 +223,8 @@
       },
       refresh() {
         // refresh
-        console.log('$EventBus.$emit update::');
         this.$EventBus.$emit('update');
-        this.hideSubModal();
+        this.hideModal();
       },
     },
   }

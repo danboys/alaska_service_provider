@@ -160,14 +160,21 @@
         path : null,
         oData: {},
         depth1Data: [],
-        spCheck : false
+        spCheck : false,
+        defaultQuery :"",
       }
     },
     created(){
       this.spName = this.$route.query.spName
       this.serviceName = this.$route.query.serviceName
       this.spCheck = $('.sidebar_depth2 .nav a').eq(0).hasClass('text-white')
+      this.defaultQuery = `provider/sp/${this.spName}/${this.serviceName}`;
       this.fetchFirebaseData();
+
+      // EventBus
+      this.$EventBus.$on('update', () => {
+        this.fetchFirebaseData();
+      });
 
     },
     updated(){
@@ -200,7 +207,7 @@
        */
       fetchFirebaseData() {
         console.log('Firebase Data');
-        firebase.database().ref(`provider/sp/${this.spName}/${this.serviceName}`).once('value')
+        firebase.database().ref(this.defaultQuery).once('value')
           .then((data) => {
             /**
              * 전체 Database Object

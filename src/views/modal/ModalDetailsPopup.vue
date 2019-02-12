@@ -138,7 +138,7 @@
 
           <!--버튼-->
           <div class="card-footer card-footer-bg-none text-right">
-            <button class="btn btn-sm btn-primary" type="reset" @click="hideModal">
+            <button class="btn btn-sm btn-primary" type="reset" @click="refresh">
               <i class="fa"></i>닫기</button>
           </div>
           <!--//버튼-->
@@ -167,22 +167,25 @@
           false : false,
           true : false
         },
-        spValue:""
+        spValue:"",
+        defaultQuery :"",
+        valueQuery :"",
+        keyQuery:"",
       }
     },
     created() {
       this.spName = this.$route.query.spName
       this.serviceName = this.$route.query.serviceName
-      console.log('this.targetValues :: ');
       Object.assign(this.targetValues, this.$store.state.modalValues);
-      console.log(this.targetValues);
+      this.defaultQuery = `provider/sp/${this.spName}/${this.serviceName}`;
+      this.valueQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`;
+      this.keyQuery = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`;
       if(this.serviceName === 'service'){
         this.defaultChecked();
       }
     },
     computed:{
       sequenceNumber: function () {
-        console.log('sequenceNumber change!!');
         return this.active
       }
     },
@@ -227,38 +230,35 @@
         let inputText
 
         if(this.targetValues.type === "array"){
-            query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.valueName}`
+            query = this.valueQuery
             key = this.targetValues.key
             inputText = this.inputText
         }else if(this.targetValues.type === "object"){
-          query = `provider/sp/${this.spName}/${this.serviceName}/${this.targetValues.key}`
+          query = this.keyQuery
           key = this.targetValues.valueName
           inputText = this.inputText
         }else if (this.targetValues.type === "boolean"){
-          query = `provider/sp/${this.spName}/${this.serviceName}`
+          query = this.defaultQuery
           key = this.targetValues.valueName
           inputText = this.spValue
         }else{
-          query = `provider/sp/${this.spName}/${this.serviceName}`
+          query = this.defaultQuery
           key = this.targetValues.valueName
           inputText = this.inputText
         }
         firebase.database().ref(query).update({
           [key] : inputText
         }).then(() => {
-          console.log('%cSP 수정 완료','color:blue')
           this.next();
         }).catch((error) => {
-          console.log('%cSP 수정 중 에러가 발생하였습니다.','color:red');
           console.log(error);
         });
 
       },
       refresh() {
         // refresh
-        console.log('$EventBus.$emit update::');
         this.$EventBus.$emit('update');
-        this.hideSubModal();
+        this.hideModal();
       },
     },
   }
