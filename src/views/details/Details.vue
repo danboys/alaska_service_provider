@@ -402,4 +402,11 @@
   .container a:hover {
     color: pink;
   }
+
+  .show > p {
+    min-height: 21px
+  }
+  .card > p {
+    padding-right: 22px;
+  }
 </style>
