@@ -101,10 +101,6 @@
               <div class="position-relative">
                 <a data-toggle="collapse" data-parent="#Accordion" :href="'#'+key2" aria-expanded="true" aria-controls="Accordion2" class="">
                   {{key2}}</a>
-                <!--툴팁-->
-                <a href="#" class="q_mark fa fa-exclamation-circle"></a>
-                <div class="tooltip_box">툴팁입니다<br>툴팁입니다</div>
-                <!--툴팁-->
                 <div class="card p-2 mb-2 mt-2 position-relative collapse " :id="key2" role="tabpanel" style="" >
                   <p class="mb-0">{{val2}}</p>
                   <a  href="#" class="edit_list fa fa-edit" @click="modalServiceList(key2,val2,key1,'object')"></a>
