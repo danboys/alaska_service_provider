@@ -262,12 +262,12 @@
 </script>
 <style>
   /*컨텐츠 영역*/
-  .wrap {
+ /* .wrap {
     position: relative;
     width: 100%;
     height: 100%;
     margin: 0 auto;
-  }
+  }*/
   .container {
     width: 700px;
   }
