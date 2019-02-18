@@ -4,8 +4,8 @@
       <div class="popup popup_400">
         <div class="card card_modify_SP">
           <div class="card-header">
-            <strong v-if="targetValues.divi === 'btn'">{{targetValues.valueName}} 하위 항목 추가/수정</strong>
-            <strong v-else>{{targetValues.key}} 하위 항목 추가/수정</strong>
+            <strong v-if="targetValues.divi === 'btn'">{{targetValues.valueName}} 항목 명 수정</strong>
+            <strong v-else>{{targetValues.key}} 하위 항목 명 수정</strong>
             <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal">
               <span aria-hidden="true">×</span>
             </button>
@@ -15,7 +15,8 @@
 
             <div class="form-group mb-2">
               <label for="company">항목 명</label>
-              <input class="form-control" id="company" type="text" placeholder="(ex.항목명)">
+              <input v-if="targetValues.divi === 'btn'" class="form-control" id="company" type="text" :placeholder="targetValues.valueName">
+              <input v-else class="form-control" id="company" type="text" :placeholder="targetValues.valueName">
             </div>
             <div class="form-group mb-2">
               <label for="company">설명</label>
@@ -41,7 +42,7 @@
 
         <div class="card card_modify">
           <div class="card-header">
-            <strong>컨텐츠 하위 항목 추가/수정</strong>
+            <strong>컨텐츠 하위 항목 수정</strong>
             <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal">
               <span aria-hidden="true">×</span>
             </button>
@@ -52,7 +53,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="form-group">
-                  <p class="help-block c_light_blue">추가/수정하시겠습니까?</p>
+                  <p class="help-block c_light_blue">수정하시겠습니까?</p>
                 </div>
               </div>
             </div>
@@ -76,7 +77,7 @@
 
         <div class="card card_modify">
           <div class="card-header">
-            <strong>컨텐츠 하위 항목 추가/수정</strong>
+            <strong>컨텐츠 하위 항목 수정</strong>
             <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal">
               <span aria-hidden="true">×</span>
             </button>
@@ -87,7 +88,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="form-group">
-                  <p class="help-block c_light_blue">추가/수정 완료되었습니다.</p>
+                  <p class="help-block c_light_blue">수정 완료되었습니다.</p>
                 </div>
               </div>
             </div>

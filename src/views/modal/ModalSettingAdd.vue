@@ -4,8 +4,8 @@
       <div class="popup popup_400">
         <div class="card card_modify_SP">
           <div class="card-header">
-            <strong v-if="targetValues.divi === 'property'">{{serviceName}} 하위 항목 추가/수정</strong>
-            <strong v-else>{{targetValues.key}} 하위 항목 추가/수정</strong>
+            <strong v-if="targetValues.divi === 'property'">{{serviceName}} 하위 항목 추가</strong>
+            <strong v-else>{{targetValues.key}} 하위 항목 추가</strong>
             <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal">
               <span aria-hidden="true">×</span>
             </button>
@@ -61,7 +61,7 @@
 
         <div class="card card_modify">
           <div class="card-header">
-            <strong>컨텐츠 하위 항목 추가/수정</strong>
+            <strong>컨텐츠 하위 항목 추가</strong>
             <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal">
               <span aria-hidden="true">×</span>
             </button>
@@ -72,7 +72,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="form-group">
-                  <p class="help-block c_light_blue">추가/수정하시겠습니까?</p>
+                  <p class="help-block c_light_blue">추가하시겠습니까?</p>
                 </div>
               </div>
             </div>
@@ -96,7 +96,7 @@
 
         <div class="card card_modify">
           <div class="card-header">
-            <strong>컨텐츠 하위 항목 추가/수정</strong>
+            <strong>컨텐츠 하위 항목 추가</strong>
             <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal">
               <span aria-hidden="true">×</span>
             </button>
@@ -107,7 +107,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="form-group">
-                  <p class="help-block c_light_blue">추가/수정 완료되었습니다.</p>
+                  <p class="help-block c_light_blue">추가 완료되었습니다.</p>
                 </div>
               </div>
             </div>

@@ -60,8 +60,8 @@
               <div class="col-sm-12">
                 <div class="form-group">
                   <label for="name" class="help-block c_light_blue">{{targetValues.valueName}}를 입력하세요</label>
-                  <input class="form-control" id="name" type="text" placeholder="입력하세요">
-                  <small class="text-muted">ex) {{targetValues.value}}</small><!--description이 붙을 경우 추가-->
+                  <input class="form-control" id="name" type="text" :placeholder="targetValues.value">
+                  <!--<small class="text-muted">ex) {{targetValues.value}}</small>&lt;!&ndash;description이 붙을 경우 추가&ndash;&gt;-->
                 </div>
               </div>
             </div>
