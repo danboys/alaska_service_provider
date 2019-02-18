@@ -345,5 +345,11 @@
   .input_radio label:hover {
     color: #63c2de;
   }
+  .btn {
+    margin-left: 4px;
+  }
+  .btn:first-child {
+    margin-left: 0;
+  }
 
 </style>

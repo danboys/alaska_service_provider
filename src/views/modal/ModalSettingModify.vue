@@ -284,4 +284,10 @@
   textarea.text-area-height {
     height: 100px;
   }
+  .btn {
+    margin-left: 4px;
+  }
+  .btn:first-child {
+    margin-left: 0;
+  }
 </style>
