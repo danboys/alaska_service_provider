@@ -222,7 +222,7 @@
           if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
             if (xmlhttp.status == 200) {
               console.log("서버 연결 확인!!");
-              this.exportProvider();
+              self.exportProvider();
             } else {
               if (xmlhttp.status == 400) {
                 console.log('There was an error 400');
