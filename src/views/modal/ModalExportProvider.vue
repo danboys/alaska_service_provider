@@ -43,6 +43,7 @@
         </div><!--//card-->
       </div><!--//popup-->
     </div>
+
     <!--내보내기 확인 팝업-->
     <div v-else-if="active === 1" class="popup_wrap m-auto">
       <div class="popup">
@@ -77,8 +78,43 @@
         </div><!--//card-->
       </div><!--//popup-->
     </div>
+
+    <!--내보내기 진행 팝업-->
+    <div v-if="active === 2" class="popup_wrap m-auto">
+      <div class="popup">
+
+        <div class="card card_delete">
+          <div class="card-header">
+            <strong>내보내기</strong>
+            <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal()">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div><!--//card-header-->
+
+          <div class="card-body">
+            <!--수정하기의 input 1칸-->
+            <div class="sk-fading-circle loading">
+              <div class="sk-circle1 sk-circle"></div>
+              <div class="sk-circle2 sk-circle"></div>
+              <div class="sk-circle3 sk-circle"></div>
+              <div class="sk-circle4 sk-circle"></div>
+              <div class="sk-circle5 sk-circle"></div>
+              <div class="sk-circle6 sk-circle"></div>
+              <div class="sk-circle7 sk-circle"></div>
+              <div class="sk-circle8 sk-circle"></div>
+              <div class="sk-circle9 sk-circle"></div>
+              <div class="sk-circle10 sk-circle"></div>
+              <div class="sk-circle11 sk-circle"></div>
+              <div class="sk-circle12 sk-circle"></div>
+            </div>
+          </div><!--//card-body-->
+
+        </div><!--//card-->
+      </div><!--//popup-->
+    </div>
+
     <!--내보내기 피드백 팝업-->
-    <div v-else-if="active === 2" class="popup_wrap m-auto">
+    <div v-else-if="active === 3" class="popup_wrap m-auto">
       <div class="popup">
         <div class="card card_modify">
           <div class="card-header">
@@ -110,8 +146,9 @@
         </div><!--//card-->
       </div><!--//popup-->
     </div>
+
     <!--내보내기 실패 팝업-->
-    <div v-else-if="active === 3" class="popup_wrap m-auto">
+    <div v-else-if="active === 4" class="popup_wrap m-auto">
       <div class="popup">
         <div class="card card_modify">
           <div class="card-header">
@@ -127,7 +164,7 @@
               <div class="col-sm-12">
                 <div class="form-group">
                   <p class="help-block">내보내기에 실패하였습니다.</p>
-                  <p class="help-block c_light_blue">서버 연결을 확인해주세요. <a href="https://github.com/danboys/alaska_service_provider/tree/SPM-62/server" target="_blank">[확인방법]</a></p>
+                  <p class="help-block c_light_blue">서버 연결을 확인해주세요. <a href="https://github.com/danboys/alaska_service_provider/tree/SPM-62/server#not-working" target="_blank">[확인방법]</a></p>
                 </div>
               </div>
             </div>
@@ -159,7 +196,7 @@
 
         },
         providerData : [],
-        maxActive: 3,
+        maxActive: 4,
         active: 0
       }
     },
@@ -216,21 +253,28 @@
         }
       },
       checkServer(){
+        // progress popup
+        this.next();
+
         var self = this;
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
           if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
             if (xmlhttp.status == 200) {
               console.log("서버 연결 확인!!");
-              self.exportProvider();
+              // 파일 다운로드 요청
+              setTimeout(() => { self.exportProvider(); }, 1000);
             } else {
               if (xmlhttp.status == 400) {
                 console.log('There was an error 400');
               } else {
                 console.log('something else other than 200 was returned : ' + xmlhttp.status);
               }
-              // 서버연결 안되어있음. 내보내기 실패 팝업
-              self.active = 3;
+
+              setTimeout(() => {
+                // 서버연결 안되어있음. 내보내기 실패 팝업
+                self.active = 4;
+              }, 1000);
             }
           }
         };
@@ -320,5 +364,14 @@
   .input_radio label {
     margin-bottom: 0;
     width: 90%;
+  }
+
+  /* progress */
+  .loading {
+    width: 28px;
+    height: 28px;
+  }
+  .sk-fading-circle .sk-circle {
+    margin: 0 auto;
   }
 </style>

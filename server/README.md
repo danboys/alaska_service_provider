@@ -14,3 +14,8 @@ npm install
 # starting the Node Server
 npm start
 ```
+
+## Not Working
+서버가 동작하지 않는 경우 다음을 확인해주세요.
+1. Build Setup을 참고하여 서버를 실행해 주세요.
+2. 팝업 차단을 확인하고 해제해주세요.
