@@ -39,7 +39,7 @@
 
 <script>
   import { mapMutations } from 'vuex';
-  import SubModal from '../containers/DefaultSubModal'
+  import SubModal from '../containers/DefaultSubModal2'
 export default {
   name: 'dashboard',
   components: {
@@ -68,7 +68,7 @@ export default {
     });
   },
   methods: {
-    ...mapMutations([`showSubModal`]),
+    ...mapMutations([`showSubModal2`]),
     /**
      * firebase 연동
      */
@@ -129,7 +129,7 @@ export default {
         //   console.log(error);
         // });
       this.targetComment = item;
-      this.showSubModal('ModalCommentDelete');
+      this.showSubModal2('ModalCommentDelete');
     },
   }
 }

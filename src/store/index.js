@@ -14,6 +14,9 @@ const store = new Vuex.Store({
     // subModal
     subModalVisible: false,
     subModalComponent: null,
+    // subModal2
+    subModal2Visible: false,
+    subModal2Component: null,
   },
   mutations: {
     setMode(state, val) {
@@ -35,7 +38,7 @@ const store = new Vuex.Store({
       state.modalComponent = null;
     },
     /**
-     * subModal
+     * subModal (aside 영역용)
      * @param state
      * @param componentName
      */
@@ -46,6 +49,20 @@ const store = new Vuex.Store({
     hideSubModal(state) {
       state.subModalVisible = false;
       state.subModalComponent = null;
+    },
+
+    /**
+     * showSubModal2 (content 영역용)
+     * @param state
+     * @param componentName
+     */
+    showSubModal2(state, componentName) {
+      state.subModal2Visible = true;
+      state.subModal2Component = componentName;
+    },
+    hideSubModal2(state) {
+      state.subModal2Visible = false;
+      state.subModal2Component = null;
     },
   }
 })
