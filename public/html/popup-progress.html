@@ -42,6 +42,10 @@
           text-align: left;
         }
 
+        .card {
+          min-height: 200px;
+        }
+
         /*팝업 닫기 버튼*/
         .close.close_w {
           color: #fff;
@@ -55,37 +59,25 @@
           opacity: 1 !important;
         }
 
-        /*폰트 컬러*/
-        .c_light_blue {
-          color: #63c2de;
+        .loading {
+          width: 28px;
+          height: 28px;
         }
 
-        /*폼 변형*/
-        .form-group {
-          margin-bottom: 0;
+        .sk-fading-circle .sk-circle {
+          margin: 0 auto;
         }
-        .help-block:last-child {
-          margin-bottom: 0;
-        }
-        .card-footer.card-footer-bg-none {
-          background: none;
-          border-top: none;
-        }
-
-
     </style>
 </head>
 
 </html>
-
-<!--완료 팝업-->
 
 <div class="popup_wrap m-auto">
   <div class="popup">
 
     <div class="card card_delete">
       <div class="card-header">
-        <strong>내보내기</strong>
+        <strong>TITLE</strong>
         <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
@@ -93,28 +85,22 @@
 
       <div class="card-body">
         <!--수정하기의 input 1칸-->
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="form-group">
-              <p class="help-block">C:DOMFAM/a/가나다라마바사abcdefghijklmnopqrst</p>
-              <p class="help-block c_light_blue">해당 경로로 저장하시겠습니까?</p>
-
-            </div>
-          </div>
+        <div class="sk-fading-circle loading">
+          <div class="sk-circle1 sk-circle"></div>
+          <div class="sk-circle2 sk-circle"></div>
+          <div class="sk-circle3 sk-circle"></div>
+          <div class="sk-circle4 sk-circle"></div>
+          <div class="sk-circle5 sk-circle"></div>
+          <div class="sk-circle6 sk-circle"></div>
+          <div class="sk-circle7 sk-circle"></div>
+          <div class="sk-circle8 sk-circle"></div>
+          <div class="sk-circle9 sk-circle"></div>
+          <div class="sk-circle10 sk-circle"></div>
+          <div class="sk-circle11 sk-circle"></div>
+          <div class="sk-circle12 sk-circle"></div>
         </div>
-        <!--//수정하기의 input 1칸-->
       </div><!--//card-body-->
-
-      <!--버튼-->
-      <div class="card-footer card-footer-bg-none text-right">
-        <button class="btn btn-sm btn-primary" type="submit">
-          <i class="fa fa-dot-circle-o"></i>확인</button>
-        <button class="btn btn-sm btn-danger" type="reset">
-          <i class="fa"></i>취소</button>
-      </div>
-      <!--//버튼-->
 
     </div><!--//card-->
   </div><!--//popup-->
 </div>
-

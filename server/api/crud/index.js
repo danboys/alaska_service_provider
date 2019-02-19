@@ -3,7 +3,7 @@ const router = express.Router();
 
 const controller = require('./crud.controller');
 
-router.get('/', controller.saveView);
+router.get('/', controller.checkServer);
 router.get('/file/:key', controller.saveFile);
 
 
