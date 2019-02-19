@@ -9,7 +9,7 @@
       <!--//진입 경로-->
       <div class="container setting">
         <!--서비스분류 카테고리 1개 단위-->
-        <div v-for="(val1, key1) in depth1Data" v-if="Object.prototype.toString.call(val1) === '[object Object]'">
+        <div v-for="(val1, key1,index) in depth1Data" v-if="Object.prototype.toString.call(val1) === '[object Object]'">
           <div class="title mb-1"><strong>{{key1}}</strong>
             <a href="#" class="btn_add font-lg fa fa-plus mr-1" @click="ModalSettingAdd(key1,val1,'object','btn')"></a>
             <a href="#" class="btn_delete  fa fa-times font-lg" @click="ModalSettingDelete(key1,key1,val1,'object','btn')"></a>
@@ -27,7 +27,7 @@
               </div>
             </div>
           </div>
-          <a href="#" class="text-white w-100 add_property" @click="ModalSettingAdd(key1,val1,'object','property')">
+          <a v-if="Object.keys(depth1Data).length === index +1"   href="#" class="text-white w-100 add_property" @click="ModalSettingAdd(key1,val1,'object','property')">
             <i class="fa fa-plus mr-1"></i>
             <span>ADD Property</span>
           </a>
@@ -46,7 +46,7 @@
               <p class="mb-0">{{val1}}</p>
             </div>
           </div>
-          <a href="#" class="text-white w-100 add_property" @click="ModalSettingAdd(key1,val1,'string','property')">
+          <a v-if="Object.keys(depth1Data).length === index +1" href="#" class="text-white w-100 add_property" @click="ModalSettingAdd(key1,val1,'string','property')">
             <i class="fa fa-plus mr-1"></i>
             <span>ADD Property</span>
           </a>
@@ -64,7 +64,7 @@
               <p class="mb-0">{{val1}}</p>
             </div>
           </div>
-          <a href="#" class="text-white w-100 add_property" @click="ModalSettingAdd(key1,val1,'boolean','property')">
+          <a v-if="Object.keys(depth1Data).length === index +1" href="#" class="text-white w-100 add_property" @click="ModalSettingAdd(key1,val1,'boolean','property')">
             <i class="fa fa-plus mr-1"></i>
             <span>ADD Property</span>
           </a>
@@ -83,7 +83,7 @@
               <p class="mb-0">{{val2}}</p>
             </div>
           </div>
-          <a href="#" class="text-white w-100 add_property" @click="ModalSettingAdd(key1,val1,'array','property')">
+          <a v-if="Object.keys(depth1Data).length === index +1" href="#" class="text-white w-100 add_property" @click="ModalSettingAdd(key1,val1,'array','property')">
             <i class="fa fa-plus mr-1"></i>
             <span>ADD Property</span>
           </a>
@@ -175,13 +175,6 @@
       this.$EventBus.$on('update', () => {
         this.fetchFirebaseData();
       });
-
-    },
-    updated(){
-      if(this.spCheck === true){
-        let index = $('.add_property').length -1
-        $('.add_property:lt('+index+')').remove();
-      }
     },
     computed: {
       ...mapState({

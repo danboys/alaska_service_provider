@@ -38,10 +38,20 @@ let setFirebase = function(key, callback){
 };
 
 /**
+ * checkServer
+ * 서버 연결을 체크한다.
+ */
+exports.checkServer = (req, res) => {
+  // 서버 체크하기 구현
+  console.log('checkServer :::::');
+  console.log('Checked!');
+  res.json({ status: 200, msg: "서버가 연결되어있습니다." })
+};
+
+/**
  * saveFile
  * Firebase 연결하여 DB에 있는 Data를 저장한다.
  */
-
 exports.saveFile = (req, res) => {
   console.log('saveFile :::::');
   // 데이터 저장하기 구현
@@ -64,11 +74,4 @@ exports.saveFile = (req, res) => {
   });
 };
 
-/**
- * saveView
- * Dom을 연결하여 Data를 저장한다.
- */
-exports.saveView = (req, res) => {
-  // 데이터 저장하기 구현
-  console.log('saveView :::::');
-};
+

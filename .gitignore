@@ -25,3 +25,4 @@ yarn-error.log*
 *.sln
 *.sw*
 /docs/01_시나리오/~$SPM UI Scenario_Ver.1.0.pptx
+/data/*.json
