@@ -34,7 +34,40 @@
         </div><!--//card-->
       </div><!--//popup-->
     </div>
-    <div v-if="active == 1" :data-sequence-number="sequenceNumber" class="popup_wrap m-auto">
+    <!--Service 추가 진행 팝업-->
+    <div v-if="active === 1" :data-sequence-number="sequenceNumber" class="popup_wrap m-auto">
+      <div class="popup">
+
+        <div class="card card_delete">
+          <div class="card-header">
+            <strong>컨텐츠 하위 항목 삭제</strong>
+            <button class="close close_w font-xl text-right" type="button" data-dismiss="alert" aria-label="Close" @click="hideModal()">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div><!--//card-header-->
+
+          <div class="card-body">
+            <!--수정하기의 input 1칸-->
+            <div class="sk-fading-circle loading">
+              <div class="sk-circle1 sk-circle"></div>
+              <div class="sk-circle2 sk-circle"></div>
+              <div class="sk-circle3 sk-circle"></div>
+              <div class="sk-circle4 sk-circle"></div>
+              <div class="sk-circle5 sk-circle"></div>
+              <div class="sk-circle6 sk-circle"></div>
+              <div class="sk-circle7 sk-circle"></div>
+              <div class="sk-circle8 sk-circle"></div>
+              <div class="sk-circle9 sk-circle"></div>
+              <div class="sk-circle10 sk-circle"></div>
+              <div class="sk-circle11 sk-circle"></div>
+              <div class="sk-circle12 sk-circle"></div>
+            </div>
+          </div><!--//card-body-->
+
+        </div><!--//card-->
+      </div><!--//popup-->
+    </div>
+    <div v-if="active == 2" :data-sequence-number="sequenceNumber" class="popup_wrap m-auto">
       <div class="popup">
 
         <div class="card card_modify">
@@ -71,7 +104,7 @@
 </template>
 <script>
   import { mapMutations } from 'vuex';
-  import SubModal from '../../containers/DefaultSubModal'
+  import SubModal from '../../containers/DefaultSubModal2'
   export default {
     name: "ModalSettingModify",
     components: {
@@ -81,6 +114,7 @@
       return {
         targetValues : {},
         active : 0,
+        maxActive : 3, // step count
         inputText:"",
         inputValue:"",
         defaultQuery :"",
@@ -123,9 +157,11 @@
         'hideModal'
       ]),
       next() {
-        this.inputText = $('.form-group input').val()
-        this.inputValue = $('.form-group textarea').val()
-        if(this.active !==  1){
+        if(this.active == 0 ){
+          this.inputText = $('.form-group input').val()
+          this.inputValue = $('.form-group textarea').val()
+        }
+        if(this.active  !== this.maxActive-1){
           this.active++;
         }
       },
@@ -143,6 +179,9 @@
           })
       },
       check(){
+        // progress popup
+        this.next();
+
         let query
         if(this.targetValues.divi === "btn"){
           query = this.valueQuery
@@ -160,19 +199,19 @@
             firebase.database().ref(this.valueQuery).once('value')
               .then((data) => {
                 if(data.val() === null){
-                  this.next();
+                  setTimeout(() => { this.next(); }, 1000);
                 }else{
                   this.resultData = $.grep(data.val(),function(n){ return n == " " || n; });
                   console.log(this.resultData);
                   firebase.database().ref(this.valueQuery).set(this.resultData).then(() => {
-                    this.next();
+                    setTimeout(() => { this.next(); }, 1000);
                   }).catch((error) => {
                     console.log(error);
                   });
                 }
               })
           }else{
-            this.next();
+            setTimeout(() => { this.next(); }, 1000);
           }
         }).catch((error) => {
           console.log(error);
@@ -251,5 +290,14 @@
   }
   .btn:first-child {
     margin-left: 0;
+  }
+  /* progress */
+  .loading {
+    width: 28px;
+    height: 28px;
+  }
+
+  .sk-fading-circle .sk-circle {
+    margin: 0 auto;
   }
 </style>

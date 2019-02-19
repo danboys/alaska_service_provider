@@ -148,7 +148,7 @@
 </template>
 <script >
   import { mapState, mapMutations } from 'vuex'
-  import SubModal from '../../containers/DefaultSubModal'
+  import SubModal from '../../containers/DefaultSubModal2'
 
   export default {
     name: 'Details',
@@ -194,7 +194,7 @@
       }
     },
     methods: {
-      ...mapMutations([`showModal`,'showSubModal']),
+      ...mapMutations([`showModal`,'showSubModal2']),
       /**
        * firebase 연동
        */
