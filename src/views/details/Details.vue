@@ -335,7 +335,7 @@
   /*수정 버튼*/
   .setting .edit_list {
     position: absolute;
-    top: 0.25rem;
+    top: 0.3rem;
     right: 1.7rem;
   }
   /*삭제 버튼*/
@@ -353,24 +353,24 @@
 
   .setting .title .btn_add {
     position: absolute;
-    right: 5.0rem;
+    right: 2.5rem;
     top: 0.2rem;
   }
   .setting .title .btn_edit {
     position: absolute;
-    right: 3.5rem;
+    right: 1.3rem;
     top: 0.3rem;
   }
   .setting .title .btn_delete {
     position: absolute;
-    right: 2.1rem;
-    top: 0.2rem;
+    right: 0;
+    top: 0.16rem;
     color: #20a8d8;
   }
 
   .setting .card .btn_add {
     position: absolute;
-    top: 0.3rem;
+    top: 0.13rem;
     right: 3rem;
   }
 
