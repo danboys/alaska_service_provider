@@ -146,14 +146,13 @@
 
   /*팝업 닫기 버튼*/
   .close.close_w {
-    color: #fff;
     opacity: 1;
   }
   .close.close_w span {
     box-shadow: none;
   }
   .close.close_w:hover{
-    color: #fff !important;
+    color: pink !important;
     opacity: 1 !important;
   }
 
