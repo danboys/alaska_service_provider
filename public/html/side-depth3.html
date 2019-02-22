@@ -119,7 +119,7 @@
         }
 
         /*타이틀 라인*/
-        .sidebar_depth .nav .have_border  {
+        .sidebar_depth .sidebar-nav .have_border  {
           margin: 0 5% 5px;
           border-bottom: 1px solid #fff;
         }
@@ -132,22 +132,37 @@
         .sidebar_depth .nav .have_border .nav-title {
           padding: 0;
         }
+
+        /*추가 02/22*/
+        .sidebar-nav {
+          padding-bottom: 95px;
+        }
+        .sidebar-nav .nav{
+          overflow-y: auto;
+          height: 100%;
+          display: block;
+        }
+        .sidebar-nav .nav::-webkit-scrollbar {
+          width: 0;
+          background: transparent;
+        }
     </style>
 </head>
 <body class="sidebar-fixed sidebar-lg-show pace-done">
 
     <div class="sidebar sidebar_depth sidebar_depth3"><!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다. sidebar_depth2는 댑스2, sidebar_depth3는 댑스3로 left 조절-->
       <nav class="sidebar-nav ps ps--active-y">
-        <ul class="nav">
-          <li class="nav-item text-center nav-title-m have_border">
+        <h2 class="nav-item text-center nav-title-m have_border">
               <span class="nav-title">
                   <span class="font-sm">서비스 목록</span>
                   <i class="nav-icon"></i>
               </span>
-            <span class="nav-title-minimized">
+          <span class="nav-title-minimized">
                 <span class="font-sm">SV</span>
               </span>
-          </li>
+        </h2>
+        <ul class="nav">
+
           <li class="nav-item click_folder click_service">
             <a class="nav-link" href="#">
               <i class="nav-icon icon_w fas fa-clipboard-list"></i><!--클릭될 경우  icon_w 가 icon-y로 교체 -->
