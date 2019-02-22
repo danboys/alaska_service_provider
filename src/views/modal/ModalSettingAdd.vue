@@ -46,7 +46,7 @@
 
           <!--버튼-->
           <div class="card-footer card-footer-bg-none text-right">
-            <button class="btn btn-sm btn-primary" type="submit" @click="next()">수정</button>
+            <button class="btn btn-sm btn-primary" type="submit" @click="next()">저장</button>
             <button class="btn btn-sm btn-danger" type="reset" @click="hideModal">취소</button>
           </div>
           <!--//버튼-->
