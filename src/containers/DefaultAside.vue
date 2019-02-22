@@ -8,13 +8,13 @@
           </div>
           <ul class="nav">
             <li class="nav-item">
-              <a href="#" class="nav-link" @click="setMode(false)">
+              <a href="#" class="nav-link" @click="selectMenu(false, $event)">
                 <i class="nav-icon cui-list icon_w"></i>
                 <span>SPM</span>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" @click="setMode(true)">
+              <a href="#" class="nav-link" @click="selectMenu(true, $event)">
                 <i class="nav-icon cui-settings icon_w"></i>
                 <span>SPM Setting</span>
               </a>
@@ -199,6 +199,29 @@
         // console.log(store);
         this[storeName] = store;
         console.log(this[storeName]);
+      },
+
+      /**
+       * 대메뉴 선택
+       */
+      selectMenu: function(isSetting, $event){
+        // class 설정
+        const currentTarget = $event.currentTarget;
+        const linkTarget = currentTarget.parentNode.parentNode;
+        const link = linkTarget.getElementsByClassName('nav-link');
+
+        // route 변경
+        this.$router.replace('/');
+
+        // nav-link active class 초기화
+        for(let i=0;i<link.length;i++) {
+          link[i].classList.remove("active");
+        }
+        // nav-link active
+        currentTarget.classList.add("active");
+
+        // 모드 변경
+        this.setMode(isSetting);
       },
 
       /**
