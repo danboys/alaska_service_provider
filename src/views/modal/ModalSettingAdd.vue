@@ -46,10 +46,8 @@
 
           <!--버튼-->
           <div class="card-footer card-footer-bg-none text-right">
-            <button class="btn btn-sm btn-primary" type="submit" @click="next()">
-              <i class="fa fa-dot-circle-o"></i>수정</button>
-            <button class="btn btn-sm btn-danger" type="reset" @click="hideModal">
-              <i class="fa"></i>취소</button>
+            <button class="btn btn-sm btn-primary" type="submit" @click="next()">수정</button>
+            <button class="btn btn-sm btn-danger" type="reset" @click="hideModal">취소</button>
           </div>
           <!--//버튼-->
 
@@ -81,10 +79,8 @@
 
           <!--버튼-->
           <div class="card-footer card-footer-bg-none text-right">
-            <button class="btn btn-sm btn-primary" type="submit" @click="check()">
-              <i class="fa fa-dot-circle-o"></i>확인</button>
-            <button class="btn btn-sm btn-danger" type="reset" @click="prev()">
-              <i class="fa"></i>취소</button>
+            <button class="btn btn-sm btn-primary" type="submit" @click="check()">확인</button>
+            <button class="btn btn-sm btn-danger" type="reset" @click="prev()">취소</button>
           </div>
           <!--//버튼-->
 
@@ -149,8 +145,7 @@
 
           <!--버튼-->
           <div class="card-footer card-footer-bg-none text-right">
-            <button class="btn btn-sm btn-primary" type="reset" @click="refresh">
-              <i class="fa"></i>닫기</button>
+            <button class="btn btn-sm btn-primary" type="reset" @click="refresh">닫기</button>
           </div>
           <!--//버튼-->
 
