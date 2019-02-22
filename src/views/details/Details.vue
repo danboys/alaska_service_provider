@@ -364,7 +364,7 @@
   .setting .title .btn_delete {
     position: absolute;
     right: 0;
-    top: 0.16rem;
+    top: 0.1rem;
     color: #20a8d8;
   }
 
