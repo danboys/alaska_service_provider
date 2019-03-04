@@ -43,4 +43,11 @@ export default {
   .app-body .main, .app-footer{
     margin-left: 0!important;
   }
+
+  @media screen and (max-width: 1000px){
+    .app-body {
+      margin-top: 0;
+      min-width: 800px !important;
+    }
+  }
 </style>
