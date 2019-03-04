@@ -486,7 +486,7 @@
   }
 
   /*타이틀 라인*/
-  .sidebar_depth .nav .have_border  {
+  .sidebar_depth .sidebar-nav .have_border  {
     margin: 0 5% 5px;
     border-bottom: 1px solid #fff;
   }
@@ -575,6 +575,20 @@
       .sidebar-minimized .sidebar_home .nav{
         margin-bottom: -190px;
       }
+  }
+
+  /*추가 02/22*/
+  .sidebar-nav {
+    padding-bottom: 95px;
+  }
+  .sidebar-nav .nav{
+    overflow-y: auto;
+    height: 100%;
+    display: block;
+  }
+  .sidebar-nav .nav::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
   }
 
 </style>
