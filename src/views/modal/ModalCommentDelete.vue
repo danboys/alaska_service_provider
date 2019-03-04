@@ -244,4 +244,11 @@
     margin: 0 auto;
   }
 
+  /* 버튼 */
+  .btn {
+    margin-left: 4px;
+  }
+  .btn:first-child {
+    margin-left: 0;
+  }
 </style>

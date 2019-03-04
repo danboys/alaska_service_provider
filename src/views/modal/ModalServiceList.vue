@@ -199,4 +199,12 @@
     line-height: 36px;
     text-align: center;
   }
+
+  /* 버튼 */
+  .btn {
+    margin-left: 4px;
+  }
+  .btn:first-child {
+    margin-left: 0;
+  }
 </style>
