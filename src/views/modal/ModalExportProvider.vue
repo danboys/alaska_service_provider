@@ -16,7 +16,7 @@
           <div class="card-body">
             <div v-for="(item, index) in providerData">
               <!--odd-->
-              <div v-if="index % 2 == 0" class="form-group row bg-gray-500 font-weight-bold">
+              <div v-if="index % 2 == 0" class="form-group row">
                 <div class="col-sm-6 text-dark input_radio">
                   <input :id="item.key" v-if="index == 0" type="radio" v-bind:value="item.key" name="export_sel" v-model="targetKey">
                   <input :id="item.key" v-else type="radio" v-bind:value="item.key" name="export_sel" v-model="targetKey">

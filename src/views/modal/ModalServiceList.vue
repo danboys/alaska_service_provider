@@ -14,7 +14,7 @@
           <div class="card-body">
             <div v-for="(item, index) in serviceData">
               <!--odd-->
-              <div v-if="index % 2 == 0" class="form-group row bg-gray-500 font-weight-bold">
+              <div v-if="index % 2 == 0" class="form-group row">
                 <div class="col-sm-6 text-dark">
                   <span>{{item}}</span>
                 </div>
@@ -26,8 +26,8 @@
                 <div class="col-sm-6">
                   <span>{{item}}</span>
                 </div>
-                <a href="#" @click="modifyService(item)"><i class="fa fa-edit font-lg btn_edit "></i></a><!--수정 버튼-->
-                <a href="#" @click="deleteService(item)"><i class="fa fa-trash font-lg btn_delete"></i></a><!--삭제 버튼-->
+                <a href="#" @click="modifyService(item)"><i class="fa fa-edit text-dark font-lg btn_edit "></i></a><!--수정 버튼-->
+                <a href="#" @click="deleteService(item)"><i class="fa fa-trash text-dark font-lg btn_delete"></i></a><!--삭제 버튼-->
               </div>
             </div>
 
