@@ -45,20 +45,20 @@
       <div class="sidebar sidebar_depth sidebar_depth2">
         <!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다. sidebar_depth2는 댑스2, sidebar_depth3는 댑스3로 left 조절-->
         <nav class="sidebar-nav ps ps--active-y">
-          <ul class="nav">
-            <!--설정 버튼-->
-            <a v-if="isSetting" href="#" class="btn_admin text-white text-right font-lg p-1" @click="showModal({componentName : 'ModalProviderList'})">
-              <i class="fa fa-cog"></i>
-            </a>
-            <li class="nav-item text-center nav-title-m have_border">
+          <!--설정 버튼-->
+          <a v-if="isSetting" href="#" class="btn_admin text-white text-right font-lg p-1" @click="showModal({componentName : 'ModalProviderList'})">
+            <i class="fa fa-cog"></i>
+          </a>
+          <h2 class="nav-item text-center nav-title-m have_border">
               <span class="nav-title">
                   <span class="font-sm">SP 목록</span>
-                  <!--<i class="nav-icon"></i>-->
+                <!--<i class="nav-icon"></i>-->
               </span>
-              <span class="nav-title-minimized ">
+            <span class="nav-title-minimized ">
                 <span class="font-sm">SP</span>
               </span>
-            </li>
+          </h2>
+          <ul class="nav">
             <li v-for="item in depth2Data" class="nav-item click_folder">
               <a class="nav-link" href="#" @click="selectProvider(item,$event)">
                 <i class="nav-icon icon_w fa fa-folder"></i>
@@ -77,20 +77,20 @@
       <div class="sidebar sidebar_depth sidebar_depth3">
         <!--사이드 메뉴가 뎁스메뉴일 경우 sidebar_depth class를 붙입니다. sidebar_depth2는 댑스2, sidebar_depth3는 댑스3로 left 조절-->
         <nav class="sidebar-nav ps ps--active-y">
-          <ul class="nav">
-            <!--설정 버튼-->
-            <a v-if="isSetting" href="#" class="btn_admin text-white text-right font-lg p-1" @click="modalServiceList">
-              <i class="fa fa-cog"></i>
-            </a>
-            <li class="nav-item text-center nav-title-m have_border">
+          <!--설정 버튼-->
+          <a v-if="isSetting" href="#" class="btn_admin text-white text-right font-lg p-1" @click="modalServiceList">
+            <i class="fa fa-cog"></i>
+          </a>
+          <h2 class="nav-item text-center nav-title-m have_border">
             <span class="nav-title">
                 <span class="font-sm">{{selected.depth2.spName}} Service</span>
-                <!--<i class="nav-icon"></i>-->
+              <!--<i class="nav-icon"></i>-->
             </span>
-              <span class="nav-title-minimized">
+            <span class="nav-title-minimized">
               <span class="font-sm">SV</span>
             </span>
-            </li>
+          </h2>
+          <ul class="nav">
             <li v-for="item in depth3Data" class="nav-item click_folder click_service">
               <router-link class="nav-link" href="#" :to="detailLink(item.name)" exact>
                 <i class="nav-icon icon_w fa fa-file-text"></i><!--클릭될 경우  icon_w 가 icon-y로 교체 -->
@@ -578,6 +578,9 @@
   }
 
   /*추가 02/22*/
+  .btn_admin {
+    display: block;
+  }
   .sidebar-nav {
     padding-bottom: 95px;
   }
