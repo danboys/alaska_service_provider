@@ -136,11 +136,32 @@
 
       // EventBus
       this.$EventBus.$on('update', () => {
+        // provider update
         console.log('$EventBus.$on update:: DefaultAside');
+
+        // route 변경
+        this.$router.replace('/');
+
+        // 모드 초기화
+        this.mode = {
+          minimizedDep01: false,
+          minimizedDep02: false,
+          minimizedDep03: true,
+        };
+        this.setClass();
+
+        // 초기상태 메뉴 숨기기
+        document.querySelector('._dep03').style.visibility = "hidden";
+
         this.fetchFirebaseData();
       });
       this.$EventBus.$on('updateService', () => {
+        // service update
         console.log('$EventBus.$on updateService:: DefaultAside');
+
+        // route 변경
+        this.$router.replace('/');
+
         this.fetchFirebaseData();
       });
     },
