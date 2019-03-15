@@ -4,7 +4,7 @@
       <div class="sidebar sidebar_home"><!--사이드 메뉴가 home일 경우 sidebar_home class를 붙입니다.-->
         <nav class="sidebar-nav ps ps--active-y">
           <div class="nav-logo">
-            <router-link href="#" class="btn-block icon_domfam" to="/"></router-link>
+            <router-link href="#" class="btn-block icon_domfam" to="/" v-on:click.native="home"></router-link>
           </div>
           <ul class="nav">
             <li class="nav-item">
@@ -92,7 +92,7 @@
           </h2>
           <ul class="nav">
             <li v-for="item in depth3Data" class="nav-item click_folder click_service">
-              <router-link class="nav-link" href="#" :to="detailLink(item.name)" exact>
+              <router-link class="nav-link" href="#" :to="detailLink(item.name)" v-on:click.native="openNav('Dep03')" exact>
                 <i class="nav-icon icon_w fa fa-file-text"></i><!--클릭될 경우  icon_w 가 icon-y로 교체 -->
                 <span>{{item.name}}</span>
               </router-link>
@@ -136,17 +136,50 @@
 
       // EventBus
       this.$EventBus.$on('update', () => {
+        // provider update
         console.log('$EventBus.$on update:: DefaultAside');
+
+        // route 변경
+        this.$router.replace('/');
+
+        // 모드 초기화
+        this.mode = {
+          minimizedDep01: false,
+          minimizedDep02: false,
+          minimizedDep03: true,
+        };
+        this.setClass();
+
+        // 초기상태 메뉴 숨기기
+        document.querySelector('._dep03').style.visibility = "hidden";
+
         this.fetchFirebaseData();
       });
       this.$EventBus.$on('updateService', () => {
+        // service update
         console.log('$EventBus.$on updateService:: DefaultAside');
+
+        // route 변경
+        this.$router.replace('/');
+
         this.fetchFirebaseData();
       });
     },
     mounted(){
+      // 모드 초기화
+      this.mode = {
+        minimizedDep01: false,
+        minimizedDep02: true,
+        minimizedDep03: true,
+      };
+
       // container class 조절
       this.setClass();
+
+      // 초기상태 메뉴 숨기기
+      document.querySelector('._dep02').style.visibility = "hidden";
+      document.querySelector('._dep03').style.visibility = "hidden";
+
     },
     computed: {
       ...mapState({
@@ -220,6 +253,17 @@
         // nav-link active
         currentTarget.classList.add("active");
 
+        // 하위 메뉴 초기화
+        this.resetActive('._dep02');
+
+        // 하위 메뉴 show/hide
+        document.querySelector('._dep02').style.visibility = "visible";
+        document.querySelector('._dep03').style.visibility = "hidden";
+
+        // 하위메뉴 오픈
+        this.openNav('Dep01');
+        this.openNav('Dep02');
+
         // 모드 변경
         this.setMode(isSetting);
       },
@@ -258,6 +302,14 @@
         this.selected.depth2 = item;
         console.log('selected.depth2 change :: ' + this.selected.depth2.key);
         this.setDepth3Data(this.oData.sp[this.selected.depth2.key], "depth3Data");
+
+        // 하위 메뉴 show/hide
+        document.querySelector('._dep03').style.visibility = "visible";
+
+        // 하위 메뉴 오픈
+        this.openNav('Dep02');
+        this.openNav('Dep03');
+
       },
 
       /**
@@ -271,7 +323,7 @@
         document.body.classList.toggle('sidebar-minimized');
 
         // mode 변경
-        this.mode['minimizedDep0' + num] = !this.mode['minimizedDep0' + num]
+        this.mode['minimizedDep0' + num] = !this.mode['minimizedDep0' + num];
 
         // container class 조절
         this.setClass();
@@ -337,7 +389,45 @@
           key : this.selected.depth2.key
         });
       },
+      resetActive(depth){
+        let link = document.querySelector(depth).getElementsByClassName('nav-link');
+        const icon = document.querySelector(depth).getElementsByClassName('nav-icon');
 
+        // nav-link active class 초기화
+        for(let i=0;i<link.length;i++) {
+          link[i].classList.remove("active");
+        }
+
+        if(depth === '._dep01'){
+          // 대메뉴 초기화
+          // 초기상태 메뉴 숨기기
+          document.querySelector('._dep02').style.visibility = "hidden";
+          document.querySelector('._dep03').style.visibility = "hidden";
+        }
+
+        // icon class 초기화
+        if(depth === '._dep02'){
+          for(let i=0;i<icon.length;i++) {
+            icon[i].classList.add("icon_w","fa-folder");
+            icon[i].classList.remove("icon_y","fa-folder-open");
+          }
+        }
+      },
+      home(){
+        this.resetActive('._dep01');
+        this.resetActive('._dep02');
+        // 모드 초기화
+        this.mode = {
+          minimizedDep01: false,
+          minimizedDep02: true,
+          minimizedDep03: true,
+        };
+        this.setClass();
+      },
+      openNav(depth){
+        this.mode['minimized' + depth] = false;
+        this.setClass();
+      }
     }
   }
 </script>
