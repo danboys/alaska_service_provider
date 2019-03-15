@@ -151,7 +151,7 @@
 
         let serviceName = this.service.serviceName
 
-        firebase.database().ref('provider_default/sp'+ serviceName).remove().then(()=>{
+        firebase.database().ref('provider_default/sp/'+ serviceName).remove().then(()=>{
           console.log('%cService 삭제 완료','color:blue');
 
           // sp 데이터 가져오기
