@@ -20,7 +20,7 @@
             </div>
             <div class="form-group mb-2">
               <label for="company">설명</label>
-              <textarea class="form-control text-area-height" id="company" type="text" placeholder="(ex.항목설명)"></textarea>
+              <textarea class="form-control text-area-height" id="company" type="text" :placeholder="targetValues.tooltip"></textarea>
             </div>
 
           </div><!--//card-body-->
@@ -190,6 +190,11 @@
         if(this.active == 0 ){
           this.inputText = $('.form-group input').val()
           this.inputValue = $('.form-group textarea').val()
+          if(this.inputText === "" ){
+            this.inputText = this.targetValues.valueName
+          }else if(this.inputValue ===""){
+            this.inputValue = this.targetValues.tooltip
+          }
         }
         if(this.active !== this.maxActive-1){
           this.active++;
@@ -228,7 +233,11 @@
           firebase.database().ref(query).update({
             [this.inputText] : value
           }).then(() => {
-            this.remove()
+            if(this.inputText === this.targetValues.valueName ){
+              this.setTooltip()
+            }else{
+              this.remove()
+            }
           }).catch((error) => {
             console.log(error);
           });
@@ -236,7 +245,11 @@
           firebase.database().ref(this.keyQuery).update({
             [this.inputText] : this.targetValues.value
           }).then(() => {
-            this.remove()
+            if(this.inputText === this.targetValues.valueName ){
+              this.setTooltip()
+            }else{
+              this.remove()
+            }
           }).catch((error) => {
             console.log(error);
           });
@@ -248,6 +261,33 @@
           query = this.valueQuery
         }else{
           query = this.keyValueQuery
+        }
+        firebase.database().ref(query).remove(
+        ).then(() => {
+          this.setTooltip()
+        }).catch((error) => {
+          console.log(error);
+        });
+      },
+      setTooltip(){
+        firebase.database().ref(`tooltip/${this.serviceName}`).update({
+          [this.inputText] : this.inputValue
+        }).then(() => {
+          if(this.inputText === this.targetValues.valueName ){
+            setTimeout(() => { this.next(); }, 1000);
+          }else{
+            this.removeTooltip()
+          }
+        }).catch((error) => {
+          console.log(error);
+        });
+      },
+      removeTooltip(){
+        let query
+        if(this.targetValues.divi === "btn"){
+          query = `tooltip/${this.serviceName}/${this.targetValues.valueName}`;
+        }else{
+          query = ``
         }
         firebase.database().ref(query).remove(
         ).then(() => {

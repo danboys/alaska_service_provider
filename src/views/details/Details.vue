@@ -1,4 +1,4 @@
-<template>
+\<template>
   <div>
     <div class="wrap" v-if="this.spCheck">
       <!--진입 경로-->
@@ -13,7 +13,7 @@
           <div class="title mb-1"><strong>{{key1}}</strong>
             <a href="#" class="btn_add font-lg fa fa-plus mr-1" @click="ModalSettingAdd(key1,val1,'object','btn')"></a>
             <a href="#" class="btn_delete  fa fa-times font-lg" @click="ModalSettingDelete(key1,key1,val1,'object','btn')"></a>
-            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,key1,val1,'object','btn')"></a>
+            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,key1,val1,'object','btn',toolTipData[key1])"></a>
           </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="item card p-2 mb-2" v-for="(val2,key2) in val1">
@@ -36,7 +36,7 @@
         <div v-else-if="Object.prototype.toString.call(val1) === '[object String]'">
           <div class="title mb-1"><strong>{{key1}}</strong>
             <a href="#" class="btn_delete  fa fa-times font-lg" @click="ModalSettingDelete(key1,key1,val1,'string','btn')"></a>
-            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,key1,val1,'string','btn')"></a>
+            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,key1,val1,'string','btn',toolTipData[key1])"></a>
           </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
@@ -55,7 +55,7 @@
         <div v-else-if="Object.prototype.toString.call(val1) === '[object Boolean]'">
           <div class="title mb-1"><strong>{{key1}}</strong>
             <a href="#" class="btn_delete  fa fa-times font-lg" @click="ModalSettingDelete(key1,key1,val1,'boolean','btn')"></a>
-            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,key1,val1,'boolean','btn')"></a>
+            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,key1,val1,'boolean','btn',toolTipData[key1])"></a>
           </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
@@ -74,7 +74,7 @@
           <div class="title mb-1"><strong>{{key1}}</strong>
             <a href="#" class="btn_add font-lg fa fa-plus mr-1" @click="ModalSettingAdd(key1,val1,'array','btn')"></a>
             <a href="#" class="btn_delete  fa fa-times font-lg" @click="ModalSettingDelete(key1,key1,val1,'array','btn')"></a>
-            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,key1,val1,'array','btn')"></a>
+            <a href="#" class="btn_edit  fa fa-edit" @click="ModalSettingModify(key1,key1,val1,'array','btn',toolTipData[key1])"></a>
           </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" v-for="(val2,key2) in val1"  >
@@ -275,14 +275,15 @@
           divi : divi
         });
       },
-      ModalSettingModify(name,value,key,type,divi){
+      ModalSettingModify(name,value,key,type,divi,tooltip){
         this.showModal({
           componentName : 'ModalSettingModify',
           valueName : name,
           value : value,
           key: key,
           type :type,
-          divi : divi
+          divi : divi,
+          tooltip : tooltip
         });
       },
       ModalSettingDelete(name,value,key,type,divi){
@@ -301,12 +302,12 @@
 </script>
 <style>
   /*컨텐츠 영역*/
- /* .wrap {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-  }*/
+  /* .wrap {
+     position: relative;
+     width: 100%;
+     height: 100%;
+     margin: 0 auto;
+   }*/
   .container {
     width: 700px;
   }
