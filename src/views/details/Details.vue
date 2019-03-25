@@ -194,7 +194,7 @@
     created(){
       this.spName = this.$route.query.spName
       this.serviceName = this.$route.query.serviceName
-      this.spCheck = $('.sidebar_depth2 .nav a').eq(0).hasClass('text-white')
+      this.spCheck = $('.sidebar_depth2  a').eq(0).hasClass('text-white')
       this.fetchFirebaseData();
       this.fetchFirebaseToolTipData();
 
@@ -217,7 +217,7 @@
         console.log('watch!!!')
         this.spName = this.$route.query.spName
         this.serviceName = this.$route.query.serviceName
-        this.spCheck = $('.sidebar_depth2 .nav a').eq(0).hasClass('text-white')
+        this.spCheck = $('.sidebar_depth2  a').eq(0).hasClass('text-white')
         this.fetchFirebaseData();
         this.fetchFirebaseToolTipData();
       }
