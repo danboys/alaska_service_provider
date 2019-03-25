@@ -45,6 +45,7 @@
               </div>
               <p class="mb-0">{{val1}}</p>
             </div>
+
           </div>
           <a v-if="Object.keys(depth1Data).length === index +1" href="#" class="text-white w-100 add_property" @click="ModalSettingAdd(key1,val1,'string','property')">
             <i class="fa fa-plus mr-1"></i>
@@ -100,13 +101,22 @@
       <!--진입 경로-->
       <div class="container">
         <!--서비스분류 카테고리 1개 단위-->
-        <div v-for="(val1, key1) in depth1Data" v-if="Object.prototype.toString.call(val1) === '[object Object]'">
-          <div class="title mb-1"><strong>{{key1}}</strong></div>
+        <div v-for="(val1, key1) in depth1Data"  v-if="Object.prototype.toString.call(val1) === '[object Object]'">
+          <div class="title mb-1"><strong>{{key1}}</strong>
+            <!--툴팁-->
+            <a href="#" class="q_mark fa fa-exclamation-circle"></a>
+            <div class="tooltip_box">{{toolTipData[key1]}}</div>
+            <!--툴팁-->
+          </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="item card p-2 mb-2" v-for="(val2,key2) in val1">
               <div class="position-relative">
                 <a data-toggle="collapse" data-parent="#Accordion" :href="'#'+key2" aria-expanded="true" aria-controls="Accordion2" class="">
                   {{key2}}</a>
+                <!--툴팁-->
+                <a href="#" class="q_mark fa fa-exclamation-circle"></a>
+                <div class="tooltip_box">{{toolTipData[key2]}}</div>
+                <!--툴팁-->
                 <div class="card p-2 mb-2 mt-2 position-relative collapse " :id="key2" role="tabpanel" style="" >
                   <p class="mb-0">{{val2}}</p>
                   <a  href="#" class="edit_list fa fa-edit" @click="modalServiceList(key2,val2,key1,'object')"></a>
@@ -116,7 +126,12 @@
           </div>
         </div>
         <div v-else-if="Object.prototype.toString.call(val1) === '[object String]'">
-          <div class="title mb-1"><strong>{{key1}}</strong></div>
+          <div class="title mb-1"><strong>{{key1}}</strong>
+            <!--툴팁-->
+            <a href="#" class="q_mark fa fa-exclamation-circle"></a>
+            <div class="tooltip_box">{{toolTipData[key1]}}</div>
+            <!--툴팁-->
+          </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
               <p class="mb-0">{{val1}}</p>
@@ -125,7 +140,12 @@
           </div>
         </div>
         <div v-else-if="Object.prototype.toString.call(val1) === '[object Boolean]'">
-          <div class="title mb-1"><strong>{{key1}}</strong></div>
+          <div class="title mb-1"><strong>{{key1}}</strong>
+            <!--툴팁-->
+            <a href="#" class="q_mark fa fa-exclamation-circle"></a>
+            <div class="tooltip_box">{{toolTipData[key1]}}</div>
+            <!--툴팁-->
+          </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" >
               <p class="mb-0">{{val1}}</p>
@@ -134,7 +154,12 @@
           </div>
         </div>
         <div v-else >
-          <div class="title mb-1"><strong>{{key1}}</strong></div>
+          <div class="title mb-1"><strong>{{key1}}</strong>
+            <!--툴팁-->
+            <a href="#" class="q_mark fa fa-exclamation-circle"></a>
+            <div class="tooltip_box">{{toolTipData[key1]}}</div>
+            <!--툴팁-->
+          </div>
           <div class="card p-3" id="Accordion" data-children=".item">
             <div class="card p-2 mb-2 mt-2 position-relative collapse show" id="Accordion2" role="tabpanel" style="" v-for="(val2,key2) in val1"  >
               <p class="mb-0">{{val2}}</p>
@@ -162,7 +187,8 @@
         path : null,
         oData: {},
         depth1Data: [],
-        spCheck : false
+        spCheck : false,
+        toolTipData:[]
       }
     },
     created(){
@@ -170,10 +196,12 @@
       this.serviceName = this.$route.query.serviceName
       this.spCheck = $('.sidebar_depth2 .nav a').eq(0).hasClass('text-white')
       this.fetchFirebaseData();
+      this.fetchFirebaseToolTipData();
 
       // EventBus
       this.$EventBus.$on('update', () => {
         this.fetchFirebaseData();
+        this.fetchFirebaseToolTipData();
       });
     },
     computed: {
@@ -191,6 +219,7 @@
         this.serviceName = this.$route.query.serviceName
         this.spCheck = $('.sidebar_depth2 .nav a').eq(0).hasClass('text-white')
         this.fetchFirebaseData();
+        this.fetchFirebaseToolTipData();
       }
     },
     methods: {
@@ -208,6 +237,21 @@
             this.oData = data.val();
             this.depth1Data = data.val()
             console.log(this.depth1Data)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      },
+      fetchFirebaseToolTipData() {
+        console.log('Firebase ToolTip Data');
+        firebase.database().ref(`tooltip/${this.serviceName}`).once('value')
+          .then((data) => {
+            /**
+             * 전체 Database Object
+             */
+            this.oData = data.val();
+            this.toolTipData = data.val()
+            console.log(this.toolTipData)
           })
           .catch((error) => {
             console.log(error)
@@ -407,5 +451,8 @@
   }
   .card > p {
     padding-right: 22px;
+  }
+  .title {
+    position: relative;
   }
 </style>
