@@ -119,7 +119,8 @@
         keyQuery:"",
         keyValueQuery:"",
         valueKeyQuery:"",
-        caution: false
+        caution: false,
+        tooltipData : []
       }
     },
     created() {
@@ -178,10 +179,14 @@
       check(){
         // progress popup
         this.next();
-
         let query
         if(this.targetValues.divi === "btn"){
           query = this.valueQuery
+          if (this.targetValues.type === "object"){
+            this.getToolTip(query);
+          }else{
+            this.delete(query);
+          }
         }else{
           if(this.targetValues.type === "array"){
             query = this.valueKeyQuery
@@ -191,6 +196,9 @@
             query = this.valueQuery
           }
         }
+
+      },
+      delete(query){
         firebase.database().ref(query).remove().then(() => {
           if(this.targetValues.divi !== "btn" && this.targetValues.type === "array"){
             firebase.database().ref(this.valueQuery).once('value')
@@ -208,11 +216,36 @@
                 }
               })
           }else{
-            setTimeout(() => { this.next(); }, 1000);
+            this.removeToolTip();
           }
         }).catch((error) => {
           console.log(error);
         });
+      },
+      removeToolTip(){
+        if(this.targetValues.divi === "btn" && this.targetValues.type === "object"){
+          for (let key in this.toolTipData) {
+            firebase.database().ref(`tooltip/${this.serviceName}/${this.toolTipData[key]}`).remove().then(() => {
+              setTimeout(() => { this.next(); }, 1000);
+            }).catch((error) => {
+              console.log(error);
+            });
+          }
+        }else{
+          firebase.database().ref(`tooltip/${this.serviceName}/${this.targetValues.valueName}`).remove().then(() => {
+            setTimeout(() => { this.next(); }, 1000);
+          }).catch((error) => {
+            console.log(error);
+          });
+        }
+      },
+      getToolTip(query){
+        firebase.database().ref(query).once('value')
+          .then((data) => {
+            this.toolTipData = Object.keys(data.val())
+            this.toolTipData.push(this.targetValues.valueName)
+            this.delete(query);
+          })
       },
       refresh() {
         // refresh
