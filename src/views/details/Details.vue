@@ -21,7 +21,7 @@
                 <a data-toggle="collapse" data-parent="#Accordion" :href="'#'+key2" aria-expanded="true" aria-controls="Accordion2" class="">
                   {{key2}}</a>
                 <div >
-                  <a href="#" class="edit_list fa fa-edit" @click="ModalSettingModify(key2,val2,key1)"></a>
+                  <a href="#" class="edit_list fa fa-edit" @click="ModalSettingModify(key2,val2,key1,'','',toolTipData[key2])"></a>
                   <a href="#" class="delete_list fa fa-times font-lg" @click="ModalSettingDelete(key2,val2,key1,'object')"></a>
                 </div>
               </div>

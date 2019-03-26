@@ -208,10 +208,9 @@
       check(){
         // progress popup
         this.next();
-
+        let query
+        let value
         if(this.targetValues.divi === "btn"){
-          let query
-          let value
           if(this.targetValues.type === "object" || this.targetValues.type === "array"){
             query = this.defaultQuery
             firebase.database().ref(this.valueQuery).once('value')
@@ -225,7 +224,9 @@
             this.update(query,value);
           }
         }else{
-          this.update();
+          query = this.keyQuery
+          value = this.inputText
+          this.update(query,value);
         }
       },
       update(query,value){
@@ -284,11 +285,7 @@
       },
       removeTooltip(){
         let query
-        if(this.targetValues.divi === "btn"){
-          query = `tooltip/${this.serviceName}/${this.targetValues.valueName}`;
-        }else{
-          query = ``
-        }
+        query = `tooltip/${this.serviceName}/${this.targetValues.valueName}`;
         firebase.database().ref(query).remove(
         ).then(() => {
           setTimeout(() => { this.next(); }, 1000);
