@@ -19,6 +19,8 @@
             </div>
             <div class="form-group mb-2">
               <div v-if="targetValues.type === 'boolean' && targetValues.divi === 'property'">
+                <label for="company" class="mt-2 ">항목 설명</label>
+                <textarea class="form-control text-area-height _textSub" id="company" type="text" placeholder="(ex.항목 설명)"></textarea>
                 <label for="company">선택</label>
                 <div class="input_box input_box_col2">
                   <div class="input_radio">
@@ -32,15 +34,27 @@
                 </div>
               </div>
               <div v-else>
-                <label for="company">항목 값</label>
-                <textarea class="form-control text-area-height" id="company" type="text" placeholder="(ex.항목 값)"></textarea>
+                <div v-if="targetValues.type != 'object' && targetValues.divi != 'property'">
+                  <label for="company">항목 값</label>
+                  <textarea class="form-control text-area-height" id="company" type="text" placeholder="(ex.항목 값)"></textarea>
+                </div>
                 <div v-if="targetValues.type === 'object' && targetValues.divi === 'btn'">
                   <label for="company" class="mt-2 ">항목 설명</label>
                   <textarea class="form-control text-area-height _textSub" id="company" type="text" placeholder="(ex.항목 설명)"></textarea>
                 </div>
+                <div v-if="targetValues.divi === 'property'">
+                  <label for="company" class="mt-2 ">항목 설명</label>
+                  <textarea class="form-control text-area-height _textSub" id="company" type="text" placeholder="(ex.항목 설명)"></textarea>
+                </div>
                 <div v-if="targetValues.type === 'object' && targetValues.divi === 'property'">
-                  <label for="company" class="mt-2 ">하위설명</label>
-                  <textarea class="form-control text-area-height _sub" id="company" type="text" placeholder="(ex.하위항목설명)"></textarea>
+                  <div class="form-group mb-2">
+                    <label for="company">하위 항목 명</label>
+                    <input class="form-control _subName" id="company" type="text" placeholder="(ex.하위 항목 명)">
+                  </div>
+                  <label for="company" class="mt-2 ">하위 항목 값</label>
+                  <textarea class="form-control text-area-height _subValue" id="company" type="text" placeholder="(ex.하위 항목 값)"></textarea>
+                  <label for="company" class="mt-2 ">하위 항목 설명</label>
+                  <textarea class="form-control text-area-height _subText" id="company" type="text" placeholder="(ex.하위 항목 설명)"></textarea>
                 </div>
               </div>
             </div>
@@ -178,7 +192,12 @@
         valueQuery :"",
         keyQuery:"",
         keyValueQuery:"",
-        spValue:""
+        spValue:"",
+        tooltipValue :"",
+        subName : "",
+        subValue  : "",
+        subTootip  : "",
+
       }
     },
     created() {
@@ -216,6 +235,9 @@
           this.inputText = $('.form-group input').val()
           this.inputValue = $('.form-group textarea').val()
           this.tooltipValue = $('.form-group ._textSub').val()
+          this.subName = $('.form-group ._subName').val()
+          this.subValue = $('.form-group ._subValue').val()
+          this.subTootip = $('.form-group ._subText').val()
           if(this.targetValues.divi=== "property" && this.targetValues.type === "object"){
             this.subInputValue = $('.form-group ._sub').val()
           }
@@ -243,7 +265,7 @@
           if(this.targetValues.type === "array"){
             inputValue = [this.inputValue]
           }else if(this.targetValues.type === "object"){
-            let object ={[this.inputValue]:this.subInputValue}
+            let object ={[this.subName]:this.subValue}
             inputValue = object
           }else if(this.targetValues.type === "boolean"){
             inputValue = this.spValue
@@ -253,7 +275,7 @@
           firebase.database().ref(qurey).update({
             [inputText] : inputValue
           }).then(() => {
-            setTimeout(() => { this.next(); }, 1000);
+            this.setTooltip();
           }).catch((error) => {
             console.log(error);
           });
@@ -289,7 +311,17 @@
         firebase.database().ref(`tooltip/${this.serviceName}`).update({
           [this.inputText] : this.tooltipValue
         }).then(() => {
-          setTimeout(() => { this.next(); }, 1000);
+          if(this.targetValues.divi=== "property" && this.targetValues.type === "object" ){
+            firebase.database().ref(`tooltip/${this.serviceName}`).update({
+              [this.subName] : this.subTootip
+            }).then(() => {
+              setTimeout(() => { this.next(); }, 1000);
+            }).catch((error) => {
+              console.log(error);
+            });
+          }else{
+            setTimeout(() => { this.next(); }, 1000);
+          }
         }).catch((error) => {
           console.log(error);
         });
