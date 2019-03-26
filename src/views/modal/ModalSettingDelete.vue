@@ -120,7 +120,8 @@
         keyValueQuery:"",
         valueKeyQuery:"",
         caution: false,
-        tooltipData : []
+        tooltipData : [],
+        subLength : 0
       }
     },
     created() {
@@ -190,11 +191,15 @@
         }else{
           if(this.targetValues.type === "array"){
             query = this.valueKeyQuery
+            this.delete(query);
           }else if (this.targetValues.type === "object"){
             query = this.keyValueQuery
+            this.getSubData(query, this.keyQuery);
           }else{
             query = this.valueQuery
+            this.delete(query);
           }
+
         }
 
       },
@@ -223,20 +228,43 @@
         });
       },
       removeToolTip(){
-        if(this.targetValues.divi === "btn" && this.targetValues.type === "object"){
-          for (let key in this.toolTipData) {
-            firebase.database().ref(`tooltip/${this.serviceName}/${this.toolTipData[key]}`).remove().then(() => {
+        if(this.targetValues.divi === "btn"){
+          if(this.targetValues.type === "object"){
+            for (let key in this.toolTipData) {
+              firebase.database().ref(`tooltip/${this.serviceName}/${this.toolTipData[key]}`).remove().then(() => {
+                setTimeout(() => { this.next(); }, 1000);
+              }).catch((error) => {
+                console.log(error);
+              });
+            }
+          }else{
+            firebase.database().ref(`tooltip/${this.serviceName}/${this.targetValues.valueName}`).remove().then(() => {
               setTimeout(() => { this.next(); }, 1000);
             }).catch((error) => {
               console.log(error);
             });
           }
         }else{
-          firebase.database().ref(`tooltip/${this.serviceName}/${this.targetValues.valueName}`).remove().then(() => {
-            setTimeout(() => { this.next(); }, 1000);
-          }).catch((error) => {
-            console.log(error);
-          });
+          if(this.targetValues.type === "object"){
+
+            if(this.subLength === 1 && this.targetValues.key != this.targetValues.valueName){
+              firebase.database().ref(`tooltip/${this.serviceName}/${this.targetValues.valueName}`).remove().then(() => {
+                firebase.database().ref(`tooltip/${this.serviceName}/${this.targetValues.key}`).remove().then(() => {
+                  setTimeout(() => { this.next(); }, 1000);
+                }).catch((error) => {
+                  console.log(error);
+                });
+              }).catch((error) => {
+                console.log(error);
+              });
+            }else{
+              firebase.database().ref(`tooltip/${this.serviceName}/${this.targetValues.valueName}`).remove().then(() => {
+                setTimeout(() => { this.next(); }, 1000);
+              }).catch((error) => {
+                console.log(error);
+              });
+            }
+          }
         }
       },
       getToolTip(query){
@@ -244,6 +272,13 @@
           .then((data) => {
             this.toolTipData = Object.keys(data.val())
             this.toolTipData.push(this.targetValues.valueName)
+            this.delete(query);
+          })
+      },
+      getSubData(query,keyQuery){
+        firebase.database().ref(keyQuery).once('value')
+          .then((data) => {
+            this.subLength = Object.keys(data.val()).length
             this.delete(query);
           })
       },
