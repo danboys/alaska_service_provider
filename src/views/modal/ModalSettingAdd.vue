@@ -32,8 +32,12 @@
                 </div>
               </div>
               <div v-else>
-                <label for="company">설명</label>
-                <textarea class="form-control text-area-height" id="company" type="text" placeholder="(ex.항목설명)"></textarea>
+                <label for="company">항목 값</label>
+                <textarea class="form-control text-area-height" id="company" type="text" placeholder="(ex.항목 값)"></textarea>
+                <div v-if="targetValues.type === 'object' && targetValues.divi === 'btn'">
+                  <label for="company" class="mt-2 ">항목 설명</label>
+                  <textarea class="form-control text-area-height _textSub" id="company" type="text" placeholder="(ex.항목 설명)"></textarea>
+                </div>
                 <div v-if="targetValues.type === 'object' && targetValues.divi === 'property'">
                   <label for="company" class="mt-2 ">하위설명</label>
                   <textarea class="form-control text-area-height _sub" id="company" type="text" placeholder="(ex.하위항목설명)"></textarea>
@@ -211,6 +215,7 @@
         if(this.active == 0 ){
           this.inputText = $('.form-group input').val()
           this.inputValue = $('.form-group textarea').val()
+          this.tooltipValue = $('.form-group ._textSub').val()
           if(this.targetValues.divi=== "property" && this.targetValues.type === "object"){
             this.subInputValue = $('.form-group ._sub').val()
           }
@@ -252,6 +257,7 @@
           }).catch((error) => {
             console.log(error);
           });
+
         }else{
           if(this.targetValues.type === "array"){
             firebase.database().ref(this.keyQuery).once('value')
@@ -272,13 +278,21 @@
             firebase.database().ref(this.keyQuery).update({
               [this.inputText] : this.inputValue
             }).then(() => {
-              // 추가 피드백 팝업
-              setTimeout(() => { this.next(); }, 1000);
+              this.setTooltip();
             }).catch((error) => {
               console.log(error);
             });
           }
         }
+      },
+      setTooltip(){
+        firebase.database().ref(`tooltip/${this.serviceName}`).update({
+          [this.inputText] : this.tooltipValue
+        }).then(() => {
+          setTimeout(() => { this.next(); }, 1000);
+        }).catch((error) => {
+          console.log(error);
+        });
       },
       refresh() {
         // refresh
