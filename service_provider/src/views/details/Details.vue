@@ -1,4 +1,4 @@
-\<template>
+<template>
   <div>
     <div class="wrap" v-if="this.spCheck">
       <!--진입 경로-->
@@ -194,7 +194,7 @@
     created(){
       this.spName = this.$route.query.spName
       this.serviceName = this.$route.query.serviceName
-      this.spCheck = document.querySelector('.sidebar_depth2  a').hasAttribute('text-white')
+      this.spCheck = document.querySelector('.sidebar_depth2 i').classList.contains('fa-cog')
       this.fetchFirebaseData();
       this.fetchFirebaseToolTipData();
 
@@ -217,7 +217,7 @@
         console.log('watch!!!')
         this.spName = this.$route.query.spName
         this.serviceName = this.$route.query.serviceName
-        this.spCheck = document.querySelector('.sidebar_depth2  a').hasAttribute('text-white')
+        this.spCheck = document.querySelector('.sidebar_depth2 i').classList.contains('fa-cog')
         this.fetchFirebaseData();
         this.fetchFirebaseToolTipData();
       }
