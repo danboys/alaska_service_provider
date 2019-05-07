@@ -36,7 +36,7 @@ Vue.use(BootstrapVue)
 // EventBus
 Vue.prototype.$EventBus = new Vue();
 
-debugger
+
 
 new Vue({
   el: '#app',
