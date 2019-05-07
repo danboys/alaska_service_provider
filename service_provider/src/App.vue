@@ -27,7 +27,7 @@
   /* Import Flag Icons Set */
   @import '../node_modules/flag-icon-css/css/flag-icon.min.css';
   /* Import Bootstrap Vue Styles */
-  @import 'assets/css/bootstrap-vue.css';
+  @import '../node_modules/bootstrap-vue/dist/bootstrap-vue.css';
   // Import Main styles for this application
   @import 'assets/scss/style';
   // Import style.css
